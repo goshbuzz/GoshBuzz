@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { HelmetProvider } from "react-helmet-async";
-import { Globe, Moon, Sun, MessageCircle } from "lucide-react";
+import { Globe, Moon, Sun, MessageCircle, Menu, X } from "lucide-react";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -25,13 +25,14 @@ function Header({
   setDarkMode: (v: boolean) => void;
 }) {
   const { language, setLanguage, t } = useLanguage();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-10 transition-colors">
+    <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link
           to="/"
-          className="text-xl font-bold tracking-tight text-amber-600 flex items-center gap-2"
+          className="text-xl font-extrabold tracking-tight text-amber-500 flex items-center gap-2"
         >
           <img
             src="/favicon.png"
@@ -105,8 +106,72 @@ function Header({
               <option value="ur">اردو</option>
             </select>
           </div>
+          
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white p-1 focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
+
+      {isMenuOpen && (
+        <div className="lg:hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 pt-2 pb-4 space-y-1 shadow-md">
+          <Link
+            to="/"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+          >
+            {t("home")}
+          </Link>
+          <HashLink
+            smooth
+            to="/#ideas"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+          >
+            {t("earningIdeas")}
+          </HashLink>
+          <HashLink
+            smooth
+            to="/#skills"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+          >
+            {t("survivalSkills")}
+          </HashLink>
+          <Link
+            to="/about"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+          >
+            {t("aboutUs")}
+          </Link>
+          <Link
+            to="/how-to-pay"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+          >
+            {t("howToPay")}
+          </Link>
+          <Link
+            to="/contact"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+          >
+            {t("contact")}
+          </Link>
+          <Link
+            to="/track-order"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+          >
+            {t("trackOrder")}
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
@@ -156,25 +221,25 @@ function AppLayout() {
 
       <footer className="bg-gray-900 text-gray-400 py-12 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-8">
-            <div className="mb-4 lg:mb-0 max-w-sm">
+          <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start text-center lg:text-left gap-10 mb-10">
+            <div className="mb-4 lg:mb-0 max-w-sm flex flex-col items-center lg:items-start">
               <Link
                 to="/"
-                className="text-white text-lg font-bold flex items-center gap-2 mb-2"
+                className="text-amber-500 text-lg font-extrabold flex items-center gap-2 mb-3"
               >
                 <img
                   src="/favicon.png"
                   alt="GoshBuzz"
-                  className="h-6 w-6 rounded-sm opacity-80"
+                  className="h-6 w-6 rounded-sm opacity-90"
                 />
                 GoshBuzz Pakistan
               </Link>
-              <p>
+              <p className="text-sm text-gray-400 leading-relaxed">
                 Pakistan's #1 Earning Library — Selling Guides to Work directly
                 from zero, Not Courses.
               </p>
 
-              <div className="flex gap-4 mt-6">
+              <div className="flex gap-4 mt-6 justify-center lg:justify-start">
                 <a
                   href="https://www.facebook.com/goshbuzzllc"
                   target="_blank"
@@ -292,10 +357,10 @@ function AppLayout() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-8 md:gap-12">
-              <div>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-8 md:gap-12">
+              <div className="flex flex-col items-center lg:items-start">
                 <h3 className="text-white font-bold mb-4">{t("quickLinks")}</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-2 flex flex-col items-center lg:items-start">
                   <li>
                     <Link
                       to="/about"
@@ -330,9 +395,9 @@ function AppLayout() {
                   </li>
                 </ul>
               </div>
-              <div>
+              <div className="flex flex-col items-center lg:items-start">
                 <h3 className="text-white font-bold mb-4">{t("legal")}</h3>
-                <ul className="space-y-2">
+                <ul className="space-y-2 flex flex-col items-center lg:items-start">
                   <li>
                     <Link
                       to="/privacy-policy"
@@ -375,13 +440,13 @@ function AppLayout() {
                   </li>
                 </ul>
               </div>
-              <div className="max-w-xs">
+              <div className="max-w-xs flex flex-col items-center lg:items-start">
                 <h3 className="text-white font-bold mb-4">{t("newsletter")}</h3>
                 <p className="text-sm mb-4 text-gray-400">
                   {t("subscribeText")}
                 </p>
                 <form
-                  className="flex flex-col gap-2"
+                  className="flex flex-col gap-2 w-full"
                   onSubmit={(e) => {
                     e.preventDefault();
                     const target = e.target as HTMLFormElement;
@@ -392,7 +457,7 @@ function AppLayout() {
                   <input
                     type="email"
                     placeholder={t("enterEmail")}
-                    className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:border-amber-500 w-full"
+                    className="bg-gray-800 text-white px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:border-amber-500 w-full text-center lg:text-left"
                     required
                   />
                   <button

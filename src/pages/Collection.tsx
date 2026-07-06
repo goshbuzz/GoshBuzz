@@ -109,6 +109,52 @@ export default function Collection() {
         ))}
       </div>
 
+      {/* Dynamic SEO, AEO, and GEO Section tailored to the collection */}
+      <div className="mt-24 pt-16 border-t border-gray-100 dark:border-gray-800 space-y-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-6">
+            {collectionType === "idea" ? (
+              <>
+                <h2 className="text-2xl font-extrabold text-gray-950 dark:text-gray-50 tracking-tight leading-tight">
+                  High-Yield Online Earning Ideas & Digital Business Models for Pakistan
+                </h2>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Building a sustainable remote business from Pakistan is no longer an elusive goal. With localized digital guides focusing on <strong>30 actionable online earning ideas in Pakistan</strong>, our blueprints explain how you can start immediately with low to zero capital. From setting up passive income streams via <a href="https://www.canva.com" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-semibold">Canva templates</a> and digital download products on Etsy to executing high-converting dropshipping stores in Karachi or Lahore, you will discover optimized pathways to monetize your digital presence.
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                  By matching international market demand on portals like <a href="https://www.fiverr.com" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-semibold">Fiverr</a> and <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-semibold">Upwork</a> with local payment infrastructure (JazzCash, EasyPaisa, SadaPay, HBL), you can escape traditional local wage structures. We supply the practical blueprints, specific templates, and step-by-step frameworks needed to successfully grow your digital services business.
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="text-2xl font-extrabold text-gray-950 dark:text-gray-50 tracking-tight leading-tight">
+                  Future-Proof Digital Skills & Remote Career Frameworks for Pakistan
+                </h2>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Technical self-reliance is the absolute cornerstone of career security in the modern remote workforce. Our catalog of <strong>30 essential survival digital skills</strong> features complete, bite-sized roadmaps designed to help you master high-demand remote disciplines. Whether you want to study local search engine optimization, master mobile-friendly WordPress design, learn video editing with CapCut, or secure online assets from digital threats, these manuals are built specifically for the Pakistani context.
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                  Equipping yourself with modular, service-based skills allows you to directly target high-ticket clients worldwide. Learn how to present yourself as a certified professional on professional directories and high-authority sites like <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-semibold">LinkedIn</a>, establish your own retainer agency contracts, and receive secure bank wire payouts in Islamabad, Lahore, Multan, or Faisalabad.
+                </p>
+              </>
+            )}
+          </div>
+          <div className="bg-amber-50/30 dark:bg-amber-950/5 p-6 rounded-2xl border border-amber-100/40 dark:border-amber-900/15 space-y-4">
+            <h3 className="font-bold text-gray-950 dark:text-gray-50 text-base">
+              🎯 Geographic Earning Insights
+            </h3>
+            <ul className="space-y-3 text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+              <li>
+                <strong>State-Supported Growth:</strong> The Ministry of IT and Telecom, alongside the State Bank of Pakistan, has designed special frameworks supporting remote software and freelancing exports, ensuring 0% income tax on certified digital services. Learn more via the official <a href="https://www.sbp.org.pk" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-semibold">State Bank of Pakistan ↗</a> directory.
+              </li>
+              <li>
+                <strong>Direct Local Payouts:</strong> Direct bank integration means you can seamlessly link your dollar earnings to Pakistani bank accounts (HBL, Meezan, Bank Alfalah, Allied Bank) with minimized transaction overheads.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       {filteredProducts.length === 0 && (
         <div className="text-center py-24">
           <p className="text-gray-500 dark:text-gray-400 text-lg">

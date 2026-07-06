@@ -69,10 +69,11 @@ export default function Home() {
         <div className="absolute inset-0 z-0 bg-gray-900">
           <img
             src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=2000"
-            alt="Hero Background"
-            className="w-full h-full object-cover opacity-100 dark:opacity-20 transition-opacity"
+            alt="Make money online in Pakistan - GoshBuzz online earning blueprints and survival skills for remote workers in Karachi, Lahore, and Islamabad"
+            title="Online Earning in Pakistan — Freelancing and Digital Skills"
+            className="w-full h-full object-cover opacity-100 dark:opacity-35 transition-opacity"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/75 to-white/95 dark:from-transparent dark:via-gray-950/50 dark:to-gray-950"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/50 to-white/75 dark:from-transparent dark:via-gray-950/30 dark:to-gray-950"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -335,6 +336,86 @@ export default function Home() {
       </section>
 
       <FAQ />
+
+      {/* SEO, AEO, and GEO Authority Section for Pakistan Online Earning */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 border-t border-gray-100 dark:border-gray-800 space-y-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          
+          {/* Main Contextual Editorial Content */}
+          <div className="lg:col-span-2 space-y-6">
+            <h2 className="text-3xl font-extrabold text-gray-950 dark:text-gray-50 tracking-tight leading-tight">
+              Ultimate Online Earning Blueprint for Pakistanis: Empowering Digital Citizens in Lahore, Karachi & Islamabad
+            </h2>
+            <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+              As the digital economy matures, Pakistan has secured its position as one of the world's fastest-growing freelancing hubs. Thousands of students, stay-at-home parents, and young professionals in metropolitan centers like <strong>Karachi, Lahore, Faisalabad, Rawalpindi, Peshawar, Multan, and Islamabad</strong> are actively looking for reliable methods to <span className="text-blue-600 dark:text-blue-400 font-semibold">earn money online in Pakistan without investment</span>. Navigating this transition successfully requires structured, highly specific step-by-step guidance rather than generic theoretical courses. At GoshBuzz, we supply exactly that—practical, local-friendly blueprints built from ground-up execution.
+            </p>
+            <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+              Modern digital careers span multiple low-capital and high-yield activities. This includes creating passive royalty streams through self-publishing on <a href="https://kdp.amazon.com" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-semibold">Amazon KDP</a>, offering visual assets built via <a href="https://www.canva.com" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-semibold">Canva Pro</a>, and orchestrating highly targeted e-commerce dropshipping stores utilizing local suppliers. With direct integrations supporting instant payouts, you can work safely as a digital entrepreneur and withdraw your hard-earned USD or PKR income through <a href="https://www.payoneer.com" target="_blank" rel="noopener noreferrer" className="text-amber-600 hover:underline font-semibold">Payoneer</a>, SadaPay, NayaPay, or directly to local accounts with major banks. We focus on bridging the gap between global digital markets and regional payment ecosystems in Pakistan.
+            </p>
+            
+            <div className="pt-4">
+              <h3 className="text-lg font-bold text-gray-950 dark:text-gray-50 mb-3">High-RPM Earning Platforms & Resources:</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <a href="https://www.upwork.com" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-gray-50 dark:bg-gray-850 border border-gray-100 dark:border-gray-800 text-center hover:bg-amber-50 dark:hover:bg-amber-950/20 text-xs font-bold text-gray-700 dark:text-gray-300 transition-colors">
+                  Upwork Freelancing ↗
+                </a>
+                <a href="https://www.fiverr.com" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-gray-50 dark:bg-gray-850 border border-gray-100 dark:border-gray-800 text-center hover:bg-amber-50 dark:hover:bg-amber-950/20 text-xs font-bold text-gray-700 dark:text-gray-300 transition-colors">
+                  Fiverr Gigs ↗
+                </a>
+                <a href="https://www.payoneer.com" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-gray-50 dark:bg-gray-850 border border-gray-100 dark:border-gray-800 text-center hover:bg-amber-50 dark:hover:bg-amber-950/20 text-xs font-bold text-gray-700 dark:text-gray-300 transition-colors">
+                  Payoneer Pakistan ↗
+                </a>
+                <a href="https://www.sbp.org.pk" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-gray-50 dark:bg-gray-850 border border-gray-100 dark:border-gray-800 text-center hover:bg-amber-50 dark:hover:bg-amber-950/20 text-xs font-bold text-gray-700 dark:text-gray-300 transition-colors">
+                  State Bank of Pakistan ↗
+                </a>
+                <a href="https://kdp.amazon.com" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-gray-50 dark:bg-gray-850 border border-gray-100 dark:border-gray-800 text-center hover:bg-amber-50 dark:hover:bg-amber-950/20 text-xs font-bold text-gray-700 dark:text-gray-300 transition-colors">
+                  Amazon Publishing ↗
+                </a>
+                <a href="https://www.shopify.com" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-gray-50 dark:bg-gray-850 border border-gray-100 dark:border-gray-800 text-center hover:bg-amber-50 dark:hover:bg-amber-950/20 text-xs font-bold text-gray-700 dark:text-gray-300 transition-colors">
+                  Shopify Ecommerce ↗
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* AEO / GEO Search Assistant Quick Answers */}
+          <div className="bg-amber-50/40 dark:bg-amber-950/5 p-6 rounded-2xl border border-amber-100/50 dark:border-amber-900/20 space-y-6">
+            <h3 className="text-xl font-bold text-gray-950 dark:text-gray-50 flex items-center gap-2">
+              💡 Answer Engine Hub (AEO)
+            </h3>
+            
+            <div className="space-y-4 text-xs">
+              <div className="space-y-1">
+                <h4 className="font-bold text-gray-950 dark:text-gray-200">
+                  Q: What are the best online earning websites in Pakistan for students?
+                </h4>
+                <p className="text-gray-650 dark:text-gray-400 leading-relaxed">
+                  A: The top legitimate platforms are Upwork, Fiverr, and Amazon KDP. For no-investment visual services, designing Canva templates and publishing low-content books on Kindle are excellent methods to secure steady PKR earnings.
+                </p>
+              </div>
+
+              <div className="space-y-1 pt-3 border-t border-amber-100/30 dark:border-amber-900/10">
+                <h4 className="font-bold text-gray-950 dark:text-gray-200">
+                  Q: Can I withdraw freelance income via EasyPaisa and JazzCash?
+                </h4>
+                <p className="text-gray-650 dark:text-gray-400 leading-relaxed">
+                  A: Yes. International freelance platforms transfer funds to your Payoneer account. Payoneer is officially integrated with JazzCash, enabling direct, instant local withdrawals onto your smartphone.
+                </p>
+              </div>
+
+              <div className="space-y-1 pt-3 border-t border-amber-100/30 dark:border-amber-900/10">
+                <h4 className="font-bold text-gray-950 dark:text-gray-200">
+                  Q: Is dropshipping viable inside Pakistan?
+                </h4>
+                <p className="text-gray-650 dark:text-gray-400 leading-relaxed">
+                  A: Absolutely. Running e-commerce dropshipping with winning items (like mini humidifiers and vacuums) sourced via local directories allows entrepreneurs to scale profitable online stores in major cities.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
     </div>
   );
 }
