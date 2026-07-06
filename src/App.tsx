@@ -12,10 +12,13 @@ import DeliveryPolicy from "./pages/DeliveryPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import Disclaimer from "./pages/Disclaimer";
 import Terms from "./pages/Terms";
-import OrderTracking from "./pages/OrderTracking";
 import Collection from "./pages/Collection";
+import Checkout from "./pages/Checkout";
+import Blogs from "./pages/Blogs";
+import { CartProvider, useCart } from "./CartContext";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import { useState, useEffect } from "react";
+import { ShoppingCart } from "lucide-react";
 
 function Header({
   darkMode,
@@ -25,6 +28,7 @@ function Header({
   setDarkMode: (v: boolean) => void;
 }) {
   const { language, setLanguage, t } = useLanguage();
+  const { cart } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -41,7 +45,7 @@ function Header({
           />
           GoshBuzz
         </Link>
-        <nav className="hidden lg:flex gap-6">
+        <nav className="hidden lg:flex items-center gap-6">
           <Link
             to="/"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
@@ -75,16 +79,28 @@ function Header({
             {t("howToPay")}
           </Link>
           <Link
+            to="/blogs"
+            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
+          >
+            {t("blogs")}
+          </Link>
+          <Link
             to="/contact"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
           >
             {t("contact")}
           </Link>
           <Link
-            to="/track-order"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
+            to="/checkout"
+            className="text-gray-600 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 font-semibold flex items-center gap-1.5 relative"
           >
-            {t("trackOrder")}
+            <ShoppingCart size={18} />
+            <span>{t("cart")}</span>
+            {cart.length > 0 && (
+              <span className="absolute -top-2.5 -right-3 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center shadow-sm">
+                {cart.length}
+              </span>
+            )}
           </Link>
         </nav>
         <div className="flex items-center gap-4">
@@ -157,6 +173,13 @@ function Header({
             {t("howToPay")}
           </Link>
           <Link
+            to="/blogs"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+          >
+            {t("blogs")}
+          </Link>
+          <Link
             to="/contact"
             onClick={() => setIsMenuOpen(false)}
             className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
@@ -164,11 +187,19 @@ function Header({
             {t("contact")}
           </Link>
           <Link
-            to="/track-order"
+            to="/checkout"
             onClick={() => setIsMenuOpen(false)}
-            className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+            className="flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
           >
-            {t("trackOrder")}
+            <span className="flex items-center gap-2">
+              <ShoppingCart size={18} />
+              {t("cart")}
+            </span>
+            {cart.length > 0 && (
+              <span className="bg-amber-500 text-white text-xs font-bold px-2.5 py-0.5 rounded-full">
+                {cart.length}
+              </span>
+            )}
           </Link>
         </div>
       )}
@@ -211,11 +242,12 @@ function AppLayout() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/how-to-pay" element={<HowToPay />} />
+          <Route path="/blogs" element={<Blogs />} />
           <Route path="/delivery-policy" element={<DeliveryPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/terms" element={<Terms />} />
-          <Route path="/track-order" element={<OrderTracking />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
 
@@ -379,6 +411,14 @@ function AppLayout() {
                   </li>
                   <li>
                     <Link
+                      to="/blogs"
+                      className="hover:text-white transition-colors"
+                    >
+                      {t("blogs")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       to="/contact"
                       className="hover:text-white transition-colors"
                     >
@@ -387,10 +427,10 @@ function AppLayout() {
                   </li>
                   <li>
                     <Link
-                      to="/track-order"
+                      to="/checkout"
                       className="hover:text-white transition-colors"
                     >
-                      {t("trackOrder")}
+                      {t("cart")}
                     </Link>
                   </li>
                 </ul>
@@ -508,9 +548,11 @@ export default function App() {
   return (
     <HelmetProvider>
       <LanguageProvider>
-        <Router>
-          <AppLayout />
-        </Router>
+        <CartProvider>
+          <Router>
+            <AppLayout />
+          </Router>
+        </CartProvider>
       </LanguageProvider>
     </HelmetProvider>
   );

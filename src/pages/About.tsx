@@ -25,7 +25,7 @@ export default function About() {
         </p>
       </div>
 
-      <div className="space-y-12 text-lg text-gray-600 dark:text-gray-400">
+      <div className="space-y-12 text-lg text-gray-600 dark:text-gray-400 text-center md:text-left">
         <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Our Mission

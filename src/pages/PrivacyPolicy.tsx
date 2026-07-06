@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Privacy Policy</h1>
         <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">How we handle and protect your information.</p>
       </div>
-      <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400">
+      <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 text-center md:text-left">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4">1. Information We Collect</h2>
         <p className="mb-4">
           When you purchase from GoshBuzz, we collect your name, email address, and WhatsApp number to fulfill your order. 

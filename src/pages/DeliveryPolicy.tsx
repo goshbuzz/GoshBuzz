@@ -16,7 +16,7 @@ export default function DeliveryPolicy() {
         <Send className="w-12 h-12 text-indigo-500 mx-auto mb-4" />
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Delivery Policy</h1>
       </div>
-      <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+      <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 text-center md:text-left">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Digital Delivery via WhatsApp</h2>
         <p className="mb-6">
           For our PDF guides, we do not ship any physical products. Once you complete your payment via JazzCash or EasyPaisa, simply send a screenshot of the successful transaction to our official WhatsApp number (<strong>+92 312 699 9078</strong>).

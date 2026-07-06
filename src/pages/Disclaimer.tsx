@@ -16,7 +16,7 @@ export default function Disclaimer() {
         <AlertTriangle className="w-12 h-12 text-amber-500 mx-auto mb-4" />
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Disclaimer</h1>
       </div>
-      <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+      <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 text-center md:text-left">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Earnings & Income Disclaimer</h2>
         <p className="mb-6">
           The earning ideas, survival skills, and blueprints provided by GoshBuzz are for educational and informational purposes only. We make every effort to accurately represent these products and their potential for income. However, we do not guarantee any specific financial results, income, or success.

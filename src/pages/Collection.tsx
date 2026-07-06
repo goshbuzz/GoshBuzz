@@ -112,7 +112,7 @@ export default function Collection() {
       {/* Dynamic SEO, AEO, and GEO Section tailored to the collection */}
       <div className="mt-24 pt-16 border-t border-gray-100 dark:border-gray-800 space-y-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-6 text-center lg:text-left">
             {collectionType === "idea" ? (
               <>
                 <h2 className="text-2xl font-extrabold text-gray-950 dark:text-gray-50 tracking-tight leading-tight">
@@ -139,7 +139,7 @@ export default function Collection() {
               </>
             )}
           </div>
-          <div className="bg-amber-50/30 dark:bg-amber-950/5 p-6 rounded-2xl border border-amber-100/40 dark:border-amber-900/15 space-y-4">
+          <div className="bg-amber-50/30 dark:bg-amber-950/5 p-6 rounded-2xl border border-amber-100/40 dark:border-amber-900/15 space-y-4 text-center lg:text-left">
             <h3 className="font-bold text-gray-950 dark:text-gray-50 text-base">
               🎯 Geographic Earning Insights
             </h3>

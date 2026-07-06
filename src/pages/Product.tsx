@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { products } from "../data";
 import { articles } from "../data/articles";
+import { useCart } from "../CartContext";
 
 export default function Product() {
   const { id } = useParams();
@@ -38,6 +39,8 @@ export default function Product() {
   }
 
   const price = product.type === "idea" ? "500" : "200";
+  const { addToCart, isInCart } = useCart();
+  const alreadyInCart = isInCart(product.id);
   const article = articles[product.id as keyof typeof articles];
 
   // Dynamic meta tags optimized for SEO, AEO (Answer Engine Optimization) and GEO (Geographic Search Optimization)
@@ -115,7 +118,7 @@ export default function Product() {
           )}
         </div>
 
-        <div className="flex flex-col justify-center space-y-8">
+        <div className="flex flex-col justify-center space-y-8 text-center md:text-left items-center md:items-start">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold uppercase tracking-wider mb-4 border border-amber-200">
               {product.type === "idea" ? "Earning Idea" : "Survival Skill"}
@@ -131,11 +134,11 @@ export default function Product() {
             </p>
           </div>
 
-          <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+          <div className="space-y-4 pt-4 border-t border-gray-100 dark:border-gray-800 w-full">
             <h3 className="font-semibold text-gray-900 dark:text-gray-100">
               What you get:
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 inline-block text-left">
               <li className="flex items-start gap-3 text-gray-600 dark:text-gray-400">
                 <CheckCircle2
                   className="text-green-500 mt-0.5 shrink-0"
@@ -160,22 +163,63 @@ export default function Product() {
             </ul>
           </div>
 
-          <div className="pt-8">
-            <button
-              onClick={() => navigate("/how-to-pay")}
-              className="w-full py-5 bg-gray-900 text-white rounded-2xl font-bold text-lg hover:bg-gray-800 transition-colors shadow-lg shadow-gray-200 flex items-center justify-center gap-3"
-            >
-              <ShoppingCart size={22} /> Buy Now via EasyPaisa/JazzCash — Rs.{" "}
-              {price}
-            </button>
+          <div className="pt-8 space-y-4">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => {
+                  addToCart({
+                    id: product.id,
+                    title: product.title,
+                    type: product.type as "idea" | "skill",
+                    price: Number(price),
+                    image: product.image,
+                    icon: product.icon,
+                  });
+                  navigate("/checkout");
+                }}
+                className="flex-grow py-5 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white rounded-2xl font-extrabold text-lg transition-all shadow-lg shadow-amber-500/10 flex items-center justify-center gap-2.5"
+              >
+                <ShoppingCart size={22} /> Buy Now — Rs. {price}
+              </button>
+
+              <button
+                onClick={() => {
+                  if (alreadyInCart) {
+                    navigate("/checkout");
+                  } else {
+                    addToCart({
+                      id: product.id,
+                      title: product.title,
+                      type: product.type as "idea" | "skill",
+                      price: Number(price),
+                      image: product.image,
+                      icon: product.icon,
+                    });
+                  }
+                }}
+                className={`py-5 px-6 rounded-2xl font-bold text-base transition-all border flex items-center justify-center gap-2 ${
+                  alreadyInCart
+                    ? "bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-900/40 text-green-600 dark:text-green-400"
+                    : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50"
+                }`}
+              >
+                {alreadyInCart ? (
+                  <>
+                    <CheckCircle2 size={20} /> Checkout Now
+                  </>
+                ) : (
+                  "Add to Cart"
+                )}
+              </button>
+            </div>
+
             <div className="mt-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-800 flex flex-col gap-3">
               <div className="flex items-center justify-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                 <ShieldCheck size={18} className="text-green-500" />
                 <span>100% Secure Checkout</span>
                 <span className="text-gray-300">|</span>
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 size={16} className="text-blue-500" /> Instant
-                  Delivery
+                  <CheckCircle2 size={16} className="text-blue-500" /> Instant Delivery
                 </span>
               </div>
               <div className="flex flex-wrap justify-center gap-2 mt-1">
@@ -274,7 +318,7 @@ export default function Product() {
           <div className="max-w-4xl mx-auto space-y-12">
             
             {/* Header / Intro */}
-            <div className="space-y-6">
+            <div className="space-y-6 text-center md:text-left">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 text-xs font-semibold uppercase tracking-wider mb-4 border border-amber-200 dark:border-amber-900/50">
                 <Sparkles size={12} className="text-amber-500 animate-pulse" /> Free Lesson & Case Study
               </div>
@@ -315,13 +359,13 @@ export default function Product() {
             </div>
 
             {/* Steps Blueprint */}
-            <div className="space-y-8">
-              <h3 className="text-2xl font-bold text-gray-950 dark:text-gray-50 flex items-center gap-2">
+            <div className="space-y-8 text-center md:text-left">
+              <h3 className="text-2xl font-bold text-gray-950 dark:text-gray-50 flex items-center justify-center md:justify-start gap-2">
                 <ClipboardList size={22} className="text-amber-500" /> Step-by-Step Earning Blueprint
               </h3>
               <div className="space-y-6">
                 {article.steps.map((step, idx) => (
-                  <div key={idx} className="flex gap-4 p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                  <div key={idx} className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-10 h-10 shrink-0 bg-amber-500 text-white rounded-xl font-bold flex items-center justify-center text-lg shadow-sm shadow-amber-200 dark:shadow-none">
                       {idx + 1}
                     </div>
@@ -339,11 +383,11 @@ export default function Product() {
             </div>
 
             {/* Pro Tips */}
-            <div className="p-6 bg-emerald-50/50 dark:bg-emerald-950/10 rounded-2xl border border-emerald-100/50 dark:border-emerald-900/30 space-y-4">
-              <h3 className="text-lg font-bold text-emerald-950 dark:text-emerald-300 flex items-center gap-2">
+            <div className="p-6 bg-emerald-50/50 dark:bg-emerald-950/10 rounded-2xl border border-emerald-100/50 dark:border-emerald-900/30 space-y-4 text-center md:text-left">
+              <h3 className="text-lg font-bold text-emerald-950 dark:text-emerald-300 flex items-center justify-center md:justify-start gap-2">
                 <Lightbulb size={20} className="text-emerald-500" /> Pro Secret Tips (Avoid Failure)
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-3 inline-block text-left">
                 {article.proTips.map((tip, idx) => (
                   <li key={idx} className="flex items-start gap-2 text-sm text-emerald-800 dark:text-emerald-300">
                     <span className="text-emerald-500 shrink-0 mt-1">•</span>
@@ -354,8 +398,8 @@ export default function Product() {
             </div>
 
             {/* FAQs Accordion */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-950 dark:text-gray-50 flex items-center gap-2">
+            <div className="space-y-6 text-center md:text-left">
+              <h3 className="text-2xl font-bold text-gray-950 dark:text-gray-50 flex items-center justify-center md:justify-start gap-2">
                 <HelpCircle size={22} className="text-amber-500" /> Frequently Asked Questions
               </h3>
               <div className="space-y-4">

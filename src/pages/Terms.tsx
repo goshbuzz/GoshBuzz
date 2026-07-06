@@ -16,7 +16,7 @@ export default function Terms() {
         <FileText className="w-12 h-12 text-blue-500 mx-auto mb-4" />
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Terms and Conditions</h1>
       </div>
-      <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+      <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 text-center md:text-left">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">1. Acceptance of Terms</h2>
         <p className="mb-6">
           By accessing the GoshBuzz website and purchasing our digital guides, you agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, you may not use our services.
