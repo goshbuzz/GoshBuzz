@@ -33,15 +33,15 @@ function Header({
 
   return (
     <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link
           to="/"
-          className="text-xl font-extrabold tracking-tight text-amber-500 flex items-center gap-2"
+          className="text-xl md:text-2xl font-extrabold tracking-tight text-amber-500 flex items-center gap-3"
         >
           <img
             src="/favicon.png"
             alt="GoshBuzz"
-            className="h-8 w-8 rounded-md"
+            className="h-16 w-16 md:h-18 md:w-18 rounded-full shadow-md transition-transform hover:scale-105 duration-300"
           />
           GoshBuzz
         </Link>
@@ -262,7 +262,7 @@ function AppLayout() {
                 <img
                   src="/favicon.png"
                   alt="GoshBuzz"
-                  className="h-6 w-6 rounded-sm opacity-90"
+                  className="h-10 w-10 rounded-full opacity-90 shadow-sm"
                 />
                 GoshBuzz Pakistan
               </Link>
