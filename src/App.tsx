@@ -39,7 +39,7 @@ function Header({
           className="text-xl md:text-2xl font-extrabold tracking-tight text-amber-500 flex items-center gap-3"
         >
           <img
-            src="/favicon.png"
+            src="/goshbuzz_logo.png"
             alt="GoshBuzz"
             className="h-12 w-12 md:h-16 md:w-16 rounded-full shadow-md flex-shrink-0 transition-transform hover:scale-105 duration-300"
           />
@@ -260,7 +260,7 @@ function AppLayout() {
                 className="text-amber-500 text-lg font-extrabold flex items-center gap-2 mb-3"
               >
                 <img
-                  src="/favicon.png"
+                  src="/goshbuzz_logo.png"
                   alt="GoshBuzz"
                   className="h-10 w-10 rounded-full opacity-90 shadow-sm flex-shrink-0"
                 />
