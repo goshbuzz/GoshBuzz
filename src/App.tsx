@@ -41,7 +41,7 @@ function Header({
           <img
             src="/favicon.png"
             alt="GoshBuzz"
-            className="h-16 w-16 md:h-18 md:w-18 rounded-full shadow-md transition-transform hover:scale-105 duration-300"
+            className="h-12 w-12 md:h-16 md:w-16 rounded-full shadow-md flex-shrink-0 transition-transform hover:scale-105 duration-300"
           />
           GoshBuzz
         </Link>
@@ -262,7 +262,7 @@ function AppLayout() {
                 <img
                   src="/favicon.png"
                   alt="GoshBuzz"
-                  className="h-10 w-10 rounded-full opacity-90 shadow-sm"
+                  className="h-10 w-10 rounded-full opacity-90 shadow-sm flex-shrink-0"
                 />
                 GoshBuzz Pakistan
               </Link>
