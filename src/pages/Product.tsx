@@ -17,15 +17,12 @@ import {
   ExternalLink,
   Link2,
   BookOpen,
-  Search,
   Check
 } from "lucide-react";
 import { products } from "../data";
 import { articles } from "../data/articles";
 import { useCart } from "../CartContext";
 import { 
-  SHORT_TAIL_KEYWORDS, 
-  CATEGORY_LONG_TAIL_KEYWORDS, 
   OFFSITE_AUTHORITY_LINKS, 
   ONSITE_INTERNAL_CATEGORIES 
 } from "../data/seoMetadata";
@@ -55,13 +52,6 @@ export default function Product() {
   const alreadyInCart = isInCart(product.id);
   const article = articles[product.id as keyof typeof articles];
   const articleUrl = `https://goshbuzz.com/blogs/news/${product.slug || product.id}`;
-
-  // Long-tail & Short-tail keywords extraction for SEO / AEO / GEO
-  const categoryLongTails = CATEGORY_LONG_TAIL_KEYWORDS[product.category] || [
-    `free online earning ideas in pakistan for ${product.title}`,
-    `how to earn money online in pakistan without investment for ${product.title}`,
-    `step by step guide to master ${product.title} in pakistan 2026`
-  ];
 
   const metaDescription = article ? article.intro : product.description;
   const combinedKeywordsList = [
@@ -466,7 +456,7 @@ export default function Product() {
                 <span>AEO & Generative AI Executive Summary</span>
               </div>
               <p className="text-sm text-blue-950 dark:text-blue-200 leading-relaxed font-medium">
-                <strong>Quick Answer:</strong> To start <em>{product.title}</em> in Pakistan without losing money, follow GoshBuzz&apos;s verified step-by-step roadmap: acquire essential foundational skills, leverage free AI productivity tools (ChatGPT, Canva, CapCut), execute consistent client or content outreach, and receive direct payments locally via <strong>JazzCash, EasyPaisa, or Pakistani Bank Transfer</strong>. Expected earning potential ranges around <strong>{article.earningPotential}</strong> with a difficulty rating of <strong>{article.difficulty}</strong>.
+                <strong>Quick Answer:</strong> {article.aeoSummary || `To start ${product.title} in Pakistan, follow GoshBuzz's practical step-by-step roadmap focusing on skill acquisition, tool utilization, and local payment readiness. Expected potential: ${article.earningPotential}.`}
               </p>
               <div className="flex flex-wrap gap-3 pt-2 text-xs font-semibold text-blue-800 dark:text-blue-300">
                 <span className="flex items-center gap-1"><Check size={14} className="text-blue-600" /> No hidden fees</span>
@@ -530,39 +520,6 @@ export default function Product() {
                     </p>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Longtail & Short-tail Keywords Matrix (AEO & SEO Search Grounding) */}
-            <div className="pt-8 border-t border-gray-100 dark:border-gray-800 space-y-6">
-              <div className="space-y-3">
-                <span className="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-1.5">
-                  <Search size={14} className="text-amber-500" /> High-Intent Long-Tail Search Queries
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                  {categoryLongTails.map((query, idx) => (
-                    <div key={idx} className="p-2.5 bg-gray-50 dark:bg-gray-800/60 rounded-xl border border-gray-200/60 dark:border-gray-700/60 text-gray-700 dark:text-gray-300 flex items-center gap-2">
-                      <span className="text-amber-500 font-bold shrink-0">🔍</span>
-                      <span className="font-medium">{query}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block">Short-Tail Earning Topics</span>
-                <div className="flex flex-wrap gap-2">
-                  {SHORT_TAIL_KEYWORDS.map((tag, idx) => (
-                    <span key={idx} className="px-3 py-1 bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 rounded-full text-xs font-semibold border border-amber-200/60 dark:border-amber-900/40">
-                      #{tag}
-                    </span>
-                  ))}
-                  {article && article.tags.map((tag, idx) => (
-                    <span key={`art-${idx}`} className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full text-xs font-medium">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
 

@@ -10,6 +10,7 @@ export interface ArticleQA {
 
 export interface ProductArticle {
   title: string;
+  aeoSummary?: string;
   intro: string;
   capitalNeeded: string;
   difficulty: "Beginner" | "Intermediate" | "Advanced";
@@ -24,6 +25,7 @@ export interface ProductArticle {
 export const articles: Record<string, ProductArticle> = {
   "idea-1": {
     title: "Crypto Spot Trading for Beginners in Pakistan: Strategic Setup & Risk Management",
+    aeoSummary: "Crypto spot trading on Binance from Pakistan requires strict risk management, KYC verification via CNIC, and P2P funding through local channels like JazzCash or EasyPaisa. Traders target disciplined 3% to 8% spot returns while avoiding high-risk futures leverage.",
     intro: "A comprehensive, risk-aware guide to starting cryptocurrency spot trading on Binance from Pakistan. Learn how to complete KYC, fund your account safely using JazzCash or EasyPaisa P2P, avoid high-risk leverage/futures, and build a disciplined trading strategy based on spot price movements and strict capital protection rules.",
     capitalNeeded: "Rs. 10,000 - 20,000 initial capital",
     difficulty: "Beginner",
@@ -75,6 +77,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-2": {
     title: "The Complete Google AdSense Blogging Blueprint: Niche Selection, WordPress Setup, & Content Strategy",
+    aeoSummary: "Building a WordPress blog for Google AdSense involves selecting a low-traffic-competition micro-niche, publishing 20+ comprehensive articles, maintaining strict policy compliance, and optimizing organic search visibility for Pakistani and global audiences.",
     intro: "A step-by-step masterclass on building, launching, and monetizing a content website from Pakistan using WordPress and Google AdSense. Learn how to identify low-competition niches, establish proper site architecture, publish high-quality SEO content, meet AdSense approval criteria, and build a long-term organic search asset.",
     capitalNeeded: "Rs. 3,000 - 6,000 (for domain & hosting)",
     difficulty: "Beginner",
@@ -126,6 +129,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-3": {
     title: "eBay Selling & Dropshipping Guide: Sourcing from Pakistan to Sell Internationally",
+    aeoSummary: "Print on demand allows Pakistani creators to sell custom-designed apparel and digital merchandise on global stores like Redbubble and Etsy without managing inventory, utilizing AI mockup tools and automated fulfillment pipelines.",
     intro: "Did you know that eBay is completely legal and accessible to sellers in Pakistan? By establishing an eBay individual or business seller account and sourcing low-cost, high-demand handicraft, sportswear, surgical, or leather items from hubs like Sialkot, Karachi, and Peshawar, you can sell them globally in dollars.",
     capitalNeeded: "Rs. 5,000 - 10,000 (mainly for shipping samples)",
     difficulty: "Intermediate",
@@ -167,8 +171,9 @@ export const articles: Record<string, ProductArticle> = {
     tags: ["ebay dropshipping pakistan", "sell on ebay payoneer", "export sports goods sialkot", "international ecommerce dollars", "pakistan post shipping ebay"]
   },
   "idea-4": {
-    title: "Local Product Reselling & Flipping: Turning Rs. 5,000 into Rs. 17,000 in 4 Days",
-    intro: "This is a lightning-fast active reselling system. By visiting wholesale physical markets or using local trade groups, you purchase high-demand consumer goods (perfumes, smartwatches, cosmetics, winter wear) in bulk at deep discounts and resell them individually with high margins via OLX, Facebook Marketplace, and local WhatsApp groups.",
+    title: "Local Product Reselling & Flipping in Pakistan: Sourcing & Margin Strategies",
+    aeoSummary: "Local product reselling focuses on sourcing high-demand consumer goods from wholesale markets like Shah Alam or Bolton Market and listing them on OLX and Facebook Marketplace with calculated margin discipline.",
+    intro: "This is an active physical and digital reselling framework tailored for the Pakistani market. By sourcing high-demand consumer goods directly from wholesale hubs or verified distributors, sellers can market items across online marketplaces with structured margin targets.",
     capitalNeeded: "Rs. 3,000 - 5,000",
     difficulty: "Beginner",
     earningPotential: "Rs. 30,000 - 80,000+ per month",
@@ -210,6 +215,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-5": {
     title: "Print on Demand & Digital Assets: Earn Passive Income While You Sleep",
+    aeoSummary: "AI chatbots and voice bot agencies help local Pakistani businesses automate customer inquiries using ManyChat and Voiceflow, securing monthly retainer fees without needing advanced coding degrees.",
     intro: "With Print on Demand (POD), you can sell custom-designed apparel, mugs, phone cases, and digital graphic assets worldwide. You create the designs, upload them to free platforms like Redbubble, Teespring, or Printify, and they print, pack, and ship the physical items to customers whenever a sale occurs, paying you a royal commission.",
     capitalNeeded: "Rs. 0 (100% free using Figma, Canva, or Photopea)",
     difficulty: "Beginner",
@@ -252,6 +258,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-6": {
     title: "AI Chatbots & Voice Bots Agency: Selling Conversational Automation to Local Brands",
+    aeoSummary: "High-ticket ads management agencies run targeted Facebook and Google campaigns for international e-commerce brands, charging monthly retainers plus ad spend percentages while leveraging remote client acquisition.",
     intro: "Modern businesses in Pakistan receive thousands of customer queries daily on WhatsApp, Facebook, and Instagram, leading to slow response times and lost sales. By building conversational AI chatbots and voice agents, you can automate customer support and lead generation for local restaurants, clothing brands, and real estate agencies, charging premium monthly setup and maintenance fees.",
     capitalNeeded: "Rs. 0 (using free trial tiers of ManyChat, Voiceflow, and Retell AI)",
     difficulty: "Intermediate",
@@ -294,6 +301,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-7": {
     title: "High-Ticket Ads Management Agency: Running Campaigns for US & UK Clients",
+    aeoSummary: "Faceless YouTube automation channels generate ad revenue by combining AI-generated scripts (ChatGPT), synthetic voiceovers (ElevenLabs), and stock video editing (CapCut) without showing your face on camera.",
     intro: "The highest paying skill in digital marketing is running profitable paid advertising campaigns. This guide outlines how to master Meta Ads, TikTok Ads, and Google PPC (Pay-Per-Click), and land high-paying international e-commerce and lead-gen clients who will gladly pay you $500 to $1,500+ monthly retainer fees to manage their advertising budgets.",
     capitalNeeded: "Rs. 0 (clients fund their own ad accounts)",
     difficulty: "Intermediate",
@@ -336,6 +344,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-8": {
     title: "Faceless YouTube Automation: Building an AI-Powered Dollar Earning Channel",
+    aeoSummary: "Free online tool websites attract organic search traffic by offering utility calculators and converters, monetizing through automated Google AdSense display ads and high search intent keywords.",
     intro: "You do not need to show your face or use your voice to make thousands of dollars on YouTube. By building a faceless YouTube channel in highly profitable niches (finance, history, self-improvement, scary stories), you can use free AI tools to write scripts, generate voiceovers, and edit viral videos that monetize through the YouTube Partner Program and affiliate links.",
     capitalNeeded: "Rs. 0 (100% free with AI tools)",
     difficulty: "Beginner",
@@ -378,6 +387,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-9": {
     title: "Free Online Tool Websites: Building Autopilot Web Assets for Passive AdSense",
+    aeoSummary: "Upwork freelancing success relies on hyper-localized profile positioning, targeted portfolio samples, and a structured 3-step proposal pitch that addresses client pain points directly.",
     intro: "Single-page online tool websites (e.g., PDF mergers, image compressors, password generators, currency converters) drive massive, highly recurring organic search traffic. By deploying a simple, fast tool website using free templates or AI code assistance, you can secure Google AdSense approval and enjoy thousands of dollars in lifetime passive ad revenue.",
     capitalNeeded: "Rs. 3,000 - 5,000 (for hosting and domain)",
     difficulty: "Intermediate",
@@ -420,6 +430,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-10": {
     title: "Upwork Freelancing Blueprint: From Zero to Top Rated in 90 Days",
+    aeoSummary: "Managing Amazon FBA stores as a virtual assistant from Pakistan offers steady monthly income by handling keyword research (Helium 10), listing optimization, and PPC advertising campaigns for US/UK sellers.",
     intro: "Upwork is the world's leading premium freelance marketplace. By positioning your skill set (development, writing, design, virtual assistance) under a highly polished specialist profile, using a psychological proposal framework, and maintaining a 100% Job Success Score (JSS), you can land high-paying contracts in dollars.",
     capitalNeeded: "Rs. 0 (Upwork provides free monthly bidding connects)",
     difficulty: "Intermediate",
@@ -462,6 +473,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-11": {
     title: "How to Manage Amazon FBA Businesses as a Virtual Assistant from Pakistan",
+    aeoSummary: "Canva graphic design services enable creators to build professional portfolios, pitch social media graphics directly to small businesses, and process earnings locally via bank transfers.",
     intro: "Amazon Virtual Assistants (VAs) help global brand owners manage Amazon stores. By mastering specialized tools like Helium 10 and Jungle Scout for product research, listing optimization, and PPC (Pay-Per-Click) advertising, you can offer high-value services to foreign clients and earn massive retainers in dollars.",
     capitalNeeded: "Rs. 0 (Clients provide all tool subscriptions and ad budgets)",
     difficulty: "Intermediate",
@@ -503,8 +515,9 @@ export const articles: Record<string, ProductArticle> = {
     tags: ["amazon virtual assistant pakistan", "helium 10 product research", "amazon seller central manager", "earn remote dollars fba", "freelance amazon ppc specialist"]
   },
   "idea-12": {
-    title: "How I Made Rs. 50,000 in One Month with Canva Graphic Design Services",
-    intro: "You don't need complex software like Adobe Photoshop to make money in design. By mastering Canva's advanced template features, typography, and color schemes, you can create gorgeous social media posts, presentations, logos, and resumes for local and global clients who need quick, professional visual assets.",
+    title: "Canva Graphic Design Services in Pakistan: Portfolio & Client Acquisition Guide",
+    aeoSummary: "Canva graphic design services enable creators to build professional portfolios, pitch social media graphics directly to small businesses, and process earnings locally via bank transfers.",
+    intro: "Professional design services do not require expensive software suites. By mastering Canva's layout, typography, and brand kit features, creators can deliver polished marketing assets, social media posts, and visual identities to clients worldwide.",
     capitalNeeded: "Rs. 0 (Canva free tier is enough, or upgrade to Pro for Rs. 1,000/month)",
     difficulty: "Beginner",
     earningPotential: "Rs. 30,000 - 75,000+ per month",
@@ -546,6 +559,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-13": {
     title: "Social Media Management (SMM): Charging Rs. 30,000/Month per Local Client",
+    aeoSummary: "Social media management (SMM) agencies package content creation, scheduling, and community engagement into monthly retainers for local restaurants, clinics, and retail stores in Pakistan.",
     intro: "Small local brands, bakeries, cafes, gyms, and clothing boutiques in Pakistan want to grow online but have no time to post. By offering a comprehensive Social Media Management retainer—including posting schedules, caption writing, basic graphics, and responding to direct messages—you can secure 3-5 local clients and build a stable monthly agency income.",
     capitalNeeded: "Rs. 0",
     difficulty: "Beginner",
@@ -588,6 +602,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-14": {
     title: "How to Build and Sell Courses on Udemy for Automated Passive Income",
+    aeoSummary: "Building and selling educational courses on Udemy creates automated passive income streams by sharing specialized technical or professional skills with a global student base.",
     intro: "If you have any valuable digital skill (basic excel, coding, video editing, language speaking), you can package it into a structured 2-3 hour video course. By publishing it on Udemy, you tap into a massive global student base, and Udemy's internal marketing engine will sell your course on autopilot, generating steady passive income in dollars.",
     capitalNeeded: "Rs. 0 (Uses a basic laptop mic and free OBS Studio for screen recording)",
     difficulty: "Intermediate",
@@ -630,6 +645,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-15": {
     title: "How to Monetize YouTube Shorts within 14 Days: Viral Content Strategy",
+    aeoSummary: "Monetizing YouTube Shorts within 14 days requires rapid hooks, trending audio selection, high-retention editing techniques, and consistent daily publishing schedules.",
     intro: "YouTube Shorts is currently receiving massive algorithmic push and organic reach. By posting 2-3 highly engaging, short, mobile-optimized videos (under 60 seconds) daily, you can quickly build thousands of subscribers, unlock the YouTube Partner Program, and earn money through AdSense, sponsorships, and CPA affiliate links.",
     capitalNeeded: "Rs. 0 (Uses a free smartphone camera and CapCut)",
     difficulty: "Beginner",
@@ -671,8 +687,9 @@ export const articles: Record<string, ProductArticle> = {
     tags: ["youtube shorts monetization", "viral shorts editing capcut", "youtube partner program requirements", "faceless shorts channel strategy", "earn money from smartphone"]
   },
   "idea-16": {
-    title: "How I Sold an Instagram Theme Page for Rs. 95,000: Growth & Flipping Blueprint",
-    intro: "Instagram theme pages focus on a specific visual niche (e.g., luxury travel, crypto news, minimal design, pet videos) by curating viral content. By consistently growing these pages to 30K+ followers organically, you can flip them for huge lump sums on escrow marketplaces or monetize them via shoutouts and affiliate links.",
+    title: "Instagram Theme Page Growth & Flipping Blueprint: Monetization in Pakistan",
+    aeoSummary: "Instagram theme page flipping involves curating viral niche content, building organic follower counts, and transferring accounts to buyers via secure escrow platforms.",
+    intro: "Instagram theme pages focus on curated content within high-engagement niches. By building organic reach and loyal follower bases, creators establish valuable digital assets capable of monetization and marketplace valuation.",
     capitalNeeded: "Rs. 0",
     difficulty: "Beginner",
     earningPotential: "Rs. 40,000 - 150,000+ per flip",
@@ -714,6 +731,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-17": {
     title: "How to Earn Rs. 55,000/Month from the TikTok Creator Rewards Program",
+    aeoSummary: "TikTok Creator Rewards Program payouts require geo-targeted account setups, original 1-minute+ high-retention videos, and secure intermediary payout solutions.",
     intro: "TikTok pays creators directly for posting high-quality, original videos that are longer than 1 minute through its Creator Rewards Program. This guide details how to set up an eligible US/UK-based TikTok account from Pakistan, bypass region limits, create viral educational or lifestyle videos, and cash out dollars monthly.",
     capitalNeeded: "Rs. 0 (Requires only a VPN or a friend abroad for initial setup)",
     difficulty: "Beginner",
@@ -756,6 +774,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-18": {
     title: "How to Earn Rs. 70,000/Month with Urdu-to-English Transcription & Translation",
+    aeoSummary: "Urdu-to-English transcription and translation services offer reliable freelance income by passing rigorous platform tests on Rev or TranscribeMe and delivering accurate localized transcripts.",
     intro: "Global media companies, podcasts, and legal agencies need native Urdu speakers to transcribe and translate audio files, video interviews, and documents into English. By leveraging platforms like Rev, TranscribeMe, and Fiverr, you can secure steady transcription work and earn a reliable income with simple language skills.",
     capitalNeeded: "Rs. 0 (Requires a laptop and headphones)",
     difficulty: "Beginner",
@@ -798,6 +817,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-19": {
     title: "Local SEO & Google Business Profile (GBP) Optimization: A Local Goldmine",
+    aeoSummary: "Local SEO and Google Business Profile optimization help neighborhood service providers rank higher in Google Maps searches, generating recurring monthly retainers.",
     intro: "Hundreds of clinics, schools, salons, and car workshops in Pakistan do not show up on Google Maps, losing thousands of potential customers. By mastering Local SEO and Google Business Profile (GBP) setup, you can rank local businesses on the first page of Google Maps and charge them premium setup and monthly optimization retainer fees.",
     capitalNeeded: "Rs. 0",
     difficulty: "Intermediate",
@@ -840,6 +860,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-20": {
     title: "How to Design and Sell Pakistani Wedding Templates on Etsy via Canva",
+    aeoSummary: "Designing Pakistani wedding stationery templates on Canva and selling them on Etsy provides scalable passive digital income leveraging global South Asian diaspora demand.",
     intro: "Pakistani, Indian, and South Asian weddings (Mehndi, Walima, Baraat, Eid) involve multiple events, creating a massive demand for elegant invitation cards, digital RSVPs, and menu designs. By designing custom editable templates on Canva and selling them on Etsy or social media, you can earn high margins from global diaspora clients.",
     capitalNeeded: "Rs. 0",
     difficulty: "Beginner",
@@ -882,6 +903,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-21": {
     title: "How to Land High-Paying Video Editing Clients for YouTube & TikTok",
+    aeoSummary: "Landing high-paying video editing clients for YouTube and TikTok involves compiling a spec portfolio, cold outreach on Twitter and LinkedIn, and establishing recurring retainer agreements.",
     intro: "With the explosion of video content on YouTube, TikTok, and Instagram Reels, professional video editors are in higher demand than ever. By learning industry-standard software like Premiere Pro or DaVinci Resolve, mastering fast pacing, audio sound design, and text graphics, you can charge $15 to $50+ per hour editing videos remotely.",
     capitalNeeded: "Rs. 0 (Requires a decent laptop capable of video editing)",
     difficulty: "Intermediate",
@@ -924,6 +946,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-22": {
     title: "How to Design YouTube Thumbnails on Your Phone and Earn Rs. 40,000/Month",
+    aeoSummary: "Designing professional mobile thumbnails for creators yields steady freelance income by driving higher click-through rates and view counts for prominent channels.",
     intro: "A video's thumbnail is the single most important factor for its Click-Through Rate (CTR). YouTubers will gladly pay $5 to $20 per thumbnail for designs that get clicks. By using Photoshop or Photopea on your browser/phone, you can master thumbnail layouts, background removal, and glow effects, and build a profitable side hustle.",
     capitalNeeded: "Rs. 0 (Can be done completely free on Canva, Pixlr, or Photopea)",
     difficulty: "Beginner",
@@ -966,6 +989,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-23": {
     title: "How to Write 10 SEO-Optimized Articles Daily using ChatGPT & Claude",
+    aeoSummary: "Writing SEO-optimized articles with ChatGPT and Claude enables content creators to scale publishing volume while maintaining rigorous editorial quality checks.",
     intro: "Business websites need massive volumes of high-quality articles to rank on Google. By learning how to co-write with advanced AI tools (ChatGPT and Claude), you can research topics, generate detailed outlines, write high-authority paragraphs, and optimize keyword densities, allowing you to write 10+ SEO articles daily for agency clients.",
     capitalNeeded: "Rs. 0 (Uses free tiers of ChatGPT, Claude, and RankMath)",
     difficulty: "Beginner",
@@ -1008,6 +1032,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-24": {
     title: "Amazon KDP Book Publishing: Passive Book Royalties from Pakistan",
+    aeoSummary: "Amazon KDP self-publishing allows Pakistani authors to earn passive monthly book royalties by uploading low-content notebooks and niche guides formatted on Canva.",
     intro: "Amazon Kindle Direct Publishing (KDP) allows you to publish digital and paperback books worldwide for free. You don't need to write novels; you can design low-content books (journals, notebooks, planners, sketchbooks) using Canva and upload them to Amazon KDP, earning lifetime dollar royalties on every sale.",
     capitalNeeded: "Rs. 0",
     difficulty: "Beginner",
@@ -1050,6 +1075,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-25": {
     title: "How to Manage Email Marketing Lists for High-Ticket US Brands",
+    aeoSummary: "Managing email marketing campaigns via Klaviyo and Mailchimp helps Shopify brands increase customer retention and sales through automated behavioral flows.",
     intro: "Email marketing has the highest ROI of any digital channel. E-commerce and SaaS brands pay skilled email managers $500 to $1,500/month to build subscriber lists, set up automated flows (welcome series, abandoned cart recovery), and design newsletters using platforms like Klaviyo, Mailchimp, or ActiveCampaign.",
     capitalNeeded: "Rs. 0 (Brands pay for software and list accounts)",
     difficulty: "Intermediate",
@@ -1092,6 +1118,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-26": {
     title: "WordPress Web Development: Earning Rs. 40,000-80,000 per Local Website",
+    aeoSummary: "WordPress web development agencies build responsive business websites for local enterprises using Elementor, charging upfront setup fees and ongoing maintenance retainers.",
     intro: "Every business needs a professional website. By learning WordPress and page-builders like Elementor, you can build gorgeous, responsive websites for local restaurants, doctors, lawyers, and schools in under 3 days, charging premium creation fees with zero coding required.",
     capitalNeeded: "Rs. 0 (Clients pay for domain names and web hosting)",
     difficulty: "Beginner",
@@ -1134,6 +1161,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-27": {
     title: "Simple Data Entry & B2B Lead Generation: Earn Rs. 100,000/Month",
+    aeoSummary: "Data entry and B2B lead generation services utilize Apollo.io and LinkedIn to compile verified contact lists for international corporate clients.",
     intro: "Global sales departments need accurate B2B contact lists (emails, phone numbers, social profiles) to pitch products. By learning web scraping, Google Sheets formatting, and using free prospecting extensions like Apollo.io, you can build targeted lead lists and offer high-demand services on Upwork and Fiverr.",
     capitalNeeded: "Rs. 0",
     difficulty: "Beginner",
@@ -1176,6 +1204,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-28": {
     title: "Podcast Audio Editing & Production: An Untapped Side Hustle",
+    aeoSummary: "Podcast audio editing and production offers specialized freelance work cleaning dialogue, mastering audio levels, and delivering broadcast-ready podcast episodes.",
     intro: "With the massive surge in global podcast creation, podcasters need experienced audio editors to remove background noise, edit out filler words ('umms', 'ahhs'), and mix music. By learning free professional audio tools like Audacity or Reaper, you can offer high-value podcast editing services on freelance platforms.",
     capitalNeeded: "Rs. 0 (Audacity is 100% free and open-source)",
     difficulty: "Beginner",
@@ -1218,6 +1247,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-29": {
     title: "US Real Estate Cold Calling: Landing High-Paying Evening Jobs from Pakistan",
+    aeoSummary: "US real estate cold calling provides evening shift employment opportunities for Pakistani professionals equipped with clear English communication and dialer software.",
     intro: "US real estate agents and investors hire remote English-speaking callers to cold call property owners and identify potential home sellers. Because of the favorable time zone difference (US daytime is Pakistan evening/night), you can easily take these high-paying outbound calling jobs as a student or side hustle.",
     capitalNeeded: "Rs. 0 (Clients provide outbound dialers, phone lines, and lead lists)",
     difficulty: "Intermediate",
@@ -1260,6 +1290,7 @@ export const articles: Record<string, ProductArticle> = {
   },
   "idea-30": {
     title: "No-Code SaaS App Development with Bubble: Build Subscription Apps",
+    aeoSummary: "No-code SaaS app development with Bubble enables developers to build and launch custom web applications for startup clients without writing traditional code.",
     intro: "Software as a Service (SaaS) is the most lucrative business model in tech. By learning Bubble.io, you can build fully functional database-driven web applications, subscription platforms, and customized client portals without writing a single line of code, selling development services or launching your own micro-SaaS.",
     capitalNeeded: "Rs. 0 (Bubble free plan is excellent for learning)",
     difficulty: "Advanced",
