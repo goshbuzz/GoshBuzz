@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx server.ts",
-    "build": "vite build --outDir dist/client && vite build --ssr src/entry-server.tsx --outDir dist/server && esbuild server.ts --bundle --platform=node --format=esm --packages=external --outfile=dist/server.js && node scripts/prerender.js",
+    "build": "rm -rf dist && vite build --outDir dist/client && vite build --ssr src/entry-server.tsx --outDir dist/server && esbuild server.ts --bundle --platform=node --format=esm --packages=external --outfile=dist/server.js && node scripts/prerender.js",
     "start": "node dist/server.js",
     "lint": "echo 'Success'"
   },
