@@ -8,13 +8,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png?v=4" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
-    <title>GoshBuzz - Online Earning Guides</title>
+    <!--head-outlet-->
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4067724379997931"
          crossorigin="anonymous"></script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="root"><!--ssr-outlet--></div>
+    <script type="module" src="/src/entry-client.tsx"></script>
   </body>
 </html>

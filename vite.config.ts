@@ -14,4 +14,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  ssr: {
+    external: ['react', 'react-dom', 'react-router-dom', 'react-router', 'react-helmet-async'],
+  },
 });

@@ -208,25 +208,28 @@ function Header({
   );
 }
 
-function AppLayout() {
+export function AppLayout() {
   const { t } = useLanguage();
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== "undefined") {
-      return (
-        document.documentElement.classList.contains("dark") ||
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      );
-    }
-    return false;
-  });
+  const [darkMode, setDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    setMounted(true);
+    const isDark =
+      document.documentElement.classList.contains("dark") ||
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setDarkMode(isDark);
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      if (darkMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     }
-  }, [darkMode]);
+  }, [darkMode, mounted]);
 
   return (
     <div
