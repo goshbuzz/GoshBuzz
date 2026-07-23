@@ -13,16 +13,28 @@ import {
   Sparkles, 
   Clock, 
   TrendingUp,
-  BadgeDollarSign
+  BadgeDollarSign,
+  ExternalLink,
+  Link2,
+  BookOpen,
+  Search,
+  Check
 } from "lucide-react";
 import { products } from "../data";
 import { articles } from "../data/articles";
 import { useCart } from "../CartContext";
+import { 
+  SHORT_TAIL_KEYWORDS, 
+  CATEGORY_LONG_TAIL_KEYWORDS, 
+  OFFSITE_AUTHORITY_LINKS, 
+  ONSITE_INTERNAL_CATEGORIES 
+} from "../data/seoMetadata";
 
 export default function Product() {
-  const { id } = useParams();
+  const { id, slug } = useParams();
   const navigate = useNavigate();
-  const product = products.find((p) => p.id === id);
+  const identifier = slug || id;
+  const product = products.find((p) => p.slug === identifier || p.id === identifier);
 
   if (!product) {
     return (
@@ -42,47 +54,136 @@ export default function Product() {
   const { addToCart, isInCart } = useCart();
   const alreadyInCart = isInCart(product.id);
   const article = articles[product.id as keyof typeof articles];
+  const articleUrl = `https://goshbuzz.com/blogs/news/${product.slug || product.id}`;
 
-  // Dynamic meta tags optimized for SEO, AEO (Answer Engine Optimization) and GEO (Geographic Search Optimization)
+  // Long-tail & Short-tail keywords extraction for SEO / AEO / GEO
+  const categoryLongTails = CATEGORY_LONG_TAIL_KEYWORDS[product.category] || [
+    `free online earning ideas in pakistan for ${product.title}`,
+    `how to earn money online in pakistan without investment for ${product.title}`,
+    `step by step guide to master ${product.title} in pakistan 2026`
+  ];
+
   const metaDescription = article ? article.intro : product.description;
-  const metaKeywords = article 
-    ? `${article.tags.join(", ")}, ${product.title}, goshbuzz pakistan, learn ${product.title} in pakistan, work from home pakistan` 
-    : `${product.title}, online earning guide, goshbuzz, make money online pakistan`;
+  const combinedKeywordsList = [
+    ...(article ? article.tags : []),
+    product.title,
+    "goshbuzz pakistan",
+    "free online earning pakistan",
+    ...SHORT_TAIL_KEYWORDS,
+    ...categoryLongTails
+  ].join(", ");
+
+  // 1. Article / BlogPosting Schema
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": product.title,
+    "description": metaDescription,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": articleUrl
+    },
+    "url": articleUrl,
+    "image": product.image ? [product.image] : ["https://goshbuzz.com/goshbuzz_logo.jpg"],
+    "datePublished": "2026-03-25T08:00:00+05:00",
+    "dateModified": "2026-07-23T08:00:00+05:00",
+    "author": {
+      "@type": "Person",
+      "name": "Solat Nadeem",
+      "url": "https://goshbuzz.com/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GoshBuzz Pakistan",
+      "url": "https://goshbuzz.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://goshbuzz.com/goshbuzz_logo.jpg"
+      }
+    },
+    "articleSection": product.category,
+    "keywords": combinedKeywordsList
+  };
+
+  // 2. FAQPage Schema for Answer Engine Optimization (AEO)
+  const faqSchema = article && article.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": article.faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+
+  // 3. HowTo Schema for Step-by-Step Earning Guides
+  const howToSchema = article && article.steps.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": `How to start ${product.title} in Pakistan`,
+    "description": metaDescription,
+    "totalTime": article.timeRequired,
+    "step": article.steps.map((step, idx) => ({
+      "@type": "HowToStep",
+      "position": idx + 1,
+      "name": step.title,
+      "text": step.content
+    }))
+  } : null;
+
+  // Filter related products for On-site SEO internal linking
+  const relatedOnsiteProducts = products
+    .filter((p) => p.id !== product.id)
+    .slice(0, 4);
+
+  const seoTitle = `${product.title} — Online Earning in Pakistan Free Guide | GoshBuzz`;
+  const seoDescription = `Learn ${product.title} in Pakistan: ${metaDescription} Discover step-by-step free online earning ideas without investment, freelancing skills, and local JazzCash & EasyPaisa withdrawal roadmaps for Pakistani students and beginners.`;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <Helmet>
-        <title>{product.title} — GoshBuzz Pakistan</title>
-        <meta name="description" content={metaDescription} />
-        <meta name="keywords" content={metaKeywords} />
-        <meta
-          property="og:title"
-          content={`${product.title} — GoshBuzz Pakistan`}
-        />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:type" content="product" />
-        <meta
-          property="og:url"
-          content={`https://goshbuzz.com/product/${product.id}`}
-        />
+        <title>{seoTitle}</title>
+        <meta name="description" content={seoDescription} />
+        <meta name="keywords" content={combinedKeywordsList} />
+        <meta name="author" content="Solat Nadeem, GoshBuzz Pakistan" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="geo.region" content="PK" />
+        <meta name="geo.placename" content="Pakistan" />
+        <link rel="canonical" href={articleUrl} />
+        
+        {/* Open Graph / Facebook / WhatsApp */}
+        <meta property="og:title" content={seoTitle} />
+        <meta property="og:description" content={seoDescription} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={articleUrl} />
+        <meta property="og:site_name" content="GoshBuzz Pakistan" />
+        <meta property="og:locale" content="en_PK" />
         {product.image && <meta property="og:image" content={product.image} />}
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={seoTitle} />
+        <meta name="twitter:description" content={seoDescription} />
+        <meta name="twitter:site" content="@goshbuzz" />
+        {product.image && <meta name="twitter:image" content={product.image} />}
+        
+        {/* Schema Injections for Search Engine & AI Crawler Dominance */}
         <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org/",
-              "@type": "Product",
-              "name": "${product.title}",
-              "description": "${metaDescription.replace(/"/g, '\\"')}",
-              "offers": {
-                "@type": "Offer",
-                "priceCurrency": "PKR",
-                "price": "${price}",
-                "availability": "https://schema.org/InStock",
-                "url": "https://goshbuzz.com/product/${product.id}"
-              }
-            }
-          `}
+          {JSON.stringify(articleSchema)}
         </script>
+        {faqSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(faqSchema)}
+          </script>
+        )}
+        {howToSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(howToSchema)}
+          </script>
+        )}
       </Helmet>
       <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8 overflow-x-auto whitespace-nowrap pb-2">
         <Link
@@ -245,7 +346,7 @@ export default function Product() {
             </h3>
             <div className="flex gap-3">
               <a
-                href={`https://wa.me/?text=Check out this amazing guide: ${product.title} - https://goshbuzz.com/product/${product.id}`}
+                href={`https://wa.me/?text=Check out this amazing guide: ${product.title} - ${articleUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-[#25D366] text-white rounded-lg hover:bg-[#128C7E] transition-colors"
@@ -266,7 +367,7 @@ export default function Product() {
                 </svg>
               </a>
               <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=https://goshbuzz.com/product/${product.id}`}
+                href={`https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-[#1877F2] text-white rounded-lg hover:bg-[#166FE5] transition-colors"
@@ -287,7 +388,7 @@ export default function Product() {
                 </svg>
               </a>
               <a
-                href={`https://twitter.com/intent/tweet?url=https://goshbuzz.com/product/${product.id}&text=Check out this amazing guide: ${product.title}`}
+                href={`https://twitter.com/intent/tweet?url=${articleUrl}&text=Check out this amazing guide: ${product.title}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-[#1DA1F2] text-white rounded-lg hover:bg-[#1A91DA] transition-colors"
@@ -358,6 +459,22 @@ export default function Product() {
               </div>
             </div>
 
+            {/* AEO / GEO Direct Answer Box (Optimized for AI Overviews, Gemini, ChatGPT & Search Snippets) */}
+            <div className="p-6 bg-blue-50/70 dark:bg-blue-950/20 rounded-2xl border border-blue-200/80 dark:border-blue-900/40 space-y-3">
+              <div className="flex items-center gap-2 text-blue-900 dark:text-blue-300 font-extrabold text-sm uppercase tracking-wide">
+                <Sparkles size={16} className="text-blue-600 dark:text-blue-400" />
+                <span>AEO & Generative AI Executive Summary</span>
+              </div>
+              <p className="text-sm text-blue-950 dark:text-blue-200 leading-relaxed font-medium">
+                <strong>Quick Answer:</strong> To start <em>{product.title}</em> in Pakistan without losing money, follow GoshBuzz&apos;s verified step-by-step roadmap: acquire essential foundational skills, leverage free AI productivity tools (ChatGPT, Canva, CapCut), execute consistent client or content outreach, and receive direct payments locally via <strong>JazzCash, EasyPaisa, or Pakistani Bank Transfer</strong>. Expected earning potential ranges around <strong>{article.earningPotential}</strong> with a difficulty rating of <strong>{article.difficulty}</strong>.
+              </p>
+              <div className="flex flex-wrap gap-3 pt-2 text-xs font-semibold text-blue-800 dark:text-blue-300">
+                <span className="flex items-center gap-1"><Check size={14} className="text-blue-600" /> No hidden fees</span>
+                <span className="flex items-center gap-1"><Check size={14} className="text-blue-600" /> Pakistan payment ready</span>
+                <span className="flex items-center gap-1"><Check size={14} className="text-blue-600" /> Student friendly</span>
+              </div>
+            </div>
+
             {/* Steps Blueprint */}
             <div className="space-y-8 text-center md:text-left">
               <h3 className="text-2xl font-bold text-gray-950 dark:text-gray-50 flex items-center justify-center md:justify-start gap-2">
@@ -416,14 +533,125 @@ export default function Product() {
               </div>
             </div>
 
-            {/* Longtail Target Keywords (AEO & SEO Grounding) */}
-            <div className="pt-8 border-t border-gray-100 dark:border-gray-800 space-y-3">
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block">Target Keywords (SEO/AEO Context)</span>
-              <div className="flex flex-wrap gap-2">
-                {article.tags.map((tag, idx) => (
-                  <span key={idx} className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full text-xs font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                    #{tag}
-                  </span>
+            {/* Longtail & Short-tail Keywords Matrix (AEO & SEO Search Grounding) */}
+            <div className="pt-8 border-t border-gray-100 dark:border-gray-800 space-y-6">
+              <div className="space-y-3">
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-1.5">
+                  <Search size={14} className="text-amber-500" /> High-Intent Long-Tail Search Queries
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  {categoryLongTails.map((query, idx) => (
+                    <div key={idx} className="p-2.5 bg-gray-50 dark:bg-gray-800/60 rounded-xl border border-gray-200/60 dark:border-gray-700/60 text-gray-700 dark:text-gray-300 flex items-center gap-2">
+                      <span className="text-amber-500 font-bold shrink-0">🔍</span>
+                      <span className="font-medium">{query}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block">Short-Tail Earning Topics</span>
+                <div className="flex flex-wrap gap-2">
+                  {SHORT_TAIL_KEYWORDS.map((tag, idx) => (
+                    <span key={idx} className="px-3 py-1 bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 rounded-full text-xs font-semibold border border-amber-200/60 dark:border-amber-900/40">
+                      #{tag}
+                    </span>
+                  ))}
+                  {article && article.tags.map((tag, idx) => (
+                    <span key={`art-${idx}`} className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full text-xs font-medium">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* On-Site Internal Linking Network (Onsite SEO Anchor Network) */}
+            <div className="p-8 bg-gradient-to-br from-amber-50/50 to-orange-50/30 dark:from-gray-900 dark:to-gray-800/80 rounded-3xl border border-amber-200/60 dark:border-gray-700/60 space-y-6">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-900 dark:text-amber-200 text-xs font-bold uppercase tracking-wider">
+                  <Link2 size={13} className="text-amber-600 dark:text-amber-400" /> On-Site Learning Network
+                </div>
+                <h3 className="text-2xl font-black text-gray-950 dark:text-gray-50">
+                  Explore More Free Online Earning Blueprints on GoshBuzz
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">
+                  Maximize your digital income potential in Pakistan by exploring our interconnected library of free step-by-step business blueprints, skill roadmaps, and withdrawal tutorials.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {relatedOnsiteProducts.map((p) => (
+                  <Link
+                    key={p.id}
+                    to={`/blogs/news/${p.slug || p.id}`}
+                    className="p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200/80 dark:border-gray-700 hover:border-amber-400 dark:hover:border-amber-500 transition-all shadow-sm hover:shadow-md group flex items-start gap-3"
+                  >
+                    <span className="text-2xl shrink-0 p-2 bg-amber-50 dark:bg-gray-700 rounded-xl">{p.icon}</span>
+                    <div className="space-y-1">
+                      <h4 className="font-bold text-sm text-gray-900 dark:text-gray-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors line-clamp-1">
+                        Free Guide: {p.title}
+                      </h4>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
+                        {p.description}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+
+              <div className="pt-2 border-t border-amber-200/40 dark:border-gray-700/50 flex flex-wrap gap-4 text-xs font-semibold text-gray-700 dark:text-gray-300">
+                {ONSITE_INTERNAL_CATEGORIES.map((cat, idx) => (
+                  <Link
+                    key={idx}
+                    to={cat.path}
+                    className="inline-flex items-center gap-1 text-amber-700 dark:text-amber-400 hover:underline font-bold"
+                  >
+                    <BookOpen size={13} /> {cat.anchorText}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Off-Site Authority Links Network (External E-E-A-T References) */}
+            <div className="p-8 bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 space-y-6 shadow-sm">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-800 dark:text-blue-300 text-xs font-bold uppercase tracking-wider">
+                  <ExternalLink size={13} className="text-blue-600" /> Off-Site Authority Resources (E-E-A-T)
+                </div>
+                <h3 className="text-xl font-extrabold text-gray-950 dark:text-gray-50">
+                  Official Industry Documentation & External Verification
+                </h3>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  GoshBuzz adheres to strict Search Engine Quality Rater guidelines (E-E-A-T). Cross-reference our blueprints with verified official platform documentation below:
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {OFFSITE_AUTHORITY_LINKS.map((link, idx) => (
+                  <a
+                    key={idx}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200/60 dark:border-gray-700/60 hover:bg-amber-50/50 dark:hover:bg-amber-950/20 hover:border-amber-300 transition-all group flex flex-col justify-between"
+                  >
+                    <div className="space-y-1 mb-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">{link.category}</span>
+                        <ExternalLink size={12} className="text-gray-400 group-hover:text-amber-500 transition-colors" />
+                      </div>
+                      <h4 className="font-bold text-xs text-gray-900 dark:text-gray-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        {link.title}
+                      </h4>
+                      <p className="text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2">
+                        {link.description}
+                      </p>
+                    </div>
+                    <span className="text-[10px] font-mono text-gray-400 dark:text-gray-500 truncate">
+                      {link.domain}
+                    </span>
+                  </a>
                 ))}
               </div>
             </div>
@@ -479,7 +707,7 @@ export default function Product() {
                     </span>
                   </div>
                   <Link
-                    to={`/product/${altProduct.id}`}
+                    to={`/blogs/news/${altProduct.slug || altProduct.id}`}
                     className="block w-full text-center py-2.5 px-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 font-medium rounded-xl transition-colors text-sm border border-gray-200 dark:border-gray-700"
                   >
                     View Guide details

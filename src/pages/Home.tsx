@@ -266,7 +266,7 @@ export default function Home() {
                     {product.description}
                   </p>
                   <Link
-                    to={`/product/${product.id}`}
+                    to={`/blogs/news/${product.slug || product.id}`}
                     className="block w-full py-3 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-center rounded-xl font-semibold border hover:bg-gray-100 dark:bg-gray-800 transition-colors"
                   >
                     View Guide
@@ -422,7 +422,7 @@ export default function Home() {
                     {product.description}
                   </p>
                   <Link
-                    to={`/product/${product.id}`}
+                    to={`/blogs/news/${product.slug || product.id}`}
                     className="block w-full py-3 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-center rounded-xl font-semibold border hover:bg-gray-100 dark:bg-gray-800 transition-colors"
                   >
                     View Guide

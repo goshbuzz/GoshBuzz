@@ -16,6 +16,7 @@ export default function Blogs() {
       const art = articles[p.id as keyof typeof articles];
       return {
         id: p.id,
+        slug: p.slug,
         title: art.title || p.title,
         intro: art.intro || p.description,
         category: p.category,
@@ -141,7 +142,7 @@ export default function Blogs() {
 
                 <div className="space-y-2">
                   <h3 className="font-extrabold text-gray-950 dark:text-gray-50 text-lg leading-snug group-hover:text-amber-500 transition-colors">
-                    <Link to={`/product/${post.id}`}>{post.title}</Link>
+                    <Link to={`/blogs/news/${post.slug || post.id}`}>{post.title}</Link>
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
                     {post.intro}
@@ -154,7 +155,7 @@ export default function Blogs() {
                     <span className="text-xs font-black text-gray-900 dark:text-gray-150">{post.earningPotential}</span>
                   </div>
                   <Link
-                    to={`/product/${post.id}`}
+                    to={`/blogs/news/${post.slug || post.id}`}
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 dark:text-amber-400 group-hover:gap-2.5 transition-all"
                   >
                     Read Blueprint <ArrowRight size={14} />
@@ -165,6 +166,83 @@ export default function Blogs() {
           ))}
         </div>
       )}
+
+      {/* On-Site SEO & External Authority Network Block for Blogs Hub */}
+      <div className="mt-20 pt-12 border-t border-gray-200 dark:border-gray-800 space-y-12">
+        {/* Short & Long-Tail Search Intent Tags */}
+        <div className="bg-gray-50 dark:bg-gray-900 p-8 rounded-3xl border border-gray-200 dark:border-gray-800 space-y-6">
+          <div className="space-y-1">
+            <h3 className="text-xl font-black text-gray-950 dark:text-gray-50">
+              Trending Free Online Earning Search Keywords (Pakistan 2026)
+            </h3>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              High-volume short-tail keywords and high-conversion long-tail search intent phrases covered across GoshBuzz tutorials:
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {[
+              "free online earning ideas in pakistan",
+              "how to earn money online in pakistan without investment",
+              "best online earning sites for students in lahore karachi",
+              "work from home jobs in pakistan for female",
+              "step by step google adsense approval guide",
+              "how to start crypto spot trading on binance pakistan",
+              "upwork freelancing client proposal writing secrets",
+              "youtube automation faceless channel tutorial",
+              "how to withdraw online earning to jazzcash easypaisa",
+              "shopify dropshipping vs markaz app dropshipping",
+              "passive income digital products canva etsy templates"
+            ].map((term, i) => (
+              <span key={i} className="px-3.5 py-1.5 bg-white dark:bg-gray-800 text-amber-700 dark:text-amber-300 rounded-full text-xs font-bold border border-amber-200 dark:border-gray-700 shadow-sm">
+                🔍 {term}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* External Authority Resources */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-2">
+            <h4 className="font-extrabold text-sm text-gray-900 dark:text-gray-100 flex items-center justify-between">
+              <span>Google AdSense Portal</span>
+              <span className="text-xs text-amber-500 font-mono">adsense.google.com</span>
+            </h4>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              Official publisher policies, site verification guidelines, and traffic metrics dashboard for website owners.
+            </p>
+            <a href="https://adsense.google.com/start/" target="_blank" rel="noopener noreferrer" className="inline-block text-xs font-bold text-amber-600 hover:underline pt-2">
+              Visit AdSense Portal &rarr;
+            </a>
+          </div>
+
+          <div className="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-2">
+            <h4 className="font-extrabold text-sm text-gray-900 dark:text-gray-100 flex items-center justify-between">
+              <span>Binance Academy</span>
+              <span className="text-xs text-amber-500 font-mono">academy.binance.com</span>
+            </h4>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              Free crypto spot trading education, risk management, and security protocols verified for beginners.
+            </p>
+            <a href="https://academy.binance.com/en" target="_blank" rel="noopener noreferrer" className="inline-block text-xs font-bold text-amber-600 hover:underline pt-2">
+              Visit Binance Academy &rarr;
+            </a>
+          </div>
+
+          <div className="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-2">
+            <h4 className="font-extrabold text-sm text-gray-900 dark:text-gray-100 flex items-center justify-between">
+              <span>Upwork Talent Hub</span>
+              <span className="text-xs text-amber-500 font-mono">upwork.com</span>
+            </h4>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              Top freelancer tips for bidding, job success score, client communication, and verified badge achievements.
+            </p>
+            <a href="https://www.upwork.com/resources" target="_blank" rel="noopener noreferrer" className="inline-block text-xs font-bold text-amber-600 hover:underline pt-2">
+              Visit Upwork Hub &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ export const products = [
   // 30 Earning Ideas
   {
     id: "idea-1",
+    slug: "crypto-spot-trading-pakistan",
     category: "Investment",
     title: "Crypto Spot Trading",
     description:
@@ -13,6 +14,7 @@ export const products = [
   },
   {
     id: "idea-2",
+    slug: "blogging-adsense-blueprint",
     category: "Content Creation",
     title: "Blogging + AdSense",
     description:
@@ -24,6 +26,7 @@ export const products = [
   },
   {
     id: "idea-3",
+    slug: "ebay-dropshipping-guide",
     category: "E-commerce",
     title: "E-commerce Multi-Platform",
     description:
@@ -35,6 +38,7 @@ export const products = [
   },
   {
     id: "idea-4",
+    slug: "stock-market-investing-pakistan",
     category: "Investment",
     title: "Stock Market Investing",
     description:
@@ -46,6 +50,7 @@ export const products = [
   },
   {
     id: "idea-5",
+    slug: "print-on-demand-digital-products",
     category: "Freelancing",
     title: "Print on Demand + Digital Products",
     description:
@@ -57,6 +62,7 @@ export const products = [
   },
   {
     id: "idea-6",
+    slug: "ai-chatbots-voice-bots",
     category: "Tech & AI",
     title: "AI Chatbots + Voice Bots",
     description:
@@ -68,6 +74,7 @@ export const products = [
   },
   {
     id: "idea-7",
+    slug: "ad-management-agency",
     category: "Marketing",
     title: "Ad Management Agency",
     description:
@@ -79,6 +86,7 @@ export const products = [
   },
   {
     id: "idea-8",
+    slug: "faceless-youtube-automation",
     category: "Content Creation",
     title: "Faceless YouTube Automation",
     description:
@@ -90,6 +98,7 @@ export const products = [
   },
   {
     id: "idea-9",
+    slug: "tool-websites",
     category: "Tech & AI",
     title: "Tool Websites",
     description:
@@ -101,6 +110,7 @@ export const products = [
   },
   {
     id: "idea-10",
+    slug: "freelancing-upwork",
     category: "Freelancing",
     title: "Freelancing Upwork",
     description:
@@ -112,6 +122,7 @@ export const products = [
   },
   {
     id: "idea-11",
+    slug: "amazon-va-services",
     category: "E-commerce",
     title: "Amazon VA Services",
     description:
@@ -123,6 +134,7 @@ export const products = [
   },
   {
     id: "idea-12",
+    slug: "daraz-affiliate-marketing",
     category: "Marketing",
     title: "Daraz Affiliate Marketing",
     description:
@@ -134,6 +146,7 @@ export const products = [
   },
   {
     id: "idea-13",
+    slug: "social-media-management",
     category: "Marketing",
     title: "Social Media Management",
     description:
@@ -145,6 +158,7 @@ export const products = [
   },
   {
     id: "idea-14",
+    slug: "online-course-creation",
     category: "Freelancing",
     title: "Online Course Creation",
     description:
@@ -156,6 +170,7 @@ export const products = [
   },
   {
     id: "idea-15",
+    slug: "youtube-shorts-monetization",
     category: "Content Creation",
     title: "YouTube Shorts Monetization",
     description:
@@ -167,6 +182,7 @@ export const products = [
   },
   {
     id: "idea-16",
+    slug: "instagram-theme-pages",
     category: "Content Creation",
     title: "Instagram Theme Pages",
     description:
@@ -178,6 +194,7 @@ export const products = [
   },
   {
     id: "idea-17",
+    slug: "tiktok-creator-rewards",
     category: "Content Creation",
     title: "TikTok Creator Rewards",
     description:
@@ -189,6 +206,7 @@ export const products = [
   },
   {
     id: "idea-18",
+    slug: "transcription-translation",
     category: "Freelancing",
     title: "Transcription + Translation",
     description:
@@ -200,6 +218,7 @@ export const products = [
   },
   {
     id: "idea-19",
+    slug: "seo-services",
     category: "Marketing",
     title: "SEO Services",
     description:
@@ -211,6 +230,7 @@ export const products = [
   },
   {
     id: "idea-20",
+    slug: "canva-templates-etsy",
     category: "Freelancing",
     title: "Canva Templates Etsy",
     description:
@@ -222,6 +242,7 @@ export const products = [
   },
   {
     id: "idea-21",
+    slug: "video-editing-freelance",
     category: "Freelancing",
     title: "Video Editing Freelance",
     description:
@@ -233,6 +254,7 @@ export const products = [
   },
   {
     id: "idea-22",
+    slug: "youtube-thumbnail-design",
     category: "Freelancing",
     title: "YouTube Thumbnail Design",
     description:
@@ -244,6 +266,7 @@ export const products = [
   },
   {
     id: "idea-23",
+    slug: "ai-content-writing",
     category: "Freelancing",
     title: "AI Content Writing",
     description:
@@ -255,6 +278,7 @@ export const products = [
   },
   {
     id: "idea-24",
+    slug: "amazon-kdp-publishing",
     category: "Freelancing",
     title: "Amazon KDP Publishing",
     description:
@@ -266,6 +290,7 @@ export const products = [
   },
   {
     id: "idea-25",
+    slug: "email-marketing-services",
     category: "Marketing",
     title: "Email Marketing Services",
     description:
@@ -277,6 +302,7 @@ export const products = [
   },
   {
     id: "idea-26",
+    slug: "wordpress-development",
     category: "Tech & AI",
     title: "WordPress Development",
     description:
@@ -288,6 +314,7 @@ export const products = [
   },
   {
     id: "idea-27",
+    slug: "data-entry-lead-gen",
     category: "Freelancing",
     title: "Data Entry + Lead Gen",
     description:
@@ -299,6 +326,7 @@ export const products = [
   },
   {
     id: "idea-28",
+    slug: "podcast-editing",
     category: "Content Creation",
     title: "Podcast Editing",
     description:
@@ -310,6 +338,7 @@ export const products = [
   },
   {
     id: "idea-29",
+    slug: "real-estate-cold-calling",
     category: "Marketing",
     title: "Real Estate Cold Calling",
     description:
@@ -321,6 +350,7 @@ export const products = [
   },
   {
     id: "idea-30",
+    slug: "no-code-saas",
     category: "Tech & AI",
     title: "No-Code SaaS",
     description:
@@ -334,6 +364,7 @@ export const products = [
   // 30 Survival Skills
   {
     id: "skill-1",
+    slug: "ai-prompt-engineering",
     category: "Tech & AI",
     title: "AI Prompt Engineering",
     description:
@@ -345,6 +376,7 @@ export const products = [
   },
   {
     id: "skill-2",
+    slug: "cybersecurity-basics",
     category: "Security",
     title: "Cybersecurity Basics",
     description:
@@ -356,6 +388,7 @@ export const products = [
   },
   {
     id: "skill-3",
+    slug: "remote-async-work",
     category: "Communication",
     title: "Remote Async Work",
     description:
@@ -367,6 +400,7 @@ export const products = [
   },
   {
     id: "skill-4",
+    slug: "financial-diversification",
     category: "Business",
     title: "Financial Diversification",
     description:
@@ -378,6 +412,7 @@ export const products = [
   },
   {
     id: "skill-5",
+    slug: "freelance-tax-filing",
     category: "Business",
     title: "Freelance Tax Filing",
     description:
@@ -389,6 +424,7 @@ export const products = [
   },
   {
     id: "skill-6",
+    slug: "client-negotiation",
     category: "Business",
     title: "Client Negotiation",
     description:
@@ -400,6 +436,7 @@ export const products = [
   },
   {
     id: "skill-7",
+    slug: "deep-work-mastery",
     category: "Productivity",
     title: "Deep Work Mastery",
     description:
@@ -411,6 +448,7 @@ export const products = [
   },
   {
     id: "skill-8",
+    slug: "cloud-infrastructure-basics",
     category: "Essential",
     title: "Cloud Infrastructure Basics",
     description:
@@ -422,6 +460,7 @@ export const products = [
   },
   {
     id: "skill-9",
+    slug: "data-privacy-protection",
     category: "Security",
     title: "Data Privacy Protection",
     description:
@@ -433,6 +472,7 @@ export const products = [
   },
   {
     id: "skill-10",
+    slug: "basic-it-troubleshooting",
     category: "Essential",
     title: "Basic IT Troubleshooting",
     description:
@@ -444,6 +484,7 @@ export const products = [
   },
   {
     id: "skill-11",
+    slug: "mental-resilience",
     category: "Essential",
     title: "Mental Resilience",
     description:
@@ -455,6 +496,7 @@ export const products = [
   },
   {
     id: "skill-12",
+    slug: "english-accent-neutralization",
     category: "Essential",
     title: "English Accent Neutralization",
     description:
@@ -466,6 +508,7 @@ export const products = [
   },
   {
     id: "skill-13",
+    slug: "crypto-wallet-security",
     category: "Security",
     title: "Crypto Wallet Security",
     description:
@@ -477,6 +520,7 @@ export const products = [
   },
   {
     id: "skill-14",
+    slug: "personal-branding",
     category: "Essential",
     title: "Personal Branding",
     description:
@@ -488,6 +532,7 @@ export const products = [
   },
   {
     id: "skill-15",
+    slug: "cross-cultural-communication",
     category: "Communication",
     title: "Cross-Cultural Communication",
     description:
@@ -499,6 +544,7 @@ export const products = [
   },
   {
     id: "skill-16",
+    slug: "digital-decluttering",
     category: "Productivity",
     title: "Digital Decluttering",
     description:
@@ -510,6 +556,7 @@ export const products = [
   },
   {
     id: "skill-17",
+    slug: "video-conferencing-polish",
     category: "Communication",
     title: "Video Conferencing Polish",
     description:
@@ -521,6 +568,7 @@ export const products = [
   },
   {
     id: "skill-18",
+    slug: "touch-typing-shortcuts",
     category: "Productivity",
     title: "Touch Typing & Shortcuts",
     description:
@@ -532,6 +580,7 @@ export const products = [
   },
   {
     id: "skill-19",
+    slug: "scam-identification",
     category: "Security",
     title: "Scam Identification",
     description:
@@ -543,6 +592,7 @@ export const products = [
   },
   {
     id: "skill-20",
+    slug: "emergency-preparedness",
     category: "Essential",
     title: "Emergency Preparedness",
     description:
@@ -554,6 +604,7 @@ export const products = [
   },
   {
     id: "skill-21",
+    slug: "conflict-resolution",
     category: "Communication",
     title: "Conflict Resolution",
     description:
@@ -565,6 +616,7 @@ export const products = [
   },
   {
     id: "skill-22",
+    slug: "rapid-learning-framework",
     category: "Productivity",
     title: "Rapid Learning Framework",
     description:
@@ -576,6 +628,7 @@ export const products = [
   },
   {
     id: "skill-23",
+    slug: "data-analysis-basics",
     category: "Essential",
     title: "Data Analysis Basics",
     description:
@@ -587,6 +640,7 @@ export const products = [
   },
   {
     id: "skill-24",
+    slug: "e-commerce-fraud-prevention",
     category: "Security",
     title: "E-commerce Fraud Prevention",
     description:
@@ -598,6 +652,7 @@ export const products = [
   },
   {
     id: "skill-25",
+    slug: "sales-psychology",
     category: "Business",
     title: "Sales Psychology",
     description:
@@ -609,6 +664,7 @@ export const products = [
   },
   {
     id: "skill-26",
+    slug: "basic-graphic-design",
     category: "Essential",
     title: "Basic Graphic Design",
     description:
@@ -620,6 +676,7 @@ export const products = [
   },
   {
     id: "skill-27",
+    slug: "managing-multiple-incomes",
     category: "Productivity",
     title: "Managing Multiple Incomes",
     description:
@@ -631,6 +688,7 @@ export const products = [
   },
   {
     id: "skill-28",
+    slug: "ai-automation-with-zapier",
     category: "Tech & AI",
     title: "AI Automation with Zapier",
     description:
@@ -642,6 +700,7 @@ export const products = [
   },
   {
     id: "skill-29",
+    slug: "virtual-assistant-management",
     category: "Business",
     title: "Virtual Assistant Management",
     description:
@@ -653,6 +712,7 @@ export const products = [
   },
   {
     id: "skill-30",
+    slug: "pitch-deck-creation",
     category: "Business",
     title: "Pitch Deck Creation",
     description:

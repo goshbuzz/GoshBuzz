@@ -237,13 +237,15 @@ function AppLayout() {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/blogs/news/:slug" element={<Product />} />
+          <Route path="/blogs/news" element={<Blogs />} />
+          <Route path="/blogs" element={<Blogs />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/collection/:type" element={<Collection />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/how-to-pay" element={<HowToPay />} />
-          <Route path="/blogs" element={<Blogs />} />
           <Route path="/delivery-policy" element={<DeliveryPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
