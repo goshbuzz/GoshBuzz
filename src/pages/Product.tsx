@@ -58,9 +58,7 @@ export default function Product() {
     ...(article ? article.tags : []),
     product.title,
     "goshbuzz pakistan",
-    "free online earning pakistan",
-    ...SHORT_TAIL_KEYWORDS,
-    ...categoryLongTails
+    "free online earning pakistan"
   ].join(", ");
 
   // 1. Article / BlogPosting Schema
