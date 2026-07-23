@@ -23,92 +23,106 @@ export interface ProductArticle {
 
 export const articles: Record<string, ProductArticle> = {
   "idea-1": {
-    title: "How I Made Rs. 75,000 in One Month with Local Shopify Dropshipping",
-    intro: "This blueprint details how to start an e-commerce brand in Pakistan using cash-on-delivery (COD) with zero initial inventory. We focus on high-perceived-value home gadgets like portable humidifiers, air purifiers, and mini-projectors sourced locally through Markaz, HHC, or Shah Alam Market, then promoted via hyper-targeted TikTok and Facebook Ads.",
-    capitalNeeded: "Rs. 10,000 - 15,000 (mainly for social media ads)",
+    title: "Crypto Spot Trading for Beginners in Pakistan: Strategic Setup & Risk Management",
+    intro: "A comprehensive, risk-aware guide to starting cryptocurrency spot trading on Binance from Pakistan. Learn how to complete KYC, fund your account safely using JazzCash or EasyPaisa P2P, avoid high-risk leverage/futures, and build a disciplined trading strategy based on spot price movements and strict capital protection rules.",
+    capitalNeeded: "Rs. 10,000 - 20,000 initial capital",
     difficulty: "Beginner",
-    earningPotential: "Rs. 50,000 - 150,000+ per month",
-    timeRequired: "2-3 hours daily",
-    steps: [
-      {
-        title: "Product Sourcing via Markaz or HHC App",
-        content: "Download local dropshipping apps like Markaz App, HHC Dropshipping, or Zarya. Search for trending gadgets with a wholesale cost under Rs. 1,000 but a perceived value of Rs. 2,500+. The Flame Humidifier or Desktop Water Dispenser are excellent examples."
-      },
-      {
-        title: "Store Setup on Shopify Pakistan",
-        content: "Build a single-product Shopify store. Use clean display typography, high-quality images, and a highly conversion-optimized theme. Set up shipping options with local delivery parameters, offering free shipping with an attractive markup."
-      },
-      {
-        title: "Sourcing Viral Creatives from TikTok",
-        content: "Do not shoot your own videos initially. Find trending ads of the same product on TikTok or Instagram, edit them using CapCut to add attractive Urdu voiceovers, and emphasize 'Cash on Delivery' and 'Free Delivery all over Pakistan'."
-      },
-      {
-        title: "Running TikTok and Meta Ads",
-        content: "Set up a TikTok Ads Manager account. Run a conversions campaign targeting broad demographics in Pakistan (ages 18-45). Start with a small budget of $5 to $10 per day to test CTR (Click-Through Rate) and Cost per Purchase."
-      },
-      {
-        title: "Order Fulfillment and Cash-on-Delivery (COD)",
-        content: "When a customer places an order on your Shopify store, submit the customer's details on the Markaz or HHC App. They will pack and ship the product to your customer via Leopards, TCS, or Trax, collect the cash on delivery, and transfer your profit margin directly into your EasyPaisa or JazzCash account."
-      }
-    ],
-    proTips: [
-      "Always call customers to confirm their order before shipping to reduce delivery return rates (RTO).",
-      "Offer a 'Buy 1 Get 1 at 30% Off' bundle to double your average order value instantly.",
-      "Focus on problem-solving gadgets rather than general clothing or jewelry."
-    ],
-    faqs: [
-      {
-        question: "Is local dropshipping legal and profitable in Pakistan?",
-        answer: "Yes, local dropshipping is 100% legal. It is highly profitable because wholesale pricing on local apps is extremely low compared to the high retail price customers are willing to pay for trendy problem-solving products."
-      },
-      {
-        question: "How do I receive my dropshipping profit payouts?",
-        answer: "Local dropshipping platforms like Markaz, HHC, and Zarya transfer your earned margins directly to EasyPaisa, JazzCash, or your local Pakistani bank account weekly."
-      }
-    ],
-    tags: ["local dropshipping pakistan", "earn online from home", "shopify ecommerce business", "markaz app dropshipping", "tiktok ads pakistan"]
-  },
-  "idea-2": {
-    title: "How to Build a Niche Blog and Earn Rs. 45,000/Month from Google AdSense",
-    intro: "Blogging is one of the most sustainable passive income business models. By targeting specific low-competition, high-CPC (Cost Per Click) micro-niches (e.g., specific mobile specs, agricultural guides, or eco-friendly home tech), you can drive high organic search traffic from search engines and monetize it via Google AdSense.",
-    capitalNeeded: "Rs. 3,000 - 5,000 (for domain name and Hostinger web hosting)",
-    difficulty: "Beginner",
-    earningPotential: "Rs. 30,000 - 100,000+ per month",
+    earningPotential: "Variable (3% to 8% target returns per trade with capital risk)",
     timeRequired: "1-2 hours daily",
     steps: [
       {
-        title: "Niche Selection & Keyword Research",
-        content: "Avoid broad topics like 'Tech' or 'Health'. Focus on micro-niches like 'Hydroponic gardening tips' or 'Electric bike specs in Pakistan'. Use free SEO tools like Google Keyword Planner and Ahrefs Free Generator to find high-volume, low-competition longtail keywords."
+        title: "Understanding Spot Trading vs. Futures Leverage",
+        content: "Before opening any exchange account, you must understand the fundamental difference between Spot trading and Futures trading. In Spot trading, you purchase actual digital assets (such as Bitcoin or USDT) at market price and hold full ownership in your wallet. If the asset price drops, you still retain 100% of your coins until market recovery. Futures trading, conversely, utilizes borrowed capital (leverage) where price liquidations can wipe out your entire balance in seconds. For beginners, futures leverage is responsible for over 90% of account losses. Focusing strictly on Spot trading removes liquidation risk and allows you to trade with patience and discipline."
       },
       {
-        title: "WordPress Blog Setup",
-        content: "Purchase a .com domain and premium shared hosting. Install WordPress, set up an SEO-friendly theme like GeneratePress, and install essential plugins like RankMath for on-page SEO optimization."
+        title: "Account Registration and CNIC KYC Verification",
+        content: "Download the official Binance application from the Google Play Store or Apple App Store. Register using your primary email address and secure it immediately with Two-Factor Authentication (2FA) via Google Authenticator or SMS. Proceed to the Identification (KYC) section and select Pakistan as your country of residence. Scan your Smart National Identity Card (CNIC) or Passport and complete the facial verification check. KYC approval typically takes between 10 to 30 minutes, unlocking full deposit, trading, and withdrawal privileges."
       },
       {
-        title: "High-Quality SEO Content Writing",
-        content: "Write 30 to 50 detailed articles (each 1,200+ words) addressing specific search queries. Structure your posts with clear headings (H2, H3), bullet points, and high-quality images. Target featured snippets to maximize organic clicks."
+        title: "Safely Funding Account via P2P (JazzCash, EasyPaisa, Bank Transfer)",
+        content: "Binance P2P (Peer-to-Peer) allows users in Pakistan to buy USDT (Tether) directly using local payment methods like JazzCash, EasyPaisa, or Nayapay without requiring international credit cards. Navigate to P2P Trading, select 'Buy', set the currency to PKR, and filter by verified merchants with a completion rate above 98% and over 200 orders. Initiate the buy order, transfer the exact PKR amount using your own registered mobile account, and tap 'Transferred, Notify Seller'. Never include words like 'crypto', 'BTC', or 'Binance' in payment remarks. Once the seller verifies receipt, USDT is released to your Funding wallet instantly."
       },
       {
-        title: "Google AdSense Approval & Placement",
-        content: "Once your blog has decent organic traffic and high-quality content, apply for Google AdSense. Upon approval, place auto-ads or custom banner ads in high-CTR zones like below the title and within content paragraphs."
+        title: "Executing Spot Trades and Dollar-Cost Averaging (DCA)",
+        content: "Transfer your USDT from the Funding Wallet to your Spot Wallet. Search for major trading pairs like BTC/USDT or ETH/USDT. Instead of putting all your capital into a single order, practice Dollar-Cost Averaging (DCA) by splitting your buying power into 3 or 4 smaller entries. Set Limit Buy orders at key support price levels. Aim for realistic, incremental gains of 3% to 8% per trade rather than chasing parabolic spikes. Use Limit Sell orders to lock in profit automatically when your price target is met."
+      },
+      {
+        title: "Risk Management, Position Sizing, and Trade Logging",
+        content: "The golden rule of crypto trading is capital preservation. Never allocate more than 15% to 20% of your total trading portfolio into a single position. Maintain a simple trading spreadsheet or notebook recording your entry price, exit target, stop-loss trigger, fee cost, and rationale for every trade. Keep emotional discipline: if the market trends downward, avoid panic selling spot assets unless your fundamental analysis changes. Keep your funds stored in secure wallets and update security settings regularly."
       }
     ],
     proTips: [
-      "Avoid copying content; Google's helpful content system penalizes plagiarized or thin AI articles.",
-      "Incorporate Urdu translations or write bilingual content to capture the massive local Pakistani search audience.",
-      "Focus on evergreen topics that will drive consistent monthly organic traffic for years."
+      "Always verify P2P seller transaction history and completion rate (aim for 98%+) before sending funds.",
+      "Never click 'Transferred' on P2P before actually sending money from your bank/JazzCash app.",
+      "Stick exclusively to high-liquidity top-tier cryptocurrencies (BTC, ETH, SOL) when starting out.",
+      "Disclaimer: Cryptocurrency trading carries financial risk. Never invest money you cannot afford to lose."
     ],
     faqs: [
       {
-        question: "How long does it take to get Google AdSense approval in Pakistan?",
-        answer: "It typically takes 2 to 4 weeks after submitting your application. Ensure your website has all mandatory pages like Privacy Policy, About Us, and Contact Us, and at least 25 high-quality original posts."
+        question: "Is crypto trading legal and accessible in Pakistan?",
+        answer: "Cryptocurrency is widely accessed in Pakistan via peer-to-peer (P2P) platforms on global exchanges like Binance. Users buy and sell USDT using local mobile wallets (JazzCash, EasyPaisa) and bank transfers."
       },
       {
-        question: "What is the CPC for Pakistani traffic vs international traffic?",
-        answer: "International traffic (US, UK, CA) has a much higher CPC ($0.50 - $5.00) compared to Pakistani traffic ($0.02 - $0.10). Try to write some articles targeting global audiences to boost earnings."
+        question: "Can I lose my money in Crypto Spot Trading?",
+        answer: "Unlike futures trading where leverage can liquidate your account to zero, spot trading carries market volatility risk. If an asset price decreases, you retain ownership of the coins, but their fiat valuation fluctuates. Proper risk management and position sizing are essential."
+      },
+      {
+        question: "How do I withdraw earnings back to my JazzCash or EasyPaisa account?",
+        answer: "Transfer your USDT from Spot Wallet to Funding Wallet, navigate to P2P Trading, select 'Sell', choose your preferred payment method (JazzCash, EasyPaisa, Bank Transfer), and place a sell order with a verified buyer."
       }
     ],
-    tags: ["google adsense blogging", "earn from blog in pakistan", "micro niche blogging seo", "wordpress setup hosting", "make money writing articles"]
+    tags: ["crypto spot trading pakistan", "binance p2p jazzcash easypaisa", "btc usdt spot strategy", "trading risk management", "earn online pakistan"]
+  },
+  "idea-2": {
+    title: "The Complete Google AdSense Blogging Blueprint: Niche Selection, WordPress Setup, & Content Strategy",
+    intro: "A step-by-step masterclass on building, launching, and monetizing a content website from Pakistan using WordPress and Google AdSense. Learn how to identify low-competition niches, establish proper site architecture, publish high-quality SEO content, meet AdSense approval criteria, and build a long-term organic search asset.",
+    capitalNeeded: "Rs. 3,000 - 6,000 (for domain & hosting)",
+    difficulty: "Beginner",
+    earningPotential: "Rs. 25,000 - 80,000+ per month (based on traffic & niche RPM)",
+    timeRequired: "1-3 hours daily",
+    steps: [
+      {
+        title: "Micro-Niche Selection & Intent Keyword Research",
+        content: "Success with Google AdSense relies on targeting specific, low-competition micro-niches rather than broad multi-topic domains. Focus on topics with clear user intent—such as specialized technology guides, local Pakistani finance/educational specs, eco-friendly lifestyle tips, or niche hobby reviews. Use free tools like Google Keyword Planner, Ahrefs Free Keyword Generator, and Google Trends to discover long-tail questions (e.g., 'how to calculate solar inverter battery size in Pakistan') that carry low keyword difficulty but consistent monthly search volume."
+      },
+      {
+        title: "Domain Registration and Hostinger WordPress Setup",
+        content: "Secure a memorable, brandable .com domain name that reflects your niche. Purchase reliable shared web hosting (such as Hostinger or Namecheap) which includes a free SSL certificate. Use one-click WordPress installation to deploy your site. Install a lightweight, fast-loading theme such as GeneratePress, Astra, or Kadence. High site loading speed is a crucial ranking factor for Google and directly impacts user experience."
+      },
+      {
+        title: "Mandatory Site Architecture & Legal Page Creation",
+        content: "Google AdSense strictly enforces site compliance guidelines before approving new publishers. Your blog must feature clear top-level navigation and mandatory legal pages: Privacy Policy, Terms of Service, Disclaimer, About Us, and Contact Us. Ensure these pages are linked in your site footer and header menu. Avoid linking out to thin doorway pages or external content networks; all main navigation items should lead to valuable, native content hosted directly on your domain."
+      },
+      {
+        title: "Comprehensive SEO Content Writing & Formatting",
+        content: "Publish between 20 to 30 original, well-researched articles before applying for AdSense. Each post should be 1,200+ words, structured cleanly with logical H2 and H3 headings, short readable paragraphs, bullet points, and optimized images with alt text. Address search queries thoroughly, providing original analysis, step-by-step instructions, and actionable advice. Install RankMath or Yoast SEO to optimize titles, meta descriptions, and XML sitemaps."
+      },
+      {
+        title: "Applying for Google AdSense & Optimizing Ad Placements",
+        content: "Once your site has 25+ published posts, consistent organic indexing on Google Search Console, and clean layout design, submit your domain to Google AdSense. Upon receiving approval, enable Auto Ads for intelligent placement, or manually insert responsive display ad units below article titles, within high-engagement paragraphs, and inside sidebars. Monitor Click-Through Rate (CTR) and Revenue Per Mille (RPM) in your AdSense dashboard."
+      }
+    ],
+    proTips: [
+      "Ensure your blog passes Google Core Web Vitals with fast mobile loading times under 2.5 seconds.",
+      "Never click your own AdSense ads or ask friends to click them; invalid click activity leads to account suspension.",
+      "Focus on evergreen topics that continue generating search traffic for years without constant updates.",
+      "Provide genuine value and unique perspective in every article to align with Google's Helpful Content System."
+    ],
+    faqs: [
+      {
+        question: "How long does Google AdSense take to approve a new blog in Pakistan?",
+        answer: "AdSense site reviews usually take between 3 to 14 days. Ensure your blog has a custom domain (.com), 20+ original detailed articles, mandatory legal pages (Privacy Policy, About Us, Contact), and no broken links."
+      },
+      {
+        question: "Why was my site rejected for 'Low Value Content'?",
+        answer: "Rejections occur if articles are too short, copied, AI-generated without editing, or if the site uses doorway pages that redirect visitors to external sites. Host full, 1,200+ word original articles directly on your domain to pass review."
+      },
+      {
+        question: "How do AdSense payouts work in Pakistan?",
+        answer: "Once your account reaches the $100 threshold, Google AdSense transfers funds directly to your local Pakistani bank account via wire transfer every month between the 21st and 26th."
+      }
+    ],
+    tags: ["google adsense blogging", "wordpress setup pakistan", "seo article writing guide", "adsense approval tips", "passive income blogging"]
   },
   "idea-3": {
     title: "eBay Selling & Dropshipping Guide: Sourcing from Pakistan to Sell Internationally",
