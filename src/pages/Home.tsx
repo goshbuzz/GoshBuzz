@@ -53,7 +53,8 @@ export default function Home() {
           content="Discover 60 step-by-step earning guides built for Pakistanis. 30 Earning Ideas and 30 Survival Skills. Instant PDF downloads to escape the matrix and start earning online."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com/" />
+        <meta property="og:url" content="https://goshbuzz.com" />
+        <link rel="canonical" href="https://goshbuzz.com" />
         <script type="application/ld+json">
           {`
             {

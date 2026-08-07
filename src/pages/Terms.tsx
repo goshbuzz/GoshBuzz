@@ -11,6 +11,7 @@ export default function Terms() {
         <meta property="og:description" content="Read the Terms and Conditions for using GoshBuzz Pakistan's website and purchasing our digital guides." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/terms" />
+        <link rel="canonical" href="https://goshbuzz.com/terms" />
       </Helmet>
       <div className="text-center mb-12">
         <FileText className="w-12 h-12 text-blue-500 mx-auto mb-4" />

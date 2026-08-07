@@ -37,8 +37,9 @@ async function prerender() {
 
   const staticRoutes = [
     '/',
-    '/blogs',
     '/blogs/news',
+    '/collection/ideas',
+    '/collection/skills',
     '/about',
     '/contact',
     '/privacy-policy',
@@ -51,9 +52,8 @@ async function prerender() {
   ];
 
   const blogRoutes = productSlugs.map(slug => `/blogs/news/${slug}`);
-  const productRoutes = productSlugs.map(slug => `/product/${slug}`);
 
-  const allRoutes = Array.from(new Set([...staticRoutes, ...blogRoutes, ...productRoutes]));
+  const allRoutes = Array.from(new Set([...staticRoutes, ...blogRoutes]));
 
   console.log(`🚀 Starting pre-rendering for ${allRoutes.length} routes...`);
 
@@ -80,6 +80,22 @@ async function prerender() {
     } catch (e) {
       console.error(`Failed to pre-render route ${route}:`, e);
     }
+  }
+
+  // Generate clean sitemap.xml
+  try {
+    const sitemapModulePath = path.resolve(rootDir, 'src/utils/sitemap.ts');
+    const { generateSitemapXml } = await import(`file://${sitemapModulePath}`);
+    const sitemapXml = generateSitemapXml();
+
+    const publicSitemapPath = path.resolve(rootDir, 'public/sitemap.xml');
+    const distSitemapPath = path.resolve(rootDir, 'dist/client/sitemap.xml');
+
+    fs.writeFileSync(publicSitemapPath, sitemapXml, 'utf-8');
+    fs.writeFileSync(distSitemapPath, sitemapXml, 'utf-8');
+    console.log('🗺️ Clean sitemap.xml generated and updated in public/ and dist/client/!');
+  } catch (err) {
+    console.error('Failed to generate sitemap.xml during prerender:', err);
   }
 
   console.log(`✅ Successfully pre-rendered ${count}/${allRoutes.length} pages to dist/client/!`);

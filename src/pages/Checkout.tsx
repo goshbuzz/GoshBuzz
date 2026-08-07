@@ -70,6 +70,11 @@ ${itemLines}
       <Helmet>
         <title>Secure Checkout — GoshBuzz Pakistan</title>
         <meta name="description" content="Securely complete your GoshBuzz order via EasyPaisa or JazzCash." />
+        <link rel="canonical" href="https://goshbuzz.com/checkout" />
+        <meta property="og:title" content="Secure Checkout — GoshBuzz Pakistan" />
+        <meta property="og:description" content="Securely complete your GoshBuzz order via EasyPaisa or JazzCash." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://goshbuzz.com/checkout" />
       </Helmet>
 
       {/* Breadcrumbs */}

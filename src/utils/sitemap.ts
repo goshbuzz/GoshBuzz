@@ -1,4 +1,4 @@
-import { products } from '../data';
+import { products } from '../data.ts';
 
 export interface SitemapUrl {
   loc: string;
@@ -11,8 +11,9 @@ export const BASE_URL = 'https://goshbuzz.com';
 
 export const STATIC_ROUTES = [
   '/',
-  '/blogs',
   '/blogs/news',
+  '/collection/ideas',
+  '/collection/skills',
   '/about',
   '/contact',
   '/privacy-policy',
@@ -21,17 +22,21 @@ export const STATIC_ROUTES = [
   '/how-to-pay',
   '/delivery-policy',
   '/refund-policy',
+  '/checkout'
 ];
 
 export function generateSitemapUrls(): SitemapUrl[] {
   const currentDate = new Date().toISOString().split('T')[0];
 
-  const staticUrls: SitemapUrl[] = STATIC_ROUTES.map((route) => ({
-    loc: `${BASE_URL}${route}`,
-    lastmod: currentDate,
-    changefreq: route === '/' || route === '/blogs/news' ? 'daily' : 'weekly',
-    priority: route === '/' ? 1.0 : route === '/blogs/news' ? 0.9 : 0.7,
-  }));
+  const staticUrls: SitemapUrl[] = STATIC_ROUTES.map((route) => {
+    const loc = route === '/' ? BASE_URL : `${BASE_URL}${route}`;
+    return {
+      loc,
+      lastmod: currentDate,
+      changefreq: route === '/' || route === '/blogs/news' ? 'daily' : 'weekly',
+      priority: route === '/' ? 1.0 : route === '/blogs/news' ? 0.9 : 0.7,
+    };
+  });
 
   const blogArticleUrls: SitemapUrl[] = products.map((product) => {
     const slug = product.slug || product.id;

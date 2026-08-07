@@ -16,6 +16,7 @@ export default function About() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/about" />
+        <link rel="canonical" href="https://goshbuzz.com/about" />
       </Helmet>
       <div className="text-center mb-16">
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">

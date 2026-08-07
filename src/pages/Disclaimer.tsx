@@ -11,6 +11,7 @@ export default function Disclaimer() {
         <meta property="og:description" content="Read our earnings and liability disclaimer." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/disclaimer" />
+        <link rel="canonical" href="https://goshbuzz.com/disclaimer" />
       </Helmet>
       <div className="text-center mb-12">
         <AlertTriangle className="w-12 h-12 text-amber-500 mx-auto mb-4" />

@@ -16,6 +16,7 @@ import Terms from "./pages/Terms";
 import Collection from "./pages/Collection";
 import Checkout from "./pages/Checkout";
 import Blogs from "./pages/Blogs";
+import NotFound from "./pages/NotFound";
 import { CartProvider, useCart } from "./CartContext";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
 import { useState, useEffect } from "react";
@@ -80,7 +81,7 @@ function Header({
             {t("howToPay")}
           </Link>
           <Link
-            to="/blogs"
+            to="/blogs/news"
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
           >
             {t("blogs")}
@@ -174,7 +175,7 @@ function Header({
             {t("howToPay")}
           </Link>
           <Link
-            to="/blogs"
+            to="/blogs/news"
             onClick={() => setIsMenuOpen(false)}
             className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
           >
@@ -254,6 +255,7 @@ export function AppLayout() {
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
@@ -417,7 +419,7 @@ export function AppLayout() {
                   </li>
                   <li>
                     <Link
-                      to="/blogs"
+                      to="/blogs/news"
                       className="hover:text-white transition-colors"
                     >
                       {t("blogs")}

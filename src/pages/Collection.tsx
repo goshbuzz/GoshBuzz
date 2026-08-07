@@ -28,8 +28,13 @@ export default function Collection() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <Helmet>
-        <title>{title} — GoshBuzz Pakistan</title>
+        <title>{`${title} — GoshBuzz Pakistan`}</title>
         <meta name="description" content={description} />
+        <link rel="canonical" href={`https://goshbuzz.com/collection/${type}`} />
+        <meta property="og:title" content={`${title} — GoshBuzz Pakistan`} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://goshbuzz.com/collection/${type}`} />
       </Helmet>
 
       <div className="text-center mb-16">

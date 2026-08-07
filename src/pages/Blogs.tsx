@@ -46,6 +46,11 @@ export default function Blogs() {
           name="description"
           content="Read detailed blueprints, guides, and real-world case studies about online earning in Pakistan. Escape the matrix with GoshBuzz."
         />
+        <link rel="canonical" href="https://goshbuzz.com/blogs/news" />
+        <meta property="og:title" content="Blogs & Earning Case Studies — GoshBuzz Pakistan" />
+        <meta property="og:description" content="Read detailed blueprints, guides, and real-world case studies about online earning in Pakistan. Escape the matrix with GoshBuzz." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://goshbuzz.com/blogs/news" />
       </Helmet>
 
       {/* Hero Header */}

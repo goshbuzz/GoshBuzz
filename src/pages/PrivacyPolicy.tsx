@@ -10,7 +10,8 @@ export default function PrivacyPolicy() {
         <meta property="og:title" content="Privacy Policy — GoshBuzz Pakistan" />
         <meta property="og:description" content="Read the Privacy Policy of GoshBuzz Pakistan to learn how we protect and handle your personal information." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com/privacy" />
+        <meta property="og:url" content="https://goshbuzz.com/privacy-policy" />
+        <link rel="canonical" href="https://goshbuzz.com/privacy-policy" />
       </Helmet>
       <div className="text-center mb-12">
         <Shield className="w-12 h-12 text-amber-500 mx-auto mb-4" />

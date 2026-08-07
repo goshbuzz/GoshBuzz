@@ -1,6 +1,54 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.goshbuzz.com"
+        }
+      ],
+      "destination": "https://goshbuzz.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blogs",
+      "destination": "/blogs/news",
+      "permanent": true
+    },
+    {
+      "source": "/product/:slug*",
+      "destination": "/blogs/news/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/refund",
+      "destination": "/refund-policy",
+      "permanent": true
+    },
+    {
+      "source": "/delivery",
+      "destination": "/delivery-policy",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -20,6 +20,7 @@ export default function HowToPay() {
         <meta property="og:description" content="Step-by-step guide on how to pay for your digital guides using JazzCash or EasyPaisa." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/how-to-pay" />
+        <link rel="canonical" href="https://goshbuzz.com/how-to-pay" />
       </Helmet>
       <div className="text-center mb-16">
         <Smartphone className="w-12 h-12 text-green-500 mx-auto mb-4" />

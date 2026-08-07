@@ -10,7 +10,8 @@ export default function RefundPolicy() {
         <meta property="og:title" content="No Return Policy — GoshBuzz Pakistan" />
         <meta property="og:description" content="Read our digital goods no-return and refund policy." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com/refund" />
+        <meta property="og:url" content="https://goshbuzz.com/refund-policy" />
+        <link rel="canonical" href="https://goshbuzz.com/refund-policy" />
       </Helmet>
       <div className="text-center mb-12">
         <Ban className="w-12 h-12 text-red-500 mx-auto mb-4" />

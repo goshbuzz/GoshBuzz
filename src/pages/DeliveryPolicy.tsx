@@ -10,7 +10,8 @@ export default function DeliveryPolicy() {
         <meta property="og:title" content="Delivery Policy — GoshBuzz Pakistan" />
         <meta property="og:description" content="Learn about our digital delivery process via WhatsApp and Email." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com/delivery" />
+        <meta property="og:url" content="https://goshbuzz.com/delivery-policy" />
+        <link rel="canonical" href="https://goshbuzz.com/delivery-policy" />
       </Helmet>
       <div className="text-center mb-12">
         <Send className="w-12 h-12 text-indigo-500 mx-auto mb-4" />
