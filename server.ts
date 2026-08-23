@@ -2,6 +2,7 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { findProductByIdentifier, legacySlugAliases } from './src/data';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,6 +32,38 @@ async function startServer() {
     }
 
     const url = rawUrl.endsWith('/') && rawUrl.length > 1 ? rawUrl.slice(0, -1) : rawUrl;
+
+    // 301 Permanent Redirects for canonical SEO compliance
+    if (url === '/blogs' || url.startsWith('/blogs/news/tagged') || url.startsWith('/blogs/tagged') || url.startsWith('/blogs/tag')) {
+      return res.redirect(301, '/blogs/news');
+    }
+    if (url.startsWith('/blogs/news/')) {
+      const slug = url.replace(/^\/blogs\/news\//, '');
+      const product = findProductByIdentifier(slug);
+      if (product && product.slug && product.slug !== slug) {
+        return res.redirect(301, `/blogs/news/${product.slug}`);
+      }
+    }
+    if (url.startsWith('/products/') || url.startsWith('/product/')) {
+      const slug = url.replace(/^\/(products|product)\//, '');
+      const product = findProductByIdentifier(slug);
+      const targetSlug = product ? product.slug : slug;
+      return res.redirect(301, `/blogs/news/${targetSlug}`);
+    }
+    if (url === '/products' || url === '/product' || url === '/collections') {
+      return res.redirect(301, '/');
+    }
+    if (url.startsWith('/collections/')) {
+      const type = url.replace(/^\/collections\//, '');
+      return res.redirect(301, `/collection/${type}`);
+    }
+    if (url === '/privacy') return res.redirect(301, '/privacy-policy');
+    if (url === '/refund') return res.redirect(301, '/refund-policy');
+    if (url === '/delivery' || url === '/shipping') return res.redirect(301, '/delivery-policy');
+    if (url === '/about-us') return res.redirect(301, '/about');
+    if (url === '/contact-us') return res.redirect(301, '/contact');
+    if (url === '/terms-and-conditions' || url === '/terms-of-service' || url === '/tos') return res.redirect(301, '/terms');
+    if (url === '/disclaimers') return res.redirect(301, '/disclaimer');
 
     try {
       // Check for pre-rendered static HTML file first in dist/client/

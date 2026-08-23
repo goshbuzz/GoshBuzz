@@ -37,6 +37,7 @@ async function prerender() {
 
   const staticRoutes = [
     '/',
+    '/apps',
     '/blogs/news',
     '/collection/ideas',
     '/collection/skills',
@@ -47,8 +48,7 @@ async function prerender() {
     '/disclaimer',
     '/how-to-pay',
     '/delivery-policy',
-    '/refund-policy',
-    '/checkout'
+    '/refund-policy'
   ];
 
   const blogRoutes = productSlugs.map(slug => `/blogs/news/${slug}`);

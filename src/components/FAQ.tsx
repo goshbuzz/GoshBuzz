@@ -29,22 +29,33 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-gray-50 border-t border-gray-100">
+    <section className="py-20 bg-gray-50/80 dark:bg-gray-900/50 border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-          <p className="text-xl text-gray-600">Everything you need to know about our guides and skills.</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-4 tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            Everything you need to know about our earning blueprints and survival manuals.
+          </p>
         </div>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="border border-gray-200 rounded-xl overflow-hidden bg-white shadow-sm">
+            <div
+              key={index}
+              className="border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden bg-white dark:bg-gray-900 shadow-sm transition-all hover:border-amber-400/50 dark:hover:border-amber-500/30"
+            >
               <button
-                className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors focus:outline-none"
+                className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50/80 dark:hover:bg-gray-800/50 transition-colors focus:outline-none"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
               >
-                <span className="font-medium text-gray-900 pr-8">{faq.question}</span>
+                <span className="font-semibold text-gray-900 dark:text-gray-100 pr-8">
+                  {faq.question}
+                </span>
                 <ChevronDown
-                  className={`text-gray-500 transition-transform shrink-0 ${openIndex === index ? 'rotate-180' : ''}`}
+                  className={`text-gray-400 dark:text-gray-500 transition-transform shrink-0 ${
+                    openIndex === index ? 'rotate-180 text-amber-500 dark:text-amber-400' : ''
+                  }`}
                   size={20}
                 />
               </button>
@@ -56,7 +67,7 @@ export function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <div className="px-6 pb-5 text-gray-600 bg-white">
+                    <div className="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed text-sm border-t border-gray-100 dark:border-gray-800/80 pt-4 bg-gray-50/40 dark:bg-gray-900/40">
                       {faq.answer}
                     </div>
                   </motion.div>

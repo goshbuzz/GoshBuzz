@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
+Disallow: /checkout
+
+User-agent: Googlebot
+Allow: /
+Disallow: /checkout
+
+User-agent: Googlebot-Image
+Allow: /
 
 Sitemap: https://goshbuzz.com/sitemap.xml

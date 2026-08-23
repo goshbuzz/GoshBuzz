@@ -723,3 +723,88 @@ export const products = [
       "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=400",
   },
 ];
+
+export const legacySlugAliases: Record<string, string> = {
+  "tiktok-creator-rewards-pakistan-is-eligible-and-here-is-how": "tiktok-creator-rewards",
+  "rs-17-000-in-4-months-pakistan-stock-market-strategy-that-works": "stock-market-investing-pakistan",
+  "upwork-top-rated-in-90-days-from-pakistan-my-exact-proposal-template": "freelancing-upwork",
+  "built-a-no-code-saas-app-on-bubble-io-it-earns-rs-85-000-month-in-subscriptions": "no-code-saas",
+  "idea-13-daraz-affiliate-marketing-guide": "daraz-affiliate-marketing",
+  "idea-6-facebook-youtube-monetization-guide": "faceless-youtube-automation",
+  "idea-30-bubble-no-code-saas-guide": "no-code-saas",
+  "idea-10-freelance-expert-guide": "freelancing-upwork",
+  "idea-26-podcast-audio-editing-mastery-guide-ready-for-publishing": "podcast-editing",
+  "idea-26-podcast-audio-editing-mastery-guide": "podcast-editing",
+  "daraz-affiliate-marketing-guide": "daraz-affiliate-marketing",
+  "facebook-youtube-monetization-guide": "faceless-youtube-automation",
+  "bubble-no-code-saas-guide": "no-code-saas",
+  "freelance-expert-guide": "freelancing-upwork",
+  "podcast-audio-editing-mastery-guide": "podcast-editing"
+};
+
+export function findProductByIdentifier(identifier: string) {
+  if (!identifier) return undefined;
+  const lower = identifier.toLowerCase().trim();
+
+  // 0. Explicit legacy alias match
+  if (legacySlugAliases[lower]) {
+    const canonicalSlug = legacySlugAliases[lower];
+    const match = products.find(
+      (p) => p.slug.toLowerCase() === canonicalSlug.toLowerCase() || p.id.toLowerCase() === canonicalSlug.toLowerCase()
+    );
+    if (match) return match;
+  }
+
+  // 1. Exact match on slug or id
+  let found = products.find(
+    (p) => p.slug.toLowerCase() === lower || p.id.toLowerCase() === lower
+  );
+  if (found) return found;
+
+  // 2. Keyword heuristic matching for legacy slugs
+  if (lower.includes("daraz-affiliate") || lower.includes("daraz")) {
+    const p = products.find(prod => prod.slug === "daraz-affiliate-marketing");
+    if (p) return p;
+  }
+  if (lower.includes("podcast-audio") || lower.includes("podcast-editing")) {
+    const p = products.find(prod => prod.slug === "podcast-editing");
+    if (p) return p;
+  }
+  if (lower.includes("bubble") || lower.includes("no-code")) {
+    const p = products.find(prod => prod.slug === "no-code-saas");
+    if (p) return p;
+  }
+  if (lower.includes("freelance-expert") || lower.includes("upwork")) {
+    const p = products.find(prod => prod.slug === "freelancing-upwork");
+    if (p) return p;
+  }
+  if (lower.includes("facebook-youtube") || lower.includes("youtube-monetization") || lower.includes("faceless-youtube")) {
+    const p = products.find(prod => prod.slug === "faceless-youtube-automation");
+    if (p) return p;
+  }
+
+  // 3. Match if identifier starts with id prefix e.g. "idea-27-video-editing-freelance-mastery" -> matches "idea-27"
+  found = products.find((p) => {
+    const idPrefix = p.id.toLowerCase() + "-";
+    return lower.startsWith(idPrefix);
+  });
+  if (found) return found;
+
+  // 4. Match if identifier starts with slug prefix or contains slug
+  found = products.find(
+    (p) =>
+      lower.includes(p.slug.toLowerCase()) ||
+      p.slug.toLowerCase().includes(lower)
+  );
+  if (found) return found;
+
+  // 5. Match by title similarity / keywords if legacy shopify title was slugified
+  const cleanedKeywords = lower
+    .replace(/^(idea|skill)-\d+-/, "")
+    .replace(/-/g, " ");
+  found = products.find((p) => {
+    const titleWords = p.title.toLowerCase().split(/\s+/);
+    return titleWords.some((w) => w.length > 3 && cleanedKeywords.includes(w));
+  });
+  return found;
+}

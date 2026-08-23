@@ -1,3 +1,5 @@
+import { skillArticles } from './skillArticles';
+
 export interface ArticleStep {
   title: string;
   content: string;
@@ -1330,6 +1332,7 @@ export const articles: Record<string, ProductArticle> = {
       }
     ],
     tags: ["bubble.io no code saas", "mvp development freelance price", "database workflow bubble editor", "no code app developer upwork", "stripe api payment integration"]
-  }
+  },
+  ...skillArticles
 };
 

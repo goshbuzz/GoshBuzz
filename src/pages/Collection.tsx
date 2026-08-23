@@ -25,6 +25,26 @@ export default function Collection() {
         (p as any).category?.toLowerCase().includes(searchQuery.toLowerCase())),
   );
 
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": `${title} — GoshBuzz Pakistan`,
+    "description": description,
+    "url": `https://goshbuzz.com/collection/${type}`,
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": products
+        .filter((p) => p.type === collectionType)
+        .map((p, idx) => ({
+          "@type": "ListItem",
+          "position": idx + 1,
+          "name": p.title,
+          "url": `https://goshbuzz.com/blogs/news/${p.slug || p.id}`,
+          "description": p.description
+        }))
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <Helmet>
@@ -35,6 +55,9 @@ export default function Collection() {
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://goshbuzz.com/collection/${type}`} />
+        <script type="application/ld+json">
+          {JSON.stringify(collectionSchema)}
+        </script>
       </Helmet>
 
       <div className="text-center mb-16">
@@ -61,14 +84,10 @@ export default function Collection() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredProducts.map((product, idx) => (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: (idx % 10) * 0.1 }}
+        {filteredProducts.map((product) => (
+          <div
             key={product.id}
-            className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-all group flex flex-col"
+            className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-all duration-300 group flex flex-col"
           >
             <div className="h-48 bg-gray-100 dark:bg-gray-800 overflow-hidden relative">
               {product.image ? (
@@ -105,12 +124,12 @@ export default function Collection() {
               </p>
               <Link
                 to={`/blogs/news/${product.slug || product.id}`}
-                className="block w-full py-3 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-center rounded-xl font-semibold border hover:bg-gray-100 dark:bg-gray-700 transition-colors"
+                className="block w-full py-3 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-center rounded-xl font-semibold border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
                 View Guide
               </Link>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
 

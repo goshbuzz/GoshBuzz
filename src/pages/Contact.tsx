@@ -2,6 +2,21 @@ import { Mail, MessageSquare, MapPin, Phone } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 export default function Contact() {
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact GoshBuzz Pakistan",
+    "description": "Get in touch with GoshBuzz Pakistan via WhatsApp or Email for any queries regarding online earning guides.",
+    "url": "https://goshbuzz.com/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "GoshBuzz Pakistan",
+      "telephone": "+923126999078",
+      "email": "goshbuzzllc@gmail.com",
+      "url": "https://goshbuzz.com"
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <Helmet>
@@ -12,6 +27,9 @@ export default function Contact() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/contact" />
         <link rel="canonical" href="https://goshbuzz.com/contact" />
+        <script type="application/ld+json">
+          {JSON.stringify(contactSchema)}
+        </script>
       </Helmet>
       <div className="text-center mb-16">
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Contact Us</h1>

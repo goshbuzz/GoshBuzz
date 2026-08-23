@@ -11,6 +11,7 @@ export const BASE_URL = 'https://goshbuzz.com';
 
 export const STATIC_ROUTES = [
   '/',
+  '/apps',
   '/blogs/news',
   '/collection/ideas',
   '/collection/skills',
@@ -21,8 +22,7 @@ export const STATIC_ROUTES = [
   '/disclaimer',
   '/how-to-pay',
   '/delivery-policy',
-  '/refund-policy',
-  '/checkout'
+  '/refund-policy'
 ];
 
 export function generateSitemapUrls(): SitemapUrl[] {

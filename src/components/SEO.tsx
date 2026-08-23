@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { findProductByIdentifier } from '../data';
 
 interface SEOProps {
   title?: string;
@@ -31,19 +32,42 @@ export function getCanonicalUrl(pathName: string): string {
   }
 
   // Map legacy route aliases to their canonical versions
-  if (cleanPath === '/blogs') {
+  if (cleanPath === '/blogs' || cleanPath.startsWith('/blogs/news/tagged') || cleanPath.startsWith('/blogs/tagged') || cleanPath.startsWith('/blogs/tag')) {
     cleanPath = '/blogs/news';
+  } else if (cleanPath.startsWith('/blogs/news/')) {
+    const slug = cleanPath.replace(/^\/blogs\/news\//, '');
+    const product = findProductByIdentifier(slug);
+    cleanPath = product ? `/blogs/news/${product.slug}` : '/blogs/news';
+  } else if (cleanPath.startsWith('/products/')) {
+    const slug = cleanPath.replace(/^\/products\//, '');
+    const product = findProductByIdentifier(slug);
+    cleanPath = product ? `/blogs/news/${product.slug}` : '/blogs/news';
   } else if (cleanPath.startsWith('/product/')) {
-    cleanPath = cleanPath.replace(/^\/product\//, '/blogs/news/');
+    const slug = cleanPath.replace(/^\/product\//, '');
+    const product = findProductByIdentifier(slug);
+    cleanPath = product ? `/blogs/news/${product.slug}` : '/blogs/news';
+  } else if (cleanPath.startsWith('/collections/')) {
+    const type = cleanPath.replace(/^\/collections\//, '');
+    cleanPath = type ? `/collection/${type}` : '/';
+  } else if (cleanPath === '/products' || cleanPath === '/product' || cleanPath === '/collections') {
+    cleanPath = '/';
   } else if (cleanPath === '/privacy') {
     cleanPath = '/privacy-policy';
   } else if (cleanPath === '/refund') {
     cleanPath = '/refund-policy';
-  } else if (cleanPath === '/delivery') {
+  } else if (cleanPath === '/delivery' || cleanPath === '/shipping') {
     cleanPath = '/delivery-policy';
+  } else if (cleanPath === '/about-us') {
+    cleanPath = '/about';
+  } else if (cleanPath === '/contact-us') {
+    cleanPath = '/contact';
+  } else if (cleanPath === '/terms-and-conditions' || cleanPath === '/terms-of-service' || cleanPath === '/tos') {
+    cleanPath = '/terms';
+  } else if (cleanPath === '/disclaimers') {
+    cleanPath = '/disclaimer';
   }
 
-  return cleanPath === '/' ? BASE_URL : `${BASE_URL}${cleanPath}`;
+  return cleanPath === '/' || !cleanPath ? BASE_URL : `${BASE_URL}${cleanPath}`;
 }
 
 export default function SEO({

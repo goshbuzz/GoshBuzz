@@ -28,15 +28,43 @@ export default function Blogs() {
       };
     });
 
-  const categories = ["All", ...Array.from(new Set(blogPosts.map((post) => post.category)))];
+  const categories = ["All", "💡 Earning Ideas", "🛡️ Survival Skills", ...Array.from(new Set(blogPosts.map((post) => post.category)))];
 
   const filteredPosts = blogPosts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.intro.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = activeCategory === "All" || post.category === activeCategory;
+      post.intro.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.category.toLowerCase().includes(searchQuery.toLowerCase());
+    
+    let matchesCategory = true;
+    if (activeCategory === "💡 Earning Ideas") {
+      matchesCategory = post.type === "idea";
+    } else if (activeCategory === "🛡️ Survival Skills") {
+      matchesCategory = post.type === "skill";
+    } else if (activeCategory !== "All") {
+      matchesCategory = post.category === activeCategory;
+    }
+
     return matchesSearch && matchesCategory;
   });
+
+  const blogsSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Blogs & Earning Case Studies — GoshBuzz Pakistan",
+    "description": "Read detailed blueprints, guides, and real-world case studies about online earning in Pakistan.",
+    "url": "https://goshbuzz.com/blogs/news",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": blogPosts.map((post, idx) => ({
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": post.title,
+        "url": `https://goshbuzz.com/blogs/news/${post.slug || post.id}`,
+        "description": post.intro
+      }))
+    }
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -51,6 +79,9 @@ export default function Blogs() {
         <meta property="og:description" content="Read detailed blueprints, guides, and real-world case studies about online earning in Pakistan. Escape the matrix with GoshBuzz." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/blogs/news" />
+        <script type="application/ld+json">
+          {JSON.stringify(blogsSchema)}
+        </script>
       </Helmet>
 
       {/* Hero Header */}

@@ -16,13 +16,103 @@
       "permanent": true
     },
     {
+      "source": "/blogs/news/tiktok-creator-rewards-pakistan-is-eligible-and-here-is-how",
+      "destination": "/blogs/news/tiktok-creator-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/rs-17-000-in-4-months-pakistan-stock-market-strategy-that-works",
+      "destination": "/blogs/news/stock-market-investing-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/upwork-top-rated-in-90-days-from-pakistan-my-exact-proposal-template",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/built-a-no-code-saas-app-on-bubble-io-it-earns-rs-85-000-month-in-subscriptions",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-13-daraz-affiliate-marketing-guide",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-6-facebook-youtube-monetization-guide",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-30-bubble-no-code-saas-guide",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-10-freelance-expert-guide",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-26-podcast-audio-editing-mastery-guide-ready-for-publishing",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-26-podcast-audio-editing-mastery-guide",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
       "source": "/blogs",
       "destination": "/blogs/news",
       "permanent": true
     },
     {
+      "source": "/blogs/news/tagged/:tag*",
+      "destination": "/blogs/news",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/tagged/:tag*",
+      "destination": "/blogs/news",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/tag/:tag*",
+      "destination": "/blogs/news",
+      "permanent": true
+    },
+    {
+      "source": "/products/:slug*",
+      "destination": "/blogs/news/:slug*",
+      "permanent": true
+    },
+    {
       "source": "/product/:slug*",
       "destination": "/blogs/news/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/products",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/product",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/collections/:type*",
+      "destination": "/collection/:type*",
+      "permanent": true
+    },
+    {
+      "source": "/collections",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -38,6 +128,41 @@
     {
       "source": "/delivery",
       "destination": "/delivery-policy",
+      "permanent": true
+    },
+    {
+      "source": "/shipping",
+      "destination": "/delivery-policy",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/tos",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/disclaimers",
+      "destination": "/disclaimer",
       "permanent": true
     },
     {

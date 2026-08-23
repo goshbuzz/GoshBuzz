@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
+import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } from "react-router-dom";
+import { HashLink } from "./components/HashLink";
 import { HelmetProvider } from "react-helmet-async";
 import { Globe, Moon, Sun, MessageCircle, Menu, X } from "lucide-react";
 import Home from "./pages/Home";
@@ -16,11 +16,25 @@ import Terms from "./pages/Terms";
 import Collection from "./pages/Collection";
 import Checkout from "./pages/Checkout";
 import Blogs from "./pages/Blogs";
+import Apps from "./pages/Apps";
 import NotFound from "./pages/NotFound";
 import { CartProvider, useCart } from "./CartContext";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
+import { findProductByIdentifier } from "./data";
 import { useState, useEffect } from "react";
 import { ShoppingCart } from "lucide-react";
+
+function ProductRedirect() {
+  const { id } = useParams<{ id: string }>();
+  const product = findProductByIdentifier(id || "");
+  const targetSlug = product ? (product.slug || product.id) : (id || "");
+  return <Navigate to={`/blogs/news/${targetSlug}`} replace />;
+}
+
+function CollectionRedirect() {
+  const { type } = useParams<{ type: string }>();
+  return <Navigate to={`/collection/${type || "ideas"}`} replace />;
+}
 
 function Header({
   darkMode,
@@ -79,6 +93,13 @@ function Header({
             className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
           >
             {t("howToPay")}
+          </Link>
+          <Link
+            to="/apps"
+            className="text-gray-600 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 font-medium flex items-center gap-1.5"
+          >
+            <span>{t("apps")}</span>
+            <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-amber-500/20">NEW</span>
           </Link>
           <Link
             to="/blogs/news"
@@ -175,6 +196,14 @@ function Header({
             {t("howToPay")}
           </Link>
           <Link
+            to="/apps"
+            onClick={() => setIsMenuOpen(false)}
+            className="flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+          >
+            <span>{t("apps")}</span>
+            <span className="bg-amber-500 text-gray-950 text-[10px] font-extrabold px-2 py-0.5 rounded-full">NEW</span>
+          </Link>
+          <Link
             to="/blogs/news"
             onClick={() => setIsMenuOpen(false)}
             className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
@@ -243,17 +272,46 @@ export function AppLayout() {
           <Route path="/" element={<Home />} />
           <Route path="/blogs/news/:slug" element={<Product />} />
           <Route path="/blogs/news" element={<Blogs />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/product/:id" element={<Product />} />
+          <Route path="/blogs" element={<Navigate to="/blogs/news" replace />} />
+          <Route path="/blogs/news/tagged/:tag" element={<Navigate to="/blogs/news" replace />} />
+          <Route path="/blogs/news/tagged/*" element={<Navigate to="/blogs/news" replace />} />
+          <Route path="/blogs/tagged/:tag" element={<Navigate to="/blogs/news" replace />} />
+          <Route path="/blogs/tagged/*" element={<Navigate to="/blogs/news" replace />} />
+          <Route path="/blogs/tag/:tag" element={<Navigate to="/blogs/news" replace />} />
+          <Route path="/blogs/tag/*" element={<Navigate to="/blogs/news" replace />} />
+
+          <Route path="/products/:id" element={<ProductRedirect />} />
+          <Route path="/product/:id" element={<ProductRedirect />} />
+          <Route path="/products" element={<Navigate to="/" replace />} />
+          <Route path="/product" element={<Navigate to="/" replace />} />
+
+          <Route path="/collections/:type" element={<CollectionRedirect />} />
+          <Route path="/collections" element={<Navigate to="/" replace />} />
           <Route path="/collection/:type" element={<Collection />} />
+
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/how-to-pay" element={<HowToPay />} />
-          <Route path="/delivery-policy" element={<DeliveryPolicy />} />
+          <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/refund" element={<Navigate to="/refund-policy" replace />} />
+          <Route path="/delivery-policy" element={<DeliveryPolicy />} />
+          <Route path="/delivery" element={<Navigate to="/delivery-policy" replace />} />
+          <Route path="/shipping" element={<Navigate to="/delivery-policy" replace />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/about-us" element={<Navigate to="/about" replace />} />
+          <Route path="/apps" element={<Apps />} />
+          <Route path="/app" element={<Navigate to="/apps" replace />} />
+          <Route path="/goshbuzz-apps" element={<Navigate to="/apps" replace />} />
+          <Route path="/mobile-apps" element={<Navigate to="/apps" replace />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact-us" element={<Navigate to="/contact" replace />} />
+          <Route path="/how-to-pay" element={<HowToPay />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/disclaimers" element={<Navigate to="/disclaimer" replace />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/terms-and-conditions" element={<Navigate to="/terms" replace />} />
+          <Route path="/terms-of-service" element={<Navigate to="/terms" replace />} />
+          <Route path="/tos" element={<Navigate to="/terms" replace />} />
+
           <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -415,6 +473,15 @@ export function AppLayout() {
                       className="hover:text-white transition-colors"
                     >
                       {t("howToPay")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/apps"
+                      className="hover:text-white transition-colors flex items-center gap-1.5"
+                    >
+                      <span>{t("apps")}</span>
+                      <span className="text-[10px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded font-bold">Android</span>
                     </Link>
                   </li>
                   <li>

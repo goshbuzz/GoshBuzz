@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { 
   ArrowLeft, 
@@ -19,7 +19,7 @@ import {
   BookOpen,
   Check
 } from "lucide-react";
-import { products } from "../data";
+import { products, findProductByIdentifier } from "../data";
 import { articles } from "../data/articles";
 import { useCart } from "../CartContext";
 import { 
@@ -31,7 +31,7 @@ export default function Product() {
   const { id, slug } = useParams();
   const navigate = useNavigate();
   const identifier = slug || id;
-  const product = products.find((p) => p.slug === identifier || p.id === identifier);
+  const product = findProductByIdentifier(identifier || "");
 
   if (!product) {
     return (
@@ -45,6 +45,11 @@ export default function Product() {
         </Link>
       </div>
     );
+  }
+
+  // Canonical redirect if requested slug differs from canonical slug
+  if (slug && slug !== product.slug) {
+    return <Navigate to={`/blogs/news/${product.slug}`} replace />;
   }
 
   const price = product.type === "idea" ? "500" : "200";

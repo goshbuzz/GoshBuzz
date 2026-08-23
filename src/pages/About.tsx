@@ -1,6 +1,27 @@
 import { Helmet } from 'react-helmet-async';
 
 export default function About() {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About GoshBuzz Pakistan",
+    "description": "Pakistan's #1 Online Earning Library — Selling Guides to Work directly from zero, Not Courses.",
+    "url": "https://goshbuzz.com/about",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "GoshBuzz Pakistan",
+      "founder": {
+        "@type": "Person",
+        "name": "Saulat Nadeem"
+      },
+      "url": "https://goshbuzz.com",
+      "logo": "https://goshbuzz.com/goshbuzz_logo.jpg",
+      "sameAs": [
+        "https://wa.me/923126999078"
+      ]
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <Helmet>
@@ -17,6 +38,9 @@ export default function About() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/about" />
         <link rel="canonical" href="https://goshbuzz.com/about" />
+        <script type="application/ld+json">
+          {JSON.stringify(aboutSchema)}
+        </script>
       </Helmet>
       <div className="text-center mb-16">
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
