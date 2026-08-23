@@ -22,6 +22,29 @@ async function startServer() {
     });
   }
 
+  // Explicit handler for IAB Tech Lab / Google AdMob app-ads.txt and ads.txt
+  app.get('/app-ads.txt', (req, res) => {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    const appAdsPath = path.resolve(__dirname, 'public/app-ads.txt');
+    if (fs.existsSync(appAdsPath)) {
+      return res.sendFile(appAdsPath);
+    }
+    const distPath = path.resolve(__dirname, 'dist/client/app-ads.txt');
+    if (fs.existsSync(distPath)) {
+      return res.sendFile(distPath);
+    }
+    return res.status(200).send('google.com, pub-4067724379997931, DIRECT, f08c47fec0942fa0\n');
+  });
+
+  app.get('/ads.txt', (req, res) => {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    const adsPath = path.resolve(__dirname, 'public/ads.txt');
+    if (fs.existsSync(adsPath)) {
+      return res.sendFile(adsPath);
+    }
+    return res.status(200).send('google.com, pub-4067724379997931, DIRECT, f08c47fec0942fa0\n');
+  });
+
   // Pre-rendered HTML route handler for all non-file requests
   app.get('*all', async (req, res, next) => {
     const rawUrl = req.originalUrl.split('?')[0];

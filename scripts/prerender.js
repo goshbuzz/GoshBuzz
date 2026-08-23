@@ -35,6 +35,20 @@ async function prerender() {
     productSlugs = matches.map(m => m[1]);
   }
 
+  let appSlugs = ['emf-sentinel'];
+  try {
+    const appsDataPath = path.resolve(rootDir, 'src/data/appsData.ts');
+    if (fs.existsSync(appsDataPath)) {
+      const appsContent = fs.readFileSync(appsDataPath, 'utf-8');
+      const matches = [...appsContent.matchAll(/slug:\s*"([^"]+)"/g)];
+      if (matches.length > 0) {
+        appSlugs = matches.map(m => m[1]);
+      }
+    }
+  } catch (err) {
+    console.warn('Using default app slugs...');
+  }
+
   const staticRoutes = [
     '/',
     '/apps',
@@ -51,9 +65,10 @@ async function prerender() {
     '/refund-policy'
   ];
 
+  const appRoutes = appSlugs.map(slug => `/apps/${slug}`);
   const blogRoutes = productSlugs.map(slug => `/blogs/news/${slug}`);
 
-  const allRoutes = Array.from(new Set([...staticRoutes, ...blogRoutes]));
+  const allRoutes = Array.from(new Set([...staticRoutes, ...appRoutes, ...blogRoutes]));
 
   console.log(`🚀 Starting pre-rendering for ${allRoutes.length} routes...`);
 
@@ -84,9 +99,25 @@ async function prerender() {
 
   // Generate clean sitemap.xml
   try {
-    const sitemapModulePath = path.resolve(rootDir, 'src/utils/sitemap.ts');
-    const { generateSitemapXml } = await import(`file://${sitemapModulePath}`);
-    const sitemapXml = generateSitemapXml();
+    const currentDate = new Date().toISOString().split('T')[0];
+    const baseUrl = 'https://goshbuzz.com';
+    
+    const xmlEntries = allRoutes.map(route => {
+      const loc = route === '/' ? baseUrl : `${baseUrl}${route}`;
+      const changefreq = (route === '/' || route === '/blogs/news' || route === '/apps') ? 'daily' : 'weekly';
+      const priority = route === '/' ? '1.0' : (route === '/apps' || route === '/blogs/news') ? '0.9' : '0.8';
+      return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+    }).join('\n');
+
+    const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${xmlEntries}
+</urlset>`;
 
     const publicSitemapPath = path.resolve(rootDir, 'public/sitemap.xml');
     const distSitemapPath = path.resolve(rootDir, 'dist/client/sitemap.xml');

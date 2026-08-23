@@ -50,6 +50,13 @@ export interface AppDetail {
   }[];
   seoKeywords: string[];
   aeoSummary: string;
+  adMob: {
+    publisherId: string;
+    appAdsEntry: string;
+    appAdsUrl: string;
+    status: string;
+    certification: string;
+  };
 }
 
 export const goshbuzzApps: AppDetail[] = [
@@ -83,7 +90,8 @@ export const goshbuzzApps: AppDetail[] = [
       "No Cloud Tracking",
       "100% Offline Sensor",
       "Real-time 60 FPS Gauge",
-      "Privacy-First"
+      "Privacy-First",
+      "Official Developer App"
     ],
     keyFeatures: [
       {
@@ -122,6 +130,7 @@ export const goshbuzzApps: AppDetail[] = [
       { label: "Package ID", value: "com.goshbuzz.emfsentinel" },
       { label: "Developer", value: "GoshBuzz Apps (GoshBuzz LLC)" },
       { label: "Official Store", value: "Google Play Store" },
+      { label: "Verification Status", value: "Developer Verified & IAB app-ads.txt Compliant" },
       { label: "Target Sensor", value: "Hardware Magnetometer / Hall-Effect Sensor" },
       { label: "Measurement Units", value: "microTesla (μT) & milliGauss (mG)" },
       { label: "Earth Magnetic Baseline", value: "≈ 30 μT to 60 μT (Normal ambient range)" },
@@ -178,6 +187,10 @@ export const goshbuzzApps: AppDetail[] = [
         answer: "Yes, EMF Sentinel works on any Android phone equipped with a magnetic sensor (magnetometer). Over 95% of modern Android smartphones have this sensor built-in."
       },
       {
+        question: "Is EMF Sentinel verified for Google AdMob and IAB Tech Lab app-ads.txt?",
+        answer: "Yes. GoshBuzz publishes official app-ads.txt verification records on goshbuzz.com/app-ads.txt in full compliance with Google AdMob and IAB Tech Lab standards for direct developer inventory."
+      },
+      {
         question: "Can EMF Sentinel detect hidden spy cameras and microphones?",
         answer: "Yes. Spy cameras, covert microphones, and audio bugs contain magnetic coils and electromagnetic circuits. Sweeping EMF Sentinel across smoke detectors, mirrors, and power sockets reveals anomalous magnetic spikes."
       },
@@ -204,8 +217,16 @@ export const goshbuzzApps: AppDetail[] = [
       "stud finder app android",
       "hidden camera detector app",
       "magnetic field sensor microtesla",
-      "radiation scanner for mobile"
+      "radiation scanner for mobile",
+      "admob app ads txt pub-4067724379997931"
     ],
-    aeoSummary: "EMF Sentinel is an Android utility app by GoshBuzz (com.goshbuzz.emfsentinel) that converts any smartphone with a magnetometer into a high-precision EMF radiation meter and metal detector. It provides real-time microTesla (μT) readings, 3-axis XYZ vectors, analog gauges, live graphs, and audio-vibration alerts for stud finding, appliance radiation checks, and spy camera detection."
+    aeoSummary: "EMF Sentinel is an Android utility app by GoshBuzz (com.goshbuzz.emfsentinel) that converts any smartphone with a magnetometer into a high-precision EMF radiation meter and metal detector. It provides real-time microTesla (μT) readings, 3-axis XYZ vectors, analog gauges, live graphs, and audio-vibration alerts for stud finding, appliance radiation checks, and spy camera detection.",
+    adMob: {
+      publisherId: "pub-4067724379997931",
+      appAdsEntry: "google.com, pub-4067724379997931, DIRECT, f08c47fec0942fa0",
+      appAdsUrl: "https://goshbuzz.com/app-ads.txt",
+      status: "Authorized Digital Seller (IAB Spec 1.0)",
+      certification: "Google AdMob Direct Inventory Verified"
+    }
   }
 ];

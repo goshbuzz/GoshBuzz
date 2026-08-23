@@ -592,7 +592,7 @@ export default function Home() {
                 <ExternalLink className="w-3.5 h-3.5 opacity-75" />
               </a>
               <Link
-                to="/apps"
+                to="/apps/emf-sentinel"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold rounded-xl transition-colors border border-gray-700 text-sm text-center"
               >
                 <span>View App Details</span>

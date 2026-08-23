@@ -9,8 +9,8 @@
   <url>
     <loc>https://goshbuzz.com/apps</loc>
     <lastmod>2026-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/blogs/news</loc>
@@ -22,61 +22,67 @@
     <loc>https://goshbuzz.com/collection/ideas</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/collection/skills</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/about</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/contact</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/privacy-policy</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/terms</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/disclaimer</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/how-to-pay</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/delivery-policy</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/refund-policy</loc>
     <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://goshbuzz.com/apps/emf-sentinel</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://goshbuzz.com/blogs/news/crypto-spot-trading-pakistan</loc>

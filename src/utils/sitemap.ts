@@ -1,4 +1,5 @@
 import { products } from '../data.ts';
+import { goshbuzzApps } from '../data/appsData.ts';
 
 export interface SitemapUrl {
   loc: string;
@@ -33,8 +34,17 @@ export function generateSitemapUrls(): SitemapUrl[] {
     return {
       loc,
       lastmod: currentDate,
-      changefreq: route === '/' || route === '/blogs/news' ? 'daily' : 'weekly',
-      priority: route === '/' ? 1.0 : route === '/blogs/news' ? 0.9 : 0.7,
+      changefreq: route === '/' || route === '/blogs/news' || route === '/apps' ? 'daily' : 'weekly',
+      priority: route === '/' ? 1.0 : route === '/apps' || route === '/blogs/news' ? 0.9 : 0.7,
+    };
+  });
+
+  const appUrls: SitemapUrl[] = goshbuzzApps.map((app) => {
+    return {
+      loc: `${BASE_URL}/apps/${app.slug}`,
+      lastmod: currentDate,
+      changefreq: 'weekly',
+      priority: 0.9,
     };
   });
 
@@ -48,7 +58,7 @@ export function generateSitemapUrls(): SitemapUrl[] {
     };
   });
 
-  return [...staticUrls, ...blogArticleUrls];
+  return [...staticUrls, ...appUrls, ...blogArticleUrls];
 }
 
 export function generateSitemapXml(): string {

@@ -17,6 +17,7 @@ import Collection from "./pages/Collection";
 import Checkout from "./pages/Checkout";
 import Blogs from "./pages/Blogs";
 import Apps from "./pages/Apps";
+import AppDetail from "./pages/AppDetail";
 import NotFound from "./pages/NotFound";
 import { CartProvider, useCart } from "./CartContext";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
@@ -299,9 +300,13 @@ export function AppLayout() {
           <Route path="/about" element={<About />} />
           <Route path="/about-us" element={<Navigate to="/about" replace />} />
           <Route path="/apps" element={<Apps />} />
+          <Route path="/apps/:slug" element={<AppDetail />} />
           <Route path="/app" element={<Navigate to="/apps" replace />} />
+          <Route path="/app/:slug" element={<Navigate to="/apps/:slug" replace />} />
           <Route path="/goshbuzz-apps" element={<Navigate to="/apps" replace />} />
           <Route path="/mobile-apps" element={<Navigate to="/apps" replace />} />
+          <Route path="/emf-sentinel" element={<Navigate to="/apps/emf-sentinel" replace />} />
+          <Route path="/com.goshbuzz.emfsentinel" element={<Navigate to="/apps/emf-sentinel" replace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact-us" element={<Navigate to="/contact" replace />} />
           <Route path="/how-to-pay" element={<HowToPay />} />
