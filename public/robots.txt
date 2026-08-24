@@ -6,6 +6,9 @@ User-agent: Googlebot
 Allow: /
 Disallow: /checkout
 
+User-agent: Mediapartners-Google
+Allow: /
+
 User-agent: Googlebot-Image
 Allow: /
 

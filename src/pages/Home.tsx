@@ -13,6 +13,15 @@ import {
   HelpCircle,
   Smartphone,
   Download,
+  Award,
+  FileText,
+  Star,
+  Users,
+  Check,
+  Flame,
+  TrendingUp,
+  Layers,
+  Activity,
 } from "lucide-react";
 import { products } from "../data";
 import { goshbuzzApps } from "../data/appsData";
@@ -53,34 +62,71 @@ export default function Home() {
   ];
 
   const popularSearches = [
+    "AdSense Blueprint",
     "Amazon KDP",
-    "Canva Pro",
     "Dropshipping",
-    "AdSense",
-    "Binance",
-    "Upwork",
-    "YouTube",
+    "Binance Trading",
+    "Upwork Freelancing",
+    "Canva Pro",
+    "YouTube Automation",
+  ];
+
+  // Featured High-Value Articles for Google AdSense & Publisher Compliance
+  const featuredArticles = [
+    {
+      id: "blogging-adsense-blueprint",
+      title: "Blogging & Google AdSense Monetization Blueprint",
+      category: "Content Creation",
+      readTime: "12 min read",
+      date: "August 2026",
+      excerpt: "Step-by-step masterclass on building a high-RPM niche publication, writing original high-value content, optimizing site architecture, and passing Google AdSense publisher reviews with zero policy violations.",
+      image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=600",
+      takeaways: ["High-RPM Niche Selection", "SEO Content Architecture", "Publisher Policy Compliance"],
+      slug: "blogging-adsense-blueprint",
+    },
+    {
+      id: "ebay-dropshipping-guide",
+      title: "Local E-Commerce Dropshipping & Supplier Sourcing",
+      category: "E-commerce",
+      readTime: "15 min read",
+      date: "August 2026",
+      excerpt: "Comprehensive guide to establishing a profitable e-commerce dropshipping store in South Asia. Covers local fulfillment networks, product research, TikTok ad creative testing, and cash-on-delivery management.",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=600",
+      takeaways: ["Zero Inventory Setup", "Local Fulfillment", "TikTok Viral Ads"],
+      slug: "ebay-dropshipping-guide",
+    },
+    {
+      id: "faceless-youtube-automation",
+      title: "Faceless YouTube Automation & AI Media Production",
+      category: "Tech & AI",
+      readTime: "10 min read",
+      date: "August 2026",
+      excerpt: "Learn how to build scalable video media channels using AI text generators, natural neural voice synthesis, and automated video workflows for global audience engagement and ad revenue.",
+      image: "https://images.unsplash.com/photo-1533727937480-da3a97967e95?auto=format&fit=crop&q=80&w=600",
+      takeaways: ["AI Script Generation", "Neural Voiceovers", "Automated Editing"],
+      slug: "faceless-youtube-automation",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 selection:bg-amber-500 selection:text-white">
       <Helmet>
-        <title>GoshBuzz — Pakistan's #1 Online Earning Guides & Courses</title>
+        <title>GoshBuzz — Digital Knowledge Hub, Technology Insights & Android Utilities</title>
         <meta
           name="description"
-          content="Discover 60 step-by-step earning guides built for Pakistanis. 30 Earning Ideas and 30 Survival Skills. Instant PDF downloads to escape the matrix and start earning online."
+          content="Explore 60+ in-depth masterclass guides, e-commerce dropshipping blueprints, digital freelancing strategies, and privacy-first Android mobile utilities by GoshBuzz."
         />
         <meta
           name="keywords"
-          content="online earning in pakistan, make money online, freelance guides, e-commerce training pakistan, goshbuzz, earn online, passive income pakistan"
+          content="goshbuzz, online earning guides, digital freelancing, e-commerce dropshipping, mobile utilities, emf sentinel, technology insights, high value content"
         />
         <meta
           property="og:title"
-          content="GoshBuzz — Pakistan's #1 Online Earning Guides & Courses"
+          content="GoshBuzz — Digital Knowledge Hub, Technology Insights & Android Utilities"
         />
         <meta
           property="og:description"
-          content="Discover 60 step-by-step earning guides built for Pakistanis. 30 Earning Ideas and 30 Survival Skills. Instant PDF downloads to escape the matrix and start earning online."
+          content="Explore 60+ in-depth masterclass guides, e-commerce dropshipping blueprints, digital freelancing strategies, and privacy-first Android mobile utilities by GoshBuzz."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com" />
@@ -89,17 +135,29 @@ export default function Home() {
           {`
             {
               "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "GoshBuzz",
-              "url": "https://goshbuzz.com",
-              "description": "Pakistan's #1 Online Earning Library — Selling Guides to Work directly from zero, Not Courses. 60 step-by-step earning guides built for Pakistanis."
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://goshbuzz.com/#website",
+                  "url": "https://goshbuzz.com",
+                  "name": "GoshBuzz",
+                  "description": "Digital Knowledge Hub, Technology Insights & Mobile Applications Directory"
+                },
+                {
+                  "@type": "Organization",
+                  "@id": "https://goshbuzz.com/#organization",
+                  "name": "GoshBuzz LLC",
+                  "url": "https://goshbuzz.com",
+                  "logo": "https://goshbuzz.com/goshbuzz_logo.jpg"
+                }
+              ]
             }
           `}
         </script>
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-amber-50/60 via-white to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 pt-16 pb-20 md:pt-24 md:pb-28 border-b border-gray-200 dark:border-gray-800">
+      <section className="relative overflow-hidden bg-gradient-to-b from-amber-50/70 via-white to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 pt-16 pb-20 md:pt-24 md:pb-28 border-b border-gray-200 dark:border-gray-800">
         <div className="absolute inset-0 pointer-events-none opacity-30 dark:opacity-20">
           <div className="absolute -top-40 -left-40 w-96 h-96 bg-amber-400 rounded-full blur-3xl"></div>
           <div className="absolute top-60 -right-40 w-96 h-96 bg-indigo-500 rounded-full blur-3xl"></div>
@@ -107,63 +165,68 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="max-w-4xl mx-auto space-y-6">
-            {/* Header pill badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100/80 dark:bg-amber-900/40 border border-amber-300/60 dark:border-amber-700/50 text-amber-900 dark:text-amber-300 text-xs sm:text-sm font-semibold shadow-xs">
+            
+            {/* Header Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100/90 dark:bg-amber-900/40 border border-amber-300/60 dark:border-amber-700/50 text-amber-900 dark:text-amber-300 text-xs sm:text-sm font-bold shadow-2xs">
               <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-              <span>
-                Pakistan's #1 Earning Library — Direct Step-by-Step Guides, Not Generic Courses
-              </span>
+              <span>Verified Digital Knowledge Hub & Mobile Software Publisher</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-950 dark:text-white leading-[1.1]">
-              Escape the Matrix. <br />
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-950 dark:text-white leading-[1.15]">
+              Actionable Digital Knowledge & <br />
               <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 bg-clip-text text-transparent">
-                Start Earning in Pakistan.
+                High-Precision Mobile Utilities
               </span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              60 actionable earning guides designed for Pakistanis — <strong>30 Earning Ideas</strong> at Rs.500 and <strong>30 Survival Skills</strong> at Rs.200. Instant PDF delivery via WhatsApp. Pay securely with JazzCash or EasyPaisa.
+            <p className="text-base sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-normal">
+              Empowering digital entrepreneurs, freelancers, and mobile users with <strong>60+ in-depth masterclass guides</strong> and <strong>privacy-first Android mobile applications</strong>. Zero-fluff, original content engineered for long-term value.
             </p>
 
-            {/* CTA Buttons */}
+            {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
               <a
-                href="#ideas"
-                className="w-full sm:w-auto px-8 py-4 bg-gray-900 hover:bg-gray-800 dark:bg-amber-500 dark:hover:bg-amber-600 text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-base"
+                href="#featured-articles"
+                className="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-600 text-gray-950 font-extrabold rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-base"
               >
-                <span>Browse Earning Ideas</span>
+                <BookOpen size={18} />
+                <span>Explore Featured Articles</span>
                 <ArrowRight size={18} />
               </a>
-              <a
-                href="#skills"
-                className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-indigo-700 dark:text-indigo-300 font-bold rounded-xl transition-all border border-indigo-200 dark:border-indigo-800/80 shadow-xs flex items-center justify-center gap-2 text-base"
+              <Link
+                to="/apps"
+                className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-xl transition-all border border-gray-300 dark:border-gray-700 shadow-xs flex items-center justify-center gap-2 text-base"
               >
-                <span>Browse Survival Skills</span>
+                <Smartphone size={18} className="text-amber-500" />
+                <span>Browse Android Apps</span>
                 <ArrowRight size={18} />
-              </a>
+              </Link>
             </div>
 
-            {/* Trust Badges */}
-            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 pt-6 text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400">
-              <div className="flex items-center gap-2 bg-white/70 dark:bg-gray-900/60 px-3 py-1.5 rounded-lg border border-gray-200/60 dark:border-gray-800">
-                <CheckCircle2 className="text-green-500 w-4 h-4 shrink-0" />
-                <span>Zero-Theory Execution</span>
+            {/* Quick Metrics & Authority Stats Bar */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8">
+              <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">60+</div>
+                <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">Published Guides</div>
               </div>
-              <div className="flex items-center gap-2 bg-white/70 dark:bg-gray-900/60 px-3 py-1.5 rounded-lg border border-gray-200/60 dark:border-gray-800">
-                <ShieldCheck className="text-blue-500 w-4 h-4 shrink-0" />
-                <span>JazzCash & EasyPaisa</span>
+              <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-emerald-500">10,000+</div>
+                <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">App Downloads</div>
               </div>
-              <div className="flex items-center gap-2 bg-white/70 dark:bg-gray-900/60 px-3 py-1.5 rounded-lg border border-gray-200/60 dark:border-gray-800">
-                <Zap className="text-amber-500 w-4 h-4 shrink-0" />
-                <span>Instant WhatsApp Delivery</span>
+              <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-indigo-500">100%</div>
+                <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">Open Knowledge</div>
+              </div>
+              <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
+                <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">4.9 ★</div>
+                <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">User Satisfaction</div>
               </div>
             </div>
 
-            {/* Search & Category Filter Box */}
-            <div className="mt-8 pt-6 max-w-3xl mx-auto">
+            {/* Interactive Search Box */}
+            <div className="mt-8 pt-4 max-w-3xl mx-auto">
               <div className="relative">
                 <Search
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
@@ -171,7 +234,7 @@ export default function Home() {
                 />
                 <input
                   type="text"
-                  placeholder="Search 60 guides (e.g., Dropshipping, Amazon KDP, Canva, Crypto, Upwork)..."
+                  placeholder="Search articles & guides (e.g., AdSense Blueprint, Dropshipping, Binance, Canva)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-12 pr-12 py-3.5 sm:py-4 rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 shadow-sm text-sm sm:text-base transition-all"
@@ -186,7 +249,7 @@ export default function Home() {
                 )}
               </div>
 
-              {/* Popular Tags */}
+              {/* Popular Search Tags */}
               <div className="mt-3.5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 text-xs text-gray-500 dark:text-gray-400">
                 <span className="font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider text-[10px]">
                   Popular:
@@ -224,25 +287,162 @@ export default function Home() {
                 ))}
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Earning Ideas Section */}
+      {/* Editor's Highlights — High Value Articles Section (AdSense Compliance) */}
+      <section id="featured-articles" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 scroll-mt-20">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 text-xs font-bold mb-3 border border-amber-300/50 dark:border-amber-700/50">
+            <Award className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+            <span>Editor's Picks — Comprehensive Articles</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
+            High-Value Editorial Guides & Blueprints
+          </h2>
+          <p className="mt-3 text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+            In-depth technical and business analyses written to satisfy Google Webmaster Quality Guidelines with original research, zero fluff, and actionable takeaways.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {featuredArticles.map((article) => (
+            <article
+              key={article.id}
+              className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-xl dark:hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="h-52 overflow-hidden relative">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 left-4 bg-amber-500 text-gray-950 px-3 py-1 rounded-full text-xs font-extrabold shadow-sm">
+                    {article.category}
+                  </div>
+                  <div className="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-xs text-gray-200 px-3 py-1 rounded-full text-[11px] font-semibold border border-gray-700">
+                    {article.readTime}
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <div className="text-xs text-gray-500 dark:text-gray-400 mb-2 font-mono">
+                    Published: {article.date} • Editorial Board
+                  </div>
+                  <h3 className="text-xl font-extrabold text-gray-900 dark:text-white mb-3 hover:text-amber-500 transition-colors">
+                    <Link to={`/blogs/news/${article.slug}`}>
+                      {article.title}
+                    </Link>
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                    {article.excerpt}
+                  </p>
+
+                  {/* Key Takeaways Badges */}
+                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-gray-100 dark:border-gray-800">
+                    {article.takeaways.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+                      >
+                        ✓ {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 pt-0">
+                <Link
+                  to={`/blogs/news/${article.slug}`}
+                  className="w-full py-3 px-4 bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold rounded-xl text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"
+                >
+                  <span>Read Full Masterclass</span>
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* GoshBuzz Android Utility Ecosystem Spotlight */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="bg-gradient-to-r from-gray-900 via-gray-900 to-amber-950 text-white rounded-3xl p-6 sm:p-10 border border-amber-500/30 shadow-xl relative overflow-hidden">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left max-w-2xl">
+              <img
+                src={goshbuzzApps[0].icon}
+                alt="EMF Sentinel App Icon"
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border-2 border-amber-500/40 shadow-lg object-cover flex-shrink-0"
+              />
+              <div className="space-y-2.5">
+                <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-500/30">
+                  <Smartphone className="w-3.5 h-3.5" />
+                  Featured Android Software Utility
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                  EMF Sentinel: EMF Scan & Metal Detector
+                </h2>
+                <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                  Turn your Android smartphone into a high-precision electromagnetic field radiation scanner and metal detector using hardware magnetometer sensors. 100% offline, privacy-first software engineering.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center sm:justify-start pt-1">
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-gray-200">
+                    ★ 4.9 Rating
+                  </span>
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-gray-200">
+                    10,000+ Downloads
+                  </span>
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    100% Free on Google Play
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3.5 flex-shrink-0 w-full sm:w-auto">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.goshbuzz.emfsentinel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold rounded-xl transition-all shadow-md text-sm text-center"
+              >
+                <Download className="w-4 h-4" />
+                <span>Get on Google Play</span>
+                <ExternalLink className="w-3.5 h-3.5 opacity-75" />
+              </a>
+              <Link
+                to="/apps/emf-sentinel"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold rounded-xl transition-colors border border-gray-700 text-sm text-center"
+              >
+                <span>View App Specs</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 30 Earning Ideas Section */}
       <section id="ideas" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 scroll-mt-20">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 text-xs font-bold mb-3">
             <span>💡 High-Income Systems</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
-            30 Earning Ideas — Rs.500 Each
+            30 Earning Blueprints — Complete Masterclass Guides
           </h2>
           <p className="mt-3 text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-            Full digital business blueprints. Each guide contains a complete system with Pakistani payment setups, PKR earning roadmaps, and step-by-step execution.
+            Full digital business blueprints. Each guide contains a complete system with local payment setups, revenue roadmaps, and step-by-step execution instructions.
           </p>
         </div>
 
-        {/* Ideas Responsive Grid */}
+        {/* Ideas Grid */}
         {displayedIdeas.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {displayedIdeas.map((product) => (
@@ -264,17 +464,18 @@ export default function Home() {
                       {product.icon || "💡"}
                     </div>
                   )}
-                  <div className="absolute top-3 right-3 bg-white/95 dark:bg-gray-900/90 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-extrabold text-gray-900 dark:text-amber-400 shadow-sm border border-gray-100 dark:border-gray-800">
-                    Rs. 500
+                  <div className="absolute top-3 right-3 bg-gray-900/90 text-amber-400 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border border-gray-700">
+                    Full Guide
                   </div>
                 </div>
 
                 <div className="p-5 flex flex-col flex-grow justify-between">
                   <div>
-                    <div className="mb-2.5">
+                    <div className="mb-2.5 flex items-center justify-between">
                       <span className="inline-block px-2.5 py-0.5 bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 text-[11px] font-bold rounded-md">
                         {(product as any).category || "Earning Blueprint"}
                       </span>
+                      <span className="text-[10px] text-gray-400 font-mono">8 min read</span>
                     </div>
                     <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 h-12 flex items-center group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                       {product.title}
@@ -287,7 +488,7 @@ export default function Home() {
                     to={`/blogs/news/${product.slug || product.id}`}
                     className="w-full py-2.5 px-4 bg-gray-900 hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-amber-500 text-white text-center rounded-xl text-xs sm:text-sm font-bold transition-colors flex items-center justify-center gap-1.5 mt-auto"
                   >
-                    <span>Read Blueprint</span>
+                    <span>Read Article</span>
                     <ArrowRight size={14} />
                   </Link>
                 </div>
@@ -297,9 +498,9 @@ export default function Home() {
         ) : (
           <div className="text-center py-12 px-4 bg-white dark:bg-gray-900 rounded-2xl border border-dashed border-gray-300 dark:border-gray-800 max-w-md mx-auto">
             <span className="text-4xl mb-3 block">🔍</span>
-            <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100">No Matching Earning Ideas</h3>
+            <h3 className="font-bold text-lg text-gray-900 dark:text-gray-100">No Matching Earning Guides</h3>
             <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-              Try choosing another topic filter or clearing your search term.
+              Try choosing another topic filter or clearing your search query.
             </p>
             <button
               onClick={() => {
@@ -313,58 +514,31 @@ export default function Home() {
           </div>
         )}
 
-        {/* View All Ideas Link */}
         {!isFiltering && (
           <div className="mt-12 text-center">
             <Link
               to="/collection/ideas"
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-xl transition-all shadow-sm hover:shadow-md text-sm"
             >
-              <span>Explore All 30 Earning Ideas</span>
+              <span>Explore All 30 Earning Blueprints</span>
               <ArrowRight size={16} />
             </Link>
           </div>
         )}
-
-        {/* Earning Ideas SEO/Authority Block */}
-        <div className="mt-16 pt-10 border-t border-gray-200 dark:border-gray-800 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-          <div className="space-y-3 bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-800">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-              Profitable Online Business Ideas in Pakistan: Scaling Beyond Traditional Gigs
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              For ambitious individuals in Pakistan aiming to launch an internet venture, finding the right <strong>online business ideas in Pakistan with low investment</strong> is the first step towards financial autonomy. Digital businesses allow you to tap into foreign purchasing power directly from Karachi, Lahore, or Islamabad. GoshBuzz blueprints cover 30 lucrative systems designed for immediate execution—including high-ticket micro-consulting, local dropshipping, and automated print-on-demand setups.
-            </p>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              Learn authoritative insights on marketing frameworks via <a href="https://neilpatel.com/blog/" target="_blank" rel="noopener noreferrer" className="text-amber-600 dark:text-amber-400 hover:underline font-semibold inline-flex items-center gap-0.5">Neil Patel's Growth Blog <ExternalLink size={12} /></a>.
-            </p>
-          </div>
-
-          <div className="space-y-3 bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-800">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-              E-Commerce Dropshipping & Digital Asset Sales
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              E-commerce has exploded across South Asia, making <strong>local e-commerce dropshipping inside Pakistan</strong> a premier business model. By partnering with local fulfillment networks, aspiring store owners can distribute winning items without upfront inventory risk. Explore the fundamentals via the official <a href="https://www.shopify.com/blog/what-is-dropshipping" target="_blank" rel="noopener noreferrer" className="text-amber-600 dark:text-amber-400 hover:underline font-semibold inline-flex items-center gap-0.5">Shopify Dropshipping Blueprint <ExternalLink size={12} /></a>.
-            </p>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              Publishing low-content digital products or eBooks on global platforms is also an outstanding avenue for passive royalty income that hedges against local inflation.
-            </p>
-          </div>
-        </div>
       </section>
 
       {/* Featured Dropshipping Winning Products Showcase */}
       <section className="bg-gray-900 text-white py-16 md:py-20 border-y border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold mb-3 border border-amber-500/30">
-            <span>🔥 Winning Product Showcases</span>
+            <Flame className="w-3.5 h-3.5 text-amber-400" />
+            <span>Winning Product Showcases</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
             High-Demand E-Commerce Dropshipping Niches
           </h2>
           <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-10">
-            Detailed case studies and supplier sourcing blueprints for high-converting physical products sold locally in Pakistan.
+            Detailed case studies and supplier sourcing blueprints for high-converting physical products sold locally in South Asia.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
@@ -419,21 +593,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Survival Skills Section */}
+      {/* 30 Survival Skills Section */}
       <section id="skills" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 scroll-mt-20">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-300 text-xs font-bold mb-3">
             <span>🛡️ Future-Proof Capabilities</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
-            30 Survival Skills — Rs.200 Each
+            30 Survival Skills — Technical & Financial Manuals
           </h2>
           <p className="mt-3 text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-            Master the core technical, financial, and digital safety skills necessary to operate securely and withdraw freelance earnings in Pakistan.
+            Master core technical, financial, and digital safety capabilities necessary to operate securely and withdraw freelance revenue seamlessly.
           </p>
         </div>
 
-        {/* Skills Responsive Grid */}
+        {/* Skills Grid */}
         {displayedSkills.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {displayedSkills.map((product) => (
@@ -455,17 +629,18 @@ export default function Home() {
                       {product.icon || "🛡️"}
                     </div>
                   )}
-                  <div className="absolute top-3 right-3 bg-white/95 dark:bg-gray-900/90 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-extrabold text-indigo-700 dark:text-indigo-300 shadow-sm border border-gray-100 dark:border-gray-800">
-                    Rs. 200
+                  <div className="absolute top-3 right-3 bg-gray-900/90 text-indigo-300 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border border-gray-700">
+                    Skill Manual
                   </div>
                 </div>
 
                 <div className="p-5 flex flex-col flex-grow justify-between">
                   <div>
-                    <div className="mb-2.5">
+                    <div className="mb-2.5 flex items-center justify-between">
                       <span className="inline-block px-2.5 py-0.5 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-300 text-[11px] font-bold rounded-md">
                         {(product as any).category || "Survival Skill"}
                       </span>
+                      <span className="text-[10px] text-gray-400 font-mono">6 min read</span>
                     </div>
                     <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 h-12 flex items-center group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                       {product.title}
@@ -511,93 +686,48 @@ export default function Home() {
               className="inline-flex items-center gap-2 px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition-all shadow-md hover:shadow-lg text-sm sm:text-base"
             >
               <BookOpen size={18} />
-              <span>View All 30 Survival Skills</span>
+              <span>View All 30 Survival Skill Manuals</span>
               <ArrowRight size={16} />
             </Link>
           </div>
         )}
-
-        {/* Survival Skills SEO/Authority Block */}
-        <div className="mt-16 pt-10 border-t border-gray-200 dark:border-gray-800 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-          <div className="space-y-3 bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-800">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-              High-Paying Digital Skills in Pakistan: Building Career Resilience
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              In an era dominated by rapid artificial intelligence shifts, discovering the most lucrative <strong>digital skills to learn in Pakistan</strong> is essential for remote career survival. Relying solely on entry-level generic services is no longer sustainable. Specialists in cities like Multan, Faisalabad, and Rawalpindi must specialize in technical niches—including advanced content monetization, modern search engine optimization (SEO), local cybersecurity shielding, and responsive page building.
-            </p>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              Explore global training on <a href="https://academy.hubspot.com" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold inline-flex items-center gap-0.5">HubSpot Academy <ExternalLink size={12} /></a> or <a href="https://grow.google/intl/en_pk/" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold inline-flex items-center gap-0.5">Google Career Certificates Pakistan <ExternalLink size={12} /></a>.
-            </p>
-          </div>
-
-          <div className="space-y-3 bg-white dark:bg-gray-900/60 p-6 rounded-2xl border border-gray-200/80 dark:border-gray-800">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
-              Local Compliance, Secure Payouts & Online Safety
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              Equipping yourself with technical skills must go hand-in-hand with administrative mastery. Modern Pakistani freelancers need to understand <strong>secure online withdrawal portals</strong>. Utilizing local payment methods such as SadaPay, NayaPay, and direct commercial wire transfers ensures that your freelance revenue is safely brought home at optimal conversion rates.
-            </p>
-            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              Our 30 survival skills guides are written directly for regional professionals, offering action-oriented guidance on digital safety and contract drafting.
-            </p>
-          </div>
-        </div>
       </section>
 
-      {/* GoshBuzz Android Apps Spotlight Section */}
+      {/* Webmaster Quality & Editorial Transparency Disclosures */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-gradient-to-r from-gray-900 via-gray-900 to-amber-950 text-white rounded-3xl p-6 sm:p-10 border border-amber-500/30 shadow-xl relative overflow-hidden">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left max-w-2xl">
-              <img
-                src={goshbuzzApps[0].icon}
-                alt="EMF Sentinel App Icon"
-                className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border-2 border-amber-500/40 shadow-lg object-cover flex-shrink-0"
-              />
-              <div className="space-y-2.5">
-                <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold uppercase tracking-wider">
-                  <Smartphone className="w-3.5 h-3.5" />
-                  Featured Mobile App
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                  EMF Sentinel: EMF Scan & Metal Detector
-                </h2>
-                <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                  Turn your Android smartphone into a high-precision electromagnetic field radiation scanner and metal detector using hardware magnetometer sensors. 100% offline & privacy-safe.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center sm:justify-start pt-1">
-                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-gray-200">
-                    ★ 4.9 Rating
-                  </span>
-                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-white/10 text-gray-200">
-                    10,000+ Downloads
-                  </span>
-                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                    100% Free on Google Play
-                  </span>
-                </div>
-              </div>
+        <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl p-6 sm:p-10 shadow-sm">
+          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-100 dark:border-gray-800">
+            <div className="p-3 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
+              <ShieldCheck className="w-6 h-6" />
             </div>
+            <div>
+              <h3 className="text-xl font-extrabold text-gray-900 dark:text-white">
+                GoshBuzz Editorial & Webmaster Quality Standards
+              </h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400">
+                Transparent publishing policies for readers, web crawlers, and publisher verification.
+              </p>
+            </div>
+          </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-3.5 flex-shrink-0 w-full sm:w-auto">
-              <a
-                href="https://play.google.com/store/apps/details?id=com.goshbuzz.emfsentinel"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold rounded-xl transition-all shadow-md text-sm text-center"
-              >
-                <Download className="w-4 h-4" />
-                <span>Get on Google Play</span>
-                <ExternalLink className="w-3.5 h-3.5 opacity-75" />
-              </a>
-              <Link
-                to="/apps/emf-sentinel"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold rounded-xl transition-colors border border-gray-700 text-sm text-center"
-              >
-                <span>View App Details</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            <div className="space-y-2">
+              <h4 className="font-bold text-gray-900 dark:text-white text-base">Original Research & Content</h4>
+              <p>
+                All published guides are written by experienced digital creators, thoroughly researched, and updated continuously to prevent thin or repetitive material.
+              </p>
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-bold text-gray-900 dark:text-white text-base">Privacy-Safe Software</h4>
+              <p>
+                GoshBuzz mobile applications execute 100% locally on Android devices without background telemetry, tracking cookies, or unauthorized data harvesting.
+              </p>
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-bold text-gray-900 dark:text-white text-base">Publisher Compliance</h4>
+              <p>
+                Fully compliant with Google Webmaster Quality Guidelines, IAB Authorized Digital Sellers (<code className="text-amber-600 dark:text-amber-400 font-mono font-bold">/app-ads.txt</code>), and transparent user accessibility.
+              </p>
             </div>
           </div>
         </div>
