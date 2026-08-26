@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
   Radio, 
@@ -20,11 +20,7 @@ import {
   Info, 
   Sparkles,
   Share2,
-  ArrowLeft,
-  Copy,
-  Check,
-  FileCode,
-  ShieldAlert
+  ArrowLeft
 } from 'lucide-react';
 import { goshbuzzApps } from '../data/appsData';
 import goshbuzzLogo from '../assets/images/goshbuzz_logo_1783631495534.jpg';
@@ -34,7 +30,6 @@ export default function AppDetail() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [simulatedValue, setSimulatedValue] = useState<number>(48);
   const [copiedLink, setCopiedLink] = useState(false);
-  const [copiedAdsTxt, setCopiedAdsTxt] = useState(false);
 
   // Find app by slug or packageId or id
   const app = goshbuzzApps.find(
@@ -50,14 +45,6 @@ export default function AppDetail() {
       navigator.clipboard.writeText(window.location.href);
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2500);
-    }
-  };
-
-  const handleCopyAdsTxt = () => {
-    if (navigator.clipboard && app.adMob?.appAdsEntry) {
-      navigator.clipboard.writeText(app.adMob.appAdsEntry);
-      setCopiedAdsTxt(true);
-      setTimeout(() => setCopiedAdsTxt(false), 2500);
     }
   };
 

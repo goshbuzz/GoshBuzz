@@ -12,7 +12,8 @@ export default function About() {
       "name": "GoshBuzz Pakistan",
       "founder": {
         "@type": "Person",
-        "name": "Saulat Nadeem"
+        "name": "Saulat Nadeem",
+        "jobTitle": "Computer Scientist"
       },
       "url": "https://goshbuzz.com",
       "logo": "https://goshbuzz.com/goshbuzz_logo.jpg",

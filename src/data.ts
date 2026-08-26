@@ -361,366 +361,366 @@ export const products = [
       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400",
   },
 
-  // 30 Survival Skills
+  // 30 High-Value Skills
   {
     id: "skill-1",
-    slug: "ai-prompt-engineering",
-    category: "Tech & AI",
-    title: "AI Prompt Engineering",
+    slug: "sales-skill-mastery",
+    category: "Sales & Marketing",
+    title: "Sales Skill Mastery",
     description:
-      "Mastering ChatGPT and Claude to automate your daily digital tasks and increase productivity 10x.",
+      "With US Client Acquisition Strategy — The #1 skill that multiplies your earnings 10–40x.",
     type: "skill",
-    icon: "🧠",
+    icon: "🎯",
     image:
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=400",
   },
   {
     id: "skill-2",
-    slug: "cybersecurity-basics",
-    category: "Security",
-    title: "Cybersecurity Basics",
-    description:
-      "Learn how to secure your accounts, avoid phishing scams, and protect your digital assets.",
-    type: "skill",
-    icon: "🔒",
-    image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-3",
-    slug: "remote-async-work",
+    slug: "communication-skill-mastery",
     category: "Communication",
-    title: "Remote Async Work",
+    title: "Communication Skill Mastery",
     description:
-      "Master the art of working asynchronously with global teams across different time zones.",
-    type: "skill",
-    icon: "🌍",
-    image:
-      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-4",
-    slug: "financial-diversification",
-    category: "Business",
-    title: "Financial Diversification",
-    description:
-      "Strategies for hedging against inflation and diversifying income streams in unpredictable economies.",
-    type: "skill",
-    icon: "💰",
-    image:
-      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-5",
-    slug: "freelance-tax-filing",
-    category: "Business",
-    title: "Freelance Tax Filing",
-    description:
-      "Step-by-step guide on how to register as a freelancer and file taxes legally in Pakistan.",
-    type: "skill",
-    icon: "📄",
-    image:
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-6",
-    slug: "client-negotiation",
-    category: "Business",
-    title: "Client Negotiation",
-    description:
-      "Learn psychological triggers and frameworks to negotiate higher rates with international clients.",
-    type: "skill",
-    icon: "🤝",
-    image:
-      "https://images.unsplash.com/photo-1521791136368-1a9b79741631?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-7",
-    slug: "deep-work-mastery",
-    category: "Productivity",
-    title: "Deep Work Mastery",
-    description:
-      "Techniques to eliminate distractions and achieve 4 hours of highly productive deep work daily.",
-    type: "skill",
-    icon: "⏳",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-8",
-    slug: "cloud-infrastructure-basics",
-    category: "Essential",
-    title: "Cloud Infrastructure Basics",
-    description:
-      "Understand the fundamentals of AWS, GCP, and Azure to stay relevant in tech conversations.",
-    type: "skill",
-    icon: "☁️",
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-9",
-    slug: "data-privacy-protection",
-    category: "Security",
-    title: "Data Privacy Protection",
-    description:
-      "Learn how to maintain your anonymity online and protect your personal data from brokers.",
-    type: "skill",
-    icon: "🛡️",
-    image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-10",
-    slug: "basic-it-troubleshooting",
-    category: "Essential",
-    title: "Basic IT Troubleshooting",
-    description:
-      "Fix 90% of your computer and network issues without needing to call for support.",
-    type: "skill",
-    icon: "🔧",
-    image:
-      "https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-11",
-    slug: "mental-resilience",
-    category: "Essential",
-    title: "Mental Resilience",
-    description:
-      "Frameworks to manage stress, avoid burnout, and stay focused during economic uncertainty.",
-    type: "skill",
-    icon: "🧘",
-    image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-12",
-    slug: "english-accent-neutralization",
-    category: "Essential",
-    title: "English Accent Neutralization",
-    description:
-      "Exercises to neutralize your accent for clearer communication with US and UK clients.",
+      "The skill behind 85% of career success. 6 pillars, BLUF method, and US client communication.",
     type: "skill",
     icon: "🗣️",
     image:
-      "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
   },
   {
-    id: "skill-13",
-    slug: "crypto-wallet-security",
-    category: "Security",
-    title: "Crypto Wallet Security",
-    description:
-      "How to safely store, transfer, and manage your cryptocurrency without getting hacked.",
-    type: "skill",
-    icon: "🔐",
-    image:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-14",
-    slug: "personal-branding",
-    category: "Essential",
-    title: "Personal Branding",
-    description:
-      "Build a LinkedIn presence that attracts inbound leads and job offers automatically.",
-    type: "skill",
-    icon: "🌟",
-    image:
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-15",
-    slug: "cross-cultural-communication",
-    category: "Communication",
-    title: "Cross-Cultural Communication",
-    description:
-      "Learn the cultural nuances of working with American, European, and Middle Eastern clients.",
-    type: "skill",
-    icon: "🗺️",
-    image:
-      "https://images.unsplash.com/photo-1521791136368-1a9b79741631?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-16",
-    slug: "digital-decluttering",
+    id: "skill-3",
+    slug: "self-discipline-mastery",
     category: "Productivity",
-    title: "Digital Decluttering",
+    title: "Self-Discipline Mastery",
     description:
-      "Organize your files, emails, and workspace to reduce anxiety and improve efficiency.",
+      "Consistency beats motivation every single time. Complete 90-day challenge and habits blueprint.",
     type: "skill",
-    icon: "📂",
+    icon: "🔥",
     image:
-      "https://images.unsplash.com/photo-1494438639946-1ebd1d2038b5?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=400",
   },
   {
-    id: "skill-17",
-    slug: "video-conferencing-polish",
-    category: "Communication",
-    title: "Video Conferencing Polish",
+    id: "skill-4",
+    slug: "ai-fundamentals-mastery",
+    category: "Tech & AI",
+    title: "AI Fundamentals Mastery",
     description:
-      "Look and sound professional on Zoom: lighting, audio, framing, and presentation skills.",
+      "AI won't replace you — but someone using AI will. Master LLMs, prompt formulas & automation.",
     type: "skill",
-    icon: "📹",
+    icon: "🤖",
     image:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=400",
   },
   {
-    id: "skill-18",
-    slug: "touch-typing-shortcuts",
-    category: "Productivity",
-    title: "Touch Typing & Shortcuts",
+    id: "skill-5",
+    slug: "crm-automation-mastery",
+    category: "Tech & AI",
+    title: "CRM Automation Mastery",
     description:
-      "Double your working speed by mastering touch typing and essential keyboard shortcuts.",
+      "Automate repetitive work and scale without hiring using HubSpot, Make.com, n8n and Zapier.",
     type: "skill",
-    icon: "⌨️",
-    image:
-      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-19",
-    slug: "scam-identification",
-    category: "Security",
-    title: "Scam Identification",
-    description:
-      "Identify fake job offers, Ponzi schemes, and online scams targeting freelancers.",
-    type: "skill",
-    icon: "🚫",
-    image:
-      "https://images.unsplash.com/photo-1563986768494-0d2b44f2f2ca?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-20",
-    slug: "emergency-preparedness",
-    category: "Essential",
-    title: "Emergency Preparedness",
-    description:
-      "Basic offline survival skills: first aid, power backup planning, and offline communication.",
-    type: "skill",
-    icon: "🚑",
-    image:
-      "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-21",
-    slug: "conflict-resolution",
-    category: "Communication",
-    title: "Conflict Resolution",
-    description:
-      "How to handle difficult clients, scope creep, and payment disputes professionally.",
-    type: "skill",
-    icon: "⚖️",
-    image:
-      "https://images.unsplash.com/photo-1573497019236-17f8177b81e8?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-22",
-    slug: "rapid-learning-framework",
-    category: "Productivity",
-    title: "Rapid Learning Framework",
-    description:
-      "The Feynman technique and other methods to learn new software or skills in under 48 hours.",
-    type: "skill",
-    icon: "📖",
-    image:
-      "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-23",
-    slug: "data-analysis-basics",
-    category: "Essential",
-    title: "Data Analysis Basics",
-    description:
-      "Master Excel and Google Sheets functions to analyze data and make informed decisions.",
-    type: "skill",
-    icon: "📊",
+    icon: "⚙️",
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400",
   },
   {
-    id: "skill-24",
-    slug: "e-commerce-fraud-prevention",
-    category: "Security",
-    title: "E-commerce Fraud Prevention",
-    description:
-      "How to protect your dropshipping or local e-commerce store from fraudulent orders.",
-    type: "skill",
-    icon: "🛑",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1d704d3?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-25",
-    slug: "sales-psychology",
+    id: "skill-6",
+    slug: "quickbooks-financial-control",
     category: "Business",
-    title: "Sales Psychology",
+    title: "QuickBooks Financial Control",
     description:
-      "Understand human behavior to write better copy, pitch effectively, and close more deals.",
+      "Financial control = business control. Complete 30-day ProAdvisor bookkeeping roadmap.",
     type: "skill",
-    icon: "🧠",
+    icon: "📊",
     image:
-      "https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80&w=400",
+      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400",
   },
   {
-    id: "skill-26",
-    slug: "basic-graphic-design",
-    category: "Essential",
-    title: "Basic Graphic Design",
+    id: "skill-7",
+    slug: "excel-and-dashboards-mastery",
+    category: "Data & Analytics",
+    title: "Excel & Dashboards Mastery",
     description:
-      "Design principles for non-designers: color theory, typography, and visual hierarchy.",
+      "Data mastery = high income. Power Query, dynamic dashboards, formulas and VBA automation.",
+    type: "skill",
+    icon: "📈",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-8",
+    slug: "data-analysis-mastery",
+    category: "Data & Analytics",
+    title: "Data Analysis Mastery",
+    description:
+      "The $100K+ skill of 2025: SQL, Python (Pandas/NumPy), Tableau, Power BI and Statistics.",
+    type: "skill",
+    icon: "📉",
+    image:
+      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-9",
+    slug: "chatbot-voice-bot-development",
+    category: "Tech & AI",
+    title: "Chatbot & Voice Bot Development",
+    description:
+      "Automate customer service and build AI chat and voice bot systems with ManyChat & Dialogflow.",
+    type: "skill",
+    icon: "💬",
+    image:
+      "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-10",
+    slug: "ai-powered-development",
+    category: "Tech & AI",
+    title: "AI-Powered Development",
+    description:
+      "Build full-stack web applications 10x faster using Cursor AI, v0.dev, Bolt.new and Vercel.",
+    type: "skill",
+    icon: "🚀",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-11",
+    slug: "copywriting-mastery",
+    category: "Sales & Marketing",
+    title: "Copywriting Mastery",
+    description:
+      "Words that make people take action = money. Master AIDA, PAS, email sequences & landing pages.",
+    type: "skill",
+    icon: "✍️",
+    image:
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-12",
+    slug: "video-editing-mastery",
+    category: "Design & Media",
+    title: "Video Editing Mastery",
+    description:
+      "Content is king, editors are kingmakers. DaVinci Resolve, CapCut, Premiere Pro & color grading.",
+    type: "skill",
+    icon: "🎬",
+    image:
+      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-13",
+    slug: "seo-keyword-research",
+    category: "Marketing",
+    title: "SEO & Keyword Research",
+    description:
+      "Free traffic forever once you rank. Master E-E-A-T, on-page SEO, backlinks and technical audits.",
+    type: "skill",
+    icon: "🔍",
+    image:
+      "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-14",
+    slug: "graphic-design-mastery",
+    category: "Design & Media",
+    title: "Graphic Design & Visuals",
+    description:
+      "Visual communication in the attention economy. Master Canva Pro, Figma, Illustrator and color theory.",
     type: "skill",
     icon: "🎨",
     image:
       "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=400",
   },
   {
-    id: "skill-27",
-    slug: "managing-multiple-incomes",
-    category: "Productivity",
-    title: "Managing Multiple Incomes",
+    id: "skill-15",
+    slug: "public-speaking-on-camera-confidence",
+    category: "Communication",
+    title: "Public Speaking & On-Camera",
     description:
-      "How to balance a day job, a freelance side hustle, and passive investments simultaneously.",
+      "Your voice is your brand. Master speech structure, vocal delivery, and on-camera confidence.",
     type: "skill",
-    icon: "⚖️",
+    icon: "🎤",
+    image:
+      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-16",
+    slug: "negotiation-tactics",
+    category: "Business",
+    title: "Negotiation Tactics",
+    description:
+      "Increase your income 20–50% by asking better. Master tactical empathy, mirroring & anchoring.",
+    type: "skill",
+    icon: "🤝",
+    image:
+      "https://images.unsplash.com/photo-1521791136368-1a9b79741631?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-17",
+    slug: "email-marketing-mastery",
+    category: "Marketing",
+    title: "Email Marketing Mastery",
+    description:
+      "$42 return for every $1 spent. Master lead magnets, drip campaigns, segmentation and Klaviyo.",
+    type: "skill",
+    icon: "📧",
+    image:
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-18",
+    slug: "social-media-advertising",
+    category: "Marketing",
+    title: "Social Media Advertising",
+    description:
+      "Control attention = control money. Master Meta Ads, TikTok Ads, Google Ads and ROAS scaling.",
+    type: "skill",
+    icon: "📱",
+    image:
+      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-19",
+    slug: "content-strategy-mastery",
+    category: "Marketing",
+    title: "Content Strategy Mastery",
+    description:
+      "Consistency beats perfection, strategy beats consistency. Audience avatars, calendars & repurposing.",
+    type: "skill",
+    icon: "📋",
+    image:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-20",
+    slug: "project-management-mastery",
+    category: "Business",
+    title: "Project Management Mastery",
+    description:
+      "Scale yourself by organizing chaos. Master Asana, Monday.com, Agile Scrum and Google PM.",
+    type: "skill",
+    icon: "📊",
+    image:
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-21",
+    slug: "financial-literacy-freelancers",
+    category: "Business",
+    title: "Financial Literacy for Freelancers",
+    description:
+      "Earn money → keep money → grow money. Budgeting, investments, tax saving & retirement in Pakistan.",
+    type: "skill",
+    icon: "💵",
+    image:
+      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-22",
+    slug: "linkedin-networking-masterclass",
+    category: "Communication",
+    title: "LinkedIn Networking Masterclass",
+    description:
+      "Your network is your net worth. Profile optimization, high-converting DMs, and remote job attraction.",
+    type: "skill",
+    icon: "🔗",
+    image:
+      "https://images.unsplash.com/photo-1611944212129-29977ae1398c?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-23",
+    slug: "cold-outreach-mastery",
+    category: "Sales & Marketing",
+    title: "Cold Outreach Mastery",
+    description:
+      "Land international USD clients directly. Lead list building, cold email templates, and follow-ups.",
+    type: "skill",
+    icon: "📬",
+    image:
+      "https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-24",
+    slug: "prompt-engineering-mastery",
+    category: "Tech & AI",
+    title: "Prompt Engineering Mastery",
+    description:
+      "10X your AI output quality. 7 proven prompting frameworks, custom GPT building, and AI agents.",
+    type: "skill",
+    icon: "🧠",
+    image:
+      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-25",
+    slug: "web-scraping-mastery",
+    category: "Tech & AI",
+    title: "Web Scraping Mastery",
+    description:
+      "Extract valuable data from anywhere. Python Beautiful Soup, Selenium, Scrapy, and data pipelines.",
+    type: "skill",
+    icon: "🕷️",
+    image:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-26",
+    slug: "api-integration-mastery",
+    category: "Tech & AI",
+    title: "API Integration Mastery",
+    description:
+      "Connect apps and unlock $5K–25K/month workflows. REST APIs, Postman, OAuth 2.0, Stripe & Twilio.",
+    type: "skill",
+    icon: "🔌",
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-27",
+    slug: "ui-ux-design-principles",
+    category: "Design & Media",
+    title: "UI/UX Design Principles",
+    description:
+      "Good design = more conversions and sales. Hierarchy, color theory, wireframing, and Figma mastery.",
+    type: "skill",
+    icon: "🎨",
+    image:
+      "https://images.unsplash.com/photo-1581291518655-9523c932edcf?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-28",
+    slug: "personal-branding-mastery",
+    category: "Marketing",
+    title: "Personal Branding Mastery",
+    description:
+      "People buy from people they know, like, and trust. Build authority, content systems, and inbound leads.",
+    type: "skill",
+    icon: "🌟",
+    image:
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400",
+  },
+  {
+    id: "skill-29",
+    slug: "time-management-mastery",
+    category: "Productivity",
+    title: "Time Management Mastery",
+    description:
+      "Do more in less time, stress-free. Time audits, time blocking, Eisenhower Matrix, and Deep Work.",
+    type: "skill",
+    icon: "⏰",
     image:
       "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&q=80&w=400",
   },
   {
-    id: "skill-28",
-    slug: "ai-automation-with-zapier",
-    category: "Tech & AI",
-    title: "AI Automation with Zapier",
-    description:
-      "Connect different apps to automate your workflows and save 10+ hours a week.",
-    type: "skill",
-    icon: "⚙️",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-29",
-    slug: "virtual-assistant-management",
+    id: "skill-30",
+    slug: "leadership-and-delegation-mastery",
     category: "Business",
-    title: "Virtual Assistant Management",
+    title: "Leadership & Delegation",
     description:
-      "How to hire, train, and delegate tasks to your own virtual assistants.",
+      "Scale beyond yourself. Leadership styles, 5-level delegation framework, hiring VAs, and SOPs.",
     type: "skill",
-    icon: "👥",
+    icon: "👑",
     image:
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: "skill-30",
-    slug: "pitch-deck-creation",
-    category: "Business",
-    title: "Pitch Deck Creation",
-    description:
-      "Structure and design compelling pitch decks to secure clients or investments.",
-    type: "skill",
-    icon: "📑",
-    image:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=400",
   },
 ];
 

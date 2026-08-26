@@ -83,6 +83,7 @@ export default function Product() {
     "author": {
       "@type": "Person",
       "name": "Solat Nadeem",
+      "jobTitle": "Computer Scientist",
       "url": "https://goshbuzz.com/about"
     },
     "publisher": {
@@ -141,7 +142,7 @@ export default function Product() {
         <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
         <meta name="keywords" content={combinedKeywordsList} />
-        <meta name="author" content="Solat Nadeem, GoshBuzz Pakistan" />
+        <meta name="author" content="Solat Nadeem, Computer Scientist • GoshBuzz Pakistan" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta name="geo.region" content="PK" />
         <meta name="geo.placename" content="Pakistan" />
@@ -430,14 +431,17 @@ export default function Product() {
                     SN
                   </div>
                   <div>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 flex-wrap">
                       <span className="font-extrabold text-sm text-gray-900 dark:text-gray-100">Solat Nadeem</span>
+                      <span className="px-2 py-0.5 bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 text-[10px] font-bold rounded-full border border-amber-200 dark:border-amber-900">
+                        Computer Scientist
+                      </span>
                       <span className="px-2 py-0.5 bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400 text-[10px] font-bold rounded-full border border-green-200 dark:border-green-900">
                         Verified Author
                       </span>
                     </div>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
-                      Senior Technology Publisher & Software Engineer • GoshBuzz Editorial Board
+                      Computer Scientist & Senior Technology Publisher • GoshBuzz Editorial Board
                     </p>
                   </div>
                 </div>
@@ -558,7 +562,7 @@ export default function Product() {
                   Comprehensive Strategic Guide: {product.title} in the Modern Digital Economy
                 </h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  By <strong>Solat Nadeem</strong> • Published for GoshBuzz Readers & Digital Entrepreneurs
+                  By <strong>Solat Nadeem</strong> (Computer Scientist) • Published for GoshBuzz Readers & Digital Entrepreneurs
                 </p>
               </div>
 
@@ -640,6 +644,75 @@ export default function Product() {
                     </p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Product Sales Banner (Full Downloadable Package Offer) */}
+            <div className="p-8 bg-gradient-to-r from-amber-500 to-amber-600 rounded-3xl text-white shadow-xl space-y-6">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="space-y-2 max-w-xl text-left">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
+                    <Sparkles size={13} /> Complete Digital Product Package
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-black leading-tight text-white">
+                    Unlock the Full {product.title} Masterclass & Blueprint
+                  </h3>
+                  <p className="text-amber-100 text-sm leading-relaxed">
+                    Get the complete downloadable PDF manual, editable action spreadsheets, Pakistani payment setup guides, and instant WhatsApp/Email access.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto shrink-0">
+                  <button
+                    onClick={() => {
+                      if (!alreadyInCart) {
+                        addToCart({
+                          id: product.id,
+                          title: product.title,
+                          price: price,
+                          type: product.type,
+                          category: product.category,
+                          image: product.image,
+                          slug: product.slug,
+                        });
+                      }
+                      navigate("/checkout");
+                    }}
+                    className="px-6 py-3.5 bg-white text-amber-600 hover:bg-amber-50 rounded-xl font-black text-sm tracking-wide shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <ShoppingCart size={18} /> Buy Complete Package (Rs. {price})
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (!alreadyInCart) {
+                        addToCart({
+                          id: product.id,
+                          title: product.title,
+                          price: price,
+                          type: product.type,
+                          category: product.category,
+                          image: product.image,
+                          slug: product.slug,
+                        });
+                      }
+                    }}
+                    className="px-6 py-3.5 bg-amber-700/60 hover:bg-amber-700/80 text-white border border-white/30 rounded-xl font-bold text-sm tracking-wide transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    {alreadyInCart ? (
+                      <>
+                        <CheckCircle2 size={18} className="text-green-300" /> In Your Cart
+                      </>
+                    ) : (
+                      <>
+                        <ShoppingCart size={18} /> Add to Cart
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+              <div className="pt-4 border-t border-white/20 flex flex-wrap items-center justify-between text-xs text-amber-100 gap-4">
+                <span className="flex items-center gap-1.5 font-medium"><Check size={14} className="text-white" /> 100% Verified Manual</span>
+                <span className="flex items-center gap-1.5 font-medium"><Check size={14} className="text-white" /> Instant PDF & WhatsApp Delivery</span>
+                <span className="flex items-center gap-1.5 font-medium"><Check size={14} className="text-white" /> JazzCash / EasyPaisa / Bank Wire</span>
               </div>
             </div>
 
