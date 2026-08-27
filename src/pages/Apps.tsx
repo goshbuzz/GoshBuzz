@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { 
@@ -8,22 +8,13 @@ import {
   ShieldCheck, 
   Smartphone, 
   CheckCircle2, 
-  ChevronRight, 
-  Info, 
   Sparkles,
-  Share2,
-  Copy,
-  Check,
-  FileCode,
   Layers,
   ArrowRight
 } from 'lucide-react';
 import { goshbuzzApps } from '../data/appsData';
-import goshbuzzLogo from '../assets/images/goshbuzz_logo_1783631495534.jpg';
 
 export default function Apps() {
-  const [copiedLink, setCopiedLink] = useState(false);
-  const [copiedAdsTxt, setCopiedAdsTxt] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
   const categories = ['All', 'Tools & Utilities', 'Sensors & Diagnostics'];
@@ -31,22 +22,6 @@ export default function Apps() {
   const filteredApps = selectedCategory === 'All'
     ? goshbuzzApps
     : goshbuzzApps.filter(app => app.category.toLowerCase().includes(selectedCategory.toLowerCase()));
-
-  const handleShare = (url: string) => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(url);
-      setCopiedLink(true);
-      setTimeout(() => setCopiedLink(false), 2500);
-    }
-  };
-
-  const handleCopyAdsTxt = () => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText("google.com, pub-4067724379997931, DIRECT, f08c47fec0942fa0");
-      setCopiedAdsTxt(true);
-      setTimeout(() => setCopiedAdsTxt(false), 2500);
-    }
-  };
 
   // Structured Data Schema for SEO, AEO, and GEO
   const directorySchema = {

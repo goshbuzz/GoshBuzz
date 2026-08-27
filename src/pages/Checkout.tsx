@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { 
   Trash2, 
@@ -9,30 +9,24 @@ import {
   Check, 
   ArrowLeft, 
   CreditCard, 
-  Send, 
   MessageSquare, 
   Sparkles,
-  ShieldCheck,
-  CheckCircle2
+  ShieldCheck
 } from "lucide-react";
-import { useCart, CartItem } from "../CartContext";
+import { useCart } from "../CartContext";
 import { useLanguage } from "../LanguageContext";
 import { products } from "../data";
 
 export default function Checkout() {
   const { cart, removeFromCart, addToCart, cartTotal, clearCart } = useCart();
-  const { language, t } = useLanguage();
-  const navigate = useNavigate();
+  const { t } = useLanguage();
 
-  const [copiedText, setCopiedText] = useState<string | null>(null);
   const [copiedType, setCopiedType] = useState<"easypaisa" | "jazzcash" | null>(null);
 
   const handleCopy = (text: string, type: "easypaisa" | "jazzcash") => {
     navigator.clipboard.writeText(text);
-    setCopiedText(text);
     setCopiedType(type);
     setTimeout(() => {
-      setCopiedText(null);
       setCopiedType(null);
     }, 2000);
   };

@@ -1,6 +1,5 @@
 import emfIcon from '../assets/images/regenerated_image_1787513847291.png';
 import emfBanner from '../assets/images/emf_sentinel_banner_1787513383000.jpg';
-import goshbuzzLogo from '../assets/images/goshbuzz_logo_1783631495534.jpg';
 
 export interface AppDetail {
   id: string;

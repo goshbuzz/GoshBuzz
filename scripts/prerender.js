@@ -132,4 +132,8 @@ ${xmlEntries}
   console.log(`✅ Successfully pre-rendered ${count}/${allRoutes.length} pages to dist/client/!`);
 }
 
-prerender();
+export { prerender };
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  prerender();
+}

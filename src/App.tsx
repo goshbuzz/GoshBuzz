@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } from "react-router-dom";
 import { HashLink } from "./components/HashLink";
 import { HelmetProvider } from "react-helmet-async";
-import { Globe, Moon, Sun, MessageCircle, Menu, X } from "lucide-react";
+import { Globe, Moon, Sun, Menu, X } from "lucide-react";
 import Home from "./pages/Home";
 import goshbuzzLogo from "./assets/images/goshbuzz_logo_1783631495534.jpg";
 import Product from "./pages/Product";

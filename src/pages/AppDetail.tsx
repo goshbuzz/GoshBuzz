@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
@@ -11,8 +11,6 @@ import {
   Download, 
   ExternalLink, 
   Star, 
-  ShieldCheck, 
-  Smartphone, 
   CheckCircle2, 
   ChevronDown, 
   ChevronUp, 
@@ -23,7 +21,6 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import { goshbuzzApps } from '../data/appsData';
-import goshbuzzLogo from '../assets/images/goshbuzz_logo_1783631495534.jpg';
 
 export default function AppDetail() {
   const { slug } = useParams<{ slug: string }>();

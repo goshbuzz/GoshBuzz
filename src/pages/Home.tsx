@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
-  CheckCircle2,
   ShieldCheck,
-  Zap,
   Search,
   Sparkles,
   ExternalLink,
@@ -14,18 +12,12 @@ import {
   Smartphone,
   Download,
   Award,
-  FileText,
-  Star,
-  Users,
-  Check,
   Flame,
-  TrendingUp,
-  Layers,
-  Activity,
 } from "lucide-react";
 import { products } from "../data";
 import { goshbuzzApps } from "../data/appsData";
 import { FAQ } from "../components/FAQ";
+import { HeroSlideshow } from "../components/HeroSlideshow";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -157,76 +149,86 @@ export default function Home() {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-amber-50/70 via-white to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 pt-16 pb-20 md:pt-24 md:pb-28 border-b border-gray-200 dark:border-gray-800">
+      <section className="relative overflow-hidden bg-gradient-to-b from-amber-50/70 via-white to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 pt-12 pb-16 md:pt-16 md:pb-20 border-b border-gray-200 dark:border-gray-800">
         <div className="absolute inset-0 pointer-events-none opacity-30 dark:opacity-20">
           <div className="absolute -top-40 -left-40 w-96 h-96 bg-amber-400 rounded-full blur-3xl"></div>
           <div className="absolute top-60 -right-40 w-96 h-96 bg-indigo-500 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="max-w-4xl mx-auto space-y-6">
-            
-            {/* Header Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100/90 dark:bg-amber-900/40 border border-amber-300/60 dark:border-amber-700/50 text-amber-900 dark:text-amber-300 text-xs sm:text-sm font-bold shadow-2xs">
-              <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-              <span>Verified Digital Knowledge Hub & Mobile Software Publisher</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Copy on the left, live slideshow on the right */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            <div className="lg:col-span-6 xl:col-span-7 text-center lg:text-left space-y-6">
+
+              {/* Header Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100/90 dark:bg-amber-900/40 border border-amber-300/60 dark:border-amber-700/50 text-amber-900 dark:text-amber-300 text-xs sm:text-sm font-bold shadow-2xs">
+                <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                <span>Verified Digital Knowledge Hub & Mobile Software Publisher</span>
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-extrabold tracking-tight text-gray-950 dark:text-white leading-[1.12]">
+                Actionable Digital Knowledge &{" "}
+                <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 bg-clip-text text-transparent">
+                  High-Precision Mobile Utilities
+                </span>
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                Empowering digital entrepreneurs, freelancers, and mobile users with <strong>60+ in-depth masterclass guides</strong> and <strong>privacy-first Android mobile applications</strong>. Zero-fluff, original content engineered for long-term value.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-3.5 pt-1">
+                <a
+                  href="#featured-articles"
+                  className="w-full sm:w-auto px-7 py-3.5 bg-amber-500 hover:bg-amber-600 text-gray-950 font-extrabold rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-base"
+                >
+                  <BookOpen size={18} />
+                  <span>Explore Featured Articles</span>
+                  <ArrowRight size={18} />
+                </a>
+                <Link
+                  to="/apps"
+                  className="w-full sm:w-auto px-7 py-3.5 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-xl transition-all border border-gray-300 dark:border-gray-700 shadow-xs flex items-center justify-center gap-2 text-base"
+                >
+                  <Smartphone size={18} className="text-amber-500" />
+                  <span>Browse Android Apps</span>
+                  <ArrowRight size={18} />
+                </Link>
+              </div>
+
+              {/* Quick Metrics & Authority Stats Bar */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4">
+                <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
+                  <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">60+</div>
+                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">Published Guides</div>
+                </div>
+                <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
+                  <div className="text-2xl sm:text-3xl font-extrabold text-emerald-500">10,000+</div>
+                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">App Downloads</div>
+                </div>
+                <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
+                  <div className="text-2xl sm:text-3xl font-extrabold text-indigo-500">100%</div>
+                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">Open Knowledge</div>
+                </div>
+                <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
+                  <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">4.9 ★</div>
+                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">User Satisfaction</div>
+                </div>
+              </div>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-950 dark:text-white leading-[1.15]">
-              Actionable Digital Knowledge & <br />
-              <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 bg-clip-text text-transparent">
-                High-Precision Mobile Utilities
-              </span>
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-base sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-normal">
-              Empowering digital entrepreneurs, freelancers, and mobile users with <strong>60+ in-depth masterclass guides</strong> and <strong>privacy-first Android mobile applications</strong>. Zero-fluff, original content engineered for long-term value.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
-              <a
-                href="#featured-articles"
-                className="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-600 text-gray-950 font-extrabold rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-base"
-              >
-                <BookOpen size={18} />
-                <span>Explore Featured Articles</span>
-                <ArrowRight size={18} />
-              </a>
-              <Link
-                to="/apps"
-                className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-xl transition-all border border-gray-300 dark:border-gray-700 shadow-xs flex items-center justify-center gap-2 text-base"
-              >
-                <Smartphone size={18} className="text-amber-500" />
-                <span>Browse Android Apps</span>
-                <ArrowRight size={18} />
-              </Link>
+            {/* Featured Slideshow */}
+            <div className="lg:col-span-6 xl:col-span-5">
+              <HeroSlideshow />
             </div>
+          </div>
 
-            {/* Quick Metrics & Authority Stats Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto pt-8">
-              <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
-                <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">60+</div>
-                <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">Published Guides</div>
-              </div>
-              <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
-                <div className="text-2xl sm:text-3xl font-extrabold text-emerald-500">10,000+</div>
-                <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">App Downloads</div>
-              </div>
-              <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
-                <div className="text-2xl sm:text-3xl font-extrabold text-indigo-500">100%</div>
-                <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">Open Knowledge</div>
-              </div>
-              <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
-                <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">4.9 ★</div>
-                <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">User Satisfaction</div>
-              </div>
-            </div>
-
+          <div className="text-center">
             {/* Interactive Search Box */}
-            <div className="mt-8 pt-4 max-w-3xl mx-auto">
+            <div className="mt-14 max-w-3xl mx-auto">
               <div className="relative">
                 <Search
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"

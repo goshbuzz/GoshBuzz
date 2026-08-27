@@ -1,14 +1,14 @@
 {
-  "name": "applet",
+  "name": "goshbuzz",
   "version": "1.0.0",
-  "description": "",
-  "main": "goshbuzz.js",
+  "description": "GoshBuzz - Pakistan's Digital Knowledge Hub & High-Precision Mobile Utilities",
+  "main": "server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx server.ts",
-    "build": "rm -rf dist && vite build --outDir dist/client && vite build --ssr src/entry-server.tsx --outDir dist/server && esbuild server.ts --bundle --platform=node --format=esm --packages=external --outfile=dist/server.js && node scripts/prerender.js",
+    "build": "node scripts/build.js",
     "start": "node dist/server.js",
-    "lint": "echo 'Success'"
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",

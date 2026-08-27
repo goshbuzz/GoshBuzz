@@ -1,4 +1,4 @@
-import { Mail, MessageSquare, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 export default function Contact() {

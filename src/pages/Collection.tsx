@@ -1,6 +1,5 @@
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { motion } from "motion/react";
 import { products } from "../data";
 import { Search } from "lucide-react";
 import { useState } from "react";
