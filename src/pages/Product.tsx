@@ -52,7 +52,7 @@ export default function Product() {
     return <Navigate to={`/blogs/news/${product.slug}`} replace />;
   }
 
-  const price = product.type === "idea" ? "500" : "200";
+  const price = product.type === "idea" ? 500 : 200;
   const { addToCart, isInCart } = useCart();
   const alreadyInCart = isInCart(product.id);
   const article = articles[product.id as keyof typeof articles];
@@ -669,7 +669,7 @@ export default function Product() {
                           id: product.id,
                           title: product.title,
                           price: price,
-                          type: product.type,
+                          type: product.type as "idea" | "skill",
                           category: product.category,
                           image: product.image,
                           slug: product.slug,
@@ -688,7 +688,7 @@ export default function Product() {
                           id: product.id,
                           title: product.title,
                           price: price,
-                          type: product.type,
+                          type: product.type as "idea" | "skill",
                           category: product.category,
                           image: product.image,
                           slug: product.slug,

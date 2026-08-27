@@ -15,7 +15,7 @@ export interface ProductArticle {
   aeoSummary?: string;
   intro: string;
   capitalNeeded: string;
-  difficulty: "Beginner" | "Intermediate" | "Advanced";
+  difficulty: "Beginner" | "Intermediate" | "Advanced" | "Beginner to Intermediate" | "Intermediate to Advanced" | string;
   earningPotential: string;
   timeRequired: string;
   steps: ArticleStep[];

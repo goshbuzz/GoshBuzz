@@ -6,7 +6,9 @@ export interface CartItem {
   type: "idea" | "skill";
   price: number;
   image?: string;
-  icon: string;
+  icon?: string;
+  category?: string;
+  slug?: string;
 }
 
 interface CartContextType {
