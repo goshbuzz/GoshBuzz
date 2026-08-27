@@ -45,7 +45,15 @@ async function startServer() {
     return res.status(200).send('google.com, pub-4067724379997931, DIRECT, f08c47fec0942fa0\n');
   });
 
-  // Pre-rendered HTML route handler for all non-file requests
+  // Serve static assets in production or mount Vite middleware in development FIRST
+  if (!isProd && vite) {
+    app.use(vite.middlewares);
+  } else {
+    app.use(express.static(path.resolve(__dirname, 'dist/client'), { index: false }));
+    app.use(express.static(path.resolve(__dirname, 'public'), { index: false }));
+  }
+
+  // Pre-rendered HTML & SSR route handler for all page navigations
   app.get('*all', async (req, res, next) => {
     const rawUrl = req.originalUrl.split('?')[0];
     
@@ -89,38 +97,35 @@ async function startServer() {
     if (url === '/disclaimers') return res.redirect(301, '/disclaimer');
 
     try {
-      // Check for pre-rendered static HTML file first in dist/client/
-      let prerenderedPath: string;
-      if (url === '/') {
-        prerenderedPath = path.resolve(__dirname, 'dist/client/index.html');
-        if (!fs.existsSync(prerenderedPath)) {
-          prerenderedPath = path.resolve(__dirname, 'client/index.html');
+      if (isProd) {
+        // Check for pre-rendered static HTML file first in dist/client/
+        let prerenderedPath: string;
+        if (url === '/') {
+          prerenderedPath = path.resolve(__dirname, 'dist/client/index.html');
+        } else {
+          prerenderedPath = path.resolve(__dirname, `dist/client${url}/index.html`);
         }
-      } else {
-        prerenderedPath = path.resolve(__dirname, `dist/client${url}/index.html`);
-        if (!fs.existsSync(prerenderedPath)) {
-          prerenderedPath = path.resolve(__dirname, `client${url}/index.html`);
+
+        if (fs.existsSync(prerenderedPath)) {
+          return res.sendFile(prerenderedPath);
         }
-      }
 
-      if (fs.existsSync(prerenderedPath)) {
-        return res.sendFile(prerenderedPath);
-      }
-
-      let template: string;
-      let render: (url: string) => { html: string; head: string };
-
-      if (!isProd && vite) {
-        template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
-        template = await vite.transformIndexHtml(url, template);
-        render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
-      } else {
-        template = fs.readFileSync(path.resolve(__dirname, 'client/index.html'), 'utf-8');
+        const template = fs.readFileSync(path.resolve(__dirname, 'dist/client/index.html'), 'utf-8');
         // @ts-ignore
-        const serverEntry = await import('./server/entry-server.js');
-        render = serverEntry.render;
+        const serverEntry = await import('./dist/server/entry-server.js');
+        const { html, head } = serverEntry.render(url);
+
+        const fullHtml = template
+          .replace(`<!--head-outlet-->`, head || '')
+          .replace(`<!--ssr-outlet-->`, html || '');
+
+        return res.status(200).set({ 'Content-Type': 'text/html' }).end(fullHtml);
       }
 
+      // Development SSR rendering with live Vite transform
+      let template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
+      template = await vite.transformIndexHtml(url, template);
+      const { render } = await vite.ssrLoadModule('/src/entry-server.tsx');
       const { html, head } = render(url);
 
       const fullHtml = template
@@ -136,14 +141,6 @@ async function startServer() {
       next(e);
     }
   });
-
-  if (!isProd && vite) {
-    app.use(express.static(path.resolve(__dirname, 'dist/client'), { index: false }));
-    app.use(vite.middlewares);
-  } else {
-    app.use(express.static(path.resolve(__dirname, 'dist/client'), { index: false }));
-    app.use(express.static(path.resolve(__dirname, 'client'), { index: false }));
-  }
 
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
