@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
   ArrowRight,
@@ -13,13 +13,18 @@ import {
   Download,
   Award,
   Flame,
+  ShoppingCart,
+  CheckCircle2,
 } from "lucide-react";
 import { products } from "../data";
 import { goshbuzzApps } from "../data/appsData";
 import { FAQ } from "../components/FAQ";
 import { HeroSlideshow } from "../components/HeroSlideshow";
+import { useCart } from "../CartContext";
 
 export default function Home() {
+  const navigate = useNavigate();
+  const { addToCart, isInCart } = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
@@ -358,13 +363,57 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="p-6 pt-0">
+              <div className="p-6 pt-0 space-y-2">
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => {
+                      addToCart({
+                        id: article.id,
+                        title: article.title,
+                        type: "idea",
+                        price: 500,
+                        image: article.image,
+                        slug: article.slug,
+                      });
+                      navigate("/checkout");
+                    }}
+                    className="py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+                  >
+                    <ShoppingCart size={14} />
+                    <span>Buy Now (Rs. 500)</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      addToCart({
+                        id: article.id,
+                        title: article.title,
+                        type: "idea",
+                        price: 500,
+                        image: article.image,
+                        slug: article.slug,
+                      });
+                    }}
+                    className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
+                      isInCart(article.id)
+                        ? "bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800"
+                        : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700"
+                    }`}
+                  >
+                    {isInCart(article.id) ? (
+                      <>
+                        <CheckCircle2 size={14} /> Added
+                      </>
+                    ) : (
+                      <>+ Cart</>
+                    )}
+                  </button>
+                </div>
                 <Link
                   to={`/blogs/news/${article.slug}`}
-                  className="w-full py-3 px-4 bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold rounded-xl text-xs sm:text-sm transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-2 px-3 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800/60 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 font-semibold rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5 border border-gray-200/80 dark:border-gray-700"
                 >
-                  <span>Read Full Masterclass</span>
-                  <ArrowRight size={16} />
+                  <span>Read Guide & Case Study</span>
+                  <ArrowRight size={13} />
                 </Link>
               </div>
             </article>
@@ -486,13 +535,64 @@ export default function Home() {
                       {product.description}
                     </p>
                   </div>
-                  <Link
-                    to={`/blogs/news/${product.slug || product.id}`}
-                    className="w-full py-2.5 px-4 bg-gray-900 hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-amber-500 text-white text-center rounded-xl text-xs sm:text-sm font-bold transition-colors flex items-center justify-center gap-1.5 mt-auto"
-                  >
-                    <span>Read Article</span>
-                    <ArrowRight size={14} />
-                  </Link>
+                  <div className="mt-auto pt-3 border-t border-gray-100 dark:border-gray-800/80 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-extrabold text-amber-600 dark:text-amber-400">Rs. 500</span>
+                      <Link
+                        to={`/blogs/news/${product.slug || product.id}`}
+                        className="text-[11px] font-semibold text-gray-500 dark:text-gray-400 hover:text-amber-500 inline-flex items-center gap-0.5"
+                      >
+                        Read Free <ArrowRight size={11} />
+                      </Link>
+                    </div>
+                    <div className="grid grid-cols-5 gap-1.5">
+                      <button
+                        onClick={() => {
+                          addToCart({
+                            id: product.id,
+                            title: product.title,
+                            type: "idea",
+                            price: 500,
+                            image: product.image,
+                            icon: product.icon,
+                            slug: product.slug,
+                          });
+                          navigate("/checkout");
+                        }}
+                        className="col-span-3 py-2 px-2 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1 shadow-xs cursor-pointer"
+                      >
+                        <ShoppingCart size={13} /> Buy Now
+                      </button>
+                      <button
+                        onClick={() => {
+                          addToCart({
+                            id: product.id,
+                            title: product.title,
+                            type: "idea",
+                            price: 500,
+                            image: product.image,
+                            icon: product.icon,
+                            slug: product.slug,
+                          });
+                        }}
+                        className={`col-span-2 py-2 px-1.5 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1 cursor-pointer ${
+                          isInCart(product.id)
+                            ? "bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800"
+                            : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        }`}
+                        title="Add to cart"
+                      >
+                        {isInCart(product.id) ? (
+                          <>
+                            <CheckCircle2 size={13} />
+                            <span className="text-[11px]">Added</span>
+                          </>
+                        ) : (
+                          <>+ Cart</>
+                        )}
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -651,13 +751,64 @@ export default function Home() {
                       {product.description}
                     </p>
                   </div>
-                  <Link
-                    to={`/blogs/news/${product.slug || product.id}`}
-                    className="w-full py-2.5 px-4 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/40 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/80 text-center rounded-xl text-xs sm:text-sm font-bold transition-colors flex items-center justify-center gap-1.5 mt-auto"
-                  >
-                    <span>Read Skill Guide</span>
-                    <ArrowRight size={14} />
-                  </Link>
+                  <div className="mt-auto pt-3 border-t border-gray-100 dark:border-gray-800/80 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-extrabold text-indigo-600 dark:text-indigo-400">Rs. 200</span>
+                      <Link
+                        to={`/blogs/news/${product.slug || product.id}`}
+                        className="text-[11px] font-semibold text-gray-500 dark:text-gray-400 hover:text-indigo-500 inline-flex items-center gap-0.5"
+                      >
+                        Read Manual <ArrowRight size={11} />
+                      </Link>
+                    </div>
+                    <div className="grid grid-cols-5 gap-1.5">
+                      <button
+                        onClick={() => {
+                          addToCart({
+                            id: product.id,
+                            title: product.title,
+                            type: "skill",
+                            price: 200,
+                            image: product.image,
+                            icon: product.icon,
+                            slug: product.slug,
+                          });
+                          navigate("/checkout");
+                        }}
+                        className="col-span-3 py-2 px-2 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1 shadow-xs cursor-pointer"
+                      >
+                        <ShoppingCart size={13} /> Buy Now
+                      </button>
+                      <button
+                        onClick={() => {
+                          addToCart({
+                            id: product.id,
+                            title: product.title,
+                            type: "skill",
+                            price: 200,
+                            image: product.image,
+                            icon: product.icon,
+                            slug: product.slug,
+                          });
+                        }}
+                        className={`col-span-2 py-2 px-1.5 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1 cursor-pointer ${
+                          isInCart(product.id)
+                            ? "bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800"
+                            : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        }`}
+                        title="Add to cart"
+                      >
+                        {isInCart(product.id) ? (
+                          <>
+                            <CheckCircle2 size={13} />
+                            <span className="text-[11px]">Added</span>
+                          </>
+                        ) : (
+                          <>+ Cart</>
+                        )}
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

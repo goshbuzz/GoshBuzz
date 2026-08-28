@@ -246,11 +246,27 @@ export function AppLayout() {
 
   useEffect(() => {
     setMounted(true);
-    const isDark =
-      document.documentElement.classList.contains("dark") ||
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setDarkMode(isDark);
+    try {
+      const savedTheme = localStorage.getItem("goshbuzz_theme");
+      if (savedTheme === "dark") {
+        setDarkMode(true);
+        document.documentElement.classList.add("dark");
+      } else {
+        setDarkMode(false);
+        document.documentElement.classList.remove("dark");
+      }
+    } catch {
+      setDarkMode(false);
+      document.documentElement.classList.remove("dark");
+    }
   }, []);
+
+  const handleSetDarkMode = (val: boolean) => {
+    setDarkMode(val);
+    try {
+      localStorage.setItem("goshbuzz_theme", val ? "dark" : "light");
+    } catch {}
+  };
 
   useEffect(() => {
     if (mounted) {
@@ -266,7 +282,7 @@ export function AppLayout() {
     <div
       className={`min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors`}
     >
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Header darkMode={darkMode} setDarkMode={handleSetDarkMode} />
 
       <main className="flex-grow">
         <Routes>

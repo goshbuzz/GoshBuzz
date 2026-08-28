@@ -1,10 +1,13 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { products } from "../data";
-import { Search } from "lucide-react";
+import { Search, ShoppingCart, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
+import { useCart } from "../CartContext";
 
 export default function Collection() {
+  const navigate = useNavigate();
+  const { addToCart, isInCart } = useCart();
   const { type } = useParams<{ type: string }>();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -121,12 +124,65 @@ export default function Collection() {
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-grow line-clamp-3">
                 {product.description}
               </p>
-              <Link
-                to={`/blogs/news/${product.slug || product.id}`}
-                className="block w-full py-3 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-center rounded-xl font-semibold border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-              >
-                View Guide
-              </Link>
+              <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800 space-y-2.5">
+                <div className="grid grid-cols-5 gap-2">
+                  <button
+                    onClick={() => {
+                      addToCart({
+                        id: product.id,
+                        title: product.title,
+                        type: collectionType,
+                        price: collectionType === "idea" ? 500 : 200,
+                        image: product.image,
+                        icon: product.icon,
+                        slug: product.slug,
+                      });
+                      navigate("/checkout");
+                    }}
+                    className={`col-span-3 py-2.5 px-2 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-95 cursor-pointer ${
+                      collectionType === "idea"
+                        ? "bg-amber-500 hover:bg-amber-600"
+                        : "bg-indigo-600 hover:bg-indigo-700"
+                    }`}
+                  >
+                    <ShoppingCart size={14} /> Buy Now
+                  </button>
+                  <button
+                    onClick={() => {
+                      addToCart({
+                        id: product.id,
+                        title: product.title,
+                        type: collectionType,
+                        price: collectionType === "idea" ? 500 : 200,
+                        image: product.image,
+                        icon: product.icon,
+                        slug: product.slug,
+                      });
+                    }}
+                    className={`col-span-2 py-2.5 px-2 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1 cursor-pointer ${
+                      isInCart(product.id)
+                        ? "bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800"
+                        : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700"
+                    }`}
+                    title="Add to cart"
+                  >
+                    {isInCart(product.id) ? (
+                      <>
+                        <CheckCircle2 size={14} />
+                        <span>Added</span>
+                      </>
+                    ) : (
+                      <>+ Cart</>
+                    )}
+                  </button>
+                </div>
+                <Link
+                  to={`/blogs/news/${product.slug || product.id}`}
+                  className="block w-full py-2 bg-gray-50 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white text-center rounded-xl text-xs font-semibold border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                >
+                  View Details & Guide
+                </Link>
+              </div>
             </div>
           </div>
         ))}

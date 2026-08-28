@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { BookOpen, Search, ArrowRight, Sparkles, Clock, Star } from "lucide-react";
+import { BookOpen, Search, Sparkles, Clock, Star, ShoppingCart, CheckCircle2 } from "lucide-react";
 import { products } from "../data";
 import { articles } from "../data/articles";
+import { useCart } from "../CartContext";
 
 export default function Blogs() {
+  const navigate = useNavigate();
+  const { addToCart, isInCart } = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -185,16 +188,69 @@ export default function Blogs() {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-gray-100 dark:border-gray-800/80 mt-auto flex items-center justify-between">
-                  <div>
-                    <span className="text-[10px] text-gray-400 block uppercase font-bold tracking-wider">Earning Potential</span>
-                    <span className="text-xs font-black text-gray-900 dark:text-gray-150">{post.earningPotential}</span>
+                <div className="pt-4 border-t border-gray-100 dark:border-gray-800/80 mt-auto space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] text-gray-400 block uppercase font-bold tracking-wider">Earning Potential</span>
+                      <span className="text-xs font-black text-gray-900 dark:text-gray-150">{post.earningPotential}</span>
+                    </div>
+                    <span className="text-xs font-black text-amber-600 dark:text-amber-400">
+                      Rs. {post.type === "idea" ? "500" : "200"}
+                    </span>
                   </div>
+
+                  <div className="grid grid-cols-5 gap-2">
+                    <button
+                      onClick={() => {
+                        addToCart({
+                          id: post.id,
+                          title: post.title,
+                          type: post.type as "idea" | "skill",
+                          price: post.type === "idea" ? 500 : 200,
+                          image: post.image,
+                          icon: post.icon,
+                          slug: post.slug,
+                        });
+                        navigate("/checkout");
+                      }}
+                      className="col-span-3 py-2.5 px-2 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+                    >
+                      <ShoppingCart size={13} /> Buy Now
+                    </button>
+                    <button
+                      onClick={() => {
+                        addToCart({
+                          id: post.id,
+                          title: post.title,
+                          type: post.type as "idea" | "skill",
+                          price: post.type === "idea" ? 500 : 200,
+                          image: post.image,
+                          icon: post.icon,
+                          slug: post.slug,
+                        });
+                      }}
+                      className={`col-span-2 py-2.5 px-2 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1 cursor-pointer ${
+                        isInCart(post.id)
+                          ? "bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800"
+                          : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700"
+                      }`}
+                      title="Add to cart"
+                    >
+                      {isInCart(post.id) ? (
+                        <>
+                          <CheckCircle2 size={13} /> Added
+                        </>
+                      ) : (
+                        <>+ Cart</>
+                      )}
+                    </button>
+                  </div>
+
                   <Link
                     to={`/blogs/news/${post.slug || post.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 dark:text-amber-400 group-hover:gap-2.5 transition-all"
+                    className="block w-full py-1.5 text-center text-xs font-semibold text-gray-600 dark:text-gray-400 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
                   >
-                    Read Blueprint <ArrowRight size={14} />
+                    Read Full Case Study & Guide →
                   </Link>
                 </div>
               </div>
