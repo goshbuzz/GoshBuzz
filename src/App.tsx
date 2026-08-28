@@ -358,119 +358,140 @@ export function AppLayout() {
                 from zero, Not Courses.
               </p>
 
-              <div className="flex gap-4 mt-6 justify-center lg:justify-start">
+              <div className="flex gap-3.5 mt-6 justify-center lg:justify-start items-center">
+                {/* Facebook */}
                 <a
                   href="https://www.facebook.com/goshbuzzllc"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="hover:scale-110 hover:shadow-lg transition-all duration-200 rounded-full inline-block"
                   aria-label="Facebook"
                 >
                   <svg
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="css-i6dzq1"
+                    viewBox="0 0 36 36"
+                    width="32"
+                    height="32"
+                    className="rounded-full shadow-xs"
                   >
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    <circle cx="18" cy="18" r="18" fill="#1877F2" />
+                    <path
+                      d="M22.5 18.8l.6-3.9h-3.7v-2.5c0-1.1.5-2.1 2.2-2.1h1.7V7c-.9-.1-1.9-.2-2.8-.2-2.9 0-4.8 1.8-4.8 5v2.9h-3.4v3.9H15v9.4c.7.1 1.5.2 2.2.2s1.5-.1 2.2-.2v-9.4h3.1z"
+                      fill="#FFFFFF"
+                    />
                   </svg>
                 </a>
+
+                {/* TikTok */}
                 <a
                   href="https://www.tiktok.com/@goshbuzz?_r=1&_t=ZN-97oFA8Mk5bS"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="hover:scale-110 hover:shadow-lg transition-all duration-200 rounded-full inline-block"
                   aria-label="TikTok"
                 >
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    viewBox="0 0 36 36"
+                    width="32"
+                    height="32"
+                    className="rounded-full shadow-xs"
                   >
-                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                    <circle cx="18" cy="18" r="18" fill="#000000" />
+                    <path
+                      d="M22.2 13.8a5.5 5.5 0 0 1-2.8-.9v7.2a4.9 4.9 0 1 1-4.2-4.9v2.8a2.2 2.2 0 1 0 1.5 2.1V9.5h2.8a5.5 5.5 0 0 0 5.5 5.5v-2.8a2.9 2.9 0 0 1-2.8 1.6z"
+                      fill="#25F4EE"
+                    />
+                    <path
+                      d="M23 14.5a5.5 5.5 0 0 1-2.8-.9v7.2a4.9 4.9 0 1 1-4.2-4.9v2.8a2.2 2.2 0 1 0 1.5 2.1V10.2h2.8a5.5 5.5 0 0 0 5.5 5.5v-2.8a2.9 2.9 0 0 1-2.8 1.6z"
+                      fill="#FE2C55"
+                      opacity="0.9"
+                    />
+                    <path
+                      d="M22.6 14.1a5.5 5.5 0 0 1-2.8-.9v7.2a4.9 4.9 0 1 1-4.2-4.9v2.8a2.2 2.2 0 1 0 1.5 2.1V9.8h2.8a5.5 5.5 0 0 0 5.5 5.5v-2.8a2.9 2.9 0 0 1-2.8 1.6z"
+                      fill="#FFFFFF"
+                    />
                   </svg>
                 </a>
+
+                {/* Instagram */}
                 <a
                   href="https://www.instagram.com/goshbuzz"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="hover:scale-110 hover:shadow-lg transition-all duration-200 rounded-xl inline-block"
                   aria-label="Instagram"
                 >
                   <svg
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="css-i6dzq1"
+                    viewBox="0 0 36 36"
+                    width="32"
+                    height="32"
+                    className="rounded-xl shadow-xs"
                   >
+                    <defs>
+                      <radialGradient id="footerIgGrad" r="150%" cx="30%" cy="107%">
+                        <stop stopColor="#fdf497" offset="0%" />
+                        <stop stopColor="#fdf497" offset="5%" />
+                        <stop stopColor="#fd5949" offset="45%" />
+                        <stop stopColor="#d6249f" offset="60%" />
+                        <stop stopColor="#285AEB" offset="90%" />
+                      </radialGradient>
+                    </defs>
+                    <rect width="36" height="36" rx="9" fill="url(#footerIgGrad)" />
+                    <circle cx="18" cy="18" r="4.3" stroke="#FFFFFF" strokeWidth="2.2" fill="none" />
                     <rect
-                      x="2"
-                      y="2"
-                      width="20"
-                      height="20"
-                      rx="5"
-                      ry="5"
-                    ></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                      x="8.5"
+                      y="8.5"
+                      width="19"
+                      height="19"
+                      rx="5.5"
+                      stroke="#FFFFFF"
+                      strokeWidth="2.2"
+                      fill="none"
+                    />
+                    <circle cx="23.5" cy="12.5" r="1.3" fill="#FFFFFF" />
                   </svg>
                 </a>
+
+                {/* Reddit */}
                 <a
                   href="https://www.reddit.com/u/SteakEquivalent8571/s/mODX6W7gTo"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="hover:scale-110 hover:shadow-lg transition-all duration-200 rounded-full inline-block"
                   aria-label="Reddit"
                 >
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    viewBox="0 0 36 36"
+                    width="32"
+                    height="32"
+                    className="rounded-full shadow-xs"
                   >
-                    <path d="M12 8c2.8 0 5.4.9 6.8 2.6c1.1 1.4 1.2 3.1.2 4.4c-1 1.3-2.9 2-5 2H10c-2.1 0-4-.7-5-2c-1-1.3-.9-3 .2-4.4C6.6 8.9 9.2 8 12 8z" />
-                    <path d="M12 8V4m0 0l-2 2m2-2l2 2" />
-                    <circle cx="8" cy="12" r="1" />
-                    <circle cx="16" cy="12" r="1" />
-                    <path d="M10 15c.5.5 1.5.5 2 0" />
+                    <circle cx="18" cy="18" r="18" fill="#FF4500" />
+                    <path
+                      d="M26.5 17.5a2.1 2.1 0 0 0-2.1-2c-.6 0-1.1.2-1.5.6-1.4-1-3.3-1.6-5.3-1.7l.9-4.3 2.9.6a1.5 1.5 0 1 0 1.5-1.5 1.5 1.5 0 0 0-1.4 1l-3.3-.7a.4.4 0 0 0-.4.3l-1.1 5.2c-2.1.1-4 .7-5.4 1.7a2.1 2.1 0 0 0-1.5-.6 2.1 2.1 0 0 0-2.1 2c0 .8.4 1.4 1 1.8a5.5 5.5 0 0 0-.2 1.4c0 3.6 3.9 6.4 8.8 6.4s8.8-2.8 8.8-6.4c0-.5-.1-1-.2-1.4.6-.4 1-1 1-1.8zm-13.4 1a1.5 1.5 0 1 1 1.5 1.5 1.5 1.5 0 0 1-1.5-1.5zm8.7 4.3c-.9.9-2.5 1.2-4.3 1.2s-3.4-.3-4.3-1.2a.4.4 0 0 1 .5-.5c.6.6 2 1 3.8 1s3.2-.4 3.8-1a.4.4 0 0 1 .5.5zm-1.1-2.8a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5z"
+                      fill="#FFFFFF"
+                    />
                   </svg>
                 </a>
+
+                {/* Quora */}
                 <a
                   href="https://www.quora.com/profile/Gosh-Buzz?ch=3&oid=3192845446&share=44e94410&srid=5DG11Y&target_type=user"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center justify-center"
+                  className="hover:scale-110 hover:shadow-lg transition-all duration-200 rounded-full inline-block"
                   aria-label="Quora"
                 >
                   <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
+                    viewBox="0 0 36 36"
+                    width="32"
+                    height="32"
+                    className="rounded-full shadow-xs"
                   >
-                    <path d="M22.476 11.584c0-4.331-3.64-7.844-8.13-7.844s-8.13 3.513-8.13 7.844c0 4.33 3.64 7.843 8.13 7.843.51 0 1.01-.046 1.493-.133l3.58 3.58a.465.465 0 0 0 .795-.33l-.04-3.136c1.428-1.572 2.302-3.666 2.302-5.964zm-8.13 5.4c-2.923 0-5.302-2.422-5.302-5.4s2.379-5.4 5.302-5.4c2.924 0 5.302 2.422 5.302 5.4 0 1.272-.435 2.443-1.168 3.376-.088.088-.172.18-.242.285-.506-.855-1.312-1.488-2.316-1.704a2.91 2.91 0 0 0 .524-1.68c0-1.602-1.304-2.91-2.91-2.91a2.91 2.91 0 0 0-2.91 2.91c0 1.603 1.304 2.91 2.91 2.91.433 0 .84-.096 1.206-.265.176 1.004.81 1.81 1.665 2.316-.905.733-2.076 1.168-3.35 1.168z" />
+                    <circle cx="18" cy="18" r="18" fill="#B92B27" />
+                    <path
+                      d="M24.8 17.5c0-4.1-3.3-7.5-7.3-7.5s-7.3 3.4-7.3 7.5 3.3 7.5 7.3 7.5c.5 0 .9 0 1.4-.1l3.3 3.3a.4.4 0 0 0 .7-.3l-.1-2.9c1.3-1.4 2-3.4 2-5.5zm-7.3 5.1c-2.6 0-4.8-2.3-4.8-5.1s2.2-5.1 4.8-5.1 4.8 2.3 4.8 5.1c0 1.3-.4 2.4-1.1 3.3-.1.1-.1.3-.3.3-.5-.8-1.3-1.4-2.2-1.6a2.8 2.8 0 0 0 .5-1.6c0-1.5-1.2-2.8-2.8-2.8s-2.8 1.3-2.8 2.8 1.2 2.8 2.8 2.8c.4 0 .8-.1 1.1-.3.1 1 .8 1.8 1.6 2.3-.9.6-1.9 1-3 1z"
+                      fill="#FFFFFF"
+                    />
                   </svg>
                 </a>
               </div>
