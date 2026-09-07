@@ -1,4 +1,5 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, Navigate } from "react-router-dom";
+import NotFound from "./NotFound";
 import { Helmet } from "react-helmet-async";
 import { products } from "../data";
 import { Search, ShoppingCart, CheckCircle2 } from "lucide-react";
@@ -10,6 +11,16 @@ export default function Collection() {
   const { addToCart, isInCart } = useCart();
   const { type } = useParams<{ type: string }>();
   const [searchQuery, setSearchQuery] = useState("");
+
+  // /collection/frontpage is a legacy duplicate of the homepage
+  if (type === "frontpage") {
+    return <Navigate to="/" replace />;
+  }
+  // Unknown collection types must 404 (SSR marker) instead of rendering
+  // an empty list under a bogus canonical URL
+  if (type !== "ideas" && type !== "skills") {
+    return <NotFound />;
+  }
 
   const collectionType = type === "ideas" ? "idea" : "skill";
   const title =

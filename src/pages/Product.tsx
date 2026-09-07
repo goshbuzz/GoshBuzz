@@ -28,6 +28,7 @@ import {
   Users
 } from "lucide-react";
 import { products, findProductByIdentifier } from "../data";
+import NotFound from "./NotFound";
 import { articles } from "../data/articles";
 import { useCart } from "../CartContext";
 import { 
@@ -42,17 +43,9 @@ export default function Product() {
   const product = findProductByIdentifier(identifier || "");
 
   if (!product) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 py-24 text-center">
-        <h1 className="text-3xl font-bold mb-4">Guide Not Found</h1>
-        <Link
-          to="/"
-          className="text-amber-600 hover:underline inline-flex items-center gap-2"
-        >
-          <ArrowLeft size={16} /> Back to Library
-        </Link>
-      </div>
-    );
+    // Shared 404 page: emits noindex meta + SSR marker so the server
+    // responds with a real HTTP 404 status (fixes soft-404 report).
+    return <NotFound />;
   }
 
   // Canonical redirect if requested slug differs from canonical slug

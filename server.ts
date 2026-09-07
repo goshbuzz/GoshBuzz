@@ -1,11 +1,15 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { findProductByIdentifier, legacySlugAliases } from './src/data';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+// Works both from source (tsx server.ts) and from the esbuild bundle (dist/server.js)
+const IS_BUNDLED = path.basename(__dirname) === 'dist';
+const ROOT_DIR = IS_BUNDLED ? path.resolve(__dirname, '..') : __dirname;
+const DIST_DIR = IS_BUNDLED ? __dirname : path.resolve(__dirname, 'dist');
 
 async function startServer() {
   const app = express();
@@ -25,11 +29,11 @@ async function startServer() {
   // Explicit handler for IAB Tech Lab / Google AdMob app-ads.txt and ads.txt
   app.get('/app-ads.txt', (req, res) => {
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    const appAdsPath = path.resolve(__dirname, 'public/app-ads.txt');
+    const appAdsPath = path.join(ROOT_DIR, 'public', 'app-ads.txt');
     if (fs.existsSync(appAdsPath)) {
       return res.sendFile(appAdsPath);
     }
-    const distPath = path.resolve(__dirname, 'dist/client/app-ads.txt');
+    const distPath = path.join(DIST_DIR, 'client', 'app-ads.txt');
     if (fs.existsSync(distPath)) {
       return res.sendFile(distPath);
     }
@@ -38,7 +42,7 @@ async function startServer() {
 
   app.get('/ads.txt', (req, res) => {
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    const adsPath = path.resolve(__dirname, 'public/ads.txt');
+    const adsPath = path.join(ROOT_DIR, 'public', 'ads.txt');
     if (fs.existsSync(adsPath)) {
       return res.sendFile(adsPath);
     }
@@ -49,8 +53,10 @@ async function startServer() {
   if (!isProd && vite) {
     app.use(vite.middlewares);
   } else {
-    app.use(express.static(path.resolve(__dirname, 'dist/client'), { index: false }));
-    app.use(express.static(path.resolve(__dirname, 'public'), { index: false }));
+    // redirect:false so /blogs/news is NOT 301'd to /blogs/news/ (canonical URLs
+    // have no trailing slash); index:false so directory hits fall through to SSR.
+    app.use(express.static(path.join(DIST_DIR, 'client'), { index: false, redirect: false }));
+    app.use(express.static(path.join(ROOT_DIR, 'public'), { index: false, redirect: false }));
   }
 
   // Pre-rendered HTML & SSR route handler for all page navigations
@@ -65,6 +71,12 @@ async function startServer() {
     const url = rawUrl.endsWith('/') && rawUrl.length > 1 ? rawUrl.slice(0, -1) : rawUrl;
 
     // 301 Permanent Redirects for canonical SEO compliance
+    if (url === '/cart' || url === '/cart/') {
+      return res.redirect(301, '/checkout');
+    }
+    if (url === '/collection/frontpage' || url === '/collection/frontpage/' || url === '/collections/frontpage' || url === '/collections/frontpage/') {
+      return res.redirect(301, '/');
+    }
     if (url === '/blogs' || url.startsWith('/blogs/news/tagged') || url.startsWith('/blogs/tagged') || url.startsWith('/blogs/tag')) {
       return res.redirect(301, '/blogs/news');
     }
@@ -88,6 +100,18 @@ async function startServer() {
       const type = url.replace(/^\/collections\//, '');
       return res.redirect(301, `/collection/${type}`);
     }
+    const legacyPageMap: Record<string, string> = {
+      '/policies/privacy-policy': '/privacy-policy',
+      '/policies/refund-policy': '/refund-policy',
+      '/policies/delivery-policy': '/delivery-policy',
+      '/policies/shipping-policy': '/delivery-policy',
+      '/policies/terms-of-service': '/terms',
+      '/pages/contact': '/contact',
+      '/pages/about': '/about',
+      '/pages/payment-guide': '/how-to-pay',
+      '/pages/data-sharing-opt-out': '/privacy-policy',
+    };
+    if (legacyPageMap[url]) return res.redirect(301, legacyPageMap[url]);
     if (url === '/privacy') return res.redirect(301, '/privacy-policy');
     if (url === '/refund') return res.redirect(301, '/refund-policy');
     if (url === '/delivery' || url === '/shipping') return res.redirect(301, '/delivery-policy');
@@ -96,43 +120,53 @@ async function startServer() {
     if (url === '/terms-and-conditions' || url === '/terms-of-service' || url === '/tos') return res.redirect(301, '/terms');
     if (url === '/disclaimers') return res.redirect(301, '/disclaimer');
 
+    // Functional (non-content) routes must never be indexed
+    if (url === '/checkout') {
+      res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    }
+
     try {
       if (isProd) {
         // Check for pre-rendered static HTML file first in dist/client/
         let prerenderedPath: string;
         if (url === '/') {
-          prerenderedPath = path.resolve(__dirname, 'dist/client/index.html');
+          prerenderedPath = path.join(DIST_DIR, 'client', 'index.html');
         } else {
-          prerenderedPath = path.resolve(__dirname, `dist/client${url}/index.html`);
+          prerenderedPath = path.join(DIST_DIR, 'client' + url, 'index.html');
         }
 
         if (fs.existsSync(prerenderedPath)) {
           return res.sendFile(prerenderedPath);
         }
 
-        const template = fs.readFileSync(path.resolve(__dirname, 'dist/client/index.html'), 'utf-8');
+        // Pristine shell with placeholders (never the prerendered homepage copy)
+        const templatePath = fs.existsSync(path.join(DIST_DIR, 'template.html'))
+          ? path.join(DIST_DIR, 'template.html')
+          : path.join(DIST_DIR, 'client', 'index.html');
+        const template = fs.readFileSync(templatePath, 'utf-8');
         // @ts-ignore
-        const serverEntry = await import('./dist/server/entry-server.js');
-        const { html, head } = serverEntry.render(url);
+        const serverEntry = await import(pathToFileURL(path.join(DIST_DIR, 'server', 'entry-server.js')).href);
+        const { html, head, status } = serverEntry.render(url);
 
         const fullHtml = template
           .replace(`<!--head-outlet-->`, head || '')
           .replace(`<!--ssr-outlet-->`, html || '');
 
-        return res.status(200).set({ 'Content-Type': 'text/html' }).end(fullHtml);
+        // Return a real 404 status for unknown routes (soft-404 fix)
+        return res.status(status || 200).set({ 'Content-Type': 'text/html' }).end(fullHtml);
       }
 
       // Development SSR rendering with live Vite transform
       let template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
       template = await vite.transformIndexHtml(url, template);
       const { render } = await vite.ssrLoadModule('/src/entry-server.tsx');
-      const { html, head } = render(url);
+      const { html, head, status } = render(url);
 
       const fullHtml = template
         .replace(`<!--head-outlet-->`, head || '')
         .replace(`<!--ssr-outlet-->`, html || '');
 
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(fullHtml);
+      res.status(status || 200).set({ 'Content-Type': 'text/html' }).end(fullHtml);
     } catch (e: any) {
       if (!isProd && vite) {
         vite.ssrFixStacktrace(e);

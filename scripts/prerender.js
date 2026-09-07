@@ -15,7 +15,13 @@ async function prerender() {
   }
 
   const template = fs.readFileSync(templatePath, 'utf-8');
-  
+
+  // Keep a pristine copy of the shell (with <!--head-outlet--> / <!--ssr-outlet-->
+  // placeholders intact). dist/client/index.html gets overwritten by the '/'
+  // prerender, and the SSR fallback in server.ts must NOT use that copy or
+  // every fallback page would inherit the homepage <head>.
+  fs.writeFileSync(path.resolve(rootDir, 'dist/template.html'), template, 'utf-8');
+
   // Import the SSR bundle
   const serverEntryPath = path.resolve(rootDir, 'dist/server/entry-server.js');
   const { render } = await import(`file://${serverEntryPath}`);
@@ -62,7 +68,8 @@ async function prerender() {
     '/disclaimer',
     '/how-to-pay',
     '/delivery-policy',
-    '/refund-policy'
+    '/refund-policy',
+    '/checkout'
   ];
 
   const appRoutes = appSlugs.map(slug => `/apps/${slug}`);
@@ -97,12 +104,29 @@ async function prerender() {
     }
   }
 
+  // Generate a branded 404.html so static hosts (Vercel) serve a custom page
+  // with a real 404 status for unknown URLs (instead of the old catch-all
+  // rewrite that returned the homepage with HTTP 200).
+  try {
+    const { html: nfHtml, head: nfHead } = render('/404-page-not-found');
+    const nfFullHtml = template
+      .replace('<!--head-outlet-->', nfHead || '')
+      .replace('<!--ssr-outlet-->', nfHtml || '');
+    fs.writeFileSync(path.resolve(rootDir, 'dist/client/404.html'), nfFullHtml, 'utf-8');
+    console.log('🧿 Custom 404.html generated for unknown URLs.');
+  } catch (e) {
+    console.error('Failed to generate 404.html:', e);
+  }
+
   // Generate clean sitemap.xml
   try {
     const currentDate = new Date().toISOString().split('T')[0];
     const baseUrl = 'https://goshbuzz.com';
-    
-    const xmlEntries = allRoutes.map(route => {
+
+    // Never list noindex/functional routes (e.g. /checkout) in the sitemap
+    const sitemapRoutes = allRoutes.filter(route => route !== '/checkout');
+
+    const xmlEntries = sitemapRoutes.map(route => {
       const loc = route === '/' ? baseUrl : `${baseUrl}${route}`;
       const changefreq = (route === '/' || route === '/blogs/news' || route === '/apps') ? 'daily' : 'weekly';
       const priority = route === '/' ? '1.0' : (route === '/apps' || route === '/blogs/news') ? '0.9' : '0.8';

@@ -51,6 +51,10 @@ export function getCanonicalUrl(pathName: string): string {
     cleanPath = type ? `/collection/${type}` : '/';
   } else if (cleanPath === '/products' || cleanPath === '/product' || cleanPath === '/collections') {
     cleanPath = '/';
+  } else if (cleanPath === '/collection/frontpage') {
+    cleanPath = '/';
+  } else if (cleanPath === '/cart') {
+    cleanPath = '/checkout';
   } else if (cleanPath === '/privacy') {
     cleanPath = '/privacy-policy';
   } else if (cleanPath === '/refund') {

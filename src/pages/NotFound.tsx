@@ -4,7 +4,7 @@ import SEO from '../components/SEO';
 
 export default function NotFound() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-24 sm:px-6 lg:px-8 text-center space-y-6">
+    <div data-gb-404="true" className="max-w-4xl mx-auto px-4 py-24 sm:px-6 lg:px-8 text-center space-y-6">
       <SEO
         title="404 — Page Not Found | GoshBuzz Pakistan"
         description="The page you are looking for does not exist on GoshBuzz Pakistan."

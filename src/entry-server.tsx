@@ -29,5 +29,9 @@ export function render(url: string) {
     helmet?.script?.toString() || '',
   ].filter(Boolean).join('\n');
 
-  return { html: appHtml, head: headHtml };
+  // Detect the NotFound page marker so callers (server.ts, prerender.js)
+  // can return a real HTTP 404 status instead of a soft-404 (200).
+  const notFound = appHtml.includes('data-gb-404="true"');
+
+  return { html: appHtml, head: headHtml, status: notFound ? 404 : 200 };
 }

@@ -16,6 +16,66 @@
       "permanent": true
     },
     {
+      "source": "/cart",
+      "destination": "/checkout",
+      "permanent": true
+    },
+    {
+      "source": "/cart/",
+      "destination": "/checkout",
+      "permanent": true
+    },
+    {
+      "source": "/collection/frontpage",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/policies/privacy-policy",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/policies/refund-policy",
+      "destination": "/refund-policy",
+      "permanent": true
+    },
+    {
+      "source": "/policies/delivery-policy",
+      "destination": "/delivery-policy",
+      "permanent": true
+    },
+    {
+      "source": "/policies/shipping-policy",
+      "destination": "/delivery-policy",
+      "permanent": true
+    },
+    {
+      "source": "/policies/terms-of-service",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/pages/contact",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/pages/about",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/pages/payment-guide",
+      "destination": "/how-to-pay",
+      "permanent": true
+    },
+    {
+      "source": "/pages/data-sharing-opt-out",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
       "source": "/blogs/news/tiktok-creator-rewards-pakistan-is-eligible-and-here-is-how",
       "destination": "/blogs/news/tiktok-creator-rewards",
       "permanent": true
@@ -106,6 +166,11 @@
       "permanent": true
     },
     {
+      "source": "/collections/frontpage",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/collections/:type*",
       "destination": "/collection/:type*",
       "permanent": true
@@ -178,6 +243,15 @@
   ],
   "headers": [
     {
+      "source": "/checkout",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/sitemap.xml",
       "headers": [
         {
@@ -220,12 +294,6 @@
           "value": "public, max-age=0, must-revalidate"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/((?!sitemap\\.xml|robots\\.txt|ads\\.txt|favicon\\.ico|.*\\.[a-zA-Z0-9]+$).*)",
-      "destination": "/index.html"
     }
   ]
 }

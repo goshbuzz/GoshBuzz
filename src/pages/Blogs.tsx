@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { BookOpen, Search, Sparkles, Clock, Star, ShoppingCart, CheckCircle2 } from "lucide-react";
 import { products } from "../data";
@@ -8,7 +8,11 @@ import { useCart } from "../CartContext";
 
 export default function Blogs() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { addToCart, isInCart } = useCart();
+  // Legacy pagination URLs (?page=N) serve identical content to page 1:
+  // keep the page-1 canonical but keep them out of the index entirely.
+  const isPaged = new URLSearchParams(location.search).has("page");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -78,6 +82,14 @@ export default function Blogs() {
           content="Read detailed blueprints, guides, and real-world case studies about online earning in Pakistan. Escape the matrix with GoshBuzz."
         />
         <link rel="canonical" href="https://goshbuzz.com/blogs/news" />
+        {isPaged ? (
+          <meta name="robots" content="noindex, follow" />
+        ) : (
+          <meta
+            name="robots"
+            content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+          />
+        )}
         <meta property="og:title" content="Blogs & Earning Case Studies — GoshBuzz Pakistan" />
         <meta property="og:description" content="Read detailed blueprints, guides, and real-world case studies about online earning in Pakistan. Escape the matrix with GoshBuzz." />
         <meta property="og:type" content="website" />

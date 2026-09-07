@@ -65,6 +65,7 @@ ${itemLines}
         <title>Secure Checkout — GoshBuzz Pakistan</title>
         <meta name="description" content="Securely complete your GoshBuzz order via EasyPaisa or JazzCash." />
         <link rel="canonical" href="https://goshbuzz.com/checkout" />
+        <meta name="robots" content="noindex, nofollow" />
         <meta property="og:title" content="Secure Checkout — GoshBuzz Pakistan" />
         <meta property="og:description" content="Securely complete your GoshBuzz order via EasyPaisa or JazzCash." />
         <meta property="og:type" content="website" />
