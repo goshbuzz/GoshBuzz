@@ -739,7 +739,25 @@ export const legacySlugAliases: Record<string, string> = {
   "facebook-youtube-monetization-guide": "faceless-youtube-automation",
   "bubble-no-code-saas-guide": "no-code-saas",
   "freelance-expert-guide": "freelancing-upwork",
-  "podcast-audio-editing-mastery-guide": "podcast-editing"
+  "podcast-audio-editing-mastery-guide": "podcast-editing",
+  // Legacy long-form blog slugs (pre-migration) → canonical short slugs
+  "copywriting-words-that-make-people-take-action-money-guide": "copywriting-mastery",
+  "publish-books-on-amazon-kdp-from-pakistan-rs-25-000-month-in-passive-royalties-no-writing-required": "amazon-kdp-publishing",
+  "free-online-tool-website-earns-rs-35-000-month-on-autopilot-with-zero-maintenance": "tool-websites",
+  "month-doing-transcription-and-translation-urdu-speakers-have-a-huge-advantage": "transcription-translation",
+  "youtube-shorts-monetized-in-90-days-from-pakistan-exact-strategy-revealed": "youtube-shorts-monetization",
+  "a-blog-i-built-in-my-bedroom-the-complete-adsense-blueprint": "blogging-adsense-blueprint",
+  "day-3-ebay-is-legal-in-pakistan-i-am-dropshipping-on-ebay-markaz-and-shopify-simultaneously": "ebay-dropshipping-guide",
+  "month-doing-boring-data-entry-and-lead-generation-on-upwork": "data-entry-lead-gen",
+  "crypto-spot-trading-from-pakistan": "crypto-spot-trading-pakistan",
+  "pakistani-wedding-templates-on-etsy-rs-40-000-month-passive-income-with-canva": "canva-templates-etsy",
+  "manage-email-lists-for-us-e-commerce-brands-rs-80-000-month-retainer-work-from-pakistan": "email-marketing-services",
+  "amazon-fba-businesses-from-lahore-rs-120-000-month-as-an-amazon-va": "amazon-va-services",
+  "instagram-theme-page-for-rs-280-000-how-i-built-it-to-100k-followers-in-5-months": "instagram-theme-pages",
+  "30-000-month-per-client-for-social-media-management-got-5-clients-in-6-weeks": "social-media-management",
+  "one-month-with-daraz-affiliate-marketing-on-tiktok-full-strategy": "daraz-affiliate-marketing",
+  "podcast-editing-is-an-untapped-fiverr-niche-i-charge-rs-8-000-per-episode-and-have-12-clients": "podcast-editing",
+  "faceless-youtube-channel-earns-rs-140-000-month-i-never-showed-my-face": "faceless-youtube-automation"
 };
 
 export function findProductByIdentifier(identifier: string) {

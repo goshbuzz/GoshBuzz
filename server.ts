@@ -71,6 +71,20 @@ async function startServer() {
     const url = rawUrl.endsWith('/') && rawUrl.length > 1 ? rawUrl.slice(0, -1) : rawUrl;
 
     // 301 Permanent Redirects for canonical SEO compliance
+    const legacyPageMap: Record<string, string> = {
+      '/policies/privacy-policy': '/privacy-policy',
+      '/policies/refund-policy': '/refund-policy',
+      '/policies/delivery-policy': '/delivery-policy',
+      '/policies/shipping-policy': '/delivery-policy',
+      '/policies/terms-of-service': '/terms',
+      '/pages/contact': '/contact',
+      '/pages/about': '/about',
+      '/pages/payment-guide': '/how-to-pay',
+      '/pages/data-sharing-opt-out': '/privacy-policy',
+      '/blogs/news/30-best-ways-to-earn-money-online-in-pakistan': '/collection/ideas',
+      '/blogs/news/30-high-income-skills-to-master-in-2025': '/collection/skills',
+    };
+    if (legacyPageMap[url]) return res.redirect(301, legacyPageMap[url]);
     if (url === '/cart' || url === '/cart/') {
       return res.redirect(301, '/checkout');
     }
@@ -100,18 +114,7 @@ async function startServer() {
       const type = url.replace(/^\/collections\//, '');
       return res.redirect(301, `/collection/${type}`);
     }
-    const legacyPageMap: Record<string, string> = {
-      '/policies/privacy-policy': '/privacy-policy',
-      '/policies/refund-policy': '/refund-policy',
-      '/policies/delivery-policy': '/delivery-policy',
-      '/policies/shipping-policy': '/delivery-policy',
-      '/policies/terms-of-service': '/terms',
-      '/pages/contact': '/contact',
-      '/pages/about': '/about',
-      '/pages/payment-guide': '/how-to-pay',
-      '/pages/data-sharing-opt-out': '/privacy-policy',
-    };
-    if (legacyPageMap[url]) return res.redirect(301, legacyPageMap[url]);
+
     if (url === '/privacy') return res.redirect(301, '/privacy-policy');
     if (url === '/refund') return res.redirect(301, '/refund-policy');
     if (url === '/delivery' || url === '/shipping') return res.redirect(301, '/delivery-policy');

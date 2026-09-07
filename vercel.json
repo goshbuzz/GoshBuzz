@@ -16,6 +16,2296 @@
       "permanent": true
     },
     {
+      "source": "/products/idea-1",
+      "destination": "/blogs/news/crypto-spot-trading-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-1",
+      "destination": "/blogs/news/crypto-spot-trading-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-1",
+      "destination": "/blogs/news/crypto-spot-trading-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-2",
+      "destination": "/blogs/news/blogging-adsense-blueprint",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-2",
+      "destination": "/blogs/news/blogging-adsense-blueprint",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-2",
+      "destination": "/blogs/news/blogging-adsense-blueprint",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-3",
+      "destination": "/blogs/news/ebay-dropshipping-guide",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-3",
+      "destination": "/blogs/news/ebay-dropshipping-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-3",
+      "destination": "/blogs/news/ebay-dropshipping-guide",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-4",
+      "destination": "/blogs/news/stock-market-investing-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-4",
+      "destination": "/blogs/news/stock-market-investing-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-4",
+      "destination": "/blogs/news/stock-market-investing-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-5",
+      "destination": "/blogs/news/print-on-demand-digital-products",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-5",
+      "destination": "/blogs/news/print-on-demand-digital-products",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-5",
+      "destination": "/blogs/news/print-on-demand-digital-products",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-6",
+      "destination": "/blogs/news/ai-chatbots-voice-bots",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-6",
+      "destination": "/blogs/news/ai-chatbots-voice-bots",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-6",
+      "destination": "/blogs/news/ai-chatbots-voice-bots",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-7",
+      "destination": "/blogs/news/ad-management-agency",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-7",
+      "destination": "/blogs/news/ad-management-agency",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-7",
+      "destination": "/blogs/news/ad-management-agency",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-8",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-8",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-8",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-9",
+      "destination": "/blogs/news/tool-websites",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-9",
+      "destination": "/blogs/news/tool-websites",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-9",
+      "destination": "/blogs/news/tool-websites",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-10",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-10",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-10",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-11",
+      "destination": "/blogs/news/amazon-va-services",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-11",
+      "destination": "/blogs/news/amazon-va-services",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-11",
+      "destination": "/blogs/news/amazon-va-services",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-12",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-12",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-12",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-13",
+      "destination": "/blogs/news/social-media-management",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-13",
+      "destination": "/blogs/news/social-media-management",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-13",
+      "destination": "/blogs/news/social-media-management",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-14",
+      "destination": "/blogs/news/online-course-creation",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-14",
+      "destination": "/blogs/news/online-course-creation",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-14",
+      "destination": "/blogs/news/online-course-creation",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-15",
+      "destination": "/blogs/news/youtube-shorts-monetization",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-15",
+      "destination": "/blogs/news/youtube-shorts-monetization",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-15",
+      "destination": "/blogs/news/youtube-shorts-monetization",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-16",
+      "destination": "/blogs/news/instagram-theme-pages",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-16",
+      "destination": "/blogs/news/instagram-theme-pages",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-16",
+      "destination": "/blogs/news/instagram-theme-pages",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-17",
+      "destination": "/blogs/news/tiktok-creator-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-17",
+      "destination": "/blogs/news/tiktok-creator-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-17",
+      "destination": "/blogs/news/tiktok-creator-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-18",
+      "destination": "/blogs/news/transcription-translation",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-18",
+      "destination": "/blogs/news/transcription-translation",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-18",
+      "destination": "/blogs/news/transcription-translation",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-19",
+      "destination": "/blogs/news/seo-services",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-19",
+      "destination": "/blogs/news/seo-services",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-19",
+      "destination": "/blogs/news/seo-services",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-20",
+      "destination": "/blogs/news/canva-templates-etsy",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-20",
+      "destination": "/blogs/news/canva-templates-etsy",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-20",
+      "destination": "/blogs/news/canva-templates-etsy",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-21",
+      "destination": "/blogs/news/video-editing-freelance",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-21",
+      "destination": "/blogs/news/video-editing-freelance",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-21",
+      "destination": "/blogs/news/video-editing-freelance",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-22",
+      "destination": "/blogs/news/youtube-thumbnail-design",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-22",
+      "destination": "/blogs/news/youtube-thumbnail-design",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-22",
+      "destination": "/blogs/news/youtube-thumbnail-design",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-23",
+      "destination": "/blogs/news/ai-content-writing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-23",
+      "destination": "/blogs/news/ai-content-writing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-23",
+      "destination": "/blogs/news/ai-content-writing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-24",
+      "destination": "/blogs/news/amazon-kdp-publishing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-24",
+      "destination": "/blogs/news/amazon-kdp-publishing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-24",
+      "destination": "/blogs/news/amazon-kdp-publishing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-25",
+      "destination": "/blogs/news/email-marketing-services",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-25",
+      "destination": "/blogs/news/email-marketing-services",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-25",
+      "destination": "/blogs/news/email-marketing-services",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-26",
+      "destination": "/blogs/news/wordpress-development",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-26",
+      "destination": "/blogs/news/wordpress-development",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-26",
+      "destination": "/blogs/news/wordpress-development",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-27",
+      "destination": "/blogs/news/data-entry-lead-gen",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-27",
+      "destination": "/blogs/news/data-entry-lead-gen",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-27",
+      "destination": "/blogs/news/data-entry-lead-gen",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-28",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-28",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-28",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-29",
+      "destination": "/blogs/news/real-estate-cold-calling",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-29",
+      "destination": "/blogs/news/real-estate-cold-calling",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-29",
+      "destination": "/blogs/news/real-estate-cold-calling",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-30",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-30",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-30",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-1",
+      "destination": "/blogs/news/sales-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-1",
+      "destination": "/blogs/news/sales-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-1",
+      "destination": "/blogs/news/sales-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-2",
+      "destination": "/blogs/news/communication-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-2",
+      "destination": "/blogs/news/communication-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-2",
+      "destination": "/blogs/news/communication-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-3",
+      "destination": "/blogs/news/self-discipline-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-3",
+      "destination": "/blogs/news/self-discipline-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-3",
+      "destination": "/blogs/news/self-discipline-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-4",
+      "destination": "/blogs/news/ai-fundamentals-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-4",
+      "destination": "/blogs/news/ai-fundamentals-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-4",
+      "destination": "/blogs/news/ai-fundamentals-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-5",
+      "destination": "/blogs/news/crm-automation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-5",
+      "destination": "/blogs/news/crm-automation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-5",
+      "destination": "/blogs/news/crm-automation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-6",
+      "destination": "/blogs/news/quickbooks-financial-control",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-6",
+      "destination": "/blogs/news/quickbooks-financial-control",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-6",
+      "destination": "/blogs/news/quickbooks-financial-control",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-7",
+      "destination": "/blogs/news/excel-and-dashboards-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-7",
+      "destination": "/blogs/news/excel-and-dashboards-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-7",
+      "destination": "/blogs/news/excel-and-dashboards-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-8",
+      "destination": "/blogs/news/data-analysis-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-8",
+      "destination": "/blogs/news/data-analysis-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-8",
+      "destination": "/blogs/news/data-analysis-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-9",
+      "destination": "/blogs/news/chatbot-voice-bot-development",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-9",
+      "destination": "/blogs/news/chatbot-voice-bot-development",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-9",
+      "destination": "/blogs/news/chatbot-voice-bot-development",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-10",
+      "destination": "/blogs/news/ai-powered-development",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-10",
+      "destination": "/blogs/news/ai-powered-development",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-10",
+      "destination": "/blogs/news/ai-powered-development",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-11",
+      "destination": "/blogs/news/copywriting-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-11",
+      "destination": "/blogs/news/copywriting-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-11",
+      "destination": "/blogs/news/copywriting-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-12",
+      "destination": "/blogs/news/video-editing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-12",
+      "destination": "/blogs/news/video-editing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-12",
+      "destination": "/blogs/news/video-editing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-13",
+      "destination": "/blogs/news/seo-keyword-research",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-13",
+      "destination": "/blogs/news/seo-keyword-research",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-13",
+      "destination": "/blogs/news/seo-keyword-research",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-14",
+      "destination": "/blogs/news/graphic-design-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-14",
+      "destination": "/blogs/news/graphic-design-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-14",
+      "destination": "/blogs/news/graphic-design-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-15",
+      "destination": "/blogs/news/public-speaking-on-camera-confidence",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-15",
+      "destination": "/blogs/news/public-speaking-on-camera-confidence",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-15",
+      "destination": "/blogs/news/public-speaking-on-camera-confidence",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-16",
+      "destination": "/blogs/news/negotiation-tactics",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-16",
+      "destination": "/blogs/news/negotiation-tactics",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-16",
+      "destination": "/blogs/news/negotiation-tactics",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-17",
+      "destination": "/blogs/news/email-marketing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-17",
+      "destination": "/blogs/news/email-marketing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-17",
+      "destination": "/blogs/news/email-marketing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-18",
+      "destination": "/blogs/news/social-media-advertising",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-18",
+      "destination": "/blogs/news/social-media-advertising",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-18",
+      "destination": "/blogs/news/social-media-advertising",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-19",
+      "destination": "/blogs/news/content-strategy-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-19",
+      "destination": "/blogs/news/content-strategy-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-19",
+      "destination": "/blogs/news/content-strategy-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-20",
+      "destination": "/blogs/news/project-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-20",
+      "destination": "/blogs/news/project-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-20",
+      "destination": "/blogs/news/project-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-21",
+      "destination": "/blogs/news/financial-literacy-freelancers",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-21",
+      "destination": "/blogs/news/financial-literacy-freelancers",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-21",
+      "destination": "/blogs/news/financial-literacy-freelancers",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-22",
+      "destination": "/blogs/news/linkedin-networking-masterclass",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-22",
+      "destination": "/blogs/news/linkedin-networking-masterclass",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-22",
+      "destination": "/blogs/news/linkedin-networking-masterclass",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-23",
+      "destination": "/blogs/news/cold-outreach-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-23",
+      "destination": "/blogs/news/cold-outreach-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-23",
+      "destination": "/blogs/news/cold-outreach-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-24",
+      "destination": "/blogs/news/prompt-engineering-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-24",
+      "destination": "/blogs/news/prompt-engineering-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-24",
+      "destination": "/blogs/news/prompt-engineering-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-25",
+      "destination": "/blogs/news/web-scraping-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-25",
+      "destination": "/blogs/news/web-scraping-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-25",
+      "destination": "/blogs/news/web-scraping-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-26",
+      "destination": "/blogs/news/api-integration-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-26",
+      "destination": "/blogs/news/api-integration-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-26",
+      "destination": "/blogs/news/api-integration-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-27",
+      "destination": "/blogs/news/ui-ux-design-principles",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-27",
+      "destination": "/blogs/news/ui-ux-design-principles",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-27",
+      "destination": "/blogs/news/ui-ux-design-principles",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-28",
+      "destination": "/blogs/news/personal-branding-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-28",
+      "destination": "/blogs/news/personal-branding-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-28",
+      "destination": "/blogs/news/personal-branding-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-29",
+      "destination": "/blogs/news/time-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-29",
+      "destination": "/blogs/news/time-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-29",
+      "destination": "/blogs/news/time-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-30",
+      "destination": "/blogs/news/leadership-and-delegation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-30",
+      "destination": "/blogs/news/leadership-and-delegation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-30",
+      "destination": "/blogs/news/leadership-and-delegation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/tiktok-creator-rewards-pakistan-is-eligible-and-here-is-how",
+      "destination": "/blogs/news/tiktok-creator-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/products/tiktok-creator-rewards-pakistan-is-eligible-and-here-is-how",
+      "destination": "/blogs/news/tiktok-creator-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/product/tiktok-creator-rewards-pakistan-is-eligible-and-here-is-how",
+      "destination": "/blogs/news/tiktok-creator-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/rs-17-000-in-4-months-pakistan-stock-market-strategy-that-works",
+      "destination": "/blogs/news/stock-market-investing-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/products/rs-17-000-in-4-months-pakistan-stock-market-strategy-that-works",
+      "destination": "/blogs/news/stock-market-investing-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/product/rs-17-000-in-4-months-pakistan-stock-market-strategy-that-works",
+      "destination": "/blogs/news/stock-market-investing-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/upwork-top-rated-in-90-days-from-pakistan-my-exact-proposal-template",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/products/upwork-top-rated-in-90-days-from-pakistan-my-exact-proposal-template",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/product/upwork-top-rated-in-90-days-from-pakistan-my-exact-proposal-template",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/built-a-no-code-saas-app-on-bubble-io-it-earns-rs-85-000-month-in-subscriptions",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/products/built-a-no-code-saas-app-on-bubble-io-it-earns-rs-85-000-month-in-subscriptions",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/product/built-a-no-code-saas-app-on-bubble-io-it-earns-rs-85-000-month-in-subscriptions",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-13-daraz-affiliate-marketing-guide",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-13-daraz-affiliate-marketing-guide",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-13-daraz-affiliate-marketing-guide",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-6-facebook-youtube-monetization-guide",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-6-facebook-youtube-monetization-guide",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-6-facebook-youtube-monetization-guide",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-30-bubble-no-code-saas-guide",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-30-bubble-no-code-saas-guide",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-30-bubble-no-code-saas-guide",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-10-freelance-expert-guide",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-10-freelance-expert-guide",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-10-freelance-expert-guide",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-26-podcast-audio-editing-mastery-guide-ready-for-publishing",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-26-podcast-audio-editing-mastery-guide-ready-for-publishing",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-26-podcast-audio-editing-mastery-guide-ready-for-publishing",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-26-podcast-audio-editing-mastery-guide",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-26-podcast-audio-editing-mastery-guide",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-26-podcast-audio-editing-mastery-guide",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/daraz-affiliate-marketing-guide",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/products/daraz-affiliate-marketing-guide",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/product/daraz-affiliate-marketing-guide",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/facebook-youtube-monetization-guide",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/products/facebook-youtube-monetization-guide",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/product/facebook-youtube-monetization-guide",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/bubble-no-code-saas-guide",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/products/bubble-no-code-saas-guide",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/product/bubble-no-code-saas-guide",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/freelance-expert-guide",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/products/freelance-expert-guide",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/product/freelance-expert-guide",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/podcast-audio-editing-mastery-guide",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/products/podcast-audio-editing-mastery-guide",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/product/podcast-audio-editing-mastery-guide",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/copywriting-words-that-make-people-take-action-money-guide",
+      "destination": "/blogs/news/copywriting-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/copywriting-words-that-make-people-take-action-money-guide",
+      "destination": "/blogs/news/copywriting-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/copywriting-words-that-make-people-take-action-money-guide",
+      "destination": "/blogs/news/copywriting-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/publish-books-on-amazon-kdp-from-pakistan-rs-25-000-month-in-passive-royalties-no-writing-required",
+      "destination": "/blogs/news/amazon-kdp-publishing",
+      "permanent": true
+    },
+    {
+      "source": "/products/publish-books-on-amazon-kdp-from-pakistan-rs-25-000-month-in-passive-royalties-no-writing-required",
+      "destination": "/blogs/news/amazon-kdp-publishing",
+      "permanent": true
+    },
+    {
+      "source": "/product/publish-books-on-amazon-kdp-from-pakistan-rs-25-000-month-in-passive-royalties-no-writing-required",
+      "destination": "/blogs/news/amazon-kdp-publishing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/free-online-tool-website-earns-rs-35-000-month-on-autopilot-with-zero-maintenance",
+      "destination": "/blogs/news/tool-websites",
+      "permanent": true
+    },
+    {
+      "source": "/products/free-online-tool-website-earns-rs-35-000-month-on-autopilot-with-zero-maintenance",
+      "destination": "/blogs/news/tool-websites",
+      "permanent": true
+    },
+    {
+      "source": "/product/free-online-tool-website-earns-rs-35-000-month-on-autopilot-with-zero-maintenance",
+      "destination": "/blogs/news/tool-websites",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/month-doing-transcription-and-translation-urdu-speakers-have-a-huge-advantage",
+      "destination": "/blogs/news/transcription-translation",
+      "permanent": true
+    },
+    {
+      "source": "/products/month-doing-transcription-and-translation-urdu-speakers-have-a-huge-advantage",
+      "destination": "/blogs/news/transcription-translation",
+      "permanent": true
+    },
+    {
+      "source": "/product/month-doing-transcription-and-translation-urdu-speakers-have-a-huge-advantage",
+      "destination": "/blogs/news/transcription-translation",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/youtube-shorts-monetized-in-90-days-from-pakistan-exact-strategy-revealed",
+      "destination": "/blogs/news/youtube-shorts-monetization",
+      "permanent": true
+    },
+    {
+      "source": "/products/youtube-shorts-monetized-in-90-days-from-pakistan-exact-strategy-revealed",
+      "destination": "/blogs/news/youtube-shorts-monetization",
+      "permanent": true
+    },
+    {
+      "source": "/product/youtube-shorts-monetized-in-90-days-from-pakistan-exact-strategy-revealed",
+      "destination": "/blogs/news/youtube-shorts-monetization",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/a-blog-i-built-in-my-bedroom-the-complete-adsense-blueprint",
+      "destination": "/blogs/news/blogging-adsense-blueprint",
+      "permanent": true
+    },
+    {
+      "source": "/products/a-blog-i-built-in-my-bedroom-the-complete-adsense-blueprint",
+      "destination": "/blogs/news/blogging-adsense-blueprint",
+      "permanent": true
+    },
+    {
+      "source": "/product/a-blog-i-built-in-my-bedroom-the-complete-adsense-blueprint",
+      "destination": "/blogs/news/blogging-adsense-blueprint",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/day-3-ebay-is-legal-in-pakistan-i-am-dropshipping-on-ebay-markaz-and-shopify-simultaneously",
+      "destination": "/blogs/news/ebay-dropshipping-guide",
+      "permanent": true
+    },
+    {
+      "source": "/products/day-3-ebay-is-legal-in-pakistan-i-am-dropshipping-on-ebay-markaz-and-shopify-simultaneously",
+      "destination": "/blogs/news/ebay-dropshipping-guide",
+      "permanent": true
+    },
+    {
+      "source": "/product/day-3-ebay-is-legal-in-pakistan-i-am-dropshipping-on-ebay-markaz-and-shopify-simultaneously",
+      "destination": "/blogs/news/ebay-dropshipping-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/month-doing-boring-data-entry-and-lead-generation-on-upwork",
+      "destination": "/blogs/news/data-entry-lead-gen",
+      "permanent": true
+    },
+    {
+      "source": "/products/month-doing-boring-data-entry-and-lead-generation-on-upwork",
+      "destination": "/blogs/news/data-entry-lead-gen",
+      "permanent": true
+    },
+    {
+      "source": "/product/month-doing-boring-data-entry-and-lead-generation-on-upwork",
+      "destination": "/blogs/news/data-entry-lead-gen",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/crypto-spot-trading-from-pakistan",
+      "destination": "/blogs/news/crypto-spot-trading-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/products/crypto-spot-trading-from-pakistan",
+      "destination": "/blogs/news/crypto-spot-trading-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/product/crypto-spot-trading-from-pakistan",
+      "destination": "/blogs/news/crypto-spot-trading-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/pakistani-wedding-templates-on-etsy-rs-40-000-month-passive-income-with-canva",
+      "destination": "/blogs/news/canva-templates-etsy",
+      "permanent": true
+    },
+    {
+      "source": "/products/pakistani-wedding-templates-on-etsy-rs-40-000-month-passive-income-with-canva",
+      "destination": "/blogs/news/canva-templates-etsy",
+      "permanent": true
+    },
+    {
+      "source": "/product/pakistani-wedding-templates-on-etsy-rs-40-000-month-passive-income-with-canva",
+      "destination": "/blogs/news/canva-templates-etsy",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/manage-email-lists-for-us-e-commerce-brands-rs-80-000-month-retainer-work-from-pakistan",
+      "destination": "/blogs/news/email-marketing-services",
+      "permanent": true
+    },
+    {
+      "source": "/products/manage-email-lists-for-us-e-commerce-brands-rs-80-000-month-retainer-work-from-pakistan",
+      "destination": "/blogs/news/email-marketing-services",
+      "permanent": true
+    },
+    {
+      "source": "/product/manage-email-lists-for-us-e-commerce-brands-rs-80-000-month-retainer-work-from-pakistan",
+      "destination": "/blogs/news/email-marketing-services",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/amazon-fba-businesses-from-lahore-rs-120-000-month-as-an-amazon-va",
+      "destination": "/blogs/news/amazon-va-services",
+      "permanent": true
+    },
+    {
+      "source": "/products/amazon-fba-businesses-from-lahore-rs-120-000-month-as-an-amazon-va",
+      "destination": "/blogs/news/amazon-va-services",
+      "permanent": true
+    },
+    {
+      "source": "/product/amazon-fba-businesses-from-lahore-rs-120-000-month-as-an-amazon-va",
+      "destination": "/blogs/news/amazon-va-services",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/instagram-theme-page-for-rs-280-000-how-i-built-it-to-100k-followers-in-5-months",
+      "destination": "/blogs/news/instagram-theme-pages",
+      "permanent": true
+    },
+    {
+      "source": "/products/instagram-theme-page-for-rs-280-000-how-i-built-it-to-100k-followers-in-5-months",
+      "destination": "/blogs/news/instagram-theme-pages",
+      "permanent": true
+    },
+    {
+      "source": "/product/instagram-theme-page-for-rs-280-000-how-i-built-it-to-100k-followers-in-5-months",
+      "destination": "/blogs/news/instagram-theme-pages",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/30-000-month-per-client-for-social-media-management-got-5-clients-in-6-weeks",
+      "destination": "/blogs/news/social-media-management",
+      "permanent": true
+    },
+    {
+      "source": "/products/30-000-month-per-client-for-social-media-management-got-5-clients-in-6-weeks",
+      "destination": "/blogs/news/social-media-management",
+      "permanent": true
+    },
+    {
+      "source": "/product/30-000-month-per-client-for-social-media-management-got-5-clients-in-6-weeks",
+      "destination": "/blogs/news/social-media-management",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/one-month-with-daraz-affiliate-marketing-on-tiktok-full-strategy",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/products/one-month-with-daraz-affiliate-marketing-on-tiktok-full-strategy",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/product/one-month-with-daraz-affiliate-marketing-on-tiktok-full-strategy",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/podcast-editing-is-an-untapped-fiverr-niche-i-charge-rs-8-000-per-episode-and-have-12-clients",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/products/podcast-editing-is-an-untapped-fiverr-niche-i-charge-rs-8-000-per-episode-and-have-12-clients",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/product/podcast-editing-is-an-untapped-fiverr-niche-i-charge-rs-8-000-per-episode-and-have-12-clients",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/faceless-youtube-channel-earns-rs-140-000-month-i-never-showed-my-face",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/products/faceless-youtube-channel-earns-rs-140-000-month-i-never-showed-my-face",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/product/faceless-youtube-channel-earns-rs-140-000-month-i-never-showed-my-face",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-1-:legacy*",
+      "destination": "/blogs/news/crypto-spot-trading-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-1-:legacy*",
+      "destination": "/blogs/news/crypto-spot-trading-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-1-:legacy*",
+      "destination": "/blogs/news/crypto-spot-trading-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-2-:legacy*",
+      "destination": "/blogs/news/blogging-adsense-blueprint",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-2-:legacy*",
+      "destination": "/blogs/news/blogging-adsense-blueprint",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-2-:legacy*",
+      "destination": "/blogs/news/blogging-adsense-blueprint",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-3-:legacy*",
+      "destination": "/blogs/news/ebay-dropshipping-guide",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-3-:legacy*",
+      "destination": "/blogs/news/ebay-dropshipping-guide",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-3-:legacy*",
+      "destination": "/blogs/news/ebay-dropshipping-guide",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-4-:legacy*",
+      "destination": "/blogs/news/stock-market-investing-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-4-:legacy*",
+      "destination": "/blogs/news/stock-market-investing-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-4-:legacy*",
+      "destination": "/blogs/news/stock-market-investing-pakistan",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-5-:legacy*",
+      "destination": "/blogs/news/print-on-demand-digital-products",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-5-:legacy*",
+      "destination": "/blogs/news/print-on-demand-digital-products",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-5-:legacy*",
+      "destination": "/blogs/news/print-on-demand-digital-products",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-6-:legacy*",
+      "destination": "/blogs/news/ai-chatbots-voice-bots",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-6-:legacy*",
+      "destination": "/blogs/news/ai-chatbots-voice-bots",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-6-:legacy*",
+      "destination": "/blogs/news/ai-chatbots-voice-bots",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-7-:legacy*",
+      "destination": "/blogs/news/ad-management-agency",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-7-:legacy*",
+      "destination": "/blogs/news/ad-management-agency",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-7-:legacy*",
+      "destination": "/blogs/news/ad-management-agency",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-8-:legacy*",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-8-:legacy*",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-8-:legacy*",
+      "destination": "/blogs/news/faceless-youtube-automation",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-9-:legacy*",
+      "destination": "/blogs/news/tool-websites",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-9-:legacy*",
+      "destination": "/blogs/news/tool-websites",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-9-:legacy*",
+      "destination": "/blogs/news/tool-websites",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-10-:legacy*",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-10-:legacy*",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-10-:legacy*",
+      "destination": "/blogs/news/freelancing-upwork",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-11-:legacy*",
+      "destination": "/blogs/news/amazon-va-services",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-11-:legacy*",
+      "destination": "/blogs/news/amazon-va-services",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-11-:legacy*",
+      "destination": "/blogs/news/amazon-va-services",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-12-:legacy*",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-12-:legacy*",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-12-:legacy*",
+      "destination": "/blogs/news/daraz-affiliate-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-13-:legacy*",
+      "destination": "/blogs/news/social-media-management",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-13-:legacy*",
+      "destination": "/blogs/news/social-media-management",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-13-:legacy*",
+      "destination": "/blogs/news/social-media-management",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-14-:legacy*",
+      "destination": "/blogs/news/online-course-creation",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-14-:legacy*",
+      "destination": "/blogs/news/online-course-creation",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-14-:legacy*",
+      "destination": "/blogs/news/online-course-creation",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-15-:legacy*",
+      "destination": "/blogs/news/youtube-shorts-monetization",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-15-:legacy*",
+      "destination": "/blogs/news/youtube-shorts-monetization",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-15-:legacy*",
+      "destination": "/blogs/news/youtube-shorts-monetization",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-16-:legacy*",
+      "destination": "/blogs/news/instagram-theme-pages",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-16-:legacy*",
+      "destination": "/blogs/news/instagram-theme-pages",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-16-:legacy*",
+      "destination": "/blogs/news/instagram-theme-pages",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-17-:legacy*",
+      "destination": "/blogs/news/tiktok-creator-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-17-:legacy*",
+      "destination": "/blogs/news/tiktok-creator-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-17-:legacy*",
+      "destination": "/blogs/news/tiktok-creator-rewards",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-18-:legacy*",
+      "destination": "/blogs/news/transcription-translation",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-18-:legacy*",
+      "destination": "/blogs/news/transcription-translation",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-18-:legacy*",
+      "destination": "/blogs/news/transcription-translation",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-19-:legacy*",
+      "destination": "/blogs/news/seo-services",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-19-:legacy*",
+      "destination": "/blogs/news/seo-services",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-19-:legacy*",
+      "destination": "/blogs/news/seo-services",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-20-:legacy*",
+      "destination": "/blogs/news/canva-templates-etsy",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-20-:legacy*",
+      "destination": "/blogs/news/canva-templates-etsy",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-20-:legacy*",
+      "destination": "/blogs/news/canva-templates-etsy",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-21-:legacy*",
+      "destination": "/blogs/news/video-editing-freelance",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-21-:legacy*",
+      "destination": "/blogs/news/video-editing-freelance",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-21-:legacy*",
+      "destination": "/blogs/news/video-editing-freelance",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-22-:legacy*",
+      "destination": "/blogs/news/youtube-thumbnail-design",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-22-:legacy*",
+      "destination": "/blogs/news/youtube-thumbnail-design",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-22-:legacy*",
+      "destination": "/blogs/news/youtube-thumbnail-design",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-23-:legacy*",
+      "destination": "/blogs/news/ai-content-writing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-23-:legacy*",
+      "destination": "/blogs/news/ai-content-writing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-23-:legacy*",
+      "destination": "/blogs/news/ai-content-writing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-24-:legacy*",
+      "destination": "/blogs/news/amazon-kdp-publishing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-24-:legacy*",
+      "destination": "/blogs/news/amazon-kdp-publishing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-24-:legacy*",
+      "destination": "/blogs/news/amazon-kdp-publishing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-25-:legacy*",
+      "destination": "/blogs/news/email-marketing-services",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-25-:legacy*",
+      "destination": "/blogs/news/email-marketing-services",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-25-:legacy*",
+      "destination": "/blogs/news/email-marketing-services",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-26-:legacy*",
+      "destination": "/blogs/news/wordpress-development",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-26-:legacy*",
+      "destination": "/blogs/news/wordpress-development",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-26-:legacy*",
+      "destination": "/blogs/news/wordpress-development",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-27-:legacy*",
+      "destination": "/blogs/news/data-entry-lead-gen",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-27-:legacy*",
+      "destination": "/blogs/news/data-entry-lead-gen",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-27-:legacy*",
+      "destination": "/blogs/news/data-entry-lead-gen",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-28-:legacy*",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-28-:legacy*",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-28-:legacy*",
+      "destination": "/blogs/news/podcast-editing",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-29-:legacy*",
+      "destination": "/blogs/news/real-estate-cold-calling",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-29-:legacy*",
+      "destination": "/blogs/news/real-estate-cold-calling",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-29-:legacy*",
+      "destination": "/blogs/news/real-estate-cold-calling",
+      "permanent": true
+    },
+    {
+      "source": "/products/idea-30-:legacy*",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/product/idea-30-:legacy*",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/idea-30-:legacy*",
+      "destination": "/blogs/news/no-code-saas",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-1-:legacy*",
+      "destination": "/blogs/news/sales-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-1-:legacy*",
+      "destination": "/blogs/news/sales-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-1-:legacy*",
+      "destination": "/blogs/news/sales-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-2-:legacy*",
+      "destination": "/blogs/news/communication-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-2-:legacy*",
+      "destination": "/blogs/news/communication-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-2-:legacy*",
+      "destination": "/blogs/news/communication-skill-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-3-:legacy*",
+      "destination": "/blogs/news/self-discipline-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-3-:legacy*",
+      "destination": "/blogs/news/self-discipline-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-3-:legacy*",
+      "destination": "/blogs/news/self-discipline-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-4-:legacy*",
+      "destination": "/blogs/news/ai-fundamentals-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-4-:legacy*",
+      "destination": "/blogs/news/ai-fundamentals-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-4-:legacy*",
+      "destination": "/blogs/news/ai-fundamentals-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-5-:legacy*",
+      "destination": "/blogs/news/crm-automation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-5-:legacy*",
+      "destination": "/blogs/news/crm-automation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-5-:legacy*",
+      "destination": "/blogs/news/crm-automation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-6-:legacy*",
+      "destination": "/blogs/news/quickbooks-financial-control",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-6-:legacy*",
+      "destination": "/blogs/news/quickbooks-financial-control",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-6-:legacy*",
+      "destination": "/blogs/news/quickbooks-financial-control",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-7-:legacy*",
+      "destination": "/blogs/news/excel-and-dashboards-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-7-:legacy*",
+      "destination": "/blogs/news/excel-and-dashboards-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-7-:legacy*",
+      "destination": "/blogs/news/excel-and-dashboards-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-8-:legacy*",
+      "destination": "/blogs/news/data-analysis-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-8-:legacy*",
+      "destination": "/blogs/news/data-analysis-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-8-:legacy*",
+      "destination": "/blogs/news/data-analysis-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-9-:legacy*",
+      "destination": "/blogs/news/chatbot-voice-bot-development",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-9-:legacy*",
+      "destination": "/blogs/news/chatbot-voice-bot-development",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-9-:legacy*",
+      "destination": "/blogs/news/chatbot-voice-bot-development",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-10-:legacy*",
+      "destination": "/blogs/news/ai-powered-development",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-10-:legacy*",
+      "destination": "/blogs/news/ai-powered-development",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-10-:legacy*",
+      "destination": "/blogs/news/ai-powered-development",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-11-:legacy*",
+      "destination": "/blogs/news/copywriting-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-11-:legacy*",
+      "destination": "/blogs/news/copywriting-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-11-:legacy*",
+      "destination": "/blogs/news/copywriting-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-12-:legacy*",
+      "destination": "/blogs/news/video-editing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-12-:legacy*",
+      "destination": "/blogs/news/video-editing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-12-:legacy*",
+      "destination": "/blogs/news/video-editing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-13-:legacy*",
+      "destination": "/blogs/news/seo-keyword-research",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-13-:legacy*",
+      "destination": "/blogs/news/seo-keyword-research",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-13-:legacy*",
+      "destination": "/blogs/news/seo-keyword-research",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-14-:legacy*",
+      "destination": "/blogs/news/graphic-design-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-14-:legacy*",
+      "destination": "/blogs/news/graphic-design-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-14-:legacy*",
+      "destination": "/blogs/news/graphic-design-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-15-:legacy*",
+      "destination": "/blogs/news/public-speaking-on-camera-confidence",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-15-:legacy*",
+      "destination": "/blogs/news/public-speaking-on-camera-confidence",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-15-:legacy*",
+      "destination": "/blogs/news/public-speaking-on-camera-confidence",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-16-:legacy*",
+      "destination": "/blogs/news/negotiation-tactics",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-16-:legacy*",
+      "destination": "/blogs/news/negotiation-tactics",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-16-:legacy*",
+      "destination": "/blogs/news/negotiation-tactics",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-17-:legacy*",
+      "destination": "/blogs/news/email-marketing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-17-:legacy*",
+      "destination": "/blogs/news/email-marketing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-17-:legacy*",
+      "destination": "/blogs/news/email-marketing-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-18-:legacy*",
+      "destination": "/blogs/news/social-media-advertising",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-18-:legacy*",
+      "destination": "/blogs/news/social-media-advertising",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-18-:legacy*",
+      "destination": "/blogs/news/social-media-advertising",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-19-:legacy*",
+      "destination": "/blogs/news/content-strategy-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-19-:legacy*",
+      "destination": "/blogs/news/content-strategy-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-19-:legacy*",
+      "destination": "/blogs/news/content-strategy-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-20-:legacy*",
+      "destination": "/blogs/news/project-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-20-:legacy*",
+      "destination": "/blogs/news/project-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-20-:legacy*",
+      "destination": "/blogs/news/project-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-21-:legacy*",
+      "destination": "/blogs/news/financial-literacy-freelancers",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-21-:legacy*",
+      "destination": "/blogs/news/financial-literacy-freelancers",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-21-:legacy*",
+      "destination": "/blogs/news/financial-literacy-freelancers",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-22-:legacy*",
+      "destination": "/blogs/news/linkedin-networking-masterclass",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-22-:legacy*",
+      "destination": "/blogs/news/linkedin-networking-masterclass",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-22-:legacy*",
+      "destination": "/blogs/news/linkedin-networking-masterclass",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-23-:legacy*",
+      "destination": "/blogs/news/cold-outreach-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-23-:legacy*",
+      "destination": "/blogs/news/cold-outreach-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-23-:legacy*",
+      "destination": "/blogs/news/cold-outreach-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-24-:legacy*",
+      "destination": "/blogs/news/prompt-engineering-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-24-:legacy*",
+      "destination": "/blogs/news/prompt-engineering-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-24-:legacy*",
+      "destination": "/blogs/news/prompt-engineering-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-25-:legacy*",
+      "destination": "/blogs/news/web-scraping-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-25-:legacy*",
+      "destination": "/blogs/news/web-scraping-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-25-:legacy*",
+      "destination": "/blogs/news/web-scraping-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-26-:legacy*",
+      "destination": "/blogs/news/api-integration-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-26-:legacy*",
+      "destination": "/blogs/news/api-integration-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-26-:legacy*",
+      "destination": "/blogs/news/api-integration-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-27-:legacy*",
+      "destination": "/blogs/news/ui-ux-design-principles",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-27-:legacy*",
+      "destination": "/blogs/news/ui-ux-design-principles",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-27-:legacy*",
+      "destination": "/blogs/news/ui-ux-design-principles",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-28-:legacy*",
+      "destination": "/blogs/news/personal-branding-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-28-:legacy*",
+      "destination": "/blogs/news/personal-branding-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-28-:legacy*",
+      "destination": "/blogs/news/personal-branding-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-29-:legacy*",
+      "destination": "/blogs/news/time-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-29-:legacy*",
+      "destination": "/blogs/news/time-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-29-:legacy*",
+      "destination": "/blogs/news/time-management-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/products/skill-30-:legacy*",
+      "destination": "/blogs/news/leadership-and-delegation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/product/skill-30-:legacy*",
+      "destination": "/blogs/news/leadership-and-delegation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/skill-30-:legacy*",
+      "destination": "/blogs/news/leadership-and-delegation-mastery",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/30-best-ways-to-earn-money-online-in-pakistan",
+      "destination": "/collection/ideas",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/news/30-high-income-skills-to-master-in-2025",
+      "destination": "/collection/skills",
+      "permanent": true
+    },
+    {
       "source": "/cart",
       "destination": "/checkout",
       "permanent": true
@@ -73,56 +2363,6 @@
     {
       "source": "/pages/data-sharing-opt-out",
       "destination": "/privacy-policy",
-      "permanent": true
-    },
-    {
-      "source": "/blogs/news/tiktok-creator-rewards-pakistan-is-eligible-and-here-is-how",
-      "destination": "/blogs/news/tiktok-creator-rewards",
-      "permanent": true
-    },
-    {
-      "source": "/blogs/news/rs-17-000-in-4-months-pakistan-stock-market-strategy-that-works",
-      "destination": "/blogs/news/stock-market-investing-pakistan",
-      "permanent": true
-    },
-    {
-      "source": "/blogs/news/upwork-top-rated-in-90-days-from-pakistan-my-exact-proposal-template",
-      "destination": "/blogs/news/freelancing-upwork",
-      "permanent": true
-    },
-    {
-      "source": "/blogs/news/built-a-no-code-saas-app-on-bubble-io-it-earns-rs-85-000-month-in-subscriptions",
-      "destination": "/blogs/news/no-code-saas",
-      "permanent": true
-    },
-    {
-      "source": "/products/idea-13-daraz-affiliate-marketing-guide",
-      "destination": "/blogs/news/daraz-affiliate-marketing",
-      "permanent": true
-    },
-    {
-      "source": "/products/idea-6-facebook-youtube-monetization-guide",
-      "destination": "/blogs/news/faceless-youtube-automation",
-      "permanent": true
-    },
-    {
-      "source": "/products/idea-30-bubble-no-code-saas-guide",
-      "destination": "/blogs/news/no-code-saas",
-      "permanent": true
-    },
-    {
-      "source": "/products/idea-10-freelance-expert-guide",
-      "destination": "/blogs/news/freelancing-upwork",
-      "permanent": true
-    },
-    {
-      "source": "/products/idea-26-podcast-audio-editing-mastery-guide-ready-for-publishing",
-      "destination": "/blogs/news/podcast-editing",
-      "permanent": true
-    },
-    {
-      "source": "/products/idea-26-podcast-audio-editing-mastery-guide",
-      "destination": "/blogs/news/podcast-editing",
       "permanent": true
     },
     {

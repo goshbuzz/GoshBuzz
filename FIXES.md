@@ -44,3 +44,23 @@ Fixes for the five Google Search Console reports (*Duplicate without user-select
 4. Only after step 2 passes, open each of the five reports and click **Validate fix** (order: Soft 404 → Duplicate without user-selected canonical → Page with redirect → Excluded by noindex → Crawled not indexed). Expect 1–3 weeks per report; the noindex/redirect reports decay as URLs are recrawled.
 5. Spot-check with URL Inspection: `/`, `/blogs/news`, one article, `/checkout` (should be "Page is not indexed: excluded by noindex"), `/cart` (redirect), one garbage URL (404).
 6. AdSense: keep `ads.txt`; finish the content un-gating work (see audit) before re-applying.
+
+---
+
+# Addendum — second GSC batch reviewed 2026-09-07
+
+| Report | Affected | What it means | Status after this fix |
+|---|---|---|---|
+| Duplicate, Google chose different canonical than user | 27 | Old `/blogs/news/tagged/*` pages declared a canonical but Google preferred `/blogs/news`. Last crawled May–Jun 2026 (pre-migration). | Tag URLs now **301 → /blogs/news** (vercel + server). Report decays as URLs are recrawled; re-run validation after deploy. |
+| Discovered – currently not indexed | 69 | Google found the new-structure URLs (sitemap) but has **not crawled them yet** (Last crawled = N/A). Normal right after a migration + duplicate-heavy history; not a code bug. | Non-code actions: after deploy resubmit sitemap, request indexing (URL Inspection) for the 10 most important URLs, keep publishing/updating content, build internal links. Expect gradual crawl-over weeks 1–4. |
+| Blocked by robots.txt | 3 | Shopify-era leftovers: `/cart/change?id=` (intentionally blocked — cart must stay out of the index), `/collections/e-books-collection?sort_by=…` and `/services/login_with_shop/…` (old Shopify endpoints). | `/cart/*` stays blocked by design. The other two now fall through to **301 → /collection/… → 404** and **404**, so they drop out of the report once recrawled. |
+| Not found (404) | 6 | Two legacy product slugs without alias (`copywriting-words-…`, `no-code-saas-business-guide-bubble-io`), one www/http legacy chain, plus bot junk (`/${t}`, `/b`, `/v1/produce`). | Added missing aliases (`copywriting-words-…` → `copywriting-mastery`, etc.) + generated 301s; junk URLs correctly 404. |
+| Alternate page with proper canonical tag | 10 | `tagged/*?page=1` and old `/products/…?variant=…&country=PK&currency=PKR` URLs whose canonical pointed elsewhere — Google **accepted** our canonical. Informational, not an error. | Variant/query URLs 301 via id rules (queries ignored); tagged URLs 301. Report decays. |
+
+## Legacy redirect generation (new)
+
+`scripts/gen-redirects.ts` regenerates the legacy-URL 301 block in `vercel.json`
+from `src/data.ts` (product ids, slugs, `legacySlugAliases`) — 458 generated rules,
+first-match-wins order: host rule → exact aliases → id wildcards (`/products/skill-21-:legacy*`)
+→ manual wildcards. **Run `npx tsx scripts/gen-redirects.ts` whenever products are
+added/renamed**, then commit `vercel.json`.
