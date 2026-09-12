@@ -1,0 +1,43 @@
+{
+  "name": "goshbuzz",
+  "version": "1.0.0",
+  "description": "GoshBuzz - Pakistan's Digital Knowledge Hub & High-Precision Mobile Utilities",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "build": "node scripts/build.js",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "express": "^5.2.1",
+    "lucide-react": "^1.23.0",
+    "motion": "^12.42.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-helmet-async": "^3.0.0",
+    "react-router-dom": "^7.18.1",
+    "react-router-hash-link": "^2.4.3",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.2",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@types/react-router-hash-link": "^2.4.9",
+    "@vitejs/plugin-react": "^6.0.3",
+    "esbuild": "^0.28.1",
+    "tailwindcss": "^4.3.2",
+    "tsx": "^4.23.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.3"
+  }
+}

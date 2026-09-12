@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: Googlebot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+Sitemap: https://goshbuzz.com/sitemap.xml

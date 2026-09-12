@@ -1,0 +1,8 @@
+{
+  "name": "GoshBuzz",
+  "description": "Pakistan's #1 Online Earning Library. 60 step-by-step earning guides built for Pakistanis — 30 Earning Ideas and 30 Survival Skills.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
