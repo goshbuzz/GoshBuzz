@@ -48,4 +48,8 @@ console.log('🚀 Running pre-rendering and sitemap generator...');
 const { prerender } = await import('./prerender.js');
 await prerender();
 
+console.log('🔎 Checking published styles, scripts, and images...');
+const { checkDeployment } = await import('./check-build.js');
+checkDeployment(rootDir);
+
 console.log('✨ Build pipeline completed successfully!');

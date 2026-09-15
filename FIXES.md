@@ -64,3 +64,54 @@ from `src/data.ts` (product ids, slugs, `legacySlugAliases`) — 458 generated r
 first-match-wins order: host rule → exact aliases → id wildcards (`/products/skill-21-:legacy*`)
 → manual wildcards. **Run `npx tsx scripts/gen-redirects.ts` whenever products are
 added/renamed**, then commit `vercel.json`.
+
+---
+
+# Unstyled homepage / missing built assets — 2026-09-16
+
+The reported screenshot shows server-rendered content without CSS and a broken
+bundled logo, while an externally hosted photo loads. The local production build
+contains the stylesheet, client JavaScript and hashed images, so changing layout
+classes is not the appropriate fix.
+
+## Deployment fix
+
+- Set `framework: null` in `vercel.json` (Vercel's **Other/static** preset), keeping
+  `npm run build` and `dist/client` as the build command and publish directory.
+  This makes the intended static deployment explicit rather than relying on a
+  dashboard preset or framework detection in a repo containing both Express and
+  Vite. Vercel's Express adapter does not serve `express.static()` assets; see
+  https://vercel.com/docs/frameworks/backend/express#serving-static-assets.
+- Keep the existing redirects, cache headers and real static 404. Do not add a
+  catch-all rewrite to the homepage: that can return HTML for missing CSS/JS and
+  reintroduce the SEO soft-404 problem.
+- Run `scripts/check-build.js` at the end of every build. It checks every generated
+  HTML page (including nested pages and the 404) for stylesheet/client-module
+  links, missing or empty local assets, source URLs and uncompiled Tailwind CSS.
+  Regression tests run with `npm test`; an existing build can be rechecked with
+  `npm run check:build`.
+
+## Verification and rollout
+
+`npm test` (10 tests), `npm run typecheck` and `npm run build` pass. The build
+validator checks 76 HTML files and 14 distinct referenced local assets. A local
+production Chromium smoke test verifies desktop (1568px) and mobile (390px)
+layouts, CSS, logo loading, mobile navigation, nested pages and a real 404 with
+no browser JavaScript errors. External ad/photo requests were excluded from
+that local browser test.
+
+Live asset responses and the active Vercel preset could not be inspected from
+this environment, so the hosting-mode diagnosis still needs deployment
+confirmation. These repository changes alone do not update the live website.
+
+After merging and deploying this change in Vercel:
+
+1. Confirm the deployment uses the **Other** preset and publishes **dist/client**.
+2. Open the homepage with DevTools → Network → Disable cache, then reload.
+3. Verify its `/assets/*.css`, `/assets/*.js` and logo requests return **200**,
+   with CSS/JavaScript/image content types (not `text/html` or redirects).
+4. Check desktop and mobile navigation, a direct article URL and an unknown URL
+   (which must still return 404).
+5. If assets still fail, inspect their actual response status and Vercel logs;
+   also check dashboard domain redirects and any CDN outside Vercel. Do not
+   change DNS records solely to address an unstyled but reachable page.
