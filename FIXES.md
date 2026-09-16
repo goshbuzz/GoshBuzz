@@ -104,6 +104,54 @@ Live asset responses and the active Vercel preset could not be inspected from
 this environment, so the hosting-mode diagnosis still needs deployment
 confirmation. These repository changes alone do not update the live website.
 
+---
+
+# Domain vs subdomain check — 2026-09-16
+
+Question: does the unstyled-homepage issue live on the **domain** (apex) or the
+**subdomain** (www) side? Both were checked live.
+
+## Live DNS / edge check (2026-09-16)
+
+| Host | Resolves to | Verdict |
+|---|---|---|
+| `goshbuzz.com` (domain) | A → `216.198.79.1` — Vercel anycast edge (AS16509, Vercel Inc.) | Serves the production site |
+| `www.goshbuzz.com` (subdomain) | CNAME → `3103721f28a89b54.vercel-dns-017.com` → `64.29.17.65` / `216.198.79.65` (Vercel edge) | 301 → `https://goshbuzz.com/…` (host rule active) |
+
+- **Neither host points at an external CDN or legacy hosting** — both go
+  straight to Vercel, so the unstyled page is not caused by a domain/subdomain
+  split. The apex (domain) is the canonical host; the subdomain only 301s to it.
+- Canonical consistency in the repo: `BASE_URL` (`src/components/SEO.tsx`),
+  all 74 `sitemap.xml` URLs, and `robots.txt` `Sitemap:` use
+  `https://goshbuzz.com`; no code references `www.goshbuzz.com` except the
+  `vercel.json` host redirect.
+
+## Repo fix
+
+`scripts/check-build.js` `checkDeployment` now also runs
+`checkDomainConfig`, which fails the build if:
+
+- `vercel.json` does not contain exactly one host-scoped rule, or it is not
+  `www.goshbuzz.com` → `https://goshbuzz.com/:path*` **permanent**, or it is
+  not the **first** redirect (order matters — first match wins);
+- the www rule redirects to the subdomain itself (would keep two live hosts);
+- `BASE_URL`, any `sitemap.xml` URL, or the `robots.txt` `Sitemap:` uses a
+  subdomain instead of the apex (duplicate-content risk).
+
+`npm test` covers all of these (18 tests). The domain part of the check runs
+against the repo itself without a build: `node -e "import('./scripts/check-build.js').then(m=>console.log(m.checkDomainConfig(process.cwd())))"`.
+
+## What still needs a dashboard check (not doable from the repo)
+
+1. Vercel → project → **Domains**: both `goshbuzz.com` **and**
+   `www.goshbuzz.com` must be attached and green. If www were missing, Vercel
+   would serve its "domain not found" page on www instead of the 301.
+2. **Framework preset = Other/static** (this is the actual fix for the
+   unstyled page — `framework: null` in `vercel.json`), publishing
+   `dist/client`.
+3. Hard-reload with DevTools → Network → Disable cache to clear a cached
+   unstyled page before concluding the deploy failed.
+
 After merging and deploying this change in Vercel:
 
 1. Confirm the deployment uses the **Other** preset and publishes **dist/client**.
