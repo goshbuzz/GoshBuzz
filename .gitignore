@@ -40,3 +40,8 @@ fix_data.cjs
 
 # TypeScript cache
 *.tsbuildinfo
+
+# Uploaded patch artifacts (git format-patch / diff hand-offs).
+# They are review material, not app source: keep them out of the repo root.
+/*.patch
+/*.diff
