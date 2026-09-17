@@ -18,6 +18,7 @@ import Checkout from "./pages/Checkout";
 import Blogs from "./pages/Blogs";
 import Apps from "./pages/Apps";
 import AppDetail from "./pages/AppDetail";
+import Network from "./pages/Network";
 import NotFound from "./pages/NotFound";
 import { CartProvider, useCart } from "./CartContext";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
@@ -101,6 +102,13 @@ function Header({
           >
             <span>{t("apps")}</span>
             <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-amber-500/20">NEW</span>
+          </Link>
+          <Link
+            to="/network"
+            className="text-gray-600 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 font-medium flex items-center gap-1.5"
+          >
+            <Globe size={15} />
+            <span>{t("network")}</span>
           </Link>
           <Link
             to="/blogs/news"
@@ -203,6 +211,13 @@ function Header({
           >
             <span>{t("apps")}</span>
             <span className="bg-amber-500 text-gray-950 text-[10px] font-extrabold px-2 py-0.5 rounded-full">NEW</span>
+          </Link>
+          <Link
+            to="/network"
+            onClick={() => setIsMenuOpen(false)}
+            className="block px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+          >
+            {t("network")}
           </Link>
           <Link
             to="/blogs/news"
@@ -317,6 +332,10 @@ export function AppLayout() {
           <Route path="/about-us" element={<Navigate to="/about" replace />} />
           <Route path="/apps" element={<Apps />} />
           <Route path="/apps/:slug" element={<AppDetail />} />
+          <Route path="/network" element={<Network />} />
+          <Route path="/modules" element={<Navigate to="/network" replace />} />
+          <Route path="/goshbuzz-network" element={<Navigate to="/network" replace />} />
+          <Route path="/platforms" element={<Navigate to="/network" replace />} />
           <Route path="/app" element={<Navigate to="/apps" replace />} />
           <Route path="/app/:slug" element={<Navigate to="/apps/:slug" replace />} />
           <Route path="/goshbuzz-apps" element={<Navigate to="/apps" replace />} />
@@ -524,6 +543,15 @@ export function AppLayout() {
                     >
                       <span>{t("apps")}</span>
                       <span className="text-[10px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded font-bold">Android</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/network"
+                      className="hover:text-white transition-colors flex items-center gap-1.5"
+                    >
+                      <span>{t("network")}</span>
+                      <span className="text-[10px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded font-bold">Modules</span>
                     </Link>
                   </li>
                   <li>

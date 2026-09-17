@@ -13,6 +13,7 @@ export const BASE_URL = 'https://goshbuzz.com';
 export const STATIC_ROUTES = [
   '/',
   '/apps',
+  '/network',
   '/blogs/news',
   '/collection/ideas',
   '/collection/skills',
@@ -34,8 +35,8 @@ export function generateSitemapUrls(): SitemapUrl[] {
     return {
       loc,
       lastmod: currentDate,
-      changefreq: route === '/' || route === '/blogs/news' || route === '/apps' ? 'daily' : 'weekly',
-      priority: route === '/' ? 1.0 : route === '/apps' || route === '/blogs/news' ? 0.9 : 0.7,
+      changefreq: route === '/' || route === '/blogs/news' || route === '/apps' || route === '/network' ? 'daily' : 'weekly',
+      priority: route === '/' ? 1.0 : route === '/apps' || route === '/blogs/news' || route === '/network' ? 0.9 : 0.7,
     };
   });
 

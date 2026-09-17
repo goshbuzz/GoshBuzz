@@ -52,6 +52,21 @@ export function checkBuild(clientDir) {
     }
     assert.ok(hasStylesheet, `${name}: no stylesheet linked`);
     assert.ok(hasClientScript, `${name}: no client module linked`);
+
+    // Head integrity: SEO meta (title, canonical) must live in <head>. With
+    // React 19 + renderToString, <Helmet> output can leak into the #root body
+    // HTML instead — invisible to crawlers that only read <head> (breaks SEO,
+    // AEO and GEO signals like canonical, meta description and JSON-LD).
+    const headEnd = html.indexOf('</head>');
+    assert.ok(headEnd > -1, `${name}: missing </head>`);
+    const headPart = html.slice(0, headEnd);
+    const bodyPart = html.slice(headEnd);
+    assert.ok(/<title>[\s\S]*?<\/title>/.test(headPart), `${name}: <title> is not in <head>`);
+    assert.ok(!/<title>/.test(bodyPart), `${name}: <title> leaked into the body (check entry-server head hoisting)`);
+    assert.ok(/<link\b[^>]*rel="canonical"[^>]*>/.test(headPart), `${name}: canonical link is not in <head>`);
+    if (bodyPart.includes('application/ld+json')) {
+      assert.ok(headPart.includes('application/ld+json'), `${name}: JSON-LD is in the body but not in <head>`);
+    }
   }
   return { pages: htmlFiles.length, assets: assets.size };
 }
