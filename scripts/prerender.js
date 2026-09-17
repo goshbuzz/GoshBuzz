@@ -58,6 +58,7 @@ async function prerender() {
   const staticRoutes = [
     '/',
     '/apps',
+    '/network',
     '/blogs/news',
     '/collection/ideas',
     '/collection/skills',
@@ -128,8 +129,8 @@ async function prerender() {
 
     const xmlEntries = sitemapRoutes.map(route => {
       const loc = route === '/' ? baseUrl : `${baseUrl}${route}`;
-      const changefreq = (route === '/' || route === '/blogs/news' || route === '/apps') ? 'daily' : 'weekly';
-      const priority = route === '/' ? '1.0' : (route === '/apps' || route === '/blogs/news') ? '0.9' : '0.8';
+      const changefreq = (route === '/' || route === '/blogs/news' || route === '/apps' || route === '/network') ? 'daily' : 'weekly';
+      const priority = route === '/' ? '1.0' : (route === '/apps' || route === '/blogs/news' || route === '/network') ? '0.9' : '0.8';
       return `  <url>
     <loc>${loc}</loc>
     <lastmod>${currentDate}</lastmod>

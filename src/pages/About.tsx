@@ -1,4 +1,6 @@
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import { networkModules, HUB_MODULE } from '../data/networkData';
 
 export default function About() {
   const aboutSchema = {
@@ -88,6 +90,39 @@ export default function About() {
               and give you exactly the steps you need to take action today.
             </p>
           </div>
+        </div>
+
+        <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            The GoshBuzz Network
+          </h2>
+          <p className="mb-4">
+            GoshBuzz operates a family of modules, not just one website.{" "}
+            {networkModules.map((module, i) => (
+              <span key={module.id}>
+                <a
+                  href={module.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-600 dark:text-amber-400 font-semibold hover:underline"
+                >
+                  {module.name}
+                </a>{" "}
+                <span className="font-mono text-xs text-gray-500 dark:text-gray-400">
+                  ({module.host})
+                </span>
+                {i < networkModules.length - 1 ? ", " : "."}{" "}
+              </span>
+            ))}
+            FreeConvertio is a product of {HUB_MODULE.host} on its own domain.
+            All modules, with logos, are listed on the network page.
+          </p>
+          <Link
+            to="/network"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold text-sm shadow-md transition-all"
+          >
+            Explore the GoshBuzz Network
+          </Link>
         </div>
 
         <div className="bg-gray-900 text-white p-8 rounded-2xl text-center">
