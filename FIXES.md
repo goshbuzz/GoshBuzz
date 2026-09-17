@@ -106,6 +106,65 @@ confirmation. These repository changes alone do not update the live website.
 
 ---
 
+# GoshBuzz Network page + SEO head fix — 2026-09-16
+
+## 1. New `/network` page — all subdomains listed as GoshBuzz modules
+
+The Vercel team `goshbuzz` runs six sub-projects beside the core site. They
+are now presented on a dedicated page (`goshbuzz.com/network`, aliases
+`/modules`, `/goshbuzz-network`, `/platforms`) as the **modules of the
+GoshBuzz Network**:
+
+| Module | Address | Hosting |
+|---|---|---|
+| Little Learn | littlelearn.goshbuzz.com | goshbuzz.com subdomain |
+| Proveli | proveli.goshbuzz.com | goshbuzz.com subdomain |
+| Pakistan Tests Hub | pakistantestshub.goshbuzz.com | goshbuzz.com subdomain |
+| FreeConvertio | www.freeconvertio.com | own domain — **a product of goshbuzz.com** |
+| Young Scholars PK | youngscholarspk.goshbuzz.com | goshbuzz.com subdomain |
+| Yellow Pages Pakistan | yellowpagespakistan.goshbuzz.com | goshbuzz.com subdomain |
+
+- **Synced logos:** each card hot-links the module's live favicon
+  (`https://<module-host>/favicon.ico`), so logos stay in sync with each
+  property automatically. To pin official artwork, drop a file in
+  `public/modules/` and set `logoFile` in `src/data/networkData.ts`
+  (local file wins; a monogram renders as fallback if an image fails).
+- **SEO / AEO / GEO pitch:** JSON-LD `@graph` (CollectionPage + ItemList,
+  Organization with `sameAs` for every module, FAQPage, BreadcrumbList);
+  a network FAQ that states each module is part of goshbuzz.com and that
+  **FreeConvertio is a product of goshbuzz.com** (visible accordion and
+  FAQPage schema use the same `networkFaqs` array, so they always agree);
+  a structured "Where to find each module" directory table (quotable for
+  answer engines); site-wide FAQ entry on the homepage; About-page section;
+  header/footer nav links; sitemap entry (`/network`, daily, 0.9).
+- Single source of truth: `src/data/networkData.ts` (edit a module there and
+  page + schema + copy all update).
+- `checkBuild` now also asserts head integrity on every page: `<title>` and
+  `<link rel="canonical">` must be in `<head>`, no `<title>` in the body, and
+  JSON-LD never body-only (see below — this guard is what caught that bug).
+
+## 2. SSR head fix — `<Helmet>` output leaked into the body (all pages)
+
+Found while verifying the new page: with React 19 + `renderToString`, the
+`react-helmet-async` context is **not** populated, so every page's
+`<title>`, meta description, canonical, Open Graph tags and JSON-LD were
+rendered **inside `<div id="root">`** in the body instead of `<head>` —
+invisible to crawlers that only read `<head>` (canonical, meta and FAQ schema
+all effectively missing for SEO/AEO/GEO).
+
+Fix in `src/entry-server.tsx`: `hoistHeadTags()` extracts every head tag
+(`<title>`, `<meta>`, `<link>` (incl. React 19 auto-preloads),
+`<script type="application/ld+json">`) out of the SSR body HTML and injects
+it into `<!--head-outlet-->`; falls back to the helmet context if it ever
+starts working again. Hydration is unaffected (Helmet renders null in the
+body on both sides).
+
+Verified on the local production build: 77/77 prerendered pages have
+`<title>` + canonical in `<head>`, zero body leaks; `/` `/apps` `/network`
+serve 200 with correct head, unknown routes serve 404.
+
+---
+
 # Domain vs subdomain check — 2026-09-16
 
 Question: does the unstyled-homepage issue live on the **domain** (apex) or the

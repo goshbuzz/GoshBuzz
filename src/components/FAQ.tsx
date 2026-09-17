@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, HelpCircle, Sparkles } from 'lucide-react';
 
-const faqs = [
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+const defaultFaqs: FaqItem[] = [
   {
     question: "What makes GoshBuzz guides and articles high-value and unique?",
     answer: "Every article and blueprint published on GoshBuzz is written from real-world execution data, localized for the Pakistani economy, and structured into step-by-step actionable roadmaps. We strictly adhere to Google Webmaster Quality Guidelines, providing zero-fluff, original editorial analysis on e-commerce, digital freelancing, content publishing, and software engineering."
@@ -10,6 +15,10 @@ const faqs = [
   {
     question: "How do I access and read the complete step-by-step guides?",
     answer: "All 60 earning blueprints and survival skill manuals are freely accessible on our website under the /blogs/news section. You can also request instant downloadable PDF editions delivered directly to your WhatsApp inbox for offline reading."
+  },
+  {
+    question: "What is the GoshBuzz Network and which products does GoshBuzz operate?",
+    answer: "GoshBuzz operates the GoshBuzz Network: a family of modules under goshbuzz.com — Little Learn (littlelearn.goshbuzz.com), Proveli (proveli.goshbuzz.com), Pakistan Tests Hub (pakistantestshub.goshbuzz.com), Young Scholars PK (youngscholarspk.goshbuzz.com), Yellow Pages Pakistan (yellowpagespakistan.goshbuzz.com), plus FreeConvertio (freeconvertio.com), which is a product of goshbuzz.com on its own domain, and the GoshBuzz Android apps. The full list with logos is at goshbuzz.com/network."
   },
   {
     question: "Are GoshBuzz Android mobile applications safe and privacy-first?",
@@ -29,7 +38,18 @@ const faqs = [
   }
 ];
 
-export function FAQ() {
+interface FAQProps {
+  /** Override the default site FAQ list (e.g. the /network page passes networkFaqs). */
+  items?: FaqItem[];
+  heading?: string;
+  subheading?: string;
+}
+
+export function FAQ({
+  items = defaultFaqs,
+  heading = "Frequently Asked Questions",
+  subheading = "Everything you need to know about GoshBuzz educational blueprints, mobile app utilities, and local digital economy solutions.",
+}: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -41,15 +61,15 @@ export function FAQ() {
             <span>Knowledge Base & Frequently Asked Questions</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
-            Frequently Asked Questions
+            {heading}
           </h2>
           <p className="mt-3 text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Everything you need to know about GoshBuzz educational blueprints, mobile app utilities, and local digital economy solutions.
+            {subheading}
           </p>
         </div>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {items.map((faq, index) => (
             <div
               key={index}
               className="border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden bg-white dark:bg-gray-900 shadow-xs transition-all hover:border-amber-400/60 dark:hover:border-amber-500/40"

@@ -6,6 +6,7 @@ import { test } from 'node:test';
 import { checkBuild, checkDeployment, checkDomainConfig, CANONICAL_HOST, SUBDOMAIN_HOST } from './check-build.js';
 
 const html = `<!doctype html><html><head>
+<title>Test Page</title>
 <link rel="stylesheet" href="/assets/site-123.css">
 <script type="module" src="/assets/site-123.js"></script>
 <link rel="canonical" href="https://goshbuzz.com/about">
@@ -80,6 +81,18 @@ for (const [label, content, error] of [
   test(`rejects ${label} on a nested page`, t => {
     const { client } = fixture(t);
     fs.writeFileSync(path.join(client, 'blogs/news/example/index.html'), content);
+    assert.throws(() => checkBuild(client), error);
+  });
+}
+
+for (const [label, content, error] of [
+  ['title in body instead of head', html.replace('<title>Test Page</title>', '').replace('<body>', '<body><title>Test Page</title>'), /<title>/],
+  ['title missing from head', html.replace('<title>Test Page</title>', ''), /<title> is not in <head>/],
+  ['canonical missing from head', html.replace('<link rel="canonical" href="https://goshbuzz.com/about">', ''), /canonical link is not in <head>/],
+]) {
+  test(`rejects ${label}`, t => {
+    const { client } = fixture(t);
+    fs.writeFileSync(path.join(client, 'index.html'), content);
     assert.throws(() => checkBuild(client), error);
   });
 }
