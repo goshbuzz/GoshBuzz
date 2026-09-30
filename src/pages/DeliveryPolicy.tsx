@@ -1,8 +1,20 @@
 import { Send } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { PageHero, thumbnailMosaic } from '../components/PageHero';
 
 export default function DeliveryPolicy() {
   return (
+    <>
+      <PageHero
+        eyebrow="Digital delivery via WhatsApp"
+        eyebrowIcon={Send}
+        icon={Send}
+        accent="indigo"
+        title="Delivery"
+        highlight="Policy"
+        subtitle="How and when your digital guides, apps, and tools are delivered after payment."
+        mosaic={thumbnailMosaic(23, 24)}
+      />
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
             <Helmet>
         <title>Delivery Policy — GoshBuzz Pakistan</title>
@@ -13,10 +25,6 @@ export default function DeliveryPolicy() {
         <meta property="og:url" content="https://goshbuzz.com/delivery-policy" />
         <link rel="canonical" href="https://goshbuzz.com/delivery-policy" />
       </Helmet>
-      <div className="text-center mb-12">
-        <Send className="w-12 h-12 text-indigo-500 mx-auto mb-4" />
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Delivery Policy</h1>
-      </div>
       <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 text-center md:text-left">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Digital Delivery via WhatsApp</h2>
         <p className="mb-6">
@@ -39,5 +47,6 @@ export default function DeliveryPolicy() {
         </p>
       </div>
     </div>
+    </>
   );
 }

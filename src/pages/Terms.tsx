@@ -1,8 +1,20 @@
 import { FileText } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { PageHero, thumbnailMosaic } from '../components/PageHero';
 
 export default function Terms() {
   return (
+    <>
+      <PageHero
+        eyebrow="Legal • Last updated 2026"
+        eyebrowIcon={FileText}
+        icon={FileText}
+        accent="indigo"
+        title="Terms &"
+        highlight="Conditions"
+        subtitle="The rules for using GoshBuzz, purchasing our digital guides, and using our mobile applications."
+        mosaic={thumbnailMosaic(41, 24)}
+      />
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
             <Helmet>
         <title>Terms & Conditions — GoshBuzz Pakistan</title>
@@ -13,10 +25,6 @@ export default function Terms() {
         <meta property="og:url" content="https://goshbuzz.com/terms" />
         <link rel="canonical" href="https://goshbuzz.com/terms" />
       </Helmet>
-      <div className="text-center mb-12">
-        <FileText className="w-12 h-12 text-blue-500 mx-auto mb-4" />
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Terms and Conditions</h1>
-      </div>
       <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 text-center md:text-left">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">1. Acceptance of Terms</h2>
         <p className="mb-6">
@@ -49,5 +57,6 @@ export default function Terms() {
         </p>
       </div>
     </div>
+    </>
   );
 }

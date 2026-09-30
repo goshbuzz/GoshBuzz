@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { PageHero, thumbnailMosaic } from "../components/PageHero";
 import { BookOpen, Search, Sparkles, Clock, Star, ShoppingCart, CheckCircle2 } from "lucide-react";
 import { products } from "../data";
 import { articles } from "../data/articles";
@@ -74,7 +75,21 @@ export default function Blogs() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <>
+      <PageHero
+        eyebrow="GoshBuzz Knowledge Hub"
+        eyebrowIcon={Sparkles}
+        icon={BookOpen}
+        title="Earning Blueprints &"
+        highlight="Articles"
+        subtitle="Practical, step-by-step masterclasses and case studies designed to help you start your freelance, digital, or local business in Pakistan."
+        mosaic={thumbnailMosaic(9, 24)}
+      >
+        <a href="#articles" className="inline-flex items-center gap-2 px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-gray-950 font-extrabold rounded-xl shadow-lg whitespace-nowrap">
+          Browse the articles
+        </a>
+      </PageHero>
+    <div id="articles" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-20">
       <Helmet>
         <title>Blogs & Earning Case Studies — GoshBuzz Pakistan</title>
         <meta
@@ -98,19 +113,6 @@ export default function Blogs() {
           {JSON.stringify(blogsSchema)}
         </script>
       </Helmet>
-
-      {/* Hero Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/20 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider">
-          <Sparkles size={14} /> GoshBuzz Knowledge Hub
-        </div>
-        <h1 className="text-4xl md:text-5xl font-black text-gray-950 dark:text-gray-50 tracking-tight">
-          Earning Blueprints & Articles
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg">
-          Practical, step-by-step masterclasses and case studies designed to help you start your freelance, digital, or local business in Pakistan.
-        </p>
-      </div>
 
       {/* Filters & Search Row */}
       <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-12 pb-6 border-b border-gray-150 dark:border-gray-800">
@@ -315,5 +317,6 @@ export default function Blogs() {
         </div>
       </div>
     </div>
+    </>
   );
 }

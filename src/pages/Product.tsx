@@ -1,7 +1,10 @@
 import { useParams, Link, useNavigate, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { PageHero } from "../components/PageHero";
+import { UrgencyBar, productStats } from "../components/ProductBadges";
 import { 
   ArrowLeft, 
+  Star, 
   ShoppingCart, 
   CheckCircle2, 
   Share2, 
@@ -137,7 +140,116 @@ export default function Product() {
   const seoTitle = `${product.title} — Online Earning in Pakistan Free Guide | GoshBuzz`;
   const seoDescription = `Learn ${product.title} in Pakistan: ${metaDescription} Discover step-by-step free online earning ideas without investment, freelancing skills, and local JazzCash & EasyPaisa withdrawal roadmaps for Pakistani students and beginners.`;
 
+  const addThisToCart = () =>
+    addToCart({
+      id: product.id,
+      title: product.title,
+      type: product.type as "idea" | "skill",
+      price: Number(price),
+      image: product.image,
+      icon: product.icon,
+      slug: product.slug,
+    });
+  const absoluteImage = product.image?.startsWith("/") ? `https://goshbuzz.com${product.image}` : product.image;
+
   return (
+    <>
+      <PageHero
+        image={product.image}
+        accent={product.type === "idea" ? "amber" : "indigo"}
+        align="left"
+        asideFirstOnMobile
+        title={product.title}
+        eyebrow={`${product.type === "idea" ? "Earning Idea" : "Survival Skill"} • ${(product as any).category || "Guide"}`}
+        eyebrowIcon={product.type === "idea" ? Lightbulb : ShieldCheck}
+        subtitle={product.description}
+        breadcrumb={
+        <nav aria-label="Breadcrumb" className="flex items-center justify-center lg:justify-start gap-2 text-xs sm:text-sm text-gray-300 overflow-x-auto whitespace-nowrap">
+          <Link to="/" className="hover:text-white transition-colors inline-flex items-center gap-1">
+            <ArrowLeft size={14} /> Home
+          </Link>
+          <span className="text-gray-500">/</span>
+          <Link to={`/collection/${product.type === "idea" ? "ideas" : "skills"}`} className="hover:text-white transition-colors">
+            {product.type === "idea" ? "Earning Ideas" : "Survival Skills"}
+          </Link>
+          <span className="text-gray-500">/</span>
+          <span className="text-white font-medium truncate">{product.title}</span>
+        </nav>
+        }
+        aside={
+          <figure className="relative mx-auto w-full max-w-[18rem] sm:max-w-sm lg:max-w-md">
+            <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-amber-400/40 via-transparent to-indigo-500/40 blur-xl" aria-hidden="true" />
+            <div className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-gray-900">
+              <img
+                src={product.image}
+                alt={`${product.title} — product catalog image`}
+                className="w-full aspect-square object-cover"
+                fetchPriority="high"
+              />
+              <div className="absolute top-3 left-3 bg-gray-950/80 backdrop-blur-sm text-amber-300 px-3 py-1 rounded-full text-[11px] font-extrabold border border-amber-400/30">
+                Product Catalog
+              </div>
+              <div className="absolute top-3 right-3 bg-amber-500 text-gray-950 px-3 py-1 rounded-full text-xs font-extrabold shadow">
+                Rs. {price}
+              </div>
+            </div>
+            <figcaption className="sr-only">{product.title}</figcaption>
+          </figure>
+        }
+      >
+
+        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2">
+          <div className="flex items-center gap-1" aria-label="Rated 5 out of 5">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <Star key={i} size={18} className="fill-amber-400 text-amber-400" />
+            ))}
+          </div>
+          <span className="text-sm text-gray-300">{productStats(product.id).rating} • {productStats(product.id).reviews} verified reviews</span>
+        </div>
+
+        <div className="flex items-center gap-3 justify-center lg:justify-start flex-wrap">
+          <span className="text-4xl font-extrabold text-amber-400">Rs. {price}</span>
+          <span className="text-base line-through text-gray-400 font-semibold">
+            Rs. {product.type === "idea" ? "1,500" : "600"}
+          </span>
+          <span className="px-2.5 py-0.5 bg-emerald-500/20 text-emerald-300 text-xs font-extrabold rounded-md border border-emerald-400/30">
+            60% OFF Launch Promo
+          </span>
+        </div>
+
+        <div className="max-w-md mx-auto lg:mx-0 bg-white/95 dark:bg-gray-900/90 rounded-xl p-3">
+          <UrgencyBar id={product.id} />
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+          <button
+            onClick={() => {
+              addThisToCart();
+              navigate("/checkout");
+            }}
+            className="px-7 py-3.5 bg-amber-500 hover:bg-amber-400 active:scale-95 text-gray-950 rounded-xl font-extrabold text-base transition-all shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
+          >
+            <ShoppingCart size={18} /> Buy Now — Rs. {price}
+          </button>
+          <button
+            onClick={() => (alreadyInCart ? navigate("/checkout") : addThisToCart())}
+            className={`px-6 py-3.5 rounded-xl font-bold text-base transition-all border flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap ${
+              alreadyInCart
+                ? "bg-emerald-500/20 border-emerald-400/40 text-emerald-200"
+                : "bg-white/10 hover:bg-white/20 border-white/25 text-white backdrop-blur-sm"
+            }`}
+          >
+            {alreadyInCart ? (
+              <>
+                <CheckCircle2 size={18} /> In Cart (Checkout)
+              </>
+            ) : (
+              "+ Add to Cart"
+            )}
+          </button>
+        </div>
+      </PageHero>
+
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <Helmet>
         <title>{seoTitle}</title>
@@ -156,14 +268,14 @@ export default function Product() {
         <meta property="og:url" content={articleUrl} />
         <meta property="og:site_name" content="GoshBuzz Pakistan" />
         <meta property="og:locale" content="en_PK" />
-        {product.image && <meta property="og:image" content={product.image} />}
+        {absoluteImage && <meta property="og:image" content={absoluteImage} />}
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDescription} />
         <meta name="twitter:site" content="@goshbuzz" />
-        {product.image && <meta name="twitter:image" content={product.image} />}
+        {absoluteImage && <meta name="twitter:image" content={absoluteImage} />}
         
         {/* Schema Injections for Search Engine & AI Crawler Dominance */}
         <script type="application/ld+json">
@@ -180,77 +292,19 @@ export default function Product() {
           </script>
         )}
       </Helmet>
-      <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8 overflow-x-auto whitespace-nowrap pb-2">
-        <Link
-          to="/"
-          className="hover:text-gray-900 dark:text-gray-100 transition-colors inline-flex items-center gap-1"
-        >
-          <ArrowLeft size={14} /> Home
-        </Link>
-        <span className="text-gray-300">/</span>
-        <Link
-          to="/"
-          className="hover:text-gray-900 dark:text-gray-100 transition-colors"
-        >
-          {product.type === "idea" ? "Earning Ideas" : "Survival Skills"}
-        </Link>
-        <span className="text-gray-300">/</span>
-        <span className="text-gray-900 dark:text-gray-100 font-medium truncate">
-          {product.title}
-        </span>
-      </nav>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-        <div className="bg-gray-100 dark:bg-gray-800 rounded-3xl aspect-square overflow-hidden flex items-center justify-center text-8xl shadow-inner relative">
-          {product.image ? (
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-          ) : (
-            product.icon
-          )}
-        </div>
-
+      <div className="max-w-3xl mx-auto">
         <div className="flex flex-col justify-center space-y-6 text-center md:text-left items-center md:items-start">
-          <div>
-            <div className="flex flex-wrap items-center gap-2 mb-3 justify-center md:justify-start">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-200 dark:border-amber-800">
-                {product.type === "idea" ? "Earning Idea" : "Survival Skill"}
-              </span>
-              {/* Emergency High-Demand Badge */}
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-xs font-extrabold border border-rose-200 dark:border-rose-800 animate-pulse">
-                <Flame size={13} className="text-rose-600 dark:text-rose-400" />
-                <span>HOT: 38 Purchased Today</span>
-              </span>
-              {/* Instant WhatsApp Delivery Badge */}
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-xs font-extrabold border border-emerald-200 dark:border-emerald-800">
-                <Zap size={13} className="text-emerald-600 dark:text-emerald-400" />
-                <span>Instant WhatsApp Delivery</span>
-              </span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-3 tracking-tight">
-              {product.title}
-            </h1>
-
-            <div className="flex items-center gap-3 mb-4 justify-center md:justify-start flex-wrap">
-              <span className="text-3xl font-extrabold text-amber-500">
-                Rs. {price}
-              </span>
-              <span className="text-sm line-through text-gray-400 font-semibold">
-                Rs. {product.type === "idea" ? "1,500" : "600"}
-              </span>
-              <span className="px-2.5 py-0.5 bg-green-100 dark:bg-green-950/40 text-green-700 dark:text-green-300 text-xs font-extrabold rounded-md border border-green-200 dark:border-green-800">
-                60% OFF Launch Promo
-              </span>
-            </div>
-
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-              {product.description}
-            </p>
+          <div className="flex flex-wrap items-center gap-2 justify-center md:justify-start">
+            {/* Emergency High-Demand Badge */}
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-xs font-extrabold border border-rose-200 dark:border-rose-800 animate-pulse">
+              <Flame size={13} className="text-rose-600 dark:text-rose-400" />
+              <span>HOT: {productStats(product.id).soldToday} Purchased Today</span>
+            </span>
+            {/* Instant WhatsApp Delivery Badge */}
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-xs font-extrabold border border-emerald-200 dark:border-emerald-800">
+              <Zap size={13} className="text-emerald-600 dark:text-emerald-400" />
+              <span>Instant WhatsApp Delivery</span>
+            </span>
           </div>
 
           {/* Emergency Alert Banner */}
@@ -260,7 +314,7 @@ export default function Product() {
             </span>
             <div className="text-xs">
               <p className="font-bold text-gray-900 dark:text-gray-100">
-                Limited Batch Capacity: Only 6 Discounted Copies Left
+                Limited Batch Capacity: Only {productStats(product.id).left} Discounted Copies Left
               </p>
               <p className="text-gray-600 dark:text-gray-400 text-[11px] mt-0.5">
                 Regular price of Rs. {product.type === "idea" ? "1,500" : "600"} restores automatically once current cohort fills.
@@ -956,5 +1010,6 @@ export default function Product() {
         </div>
       </div>
     </div>
+    </>
   );
 }

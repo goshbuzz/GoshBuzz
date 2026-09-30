@@ -1,8 +1,20 @@
 import { Shield } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { PageHero, thumbnailMosaic } from '../components/PageHero';
 
 export default function PrivacyPolicy() {
   return (
+    <>
+      <PageHero
+        eyebrow="Your data, protected"
+        eyebrowIcon={Shield}
+        icon={Shield}
+        accent="amber"
+        title="Privacy"
+        highlight="Policy"
+        subtitle="How we collect, handle, and protect your information — including cookies and advertising partners."
+        mosaic={thumbnailMosaic(47, 24)}
+      />
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <Helmet>
         <title>Privacy Policy — GoshBuzz Pakistan</title>
@@ -13,11 +25,6 @@ export default function PrivacyPolicy() {
         <meta property="og:url" content="https://goshbuzz.com/privacy-policy" />
         <link rel="canonical" href="https://goshbuzz.com/privacy-policy" />
       </Helmet>
-      <div className="text-center mb-12">
-        <Shield className="w-12 h-12 text-amber-500 mx-auto mb-4" />
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Privacy Policy</h1>
-        <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">How we handle and protect your information.</p>
-      </div>
       <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 text-center md:text-left">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-4">1. Information We Collect</h2>
         <p className="mb-4">
@@ -64,5 +71,6 @@ export default function PrivacyPolicy() {
         </p>
       </div>
     </div>
+    </>
   );
 }

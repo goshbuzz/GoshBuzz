@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { PageHero } from "../components/PageHero";
+import emfBanner from "../assets/images/emf_sentinel_banner_1787513383000.jpg";
 import { Link } from 'react-router-dom';
 import { 
   Download, 
@@ -101,24 +103,22 @@ export default function Apps() {
         </script>
       </Helmet>
 
-      {/* Hero Header Section */}
-      <section className="relative overflow-hidden pt-12 pb-10 bg-gradient-to-b from-amber-500/10 via-transparent to-transparent dark:from-amber-500/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-700/50 text-amber-800 dark:text-amber-300 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
-            <Smartphone className="w-4 h-4" />
-            Official Mobile Applications Directory
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-5">
-            GoshBuzz <span className="text-amber-500">Android Apps</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-normal mb-2">
-            High-utility, privacy-first mobile tools engineered for instant physical-world diagnostics, sensor telemetry, and offline productivity.
-          </p>
-        </div>
-      </section>
+      {/* Full-screen Hero Banner */}
+      <PageHero
+        eyebrow="Official Mobile Applications Directory"
+        eyebrowIcon={Smartphone}
+        image={emfBanner}
+        title="GoshBuzz"
+        highlight="Android Apps"
+        subtitle="High-utility, privacy-first mobile tools engineered for instant physical-world diagnostics, sensor telemetry, and offline productivity."
+      >
+        <a href="#featured-app" className="inline-flex items-center gap-2 px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-gray-950 font-extrabold rounded-xl shadow-lg whitespace-nowrap">
+          <Smartphone className="w-5 h-5" /> Explore the apps
+        </a>
+      </PageHero>
 
       {/* Applications Catalog Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" id="featured-app">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" id="featured-app" style={{ scrollMarginTop: "6rem" }}>
         <div className="bg-white dark:bg-gray-900 border-2 border-amber-500/40 rounded-3xl p-6 sm:p-8 shadow-xl">
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-gray-100 dark:border-gray-800">

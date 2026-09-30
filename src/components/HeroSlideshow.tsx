@@ -32,7 +32,7 @@ export const heroSlides: HeroSlide[] = [
     description:
       "Build a high-RPM niche publication from zero: profitable niche selection, SEO content architecture, and passing publisher review with no policy violations.",
     image:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=1200",
+      "/thumbnails/blogging-adsense-blueprint.webp",
     to: "/blogs/news/blogging-adsense-blueprint",
     ctaLabel: "Read the Blueprint",
     meta: ["12 min read", "High-RPM Niches", "Policy Safe"],
@@ -45,7 +45,7 @@ export const heroSlides: HeroSlide[] = [
     description:
       "Launch a zero-inventory store built for South Asia — local fulfillment networks, TikTok creative testing, and cash-on-delivery management that actually collects.",
     image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200",
+      "/thumbnails/ebay-dropshipping-guide.webp",
     to: "/blogs/news/ebay-dropshipping-guide",
     ctaLabel: "Read the Blueprint",
     meta: ["15 min read", "Cash on Delivery", "TikTok Ads"],
@@ -58,7 +58,7 @@ export const heroSlides: HeroSlide[] = [
     description:
       "Produce scalable video channels with AI scripting, natural neural voiceovers, and automated editing workflows built for global ad revenue.",
     image:
-      "https://images.unsplash.com/photo-1533727937480-da3a97967e95?auto=format&fit=crop&q=80&w=1200",
+      "/thumbnails/faceless-youtube-automation.webp",
     to: "/blogs/news/faceless-youtube-automation",
     ctaLabel: "Read the Blueprint",
     meta: ["10 min read", "AI Scripts", "Neural Voice"],
@@ -83,7 +83,7 @@ export const heroSlides: HeroSlide[] = [
     description:
       "Position a profile clients trust, send proposals that convert, then withdraw earnings to Payoneer, SadaPay, NayaPay, or JazzCash without losing margin.",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
+      "/thumbnails/freelancing-upwork.webp",
     to: "/blogs/news/freelancing-upwork",
     ctaLabel: "Read the Guide",
     meta: ["Zero Investment", "Payoneer + JazzCash", "Proposal Templates"],

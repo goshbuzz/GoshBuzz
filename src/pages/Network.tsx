@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { PageHero, thumbnailMosaic } from "../components/PageHero";
 import { Link } from 'react-router-dom';
 import {
   Globe,
@@ -168,38 +169,36 @@ export default function Network() {
         </script>
       </Helmet>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-12 pb-10 bg-gradient-to-b from-amber-500/10 via-transparent to-transparent dark:from-amber-500/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-700/50 text-amber-800 dark:text-amber-300 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
-            <Layers className="w-4 h-4" />
-            The GoshBuzz Network
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-5">
-            One GoshBuzz. <span className="text-amber-500">Many Modules.</span>
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-normal mb-6">
-            GoshBuzz is not just a website — it is a network of products. Each
-            module is a standalone site with its own logo and focus, built and
-            operated by the GoshBuzz team under{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">goshbuzz.com</span>.
-          </p>
+      {/* Full-screen Hero Banner */}
+      <PageHero
+        eyebrow="The GoshBuzz Network"
+        eyebrowIcon={Layers}
+        icon={Layers}
+        title="One GoshBuzz."
+        highlight="Many Modules."
+        mosaic={thumbnailMosaic(13, 24)}
+        subtitle={
+          <>
+            GoshBuzz is not just a website — it is a network of products. Each module is a standalone site with its own logo and focus, built and operated by the GoshBuzz team under{" "}
+            <span className="font-semibold text-white">goshbuzz.com</span>.
+          </>
+        }
+      >
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm font-semibold">
-            <span className="px-4 py-2 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm">
+            <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white">
               {networkModules.length} modules
             </span>
-            <span className="px-4 py-2 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm">
+            <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white">
               {subdomainCount} goshbuzz.com subdomains
             </span>
-            <span className="px-4 py-2 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm">
+            <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white">
               1 product domain: freeconvertio.com
             </span>
-            <span className="px-4 py-2 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm">
+            <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white">
               + Android apps at goshbuzz.com/apps
             </span>
           </div>
-        </div>
-      </section>
+      </PageHero>
 
       {/* Module Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" id="modules">

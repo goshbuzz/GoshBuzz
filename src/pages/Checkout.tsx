@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { PageHero, thumbnailMosaic } from "../components/PageHero";
 import { 
   Trash2, 
   Plus, 
@@ -60,7 +61,31 @@ ${itemLines}
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <>
+      <PageHero
+        eyebrow="No accounts • No credit cards • WhatsApp delivery"
+        eyebrowIcon={ShieldCheck}
+        icon={ShoppingCart}
+        accent="emerald"
+        breadcrumb={
+          <nav aria-label="Breadcrumb" className="flex items-center justify-center gap-2 text-sm text-gray-300">
+            <Link to="/" className="hover:text-amber-400 transition-colors inline-flex items-center gap-1">
+              <ArrowLeft size={14} /> {t("home")}
+            </Link>
+            <span className="text-gray-500">/</span>
+            <span className="text-white font-medium">Checkout</span>
+          </nav>
+        }
+        title="Secure"
+        highlight="Checkout"
+        subtitle="Pakistan's direct library checkout. Pay via EasyPaisa / JazzCash and get PDF delivery on WhatsApp."
+        mosaic={thumbnailMosaic(19, 24)}
+      >
+        <a href="#checkout-form" className="inline-flex items-center gap-2 px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-gray-950 font-extrabold rounded-xl shadow-lg whitespace-nowrap">
+          <ShoppingCart size={18} /> {cart.length ? `Continue with ${cart.length} item${cart.length > 1 ? "s" : ""}` : "View your cart"}
+        </a>
+      </PageHero>
+    <div id="checkout-form" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-20">
       <Helmet>
         <title>Secure Checkout — GoshBuzz Pakistan</title>
         <meta name="description" content="Securely complete your GoshBuzz order via EasyPaisa or JazzCash." />
@@ -72,23 +97,6 @@ ${itemLines}
         <meta property="og:url" content="https://goshbuzz.com/checkout" />
       </Helmet>
 
-      {/* Breadcrumbs */}
-      <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8 overflow-x-auto whitespace-nowrap">
-        <Link to="/" className="hover:text-amber-500 transition-colors inline-flex items-center gap-1">
-          <ArrowLeft size={14} /> {t("home")}
-        </Link>
-        <span className="text-gray-300">/</span>
-        <span className="text-gray-900 dark:text-gray-100 font-medium">Checkout</span>
-      </nav>
-
-      <div className="text-center md:text-left mb-10">
-        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-950 dark:text-gray-50 tracking-tight flex items-center justify-center md:justify-start gap-3">
-          <ShoppingCart className="text-amber-500 animate-pulse" size={32} /> Secure Checkout
-        </h1>
-        <p className="mt-2 text-gray-600 dark:text-gray-400 max-w-2xl">
-          Pakistan's direct library checkout. No accounts or credit cards required. Pay via EasyPaisa / JazzCash and get PDF delivery on WhatsApp.
-        </p>
-      </div>
 
       {cart.length === 0 ? (
         <div className="bg-white dark:bg-gray-900 rounded-3xl p-12 text-center border border-gray-100 dark:border-gray-800 shadow-sm max-w-2xl mx-auto">
@@ -352,5 +360,6 @@ ${itemLines}
         </div>
       )}
     </div>
+    </>
   );
 }

@@ -49,93 +49,97 @@ function Header({
   const { cart } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navLink =
+    "whitespace-nowrap px-2 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-gray-800 transition-colors";
+
   return (
     <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4 xl:gap-6">
         <Link
           to="/"
-          className="text-xl md:text-2xl font-extrabold tracking-tight text-amber-500 flex items-center gap-3"
+          className="shrink-0 text-xl md:text-2xl font-extrabold tracking-tight text-amber-500 flex items-center gap-2.5 whitespace-nowrap"
+          aria-label="GoshBuzz home"
         >
           <img
             src={goshbuzzLogo}
             alt="GoshBuzz"
-            className="h-12 w-12 md:h-16 md:w-16 rounded-full shadow-md flex-shrink-0 transition-transform hover:scale-105 duration-300"
+            className="h-11 w-11 md:h-12 md:w-12 rounded-full shadow-md flex-shrink-0 transition-transform hover:scale-105 duration-300"
           />
-          GoshBuzz
+          <span>GoshBuzz</span>
         </Link>
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden xl:flex flex-1 min-w-0 items-center justify-center gap-0.5" aria-label="Main navigation">
           <Link
             to="/"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
+            className={navLink}
           >
             {t("home")}
           </Link>
           <HashLink
             smooth
             to="/#ideas"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
+            className={navLink}
           >
             {t("earningIdeas")}
           </HashLink>
           <HashLink
             smooth
             to="/#skills"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
+            className={navLink}
           >
             {t("survivalSkills")}
           </HashLink>
           <Link
             to="/about"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
+            className={navLink}
           >
             {t("aboutUs")}
           </Link>
           <Link
             to="/how-to-pay"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
+            className={navLink}
           >
             {t("howToPay")}
           </Link>
           <Link
             to="/apps"
-            className="text-gray-600 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 font-medium flex items-center gap-1.5"
+            className={`${navLink} flex items-center gap-1.5`}
           >
             <span>{t("apps")}</span>
             <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-amber-500/20">NEW</span>
           </Link>
           <Link
             to="/network"
-            className="text-gray-600 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 font-medium flex items-center gap-1.5"
+            className={`${navLink} flex items-center gap-1.5`}
           >
             <Globe size={15} />
             <span>{t("network")}</span>
           </Link>
           <Link
             to="/blogs/news"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
+            className={navLink}
           >
             {t("blogs")}
           </Link>
           <Link
             to="/contact"
-            className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white font-medium"
+            className={navLink}
           >
             {t("contact")}
           </Link>
           <Link
             to="/checkout"
-            className="text-gray-600 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 font-semibold flex items-center gap-1.5 relative"
+            className={`${navLink} font-semibold flex items-center gap-1.5 relative`}
           >
             <ShoppingCart size={18} />
             <span>{t("cart")}</span>
             {cart.length > 0 && (
-              <span className="absolute -top-2.5 -right-3 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center shadow-sm">
+              <span className="absolute -top-1 -right-1.5 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center shadow-sm">
                 {cart.length}
               </span>
             )}
           </Link>
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="shrink-0 flex items-center gap-3 xl:pl-4 xl:border-l border-gray-200 dark:border-gray-700">
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
@@ -143,7 +147,7 @@ function Header({
           >
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          <div className="flex items-center gap-2 border-r border-gray-200 dark:border-gray-700 pr-4">
+          <div className="flex items-center gap-1.5">
             <Globe size={18} className="text-gray-500 dark:text-gray-400" />
             <select
               value={language}
@@ -155,9 +159,21 @@ function Header({
             </select>
           </div>
           
+          <Link
+            to="/checkout"
+            className="xl:hidden relative text-gray-500 dark:text-gray-400 hover:text-amber-500 p-1"
+            aria-label={t("cart")}
+          >
+            <ShoppingCart size={20} />
+            {cart.length > 0 && (
+              <span className="absolute -top-1 -right-1.5 bg-amber-500 text-white text-[10px] font-bold px-1 rounded-full min-w-[16px] text-center leading-4">
+                {cart.length}
+              </span>
+            )}
+          </Link>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white p-1 focus:outline-none"
+            className="xl:hidden text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white p-1 focus:outline-none"
             aria-label="Toggle Menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -166,7 +182,7 @@ function Header({
       </div>
 
       {isMenuOpen && (
-        <div className="lg:hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 pt-2 pb-4 space-y-1 shadow-md">
+        <div className="xl:hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 px-4 pt-2 pb-4 space-y-1 shadow-md">
           <Link
             to="/"
             onClick={() => setIsMenuOpen(false)}

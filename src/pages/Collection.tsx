@@ -2,9 +2,11 @@ import { useParams, Link, useNavigate, Navigate } from "react-router-dom";
 import NotFound from "./NotFound";
 import { Helmet } from "react-helmet-async";
 import { products } from "../data";
-import { Search, ShoppingCart, CheckCircle2 } from "lucide-react";
+import { Search, ShoppingCart, CheckCircle2, Lightbulb, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "../CartContext";
+import { PageHero, thumbnailMosaic } from "../components/PageHero";
+import { StarRating, UrgencyBar } from "../components/ProductBadges";
 
 export default function Collection() {
   const navigate = useNavigate();
@@ -59,7 +61,42 @@ export default function Collection() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <>
+      <PageHero
+        eyebrow={collectionType === "idea" ? "High-Income Systems — Complete Blueprints" : "Future-Proof Capabilities — Skill Manuals"}
+        eyebrowIcon={collectionType === "idea" ? Lightbulb : ShieldCheck}
+        accent={collectionType === "idea" ? "amber" : "indigo"}
+        title={collectionType === "idea" ? "30 Earning" : "30 Survival"}
+        highlight={collectionType === "idea" ? "Ideas" : "Skills"}
+        subtitle={description}
+        mosaic={thumbnailMosaic(3, 24, collectionType)}
+      >
+        <div className="max-w-2xl mx-auto pt-2"><div className="relative">
+          <Search
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+            size={20}
+          />
+          <input
+            type="text"
+            placeholder={`Search ${title.toLowerCase()}...`}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") document.getElementById("catalog")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="w-full pl-12 pr-4 py-4 rounded-xl border border-white/20 bg-white/95 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/40 shadow-xl"
+          />
+        </div></div>
+        <a
+          href="#catalog"
+          className={`inline-flex items-center gap-2 px-7 py-3.5 font-extrabold rounded-xl transition-all shadow-lg whitespace-nowrap ${
+            collectionType === "idea" ? "bg-amber-500 hover:bg-amber-400 text-gray-950" : "bg-indigo-500 hover:bg-indigo-400 text-white"
+          }`}
+        >
+          Browse all {filteredProducts.length} guides
+        </a>
+      </PageHero>
+    <div id="catalog" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 scroll-mt-20">
       <Helmet>
         <title>{`${title} — GoshBuzz Pakistan`}</title>
         <meta name="description" content={description} />
@@ -73,36 +110,13 @@ export default function Collection() {
         </script>
       </Helmet>
 
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-gray-100">
-          {collectionType === "idea" ? "💡" : "🛡️"} {title}
-        </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-          {description}
-        </p>
-
-        <div className="mt-12 max-w-2xl mx-auto relative">
-          <Search
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-            size={20}
-          />
-          <input
-            type="text"
-            placeholder={`Search ${title.toLowerCase()}...`}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 shadow-sm"
-          />
-        </div>
-      </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredProducts.map((product) => (
           <div
             key={product.id}
             className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-all duration-300 group flex flex-col"
           >
-            <div className="h-48 bg-gray-100 dark:bg-gray-800 overflow-hidden relative">
+            <Link to={`/blogs/news/${product.slug || product.id}`} aria-label={product.title} className="block aspect-[4/3] bg-gray-100 dark:bg-gray-800 overflow-hidden relative">
               {product.image ? (
                 <img
                   src={product.image}
@@ -120,7 +134,7 @@ export default function Collection() {
               <div className="absolute top-4 right-4 bg-white dark:bg-gray-900/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-gray-900 dark:text-gray-100 shadow-sm">
                 Rs. {collectionType === "idea" ? "500" : "200"}
               </div>
-            </div>
+            </Link>
             <div className="p-6 flex flex-col flex-grow">
               <div className="mb-3">
                 <span
@@ -132,10 +146,12 @@ export default function Collection() {
               <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100 line-clamp-2">
                 {product.title}
               </h3>
+              <StarRating id={product.id} className="mb-3" />
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 flex-grow line-clamp-3">
                 {product.description}
               </p>
               <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800 space-y-2.5">
+                <UrgencyBar id={product.id} />
                 <div className="grid grid-cols-5 gap-2">
                   <button
                     onClick={() => {
@@ -253,5 +269,6 @@ export default function Collection() {
         </div>
       )}
     </div>
+    </>
   );
 }

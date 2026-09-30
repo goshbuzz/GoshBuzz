@@ -10,7 +10,7 @@ export const products = [
     type: "idea",
     icon: "📈",
     image:
-      "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/crypto-spot-trading-pakistan.webp",
   },
   {
     id: "idea-2",
@@ -22,7 +22,7 @@ export const products = [
     type: "idea",
     icon: "📝",
     image:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/blogging-adsense-blueprint.webp",
   },
   {
     id: "idea-3",
@@ -34,7 +34,7 @@ export const products = [
     type: "idea",
     icon: "🛒",
     image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/ebay-dropshipping-guide.webp",
   },
   {
     id: "idea-4",
@@ -46,7 +46,7 @@ export const products = [
     type: "idea",
     icon: "📊",
     image:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/stock-market-investing-pakistan.webp",
   },
   {
     id: "idea-5",
@@ -58,7 +58,7 @@ export const products = [
     type: "idea",
     icon: "🎨",
     image:
-      "https://images.unsplash.com/photo-1562564055-71e051d33c19?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/print-on-demand-digital-products.webp",
   },
   {
     id: "idea-6",
@@ -70,7 +70,7 @@ export const products = [
     type: "idea",
     icon: "🤖",
     image:
-      "https://images.unsplash.com/photo-1531746790731-6c08c406b251?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/ai-chatbots-voice-bots.webp",
   },
   {
     id: "idea-7",
@@ -82,7 +82,7 @@ export const products = [
     type: "idea",
     icon: "📈",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/ad-management-agency.webp",
   },
   {
     id: "idea-8",
@@ -94,7 +94,7 @@ export const products = [
     type: "idea",
     icon: "🎥",
     image:
-      "https://images.unsplash.com/photo-1533727937480-da3a97967e95?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/faceless-youtube-automation.webp",
   },
   {
     id: "idea-9",
@@ -106,7 +106,7 @@ export const products = [
     type: "idea",
     icon: "🛠️",
     image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/tool-websites.webp",
   },
   {
     id: "idea-10",
@@ -118,7 +118,7 @@ export const products = [
     type: "idea",
     icon: "💻",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/freelancing-upwork.webp",
   },
   {
     id: "idea-11",
@@ -130,7 +130,7 @@ export const products = [
     type: "idea",
     icon: "📦",
     image:
-      "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/amazon-va-services.webp",
   },
   {
     id: "idea-12",
@@ -142,7 +142,7 @@ export const products = [
     type: "idea",
     icon: "🛍️",
     image:
-      "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/daraz-affiliate-marketing.webp",
   },
   {
     id: "idea-13",
@@ -154,7 +154,7 @@ export const products = [
     type: "idea",
     icon: "📱",
     image:
-      "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/social-media-management.webp",
   },
   {
     id: "idea-14",
@@ -166,7 +166,7 @@ export const products = [
     type: "idea",
     icon: "🎓",
     image:
-      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/online-course-creation.webp",
   },
   {
     id: "idea-15",
@@ -178,7 +178,7 @@ export const products = [
     type: "idea",
     icon: "📱",
     image:
-      "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/youtube-shorts-monetization.webp",
   },
   {
     id: "idea-16",
@@ -190,7 +190,7 @@ export const products = [
     type: "idea",
     icon: "📸",
     image:
-      "https://images.unsplash.com/photo-1611262588024-d12430b98920?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/instagram-theme-pages.webp",
   },
   {
     id: "idea-17",
@@ -202,7 +202,7 @@ export const products = [
     type: "idea",
     icon: "🎵",
     image:
-      "https://images.unsplash.com/photo-1611605698322-a982110c14b9?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/tiktok-creator-rewards.webp",
   },
   {
     id: "idea-18",
@@ -214,7 +214,7 @@ export const products = [
     type: "idea",
     icon: "✍️",
     image:
-      "https://images.unsplash.com/photo-1455390582262-044cdead27d8?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/transcription-translation.webp",
   },
   {
     id: "idea-19",
@@ -226,7 +226,7 @@ export const products = [
     type: "idea",
     icon: "🔍",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/seo-services.webp",
   },
   {
     id: "idea-20",
@@ -238,7 +238,7 @@ export const products = [
     type: "idea",
     icon: "🖼️",
     image:
-      "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/canva-templates-etsy.webp",
   },
   {
     id: "idea-21",
@@ -250,7 +250,7 @@ export const products = [
     type: "idea",
     icon: "✂️",
     image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/video-editing-freelance.webp",
   },
   {
     id: "idea-22",
@@ -262,7 +262,7 @@ export const products = [
     type: "idea",
     icon: "🖼️",
     image:
-      "https://images.unsplash.com/photo-1626785774625-f39ce0e88220?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/youtube-thumbnail-design.webp",
   },
   {
     id: "idea-23",
@@ -274,7 +274,7 @@ export const products = [
     type: "idea",
     icon: "📝",
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/ai-content-writing.webp",
   },
   {
     id: "idea-24",
@@ -286,7 +286,7 @@ export const products = [
     type: "idea",
     icon: "📚",
     image:
-      "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/amazon-kdp-publishing.webp",
   },
   {
     id: "idea-25",
@@ -298,7 +298,7 @@ export const products = [
     type: "idea",
     icon: "📧",
     image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/email-marketing-services.webp",
   },
   {
     id: "idea-26",
@@ -310,7 +310,7 @@ export const products = [
     type: "idea",
     icon: "🌐",
     image:
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/wordpress-development.webp",
   },
   {
     id: "idea-27",
@@ -322,7 +322,7 @@ export const products = [
     type: "idea",
     icon: "⌨️",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/data-entry-lead-gen.webp",
   },
   {
     id: "idea-28",
@@ -334,7 +334,7 @@ export const products = [
     type: "idea",
     icon: "🎙️",
     image:
-      "https://images.unsplash.com/photo-1593697821252-0c9137d9fc45?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/podcast-editing.webp",
   },
   {
     id: "idea-29",
@@ -346,7 +346,7 @@ export const products = [
     type: "idea",
     icon: "📞",
     image:
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/real-estate-cold-calling.webp",
   },
   {
     id: "idea-30",
@@ -358,7 +358,7 @@ export const products = [
     type: "idea",
     icon: "💻",
     image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/no-code-saas.webp",
   },
 
   // 30 High-Value Skills
@@ -372,7 +372,7 @@ export const products = [
     type: "skill",
     icon: "🎯",
     image:
-      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/sales-skill-mastery.webp",
   },
   {
     id: "skill-2",
@@ -384,7 +384,7 @@ export const products = [
     type: "skill",
     icon: "🗣️",
     image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/communication-skill-mastery.webp",
   },
   {
     id: "skill-3",
@@ -396,7 +396,7 @@ export const products = [
     type: "skill",
     icon: "🔥",
     image:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/self-discipline-mastery.webp",
   },
   {
     id: "skill-4",
@@ -408,7 +408,7 @@ export const products = [
     type: "skill",
     icon: "🤖",
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/ai-fundamentals-mastery.webp",
   },
   {
     id: "skill-5",
@@ -420,7 +420,7 @@ export const products = [
     type: "skill",
     icon: "⚙️",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/crm-automation-mastery.webp",
   },
   {
     id: "skill-6",
@@ -432,7 +432,7 @@ export const products = [
     type: "skill",
     icon: "📊",
     image:
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/quickbooks-financial-control.webp",
   },
   {
     id: "skill-7",
@@ -444,7 +444,7 @@ export const products = [
     type: "skill",
     icon: "📈",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/excel-and-dashboards-mastery.webp",
   },
   {
     id: "skill-8",
@@ -456,7 +456,7 @@ export const products = [
     type: "skill",
     icon: "📉",
     image:
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/data-analysis-mastery.webp",
   },
   {
     id: "skill-9",
@@ -468,7 +468,7 @@ export const products = [
     type: "skill",
     icon: "💬",
     image:
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/chatbot-voice-bot-development.webp",
   },
   {
     id: "skill-10",
@@ -480,7 +480,7 @@ export const products = [
     type: "skill",
     icon: "🚀",
     image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/ai-powered-development.webp",
   },
   {
     id: "skill-11",
@@ -492,7 +492,7 @@ export const products = [
     type: "skill",
     icon: "✍️",
     image:
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/copywriting-mastery.webp",
   },
   {
     id: "skill-12",
@@ -504,7 +504,7 @@ export const products = [
     type: "skill",
     icon: "🎬",
     image:
-      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/video-editing-mastery.webp",
   },
   {
     id: "skill-13",
@@ -516,7 +516,7 @@ export const products = [
     type: "skill",
     icon: "🔍",
     image:
-      "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/seo-keyword-research.webp",
   },
   {
     id: "skill-14",
@@ -528,7 +528,7 @@ export const products = [
     type: "skill",
     icon: "🎨",
     image:
-      "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/graphic-design-mastery.webp",
   },
   {
     id: "skill-15",
@@ -540,7 +540,7 @@ export const products = [
     type: "skill",
     icon: "🎤",
     image:
-      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/public-speaking-on-camera-confidence.webp",
   },
   {
     id: "skill-16",
@@ -552,7 +552,7 @@ export const products = [
     type: "skill",
     icon: "🤝",
     image:
-      "https://images.unsplash.com/photo-1521791136368-1a9b79741631?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/negotiation-tactics.webp",
   },
   {
     id: "skill-17",
@@ -564,7 +564,7 @@ export const products = [
     type: "skill",
     icon: "📧",
     image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/email-marketing-mastery.webp",
   },
   {
     id: "skill-18",
@@ -576,7 +576,7 @@ export const products = [
     type: "skill",
     icon: "📱",
     image:
-      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/social-media-advertising.webp",
   },
   {
     id: "skill-19",
@@ -588,7 +588,7 @@ export const products = [
     type: "skill",
     icon: "📋",
     image:
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/content-strategy-mastery.webp",
   },
   {
     id: "skill-20",
@@ -600,7 +600,7 @@ export const products = [
     type: "skill",
     icon: "📊",
     image:
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/project-management-mastery.webp",
   },
   {
     id: "skill-21",
@@ -612,7 +612,7 @@ export const products = [
     type: "skill",
     icon: "💵",
     image:
-      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/financial-literacy-freelancers.webp",
   },
   {
     id: "skill-22",
@@ -624,7 +624,7 @@ export const products = [
     type: "skill",
     icon: "🔗",
     image:
-      "https://images.unsplash.com/photo-1611944212129-29977ae1398c?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/linkedin-networking-masterclass.webp",
   },
   {
     id: "skill-23",
@@ -636,7 +636,7 @@ export const products = [
     type: "skill",
     icon: "📬",
     image:
-      "https://images.unsplash.com/photo-1596524430615-b46475ddff6e?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/cold-outreach-mastery.webp",
   },
   {
     id: "skill-24",
@@ -648,7 +648,7 @@ export const products = [
     type: "skill",
     icon: "🧠",
     image:
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/prompt-engineering-mastery.webp",
   },
   {
     id: "skill-25",
@@ -660,7 +660,7 @@ export const products = [
     type: "skill",
     icon: "🕷️",
     image:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/web-scraping-mastery.webp",
   },
   {
     id: "skill-26",
@@ -672,7 +672,7 @@ export const products = [
     type: "skill",
     icon: "🔌",
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/api-integration-mastery.webp",
   },
   {
     id: "skill-27",
@@ -684,7 +684,7 @@ export const products = [
     type: "skill",
     icon: "🎨",
     image:
-      "https://images.unsplash.com/photo-1581291518655-9523c932edcf?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/ui-ux-design-principles.webp",
   },
   {
     id: "skill-28",
@@ -696,7 +696,7 @@ export const products = [
     type: "skill",
     icon: "🌟",
     image:
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/personal-branding-mastery.webp",
   },
   {
     id: "skill-29",
@@ -708,7 +708,7 @@ export const products = [
     type: "skill",
     icon: "⏰",
     image:
-      "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/time-management-mastery.webp",
   },
   {
     id: "skill-30",
@@ -720,7 +720,7 @@ export const products = [
     type: "skill",
     icon: "👑",
     image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=400",
+      "/thumbnails/leadership-and-delegation-mastery.webp",
   },
 ];
 

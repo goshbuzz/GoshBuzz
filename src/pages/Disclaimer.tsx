@@ -1,8 +1,20 @@
 import { AlertTriangle } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { PageHero, thumbnailMosaic } from '../components/PageHero';
 
 export default function Disclaimer() {
   return (
+    <>
+      <PageHero
+        eyebrow="Earnings & software disclaimer"
+        eyebrowIcon={AlertTriangle}
+        icon={AlertTriangle}
+        accent="amber"
+        title=""
+        highlight="Disclaimer"
+        subtitle="Our guides are educational. Results depend on your own effort, skills, and market conditions."
+        mosaic={thumbnailMosaic(35, 24)}
+      />
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
             <Helmet>
         <title>Disclaimer — GoshBuzz Pakistan</title>
@@ -13,10 +25,6 @@ export default function Disclaimer() {
         <meta property="og:url" content="https://goshbuzz.com/disclaimer" />
         <link rel="canonical" href="https://goshbuzz.com/disclaimer" />
       </Helmet>
-      <div className="text-center mb-12">
-        <AlertTriangle className="w-12 h-12 text-amber-500 mx-auto mb-4" />
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Disclaimer</h1>
-      </div>
       <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 text-center md:text-left">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Earnings & Income Disclaimer</h2>
         <p className="mb-6">
@@ -42,5 +50,6 @@ export default function Disclaimer() {
         </p>
       </div>
     </div>
+    </>
   );
 }

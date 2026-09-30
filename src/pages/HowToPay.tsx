@@ -1,6 +1,7 @@
 import { Smartphone, CheckCircle2, Copy } from 'lucide-react';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { PageHero, thumbnailMosaic } from '../components/PageHero';
 
 export default function HowToPay() {
   const [copied, setCopied] = useState(false);
@@ -12,6 +13,17 @@ export default function HowToPay() {
   };
 
   return (
+    <>
+      <PageHero
+        eyebrow="JazzCash • EasyPaisa • Instant Access"
+        eyebrowIcon={CheckCircle2}
+        icon={Smartphone}
+        accent="emerald"
+        title="How to"
+        highlight="Pay"
+        subtitle="Fast, local, and instant access via mobile wallets. Pay, send your screenshot on WhatsApp, and receive your guide in minutes."
+        mosaic={thumbnailMosaic(17, 24)}
+      />
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <Helmet>
         <title>How to Pay via JazzCash / EasyPaisa — GoshBuzz Pakistan</title>
@@ -22,11 +34,6 @@ export default function HowToPay() {
         <meta property="og:url" content="https://goshbuzz.com/how-to-pay" />
         <link rel="canonical" href="https://goshbuzz.com/how-to-pay" />
       </Helmet>
-      <div className="text-center mb-16">
-        <Smartphone className="w-12 h-12 text-green-500 mx-auto mb-4" />
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">How to Pay</h1>
-        <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">Fast, local, and instant access via mobile wallets.</p>
-      </div>
 
       <div className="space-y-12">
         <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 relative overflow-hidden">
@@ -95,5 +102,6 @@ export default function HowToPay() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { PageHero } from "../components/PageHero";
 import { 
   Radio, 
   Magnet, 
@@ -188,19 +189,39 @@ export default function AppDetail() {
         </script>
       </Helmet>
 
-      {/* Breadcrumb Navigation */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-          <Link to="/" className="hover:text-amber-500 transition-colors">Home</Link>
-          <span>/</span>
-          <Link to="/apps" className="hover:text-amber-500 transition-colors">GoshBuzz Apps</Link>
-          <span>/</span>
-          <span className="text-gray-900 dark:text-gray-200 font-semibold truncate max-w-xs sm:max-w-md">{app.name}</span>
-        </nav>
-      </div>
+      {/* Full-screen Hero Banner */}
+      <PageHero
+        image={app.banner}
+        accent="emerald"
+        breadcrumb={
+          <nav aria-label="Breadcrumb" className="flex items-center justify-center lg:justify-start gap-2 text-xs sm:text-sm text-gray-300">
+            <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
+            <span>/</span>
+            <Link to="/apps" className="hover:text-amber-400 transition-colors">GoshBuzz Apps</Link>
+            <span>/</span>
+            <span className="text-white font-semibold truncate max-w-xs sm:max-w-md">{app.name}</span>
+          </nav>
+        }
+        eyebrow={app.category}
+        title={app.name}
+        subtitle={app.tagline}
+        aside={
+          <div className="flex justify-center">
+            <img src={app.icon} alt={`${app.name} icon`} className="w-48 h-48 sm:w-64 sm:h-64 rounded-[2.5rem] shadow-2xl border-4 border-white/20 object-cover" />
+          </div>
+        }
+      >
+        <div className="flex items-center justify-center lg:justify-start gap-2 text-amber-300 font-bold">
+          <Star className="w-5 h-5 fill-current" /> {app.rating}
+          <span className="text-gray-300 font-normal">({app.reviewsCount} verified reviews)</span>
+        </div>
+        <a href="#app-overview" className="inline-flex items-center gap-2 px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-gray-950 font-extrabold rounded-xl shadow-lg whitespace-nowrap">
+          View app details
+        </a>
+      </PageHero>
 
       {/* Hero Header / Main Showcase Card */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6" id="app-overview">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6" id="app-overview" style={{ scrollMarginTop: "6rem" }}>
         <div className="bg-white dark:bg-gray-900 border-2 border-amber-500/40 rounded-3xl overflow-hidden shadow-xl">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-8 lg:p-10 items-center border-b border-gray-100 dark:border-gray-800 bg-gradient-to-r from-amber-50/50 via-white to-transparent dark:from-gray-900 dark:via-gray-900 dark:to-gray-950">
@@ -244,9 +265,9 @@ export default function AppDetail() {
                   </div>
                 </div>
 
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-3">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-3">
                   {app.name}
-                </h1>
+                </h2>
                 <p className="text-base sm:text-lg text-amber-600 dark:text-amber-400 font-medium mb-3">
                   {app.tagline}
                 </p>

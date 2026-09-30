@@ -15,11 +15,14 @@ import {
   Flame,
   ShoppingCart,
   CheckCircle2,
+  Clock,
 } from "lucide-react";
 import { products } from "../data";
 import { goshbuzzApps } from "../data/appsData";
 import { FAQ } from "../components/FAQ";
 import { HeroSlideshow } from "../components/HeroSlideshow";
+import { PageHero, thumbnailMosaic } from "../components/PageHero";
+import { StarRating, UrgencyBar } from "../components/ProductBadges";
 import { useCart } from "../CartContext";
 
 export default function Home() {
@@ -58,6 +61,13 @@ export default function Home() {
     { id: "Marketing", name: "Marketing", icon: "🚀" },
   ];
 
+  const dropshipNiches = [
+    { slug: "niche-flame-humidifier", title: "Flame Humidifiers", tag: "High Viral TikTok Demand" },
+    { slug: "niche-magsafe-power-bank", title: "MagSafe Power Banks", tag: "Premium Smartphone Niche" },
+    { slug: "niche-mini-projector", title: "Smart Mini Projectors", tag: "High-Ticket Margins" },
+    { slug: "niche-car-vacuum", title: "Handheld Car Vacuums", tag: "Evergreen Household Niche" },
+  ];
+
   const popularSearches = [
     "AdSense Blueprint",
     "Amazon KDP",
@@ -77,7 +87,7 @@ export default function Home() {
       readTime: "12 min read",
       date: "August 2026",
       excerpt: "Step-by-step masterclass on building a high-RPM niche publication, writing original high-value content, optimizing site architecture, and passing Google AdSense publisher reviews with zero policy violations.",
-      image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=600",
+      image: "/thumbnails/blogging-adsense-blueprint.webp",
       takeaways: ["High-RPM Niche Selection", "SEO Content Architecture", "Publisher Policy Compliance"],
       slug: "blogging-adsense-blueprint",
     },
@@ -88,7 +98,7 @@ export default function Home() {
       readTime: "15 min read",
       date: "August 2026",
       excerpt: "Comprehensive guide to establishing a profitable e-commerce dropshipping store in South Asia. Covers local fulfillment networks, product research, TikTok ad creative testing, and cash-on-delivery management.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=600",
+      image: "/thumbnails/ebay-dropshipping-guide.webp",
       takeaways: ["Zero Inventory Setup", "Local Fulfillment", "TikTok Viral Ads"],
       slug: "ebay-dropshipping-guide",
     },
@@ -99,7 +109,7 @@ export default function Home() {
       readTime: "10 min read",
       date: "August 2026",
       excerpt: "Learn how to build scalable video media channels using AI text generators, natural neural voice synthesis, and automated video workflows for global audience engagement and ad revenue.",
-      image: "https://images.unsplash.com/photo-1533727937480-da3a97967e95?auto=format&fit=crop&q=80&w=600",
+      image: "/thumbnails/faceless-youtube-automation.webp",
       takeaways: ["AI Script Generation", "Neural Voiceovers", "Automated Editing"],
       slug: "faceless-youtube-automation",
     },
@@ -153,87 +163,61 @@ export default function Home() {
         </script>
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-amber-50/70 via-white to-gray-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 pt-12 pb-16 md:pt-16 md:pb-20 border-b border-gray-200 dark:border-gray-800">
-        <div className="absolute inset-0 pointer-events-none opacity-30 dark:opacity-20">
-          <div className="absolute -top-40 -left-40 w-96 h-96 bg-amber-400 rounded-full blur-3xl"></div>
-          <div className="absolute top-60 -right-40 w-96 h-96 bg-indigo-500 rounded-full blur-3xl"></div>
+      {/* Full-screen Hero Banner */}
+      <PageHero
+        eyebrow="Verified Digital Knowledge Hub & Mobile Software Publisher"
+        eyebrowIcon={Sparkles}
+        title="Actionable Digital Knowledge &"
+        highlight="High-Precision Mobile Utilities"
+        mosaic={thumbnailMosaic(0, 24)}
+        subtitle={
+          <>
+            Empowering digital entrepreneurs, freelancers, and mobile users with <strong className="text-white">60+ in-depth masterclass guides</strong> and <strong className="text-white">privacy-first Android mobile applications</strong>. Zero-fluff, original content engineered for long-term value.
+          </>
+        }
+        aside={<HeroSlideshow />}
+      >
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-3.5 pt-1">
+          <a
+            href="#featured-articles"
+            className="w-full sm:w-auto px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-gray-950 font-extrabold rounded-xl transition-all shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2 text-base whitespace-nowrap"
+          >
+            <BookOpen size={18} />
+            <span>Explore Featured Articles</span>
+            <ArrowRight size={18} />
+          </a>
+          <Link
+            to="/apps"
+            className="w-full sm:w-auto px-7 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-bold rounded-xl transition-all border border-white/25 flex items-center justify-center gap-2 text-base whitespace-nowrap"
+          >
+            <Smartphone size={18} className="text-amber-400" />
+            <span>Browse Android Apps</span>
+            <ArrowRight size={18} />
+          </Link>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Copy on the left, live slideshow on the right */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            <div className="lg:col-span-6 xl:col-span-7 text-center lg:text-left space-y-6">
-
-              {/* Header Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100/90 dark:bg-amber-900/40 border border-amber-300/60 dark:border-amber-700/50 text-amber-900 dark:text-amber-300 text-xs sm:text-sm font-bold shadow-2xs">
-                <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                <span>Verified Digital Knowledge Hub & Mobile Software Publisher</span>
-              </div>
-
-              {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-extrabold tracking-tight text-gray-950 dark:text-white leading-[1.12]">
-                Actionable Digital Knowledge &{" "}
-                <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-amber-500 bg-clip-text text-transparent">
-                  High-Precision Mobile Utilities
-                </span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                Empowering digital entrepreneurs, freelancers, and mobile users with <strong>60+ in-depth masterclass guides</strong> and <strong>privacy-first Android mobile applications</strong>. Zero-fluff, original content engineered for long-term value.
-              </p>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-center lg:justify-start justify-center gap-3.5 pt-1">
-                <a
-                  href="#featured-articles"
-                  className="w-full sm:w-auto px-7 py-3.5 bg-amber-500 hover:bg-amber-600 text-gray-950 font-extrabold rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 text-base"
-                >
-                  <BookOpen size={18} />
-                  <span>Explore Featured Articles</span>
-                  <ArrowRight size={18} />
-                </a>
-                <Link
-                  to="/apps"
-                  className="w-full sm:w-auto px-7 py-3.5 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-xl transition-all border border-gray-300 dark:border-gray-700 shadow-xs flex items-center justify-center gap-2 text-base"
-                >
-                  <Smartphone size={18} className="text-amber-500" />
-                  <span>Browse Android Apps</span>
-                  <ArrowRight size={18} />
-                </Link>
-              </div>
-
-              {/* Quick Metrics & Authority Stats Bar */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4">
-                <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
-                  <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">60+</div>
-                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">Published Guides</div>
-                </div>
-                <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
-                  <div className="text-2xl sm:text-3xl font-extrabold text-emerald-500">10,000+</div>
-                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">App Downloads</div>
-                </div>
-                <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
-                  <div className="text-2xl sm:text-3xl font-extrabold text-indigo-500">100%</div>
-                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">Open Knowledge</div>
-                </div>
-                <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
-                  <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">4.9 ★</div>
-                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">User Satisfaction</div>
-                </div>
-              </div>
+        {/* Quick Metrics & Authority Stats Bar */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4">
+          {[
+            { v: "60+", l: "Published Guides", c: "text-amber-400" },
+            { v: "10,000+", l: "App Downloads", c: "text-emerald-400" },
+            { v: "100%", l: "Open Knowledge", c: "text-indigo-300" },
+            { v: "4.9 ★", l: "User Satisfaction", c: "text-amber-400" },
+          ].map((m) => (
+            <div key={m.l} className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15 text-center">
+              <div className={`text-xl sm:text-2xl xl:text-3xl font-extrabold whitespace-nowrap ${m.c}`}>{m.v}</div>
+              <div className="text-xs font-semibold text-gray-300 mt-1">{m.l}</div>
             </div>
+          ))}
+        </div>
+      </PageHero>
 
-            {/* Featured Slideshow */}
-            <div className="lg:col-span-6 xl:col-span-5">
-              <HeroSlideshow />
-            </div>
-          </div>
-
-          <div className="text-center">
+      {/* Search & Topic Filters */}
+      <section className="relative bg-gradient-to-b from-amber-50/70 to-gray-50 dark:from-gray-900 dark:to-gray-950 border-b border-gray-200 dark:border-gray-800 py-12 md:py-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             {/* Interactive Search Box */}
-            <div className="mt-14 max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto">
               <div className="relative">
                 <Search
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
@@ -295,7 +279,6 @@ export default function Home() {
               </div>
             </div>
 
-          </div>
         </div>
       </section>
 
@@ -501,7 +484,7 @@ export default function Home() {
                 key={product.id}
                 className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-xl dark:hover:border-amber-500/40 transition-all duration-300 group flex flex-col h-full"
               >
-                <div className="h-44 bg-gray-100 dark:bg-gray-800 overflow-hidden relative shrink-0">
+                <Link to={`/blogs/news/${product.slug || product.id}`} className="block aspect-[4/3] bg-gray-100 dark:bg-gray-800 overflow-hidden relative shrink-0" aria-label={product.title}>
                   {product.image ? (
                     <img
                       src={product.image}
@@ -518,7 +501,7 @@ export default function Home() {
                   <div className="absolute top-3 right-3 bg-gray-900/90 text-amber-400 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border border-gray-700">
                     Full Guide
                   </div>
-                </div>
+                </Link>
 
                 <div className="p-5 flex flex-col flex-grow justify-between">
                   <div>
@@ -531,11 +514,13 @@ export default function Home() {
                     <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 h-12 flex items-center group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                       {product.title}
                     </h3>
+                    <StarRating id={product.id} className="mb-2.5" />
                     <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm line-clamp-3 mb-5 leading-relaxed">
                       {product.description}
                     </p>
                   </div>
-                  <div className="mt-auto pt-3 border-t border-gray-100 dark:border-gray-800/80 space-y-2">
+                  <div className="mt-auto pt-3 border-t border-gray-100 dark:border-gray-800/80 space-y-2.5">
+                    <UrgencyBar id={product.id} />
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-extrabold text-amber-600 dark:text-amber-400">Rs. 500</span>
                       <Link
@@ -640,57 +625,35 @@ export default function Home() {
             High-Demand E-Commerce Dropshipping Niches
           </h2>
           <p className="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-10">
-            Detailed case studies and supplier sourcing blueprints for high-converting physical products sold locally in South Asia.
+            Detailed case studies and supplier sourcing blueprints for high-converting physical products sold locally in South Asia.{" "}
+            <span className="text-amber-400 font-semibold">These niche blueprints are coming soon — stay tuned.</span>
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            <div className="bg-gray-800/80 rounded-2xl p-3 border border-gray-700/60 flex flex-col items-center hover:border-amber-500/50 transition-colors">
-              <img
-                src="/dropship_humidifier.png"
-                alt="Humidifier Dropshipping Blueprint"
-                className="rounded-xl w-full aspect-square object-cover mb-3"
-                referrerPolicy="no-referrer"
-                loading="lazy"
-              />
-              <h4 className="font-bold text-xs sm:text-sm text-gray-100">Flame Humidifiers</h4>
-              <p className="text-[11px] text-amber-400 mt-0.5">High Viral TikTok Demand</p>
-            </div>
-
-            <div className="bg-gray-800/80 rounded-2xl p-3 border border-gray-700/60 flex flex-col items-center hover:border-amber-500/50 transition-colors">
-              <img
-                src="/dropship_magsafe.png"
-                alt="MagSafe Accessories Blueprint"
-                className="rounded-xl w-full aspect-square object-cover mb-3"
-                referrerPolicy="no-referrer"
-                loading="lazy"
-              />
-              <h4 className="font-bold text-xs sm:text-sm text-gray-100">MagSafe Power Banks</h4>
-              <p className="text-[11px] text-amber-400 mt-0.5">Premium Smartphone Niche</p>
-            </div>
-
-            <div className="bg-gray-800/80 rounded-2xl p-3 border border-gray-700/60 flex flex-col items-center hover:border-amber-500/50 transition-colors">
-              <img
-                src="/dropship_projector.png"
-                alt="Mini Projector Blueprint"
-                className="rounded-xl w-full aspect-square object-cover mb-3"
-                referrerPolicy="no-referrer"
-                loading="lazy"
-              />
-              <h4 className="font-bold text-xs sm:text-sm text-gray-100">Smart Mini Projectors</h4>
-              <p className="text-[11px] text-amber-400 mt-0.5">High-Ticket Margins</p>
-            </div>
-
-            <div className="bg-gray-800/80 rounded-2xl p-3 border border-gray-700/60 flex flex-col items-center hover:border-amber-500/50 transition-colors">
-              <img
-                src="/dropship_vacuum.png"
-                alt="Portable Vacuum Blueprint"
-                className="rounded-xl w-full aspect-square object-cover mb-3"
-                referrerPolicy="no-referrer"
-                loading="lazy"
-              />
-              <h4 className="font-bold text-xs sm:text-sm text-gray-100">Handheld Car Vacuums</h4>
-              <p className="text-[11px] text-amber-400 mt-0.5">Evergreen Household Niche</p>
-            </div>
+            {dropshipNiches.map((niche) => (
+              <div
+                key={niche.slug}
+                className="group relative bg-gray-800/80 rounded-2xl p-3 border border-gray-700/60 flex flex-col items-center hover:border-amber-500/50 transition-colors"
+              >
+                <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-3">
+                  <img
+                    src={`/thumbnails/${niche.slug}.webp`}
+                    alt={`${niche.title} dropshipping blueprint — coming soon`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent" />
+                  <span className="absolute top-2.5 left-2.5 inline-flex items-center gap-1 bg-amber-500 text-gray-950 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wide shadow-md">
+                    <Clock size={11} /> Coming Soon
+                  </span>
+                </div>
+                <h4 className="font-bold text-xs sm:text-sm text-gray-100">{niche.title}</h4>
+                <p className="text-[11px] text-amber-400 mt-0.5">{niche.tag}</p>
+                <span className="mt-2 text-[10px] font-semibold text-gray-400 border border-gray-700 rounded-full px-2.5 py-0.5">
+                  Blueprint launching soon
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -717,7 +680,7 @@ export default function Home() {
                 key={product.id}
                 className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-xl dark:hover:border-indigo-500/40 transition-all duration-300 group flex flex-col h-full"
               >
-                <div className="h-44 bg-gray-100 dark:bg-gray-800 overflow-hidden relative shrink-0">
+                <Link to={`/blogs/news/${product.slug || product.id}`} className="block aspect-[4/3] bg-gray-100 dark:bg-gray-800 overflow-hidden relative shrink-0" aria-label={product.title}>
                   {product.image ? (
                     <img
                       src={product.image}
@@ -734,7 +697,7 @@ export default function Home() {
                   <div className="absolute top-3 right-3 bg-gray-900/90 text-indigo-300 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold border border-gray-700">
                     Skill Manual
                   </div>
-                </div>
+                </Link>
 
                 <div className="p-5 flex flex-col flex-grow justify-between">
                   <div>
@@ -747,11 +710,13 @@ export default function Home() {
                     <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 h-12 flex items-center group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                       {product.title}
                     </h3>
+                    <StarRating id={product.id} className="mb-2.5" />
                     <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm line-clamp-3 mb-5 leading-relaxed">
                       {product.description}
                     </p>
                   </div>
-                  <div className="mt-auto pt-3 border-t border-gray-100 dark:border-gray-800/80 space-y-2">
+                  <div className="mt-auto pt-3 border-t border-gray-100 dark:border-gray-800/80 space-y-2.5">
+                    <UrgencyBar id={product.id} />
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-extrabold text-indigo-600 dark:text-indigo-400">Rs. 200</span>
                       <Link

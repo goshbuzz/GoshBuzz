@@ -1,8 +1,20 @@
 import { Ban } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { PageHero, thumbnailMosaic } from '../components/PageHero';
 
 export default function RefundPolicy() {
   return (
+    <>
+      <PageHero
+        eyebrow="Digital goods • All sales final"
+        eyebrowIcon={Ban}
+        icon={Ban}
+        accent="rose"
+        title="No Return &"
+        highlight="Refund Policy"
+        subtitle="Please read before purchasing — why digital products are non-refundable and how we support you before you buy."
+        mosaic={thumbnailMosaic(29, 24)}
+      />
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
             <Helmet>
         <title>No Return Policy — GoshBuzz Pakistan</title>
@@ -13,10 +25,6 @@ export default function RefundPolicy() {
         <meta property="og:url" content="https://goshbuzz.com/refund-policy" />
         <link rel="canonical" href="https://goshbuzz.com/refund-policy" />
       </Helmet>
-      <div className="text-center mb-12">
-        <Ban className="w-12 h-12 text-red-500 mx-auto mb-4" />
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">No Return & Refund Policy</h1>
-      </div>
       <div className="prose dark:prose-invert prose-amber max-w-none text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 text-center md:text-left">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Digital Goods are Non-Refundable</h2>
         <p className="mb-6">
@@ -39,5 +47,6 @@ export default function RefundPolicy() {
         </p>
       </div>
     </div>
+    </>
   );
 }

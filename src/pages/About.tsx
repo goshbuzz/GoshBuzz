@@ -1,4 +1,6 @@
+import { Info, Sparkles } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { PageHero, thumbnailMosaic } from '../components/PageHero';
 import { Link } from 'react-router-dom';
 import { networkModules, HUB_MODULE } from '../data/networkData';
 
@@ -26,6 +28,17 @@ export default function About() {
   };
 
   return (
+    <>
+      <PageHero
+        eyebrow="Our Story & Mission"
+        eyebrowIcon={Sparkles}
+        icon={Info}
+        accent="amber"
+        title="About"
+        highlight="GoshBuzz"
+        subtitle="Pakistan's #1 Online Earning Library — practical, step-by-step guides that take you from zero to working income. Guides, not courses."
+        mosaic={thumbnailMosaic(5, 24)}
+      />
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <Helmet>
         <title>About Us — GoshBuzz Pakistan</title>
@@ -45,15 +58,6 @@ export default function About() {
           {JSON.stringify(aboutSchema)}
         </script>
       </Helmet>
-      <div className="text-center mb-16">
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">
-          About GoshBuzz
-        </h1>
-        <p className="mt-4 text-xl text-amber-600 font-medium">
-          Pakistan's #1 Online Earning Library — Selling Guides to Work directly
-          from zero, Not Courses
-        </p>
-      </div>
 
       <div className="space-y-12 text-lg text-gray-600 dark:text-gray-400 text-center md:text-left">
         <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
@@ -137,5 +141,6 @@ export default function About() {
         </div>
       </div>
     </div>
+    </>
   );
 }

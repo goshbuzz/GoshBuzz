@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import { PageHero, thumbnailMosaic } from '../components/PageHero';
 
 export default function Contact() {
   const contactSchema = {
@@ -18,6 +19,17 @@ export default function Contact() {
   };
 
   return (
+    <>
+      <PageHero
+        eyebrow="We reply fast on WhatsApp & Email"
+        eyebrowIcon={Phone}
+        icon={Mail}
+        accent="emerald"
+        title="Let's"
+        highlight="Talk"
+        subtitle="Have questions about a guide, payment, or delivery? We're here to help you get started."
+        mosaic={thumbnailMosaic(11, 24)}
+      />
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <Helmet>
         <title>Contact Us — GoshBuzz Pakistan</title>
@@ -31,10 +43,6 @@ export default function Contact() {
           {JSON.stringify(contactSchema)}
         </script>
       </Helmet>
-      <div className="text-center mb-16">
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Contact Us</h1>
-        <p className="mt-4 text-lg text-gray-500 dark:text-gray-400">Have questions? We're here to help you get started.</p>
-      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
@@ -93,5 +101,6 @@ export default function Contact() {
         </div>
       </div>
     </div>
+    </>
   );
 }
