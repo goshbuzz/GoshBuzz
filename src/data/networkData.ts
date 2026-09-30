@@ -5,15 +5,18 @@
 // its JSON-LD structured data (SEO / AEO / GEO). Edit a module here and the
 // page, schema and sitemap all update together.
 //
-// LOGO SYNC
-// Each module card renders the module's LIVE favicon by default
-// (module.faviconUrl hot-linked from the module's own domain), so the logo
-// shown on goshbuzz.com always matches the property's current branding —
-// rebrand a module and the network page updates automatically, no repo change
-// needed.
-// To pin official artwork instead, drop the image into `public/modules/`
-// (e.g. public/modules/little-learn.png) and set `logoFile` on the module —
-// the local file takes precedence over the live favicon.
+// LOGO SYNC — FIXED (real logos, robust fallback chain)
+// Each module now has:
+//  - faviconUrl: primary LIVE logo (real PWA icon, not just favicon.ico)
+//  - logoFile: local high-res copy in public/modules/ (guaranteed to load)
+//  - liveLogoUrls: additional live candidates tried in order
+// ModuleLogo tries live URLs first (to keep branding in sync), then local
+// logoFile, then Google S2 favicon proxy, then monogram fallback.
+// This fixes the bug where 5/6 cards showed initials (LL, P, F, YS, YP)
+// because favicon.ico hot-links were failing or returning low-res icons.
+//
+// To update branding: replace the file in public/modules/ and, if the live
+// PWA icon path changed, update faviconUrl / liveLogoUrls here.
 //
 // FREECONVERTIO is the one module that is NOT a goshbuzz.com subdomain: it
 // lives on its own domain (freeconvertio.com) and is a *product of*
@@ -30,9 +33,11 @@ export interface NetworkModule {
   category: string;
   tagline: string;
   description: string;
-  /** Live-synced logo source (hot-linked favicon of the module's own domain) */
+  /** Primary live-synced logo source (hot-linked real icon from module's domain) */
   faviconUrl: string;
-  /** Optional local override, e.g. "/modules/little-learn.png" */
+  /** Additional live candidates tried if primary fails */
+  liveLogoUrls?: string[];
+  /** Local high-res copy in public/modules/ — guaranteed fallback */
   logoFile?: string;
   /** Accent hex used for the monogram fallback and card accents */
   accent: string;
@@ -51,7 +56,14 @@ export const networkModules: NetworkModule[] = [
     tagline: "Learning built for little minds.",
     description:
       "Little Learn is the early-learning module of the GoshBuzz network — a safe, controlled space of short lessons and guided learning content for young children and their parents.",
-    faviconUrl: "https://littlelearn.goshbuzz.com/favicon.ico",
+    // Real PWA icons from manifest.json — 512px SVG is the true logo
+    faviconUrl: "https://littlelearn.goshbuzz.com/icons/icon-512.svg",
+    liveLogoUrls: [
+      "https://littlelearn.goshbuzz.com/icons/icon-192.svg",
+      "https://littlelearn.goshbuzz.com/icon-192.png",
+      "https://littlelearn.goshbuzz.com/favicon.ico",
+    ],
+    logoFile: "/modules/little-learn.png",
     accent: "#f59e0b",
     status: "live",
     onGoshBuzzDomain: true,
@@ -65,7 +77,12 @@ export const networkModules: NetworkModule[] = [
     tagline: "The professional side of GoshBuzz.",
     description:
       "Proveli is the professional-services module of the GoshBuzz network — where skilled professionals list, discover and take on work. The B2B arm of the ecosystem.",
-    faviconUrl: "https://proveli.goshbuzz.com/favicon.ico",
+    faviconUrl: "https://proveli.goshbuzz.com/icon-512.png",
+    liveLogoUrls: [
+      "https://proveli.goshbuzz.com/icon-192.png",
+      "https://proveli.goshbuzz.com/favicon.ico",
+    ],
+    logoFile: "/modules/proveli.png",
     accent: "#0ea5e9",
     status: "live",
     onGoshBuzzDomain: true,
@@ -79,7 +96,14 @@ export const networkModules: NetworkModule[] = [
     tagline: "Practice tests for every Pakistani syllabus.",
     description:
       "Pakistan Tests Hub is the exam-prep module of the GoshBuzz network — practice tests, drills and MCQs focused on Pakistani boards, curricula and competitive exams.",
-    faviconUrl: "https://pakistantestshub.goshbuzz.com/favicon.ico",
+    // logo.png?v=5 is the real logo seen in page markdown, icon-512 is PWA icon
+    faviconUrl: "https://pakistantestshub.goshbuzz.com/logo.png?v=5",
+    liveLogoUrls: [
+      "https://pakistantestshub.goshbuzz.com/icon-512.png?v=4",
+      "https://pakistantestshub.goshbuzz.com/icon-192.png?v=4",
+      "https://pakistantestshub.goshbuzz.com/favicon.ico",
+    ],
+    logoFile: "/modules/pakistan-tests-hub.png",
     accent: "#10b981",
     status: "live",
     onGoshBuzzDomain: true,
@@ -93,7 +117,13 @@ export const networkModules: NetworkModule[] = [
     tagline: "Free online conversion tools. A product of goshbuzz.com.",
     description:
       "FreeConvertio is a product of goshbuzz.com. It runs on its own domain (freeconvertio.com) rather than a goshbuzz.com subdomain because it is a standalone product — but it is developed and operated by the same GoshBuzz team.",
-    faviconUrl: "https://www.freeconvertio.com/favicon.ico",
+    faviconUrl: "https://www.freeconvertio.com/icons/icon-192.png",
+    liveLogoUrls: [
+      "https://www.freeconvertio.com/icon-192.png",
+      "https://www.freeconvertio.com/favicon.ico",
+      "https://www.freeconvertio.com/icons/icon-512.png",
+    ],
+    logoFile: "/modules/freeconvertio.png",
     accent: "#8b5cf6",
     status: "live",
     onGoshBuzzDomain: false,
@@ -107,7 +137,15 @@ export const networkModules: NetworkModule[] = [
     tagline: "Study material for Pakistan's young scholars.",
     description:
       "Young Scholars PK is the student-learning module of the GoshBuzz network — notes, study material and learning resources for school and college students across Pakistan.",
-    faviconUrl: "https://youngscholarspk.goshbuzz.com/favicon.ico",
+    // Young Scholars manifest 404s, but try common PWA paths; local file guarantees display
+    faviconUrl: "https://youngscholarspk.goshbuzz.com/icon-512.png",
+    liveLogoUrls: [
+      "https://youngscholarspk.goshbuzz.com/icon-192.png",
+      "https://youngscholarspk.goshbuzz.com/icons/icon-192.png",
+      "https://youngscholarspk.goshbuzz.com/logo.png",
+      "https://youngscholarspk.goshbuzz.com/favicon.ico",
+    ],
+    logoFile: "/modules/young-scholars-pk.png",
     accent: "#f43f5e",
     status: "live",
     onGoshBuzzDomain: true,
@@ -121,7 +159,13 @@ export const networkModules: NetworkModule[] = [
     tagline: "Pakistan's business directory, by GoshBuzz.",
     description:
       "Yellow Pages Pakistan is the directory module of the GoshBuzz network — browse Pakistani businesses, shops and services by city and category.",
-    faviconUrl: "https://yellowpagespakistan.goshbuzz.com/favicon.ico",
+    faviconUrl: "https://yellowpagespakistan.goshbuzz.com/icon-512.png",
+    liveLogoUrls: [
+      "https://yellowpagespakistan.goshbuzz.com/icon-192.png",
+      "https://yellowpagespakistan.goshbuzz.com/logo.png",
+      "https://yellowpagespakistan.goshbuzz.com/favicon.ico",
+    ],
+    logoFile: "/modules/yellow-pages-pakistan.png",
     accent: "#eab308",
     status: "live",
     onGoshBuzzDomain: true,

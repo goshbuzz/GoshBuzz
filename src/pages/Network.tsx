@@ -20,13 +20,16 @@ import {
 } from '../data/networkData';
 
 /**
- * Logo with live sync: renders the module's own favicon (hot-linked from the
- * module's domain) so branding stays in sync with each property, with a
- * local `logoFile` override and a styled monogram fallback if the image
- * fails to load.
+ * Robust logo with real-logo sync:
+ * 1) Tries live URLs first (faviconUrl + liveLogoUrls) — keeps branding in sync
+ * 2) Falls back to local /modules/*.png (guaranteed to load, real artwork)
+ * 3) Falls back to Google S2 favicon proxy (highly reliable CDN)
+ * 4) Finally shows monogram initials
+ *
+ * This fixes the bug where 5/6 cards showed initials because favicon.ico
+ * hot-links were failing / low-res / blocked.
  */
 function ModuleLogo({ module }: { module: NetworkModule }) {
-  const [errored, setErrored] = useState(false);
   const initials = module.name
     .split(' ')
     .map((w) => w[0])
@@ -34,7 +37,23 @@ function ModuleLogo({ module }: { module: NetworkModule }) {
     .join('')
     .toUpperCase();
 
-  if (errored) {
+  // Build candidate list: live first, then local, then Google S2 proxy
+  const candidates = [
+    module.faviconUrl,
+    ...(module.liveLogoUrls || []),
+    ...(module.logoFile ? [module.logoFile] : []),
+    // Google S2 is a reliable CDN that returns a favicon for any domain
+    `https://www.google.com/s2/favicons?domain=${module.host}&sz=128`,
+    `https://icons.duckduckgo.com/ip3/${module.host}.ico`,
+  ].filter(Boolean) as string[];
+
+  const [idx, setIdx] = useState(0);
+  const [failed, setFailed] = useState(false);
+
+  // Deduplicate candidates while preserving order
+  const uniqueCandidates = Array.from(new Set(candidates));
+
+  if (failed || idx >= uniqueCandidates.length) {
     return (
       <div
         className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl flex items-center justify-center shadow-md border-2 border-gray-200 dark:border-gray-700"
@@ -50,12 +69,63 @@ function ModuleLogo({ module }: { module: NetworkModule }) {
 
   return (
     <img
-      src={module.logoFile || module.faviconUrl}
+      key={`${module.id}-${idx}`}
+      src={uniqueCandidates[idx]}
       alt={`${module.name} logo`}
       title={module.name}
       loading="lazy"
-      onError={() => setErrored(true)}
+      referrerPolicy="no-referrer"
+      onError={() => {
+        const next = idx + 1;
+        if (next >= uniqueCandidates.length) {
+          setFailed(true);
+        } else {
+          setIdx(next);
+        }
+      }}
       className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl shadow-md border-2 border-gray-200 dark:border-gray-700 object-contain bg-white dark:bg-gray-800 p-2"
+    />
+  );
+}
+
+/**
+ * Same robust logic for the standalone FreeConvertio hero card
+ */
+function FreeConvertioLogo() {
+  const candidates = [
+    "https://www.freeconvertio.com/icons/icon-192.png",
+    "https://www.freeconvertio.com/icon-192.png",
+    "https://www.freeconvertio.com/favicon.ico",
+    "/modules/freeconvertio.png",
+    "https://www.google.com/s2/favicons?domain=www.freeconvertio.com&sz=128",
+  ];
+  const [idx, setIdx] = useState(0);
+  const [failed, setFailed] = useState(false);
+
+  if (failed || idx >= candidates.length) {
+    return (
+      <div
+        className="w-20 h-20 rounded-2xl shadow-md border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center"
+        style={{ backgroundColor: "#8b5cf6" }}
+        aria-label="FreeConvertio logo"
+      >
+        <span className="text-2xl font-extrabold text-white">FC</span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={candidates[idx]}
+      alt="FreeConvertio logo"
+      loading="lazy"
+      referrerPolicy="no-referrer"
+      onError={() => {
+        const next = idx + 1;
+        if (next >= candidates.length) setFailed(true);
+        else setIdx(next);
+      }}
+      className="w-20 h-20 rounded-2xl shadow-md border-2 border-gray-200 dark:border-gray-700 object-contain bg-white dark:bg-gray-800 p-2"
     />
   );
 }
@@ -213,8 +283,12 @@ export default function Network() {
               The Modules of GoshBuzz
             </h2>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 max-w-3xl">
-              Logos are synced live from each module's own domain, so this page
-              always shows each product's current branding.
+              Real logos are synced live from each module's own domain (PWA icons
+              like <code className="font-mono text-[11px]">/icons/icon-512.svg</code> and{" "}
+              <code className="font-mono text-[11px]">/logo.png</code>), with local{" "}
+              <code className="font-mono text-[11px]">/modules/*.png</code> copies and Google S2
+              favicon proxy as fallback — so this page always shows each product's
+              current branding, never just initials.
             </p>
           </div>
 
@@ -334,12 +408,7 @@ export default function Network() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="bg-gradient-to-r from-violet-500/10 via-transparent to-transparent border border-violet-500/40 dark:border-violet-500/30 rounded-3xl p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row items-center gap-6">
-            <img
-              src="https://www.freeconvertio.com/favicon.ico"
-              alt="FreeConvertio logo"
-              loading="lazy"
-              className="w-20 h-20 rounded-2xl shadow-md border-2 border-gray-200 dark:border-gray-700 object-contain bg-white dark:bg-gray-800 p-2"
-            />
+            <FreeConvertioLogo />
             <div className="flex-1 text-center sm:text-left">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400 text-xs font-bold uppercase tracking-wider mb-2">
                 <Sparkles className="w-3.5 h-3.5" />

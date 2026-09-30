@@ -21,7 +21,14 @@ async function startServer() {
   if (!isProd) {
     const { createServer: createViteServer } = await import('vite');
     vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        // Allow preview hosts like https://{port}-{sandboxId}.e2b.app
+        allowedHosts: true,
+        hmr: {
+          host: '0.0.0.0',
+        },
+      },
       appType: 'custom',
     });
   }

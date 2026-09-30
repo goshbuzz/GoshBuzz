@@ -8,6 +8,11 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 3000,
+    // Allow Arena preview hosts like https://{port}-{sandboxId}.e2b.app
+    allowedHosts: true,
+    hmr: {
+      host: '0.0.0.0',
+    },
   },
   resolve: {
     alias: {
