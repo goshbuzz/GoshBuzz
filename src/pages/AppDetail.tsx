@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
@@ -18,27 +18,64 @@ import {
   Info, 
   Sparkles,
   Share2,
-  ArrowLeft
+  ArrowLeft,
+  ArrowRight,
+  Globe,
+  Clock,
+  ShoppingBag,
+  ChefHat,
+  Calendar,
+  Languages,
+  Radar,
+  Play,
+  Pause,
+  RotateCcw,
+  Utensils
 } from 'lucide-react';
 import { goshbuzzApps } from '../data/appsData';
 
 export default function AppDetail() {
   const { slug } = useParams<{ slug: string }>();
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-  const [simulatedValue, setSimulatedValue] = useState<number>(48);
   const [copiedLink, setCopiedLink] = useState(false);
+
+  // Sensor simulator state (EMF Sentinel)
+  const [simulatedValue, setSimulatedValue] = useState<number>(48);
+
+  // Culinary simulator state (Global Bite)
+  const [selectedRecipeIdx, setSelectedRecipeIdx] = useState<number>(0);
+  const [servings, setServings] = useState<number>(4);
+  const [timerSeconds, setTimerSeconds] = useState<number>(900); // 15 mins default
+  const [timerRunning, setTimerRunning] = useState<boolean>(false);
 
   // Find app by slug or packageId or id
   const app = goshbuzzApps.find(
     (a) => a.slug === slug || a.packageId === slug || a.id === slug
   ) || goshbuzzApps[0];
 
+  // Sibling apps
+  const otherApps = goshbuzzApps.filter((a) => a.id !== app.id);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+    if (timerRunning && timerSeconds > 0) {
+      interval = setInterval(() => {
+        setTimerSeconds((prev) => (prev > 0 ? prev - 1 : 0));
+      }, 1000);
+    } else if (timerSeconds === 0 && timerRunning) {
+      setTimerRunning(false);
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [timerRunning, timerSeconds]);
+
   const toggleFaq = (index: number) => {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
   const handleShare = () => {
-    if (navigator.clipboard) {
+    if (typeof window !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(window.location.href);
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2500);
@@ -54,16 +91,16 @@ export default function AppDetail() {
         "@id": `https://goshbuzz.com/apps/${app.slug}#software`,
         "name": app.name,
         "operatingSystem": "Android 7.0+",
-        "applicationCategory": "UtilitiesApplication",
-        "applicationSubCategory": "Scientific Tools & Sensor Measurement",
+        "applicationCategory": app.category.includes('Food') ? "LifestyleApplication" : "UtilitiesApplication",
+        "applicationSubCategory": app.category,
         "downloadUrl": app.playStoreUrl,
         "installUrl": app.playStoreUrl,
         "url": `https://goshbuzz.com/apps/${app.slug}`,
-        "image": "https://goshbuzz.com/goshbuzz_logo.jpg",
+        "image": app.icon.startsWith('http') ? app.icon : `https://goshbuzz.com${app.icon}`,
         "screenshot": app.screenshots,
         "softwareVersion": app.version,
         "fileSize": app.size,
-        "contentRating": "Everyone",
+        "contentRating": app.contentRating,
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -73,7 +110,7 @@ export default function AppDetail() {
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": app.rating.toString(),
-          "ratingCount": "540",
+          "ratingCount": app.reviewsCount.replace(/\+/g, ''),
           "bestRating": "5",
           "worstRating": "1"
         },
@@ -132,6 +169,8 @@ export default function AppDetail() {
 
   const getFeatureIcon = (iconName: string) => {
     switch (iconName) {
+      case 'Radar':
+        return <Radar className="w-6 h-6 text-cyan-500" />;
       case 'Magnet':
         return <Magnet className="w-6 h-6 text-amber-500" />;
       case 'Radio':
@@ -144,11 +183,26 @@ export default function AppDetail() {
         return <Eye className="w-6 h-6 text-rose-500" />;
       case 'BellRing':
         return <BellRing className="w-6 h-6 text-amber-500" />;
+      case 'Globe':
+        return <Globe className="w-6 h-6 text-emerald-500" />;
+      case 'Clock':
+        return <Clock className="w-6 h-6 text-amber-500" />;
+      case 'ShoppingBag':
+        return <ShoppingBag className="w-6 h-6 text-blue-500" />;
+      case 'ChefHat':
+        return <ChefHat className="w-6 h-6 text-orange-500" />;
+      case 'Calendar':
+        return <Calendar className="w-6 h-6 text-indigo-500" />;
+      case 'Languages':
+        return <Languages className="w-6 h-6 text-teal-500" />;
+      case 'Utensils':
+        return <Utensils className="w-6 h-6 text-amber-500" />;
       default:
         return <Sparkles className="w-6 h-6 text-amber-500" />;
     }
   };
 
+  // Sensor simulator helpers
   const getSimStatus = (val: number) => {
     if (val < 65) return { text: "Ambient Earth Baseline (Safe)", color: "text-emerald-500 dark:text-emerald-400", bg: "bg-emerald-500/10 border-emerald-500/30" };
     if (val < 150) return { text: "Elevated EMF / Electronic Proximity", color: "text-amber-500 dark:text-amber-400", bg: "bg-amber-500/10 border-amber-500/30" };
@@ -158,10 +212,60 @@ export default function AppDetail() {
   const simStatus = getSimStatus(simulatedValue);
   const gaugeAngle = Math.min(180, Math.max(0, ((simulatedValue - 20) / 400) * 180));
 
+  // Recipe sample data for simulator
+  const sampleRecipes = [
+    {
+      title: "Mediterranean Harvest Quinoa Bowl",
+      cuisine: "Mediterranean",
+      baseServings: 2,
+      time: "20 min",
+      ingredients: [
+        { name: "Organic Quinoa", baseQty: 100, unit: "g" },
+        { name: "Greek Feta Cheese", baseQty: 50, unit: "g" },
+        { name: "Persian Cucumbers", baseQty: 1, unit: "pc" },
+        { name: "Cherry Tomatoes", baseQty: 80, unit: "g" },
+        { name: "Extra Virgin Olive Oil", baseQty: 15, unit: "ml" }
+      ]
+    },
+    {
+      title: "Royal Fragrant Biryani",
+      cuisine: "South Asian",
+      baseServings: 4,
+      time: "45 min",
+      ingredients: [
+        { name: "Aged Basmati Rice", baseQty: 300, unit: "g" },
+        { name: "Saffron Infused Milk", baseQty: 40, unit: "ml" },
+        { name: "Fresh Mint & Coriander", baseQty: 25, unit: "g" },
+        { name: "Crispy Golden Onions", baseQty: 75, unit: "g" },
+        { name: "Garam Masala Spices", baseQty: 10, unit: "g" }
+      ]
+    },
+    {
+      title: "Tokyo Hand-Rolled Salmon Rolls",
+      cuisine: "Japanese",
+      baseServings: 2,
+      time: "25 min",
+      ingredients: [
+        { name: "Sushi Seasoned Rice", baseQty: 200, unit: "g" },
+        { name: "Fresh Atlantic Salmon", baseQty: 120, unit: "g" },
+        { name: "Roasted Nori Sheets", baseQty: 3, unit: "sheets" },
+        { name: "Ripe Avocado", baseQty: 1, unit: "pc" },
+        { name: "Japanese Soy Sauce", baseQty: 20, unit: "ml" }
+      ]
+    }
+  ];
+
+  const currentRecipe = sampleRecipes[selectedRecipeIdx];
+  const formatTime = (secs: number) => {
+    const mins = Math.floor(secs / 60);
+    const remSecs = secs % 60;
+    return `${mins.toString().padStart(2, '0')}:${remSecs.toString().padStart(2, '0')}`;
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors pb-20">
       <Helmet>
-        <title>{`${app.name} — Free Android App by GoshBuzz`}</title>
+        <title>{`${app.name} — Free Android App on Google Play | GoshBuzz`}</title>
         <meta name="description" content={`${app.shortDescription} Download official APK on Google Play Store (${app.packageId}).`} />
         <meta name="keywords" content={app.seoKeywords.join(', ')} />
         <link rel="canonical" href={`https://goshbuzz.com/apps/${app.slug}`} />
@@ -171,12 +275,13 @@ export default function AppDetail() {
         <meta property="og:description" content={app.shortDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://goshbuzz.com/apps/${app.slug}`} />
-        <meta property="og:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
+        <meta property="og:image" content={app.banner || "https://goshbuzz.com/goshbuzz_logo.jpg"} />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={app.name} />
         <meta name="twitter:description" content={app.shortDescription} />
+        <meta name="twitter:image" content={app.banner || "https://goshbuzz.com/goshbuzz_logo.jpg"} />
 
         {/* AdMob & Publisher Metadata Verification tags for Web Crawlers */}
         <meta name="google-adsense-platform-account" content="pub-4067724379997931" />
@@ -239,7 +344,7 @@ export default function AppDetail() {
                   </span>
                   <div className="flex items-center gap-1.5 text-amber-500 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-1 rounded-lg border border-amber-200 dark:border-amber-800/40 text-xs font-bold">
                     <Star className="w-3.5 h-3.5 fill-current" />
-                    <span>{app.rating}</span>
+                    <span>{app.rating.toFixed(1)}</span>
                     <span className="text-gray-400 font-normal">({app.reviewsCount} verified reviews)</span>
                   </div>
                 </div>
@@ -274,7 +379,7 @@ export default function AppDetail() {
                 <button
                   onClick={handleShare}
                   id="btn-share-detail"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 font-semibold text-sm transition-colors border border-gray-200 dark:border-gray-700"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 font-semibold text-sm transition-colors border border-gray-200 dark:border-gray-700 cursor-pointer"
                   title="Share App Page Link"
                 >
                   <Share2 className="w-4 h-4" />
@@ -306,6 +411,23 @@ export default function AppDetail() {
 
           </div>
 
+          {/* Screenshot & Visual Banner Showcase */}
+          {app.banner && (
+            <div className="p-6 sm:p-8 bg-gray-900 border-b border-gray-100 dark:border-gray-800 text-center">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 mb-4">
+                <Sparkles className="w-4 h-4" />
+                App In-Action Showcase
+              </div>
+              <div className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden border border-gray-700 shadow-2xl">
+                <img
+                  src={app.banner}
+                  alt={`${app.name} interface preview`}
+                  className="w-full h-auto max-h-[480px] object-cover object-center"
+                />
+              </div>
+            </div>
+          )}
+
           {/* AEO Quick Answer Summary Box */}
           <div className="p-6 sm:p-8 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
             <div className="flex items-start gap-3 p-5 rounded-2xl bg-amber-500/5 border border-amber-500/20">
@@ -323,77 +445,210 @@ export default function AppDetail() {
             </div>
           </div>
 
-          {/* Interactive Hardware Sensor Simulator */}
-          <div className="p-6 sm:p-8 bg-gray-50/70 dark:bg-gray-950/60 border-b border-gray-100 dark:border-gray-800">
-            <div className="max-w-3xl mx-auto text-center mb-6">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
-                <Sliders className="w-3.5 h-3.5" />
-                Interactive Telemetry Simulator
-              </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-                Experience the 60 FPS Magnetometer Gauge
-              </h2>
-              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
-                Drag the proximity slider below to test simulated magnetic density spikes across drywall, live wiring, or studs.
-              </p>
-            </div>
-
-            <div className="max-w-xl mx-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm">
-              
-              {/* Dial Gauge */}
-              <div className="flex flex-col items-center justify-center mb-6">
-                <div className="relative w-48 h-28 flex items-end justify-center overflow-hidden">
-                  <div className="absolute w-44 h-44 rounded-full border-[10px] border-gray-200 dark:border-gray-800 border-t-emerald-500 border-r-amber-500 border-b-rose-500 top-0 transform rotate-[-45deg]"></div>
-                  
-                  {/* Needle */}
-                  <div
-                    className="w-1.5 h-20 bg-rose-500 origin-bottom transition-transform duration-150 rounded-t-full shadow-md z-10"
-                    style={{ transform: `rotate(${gaugeAngle - 90}deg)` }}
-                  ></div>
-                  <div className="w-4 h-4 rounded-full bg-gray-900 dark:bg-white z-20 shadow"></div>
+          {/* Interactive Live Simulator (Sensor vs Culinary) */}
+          {app.interactiveType === 'sensor' ? (
+            <div className="p-6 sm:p-8 bg-gray-50/70 dark:bg-gray-950/60 border-b border-gray-100 dark:border-gray-800">
+              <div className="max-w-3xl mx-auto text-center mb-6">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
+                  <Sliders className="w-3.5 h-3.5" />
+                  Interactive Telemetry Simulator
                 </div>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                  Experience the 60 FPS Magnetometer Gauge
+                </h2>
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
+                  Drag the proximity slider below to test simulated magnetic density spikes across drywall, live wiring, or studs.
+                </p>
+              </div>
 
-                <div className="text-center mt-2">
-                  <div className="text-3xl font-black font-mono text-gray-900 dark:text-white flex items-baseline justify-center gap-1">
-                    <span>{simulatedValue.toFixed(1)}</span>
-                    <span className="text-sm font-sans font-bold text-gray-500 dark:text-gray-400">μT</span>
+              <div className="max-w-xl mx-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm">
+                
+                {/* Dial Gauge */}
+                <div className="flex flex-col items-center justify-center mb-6">
+                  <div className="relative w-48 h-28 flex items-end justify-center overflow-hidden">
+                    <div className="absolute w-44 h-44 rounded-full border-[10px] border-gray-200 dark:border-gray-800 border-t-emerald-500 border-r-amber-500 border-b-rose-500 top-0 transform rotate-[-45deg]"></div>
+                    
+                    {/* Needle */}
+                    <div
+                      className="w-1.5 h-20 bg-rose-500 origin-bottom transition-transform duration-150 rounded-t-full shadow-md z-10"
+                      style={{ transform: `rotate(${gaugeAngle - 90}deg)` }}
+                    ></div>
+                    <div className="w-4 h-4 rounded-full bg-gray-900 dark:bg-white z-20 shadow"></div>
                   </div>
-                  <div className={`text-xs font-semibold px-3 py-1 rounded-full border mt-2 inline-block ${simStatus.bg} ${simStatus.color}`}>
-                    {simStatus.text}
+
+                  <div className="text-center mt-2">
+                    <div className="text-3xl font-black font-mono text-gray-900 dark:text-white flex items-baseline justify-center gap-1">
+                      <span>{simulatedValue.toFixed(1)}</span>
+                      <span className="text-sm font-sans font-bold text-gray-500 dark:text-gray-400">μT</span>
+                    </div>
+                    <div className={`text-xs font-semibold px-3 py-1 rounded-full border mt-2 inline-block ${simStatus.bg} ${simStatus.color}`}>
+                      {simStatus.text}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Slider Control */}
-              <div className="space-y-2">
-                <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 font-medium">
-                  <span>Earth Baseline (30 μT)</span>
-                  <span>Wires (120 μT)</span>
-                  <span>Metal Stud (400+ μT)</span>
+                {/* Slider Control */}
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400 font-medium">
+                    <span>Earth Baseline (30 μT)</span>
+                    <span>Wires (120 μT)</span>
+                    <span>Metal Stud (400+ μT)</span>
+                  </div>
+                  <input
+                    type="range"
+                    min="25"
+                    max="450"
+                    step="1"
+                    value={simulatedValue}
+                    onChange={(e) => setSimulatedValue(parseFloat(e.target.value))}
+                    className="w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-amber-500"
+                    aria-label="Simulate magnetic flux intensity"
+                  />
                 </div>
-                <input
-                  type="range"
-                  min="25"
-                  max="450"
-                  step="1"
-                  value={simulatedValue}
-                  onChange={(e) => setSimulatedValue(parseFloat(e.target.value))}
-                  className="w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-amber-500"
-                  aria-label="Simulate magnetic flux intensity"
-                />
-              </div>
 
-              <div className="mt-4 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pt-3 border-t border-gray-100 dark:border-gray-800">
-                <span>Vector: X: {(simulatedValue * 0.42).toFixed(1)} | Y: {(simulatedValue * 0.58).toFixed(1)} | Z: {(simulatedValue * 0.70).toFixed(1)}</span>
-                <span className="font-semibold text-emerald-500">Hardware Filter Active</span>
+                <div className="mt-4 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 pt-3 border-t border-gray-100 dark:border-gray-800">
+                  <span>Vector: X: {(simulatedValue * 0.42).toFixed(1)} | Y: {(simulatedValue * 0.58).toFixed(1)} | Z: {(simulatedValue * 0.70).toFixed(1)}</span>
+                  <span className="font-semibold text-emerald-500">Hardware Filter Active</span>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="p-6 sm:p-8 bg-gray-50/70 dark:bg-gray-950/60 border-b border-gray-100 dark:border-gray-800">
+              <div className="max-w-3xl mx-auto text-center mb-6">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
+                  <Utensils className="w-3.5 h-3.5" />
+                  Interactive Culinary Engine
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                  Serving Scaler & Multi-Timer Simulator
+                </h2>
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
+                  Test the dynamic portion scaler and interactive step timer engine built into Global Bite.
+                </p>
+              </div>
+
+              <div className="max-w-2xl mx-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-sm">
+                
+                {/* Recipe Selector Tabs */}
+                <div className="flex gap-2 overflow-x-auto pb-3 mb-4 border-b border-gray-100 dark:border-gray-800">
+                  {sampleRecipes.map((r, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSelectedRecipeIdx(i)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors cursor-pointer ${
+                        selectedRecipeIdx === i
+                          ? 'bg-amber-500 text-gray-950 shadow-sm'
+                          : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+                      }`}
+                    >
+                      {r.cuisine}: {r.title.split(' ')[0]}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+                  <div>
+                    <h3 className="text-base font-bold text-gray-900 dark:text-white">
+                      {currentRecipe.title}
+                    </h3>
+                    <span className="text-xs text-amber-600 dark:text-amber-400 font-semibold">
+                      Estimated Prep & Cook: {currentRecipe.time}
+                    </span>
+                  </div>
+
+                  {/* Servings Counter */}
+                  <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-xl border border-gray-200 dark:border-gray-700">
+                    <span className="text-xs text-gray-500 font-medium">Servings:</span>
+                    <button
+                      onClick={() => setServings((s) => Math.max(1, s - 1))}
+                      className="w-6 h-6 rounded-md bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold text-xs flex items-center justify-center hover:bg-amber-500 hover:text-black transition-colors"
+                      aria-label="Decrease servings"
+                    >
+                      -
+                    </button>
+                    <span className="font-bold text-sm text-gray-900 dark:text-white w-5 text-center">
+                      {servings}
+                    </span>
+                    <button
+                      onClick={() => setServings((s) => Math.min(16, s + 1))}
+                      className="w-6 h-6 rounded-md bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 font-bold text-xs flex items-center justify-center hover:bg-amber-500 hover:text-black transition-colors"
+                      aria-label="Increase servings"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                {/* Scaled Ingredients List */}
+                <div className="space-y-2 mb-6 bg-gray-50 dark:bg-gray-950/50 p-4 rounded-xl border border-gray-200/60 dark:border-gray-800">
+                  <div className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
+                    Auto-Scaled Ingredient Quantities:
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                    {currentRecipe.ingredients.map((ing, idx) => {
+                      const scaledQty = ((ing.baseQty / currentRecipe.baseServings) * servings).toFixed(
+                        ing.unit === 'pc' || ing.unit === 'sheets' ? 1 : 0
+                      );
+                      return (
+                        <div key={idx} className="flex justify-between items-center py-1 px-2 rounded bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800">
+                          <span className="text-gray-700 dark:text-gray-300 font-medium">{ing.name}</span>
+                          <span className="font-mono font-bold text-amber-600 dark:text-amber-400">
+                            {scaledQty} {ing.unit}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Live Step Timer Controller */}
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl bg-gradient-to-r from-amber-500/10 via-emerald-500/10 to-transparent border border-amber-500/20">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2.5 rounded-xl bg-amber-500 text-gray-950">
+                      <Clock className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold text-gray-500 dark:text-gray-400">Active Cooking Step Timer:</div>
+                      <div className="text-2xl font-mono font-black text-gray-900 dark:text-white">
+                        {formatTime(timerSeconds)}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setTimerRunning(!timerRunning)}
+                      className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
+                        timerRunning
+                          ? 'bg-rose-500 hover:bg-rose-600 text-white'
+                          : 'bg-emerald-500 hover:bg-emerald-600 text-white'
+                      }`}
+                    >
+                      {timerRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                      <span>{timerRunning ? "Pause" : "Start Step"}</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setTimerRunning(false);
+                        setTimerSeconds(900);
+                      }}
+                      className="p-2 rounded-xl bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs transition-colors cursor-pointer"
+                      title="Reset Timer"
+                      aria-label="Reset timer"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          )}
 
           {/* Key Features Grid */}
           <div className="p-6 sm:p-8 lg:p-10">
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center lg:text-left">
-              Key Features & Diagnostic Modes
+              Key Features & Capabilities
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {app.keyFeatures.map((feature, idx) => (
@@ -454,7 +709,7 @@ export default function AppDetail() {
             How to Use {app.name}
           </h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-2">
-            Step-by-step calibration and detection procedures for maximum accuracy.
+            Step-by-step instructions to get the most out of your application.
           </p>
         </div>
 
@@ -478,16 +733,18 @@ export default function AppDetail() {
         </div>
       </section>
 
-      {/* Safety Reference Matrix */}
+      {/* Domain Highlights / Safety Matrix */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="bg-gradient-to-r from-amber-500/10 via-emerald-500/10 to-transparent dark:from-amber-950/30 dark:via-gray-900 dark:to-gray-900 border border-amber-200 dark:border-gray-800 rounded-3xl p-6 sm:p-8">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-6">
             <div>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                EMF Radiation & Metal Density Reference Matrix
+                {app.interactiveType === 'sensor' ? 'EMF Radiation & Sensor Matrix' : 'Culinary Exploration & Dietary Matrix'}
               </h2>
               <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
-                Standard geomagnetic baseline levels and hazard zones.
+                {app.interactiveType === 'sensor' 
+                  ? 'Standard geomagnetic baseline levels and spatial detection parameters.' 
+                  : 'Tailored dietary certifications and regional culinary specializations.'}
               </p>
             </div>
             <a
@@ -497,7 +754,7 @@ export default function AppDetail() {
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold text-xs sm:text-sm shadow transition-colors flex-shrink-0"
             >
               <Download className="w-4 h-4" />
-              Download APK from Google Play
+              Download from Google Play
             </a>
           </div>
 
@@ -509,9 +766,9 @@ export default function AppDetail() {
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
-                    item.level.includes('Safe') 
+                    item.level.includes('Safe') || item.level.includes('Dietary')
                       ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400' 
-                      : item.level.includes('Moderate')
+                      : item.level.includes('Moderate') || item.level.includes('Allergen')
                       ? 'bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400'
                       : 'bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-400'
                   }`}>
@@ -540,7 +797,7 @@ export default function AppDetail() {
             App FAQs & Diagnostics
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-            Answers to common questions regarding {app.name}, AdMob compliance, and sensor accuracy.
+            Answers to common questions regarding {app.name}, features, and device compatibility.
           </p>
         </div>
 
@@ -554,7 +811,7 @@ export default function AppDetail() {
               >
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-semibold text-gray-900 dark:text-white hover:text-amber-500 dark:hover:text-amber-400 transition-colors focus:outline-none"
+                  className="w-full px-6 py-4 text-left flex items-center justify-between gap-4 font-semibold text-gray-900 dark:text-white hover:text-amber-500 dark:hover:text-amber-400 transition-colors focus:outline-none cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <span className="text-sm sm:text-base">{faq.question}</span>
@@ -574,6 +831,69 @@ export default function AppDetail() {
           })}
         </div>
       </section>
+
+      {/* Cross-Link Other GoshBuzz Apps */}
+      {otherApps.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="p-6 sm:p-8 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-500">More Apps</span>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                  Explore More Android Apps by GoshBuzz
+                </h2>
+              </div>
+              <Link to="/apps" className="text-xs sm:text-sm font-semibold text-amber-500 hover:underline inline-flex items-center gap-1">
+                <span>View all</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {otherApps.map((other) => (
+                <div
+                  key={other.id}
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700/80 hover:border-amber-500/50 transition-colors"
+                >
+                  <img
+                    src={other.icon}
+                    alt={other.name}
+                    className="w-16 h-16 rounded-xl object-cover border border-gray-200 dark:border-gray-700 flex-shrink-0"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <span className="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
+                      {other.category}
+                    </span>
+                    <h3 className="text-sm font-bold text-gray-900 dark:text-white truncate">
+                      {other.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1 mt-0.5">
+                      {other.shortDescription}
+                    </p>
+                    <div className="flex items-center gap-3 mt-2">
+                      <Link
+                        to={`/apps/${other.slug}`}
+                        className="text-xs font-bold text-amber-600 dark:text-amber-400 hover:underline"
+                      >
+                        View Details →
+                      </Link>
+                      <a
+                        href={other.playStoreUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white inline-flex items-center gap-1"
+                      >
+                        <span>Google Play</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Footer Back & Download CTA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">

@@ -10,18 +10,31 @@ import {
   CheckCircle2, 
   Sparkles,
   Layers,
-  ArrowRight
+  ArrowRight,
+  UtensilsCrossed,
+  Activity
 } from 'lucide-react';
 import { goshbuzzApps } from '../data/appsData';
 
 export default function Apps() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const categories = ['All', 'Tools & Utilities', 'Sensors & Diagnostics'];
+  const categories = ['All', 'Tools & Utilities', 'Food & Drink', 'Sensors'];
 
   const filteredApps = selectedCategory === 'All'
     ? goshbuzzApps
-    : goshbuzzApps.filter(app => app.category.toLowerCase().includes(selectedCategory.toLowerCase()));
+    : goshbuzzApps.filter(app => {
+        if (selectedCategory === 'Food & Drink') {
+          return app.category.toLowerCase().includes('food') || app.category.toLowerCase().includes('culinary');
+        }
+        if (selectedCategory === 'Sensors') {
+          return app.category.toLowerCase().includes('sensor');
+        }
+        if (selectedCategory === 'Tools & Utilities') {
+          return app.category.toLowerCase().includes('tool') || app.category.toLowerCase().includes('utilit');
+        }
+        return app.category.toLowerCase().includes(selectedCategory.toLowerCase());
+      });
 
   // Structured Data Schema for SEO, AEO, and GEO
   const directorySchema = {
@@ -31,7 +44,7 @@ export default function Apps() {
         "@type": "CollectionPage",
         "@id": "https://goshbuzz.com/apps#collection",
         "name": "GoshBuzz Android Apps Directory & Hub",
-        "description": "Explore and download official Android mobile applications by GoshBuzz. High-precision sensors, radiation meters, and offline utility tools.",
+        "description": "Explore and download official Android mobile applications by GoshBuzz. EMF Sentinel radiation scanner & radar dynamics, and Global Bite: World Recipes culinary companion.",
         "url": "https://goshbuzz.com/apps",
         "mainEntity": {
           "@type": "ItemList",
@@ -75,13 +88,13 @@ export default function Apps() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors pb-20">
       <Helmet>
         <title>GoshBuzz Android Apps — Official Mobile Applications & Tools</title>
-        <meta name="description" content="Browse and download official Android apps by GoshBuzz. Discover EMF Sentinel: EMF Scan & Metal Detector for precision radiation measurement and metal detection." />
-        <meta name="keywords" content="goshbuzz apps, android apps, emf sentinel, metal detector app, admob publisher pub-4067724379997931, app-ads.txt" />
+        <meta name="description" content="Browse and download official Android apps by GoshBuzz on Google Play. Discover EMF Sentinel for precision radiation telemetry and Global Bite for authentic 190+ world recipes." />
+        <meta name="keywords" content="goshbuzz apps, android apps, emf sentinel, global bite world recipes, metal detector app, recipe app, admob publisher pub-4067724379997931, app-ads.txt" />
         <link rel="canonical" href="https://goshbuzz.com/apps" />
         
         {/* Open Graph */}
         <meta property="og:title" content="GoshBuzz Android Apps Directory & Hub" />
-        <meta property="og:description" content="Explore high-utility, privacy-first mobile tools engineered for instant physical-world diagnostics, sensor telemetry, and offline productivity." />
+        <meta property="og:description" content="Explore high-utility, privacy-first mobile apps engineered for sensor telemetry, diagnostics, and everyday lifestyle by GoshBuzz." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/apps" />
         <meta property="og:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
@@ -89,7 +102,7 @@ export default function Apps() {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="GoshBuzz Official Android Apps" />
-        <meta name="twitter:description" content="High-precision sensor utilities and tools for Android." />
+        <meta name="twitter:description" content="High-precision sensor utilities and world culinary tools for Android." />
 
         {/* AdMob & Publisher Metadata Verification tags */}
         <meta name="google-adsense-platform-account" content="pub-4067724379997931" />
@@ -112,7 +125,7 @@ export default function Apps() {
             GoshBuzz <span className="text-amber-500">Android Apps</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-normal mb-2">
-            High-utility, privacy-first mobile tools engineered for instant physical-world diagnostics, sensor telemetry, and offline productivity.
+            High-utility, privacy-first mobile apps engineered for physical-world diagnostics, sensor telemetry, and authentic global culinary adventures.
           </p>
         </div>
       </section>
@@ -125,10 +138,10 @@ export default function Apps() {
             <div>
               <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-500 mb-1">
                 <Layers className="w-4 h-4" />
-                App Catalog
+                Official Play Store Catalog
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-white">
-                Available & Upcoming Applications
+                Published Android Applications
               </h2>
             </div>
 
@@ -174,7 +187,7 @@ export default function Apps() {
 
                     <div className="flex items-center gap-1.5 text-amber-500 mt-3 text-xs font-bold">
                       <Star className="w-4 h-4 fill-current" />
-                      <span>{app.rating}</span>
+                      <span>{app.rating.toFixed(1)}</span>
                       <span className="text-gray-400 font-normal">({app.reviewsCount} reviews)</span>
                     </div>
 
@@ -260,7 +273,7 @@ export default function Apps() {
               Privacy-First & Offline Tools
             </h3>
             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              Every GoshBuzz Android application is built to function 100% offline, processing sensor data entirely on-device without telemetry or cloud tracking.
+              Every GoshBuzz Android application is built to function offline, storing local databases on-device with zero unsolicited telemetry or intrusive background tracking.
             </p>
           </div>
 
@@ -269,7 +282,7 @@ export default function Apps() {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <h3 className="text-base font-bold text-gray-900 dark:text-white mb-2">
-              AdMob & IAB app-ads.txt Compliant
+              Google AdMob & IAB app-ads.txt Compliant
             </h3>
             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
               Fully compliant with IAB Tech Lab Authorized Digital Sellers specification for mobile apps, verified via root developer app-ads.txt configuration.
@@ -284,7 +297,7 @@ export default function Apps() {
               Continuous App Pipeline
             </h3>
             <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-              More high-precision tools, sensor utilities, and productivity apps are currently in active development. Stay tuned for new releases.
+              Explore our expanding suite of mobile applications spanning tactical sensor telemetry, culinary world recipes, and offline productivity tools.
             </p>
           </div>
         </div>

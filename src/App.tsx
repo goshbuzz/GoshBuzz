@@ -342,6 +342,9 @@ export function AppLayout() {
           <Route path="/mobile-apps" element={<Navigate to="/apps" replace />} />
           <Route path="/emf-sentinel" element={<Navigate to="/apps/emf-sentinel" replace />} />
           <Route path="/com.goshbuzz.emfsentinel" element={<Navigate to="/apps/emf-sentinel" replace />} />
+          <Route path="/global-bite" element={<Navigate to="/apps/global-bite" replace />} />
+          <Route path="/globalbite" element={<Navigate to="/apps/global-bite" replace />} />
+          <Route path="/com.goshbuzz.globalbite" element={<Navigate to="/apps/global-bite" replace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact-us" element={<Navigate to="/contact" replace />} />
           <Route path="/how-to-pay" element={<HowToPay />} />
