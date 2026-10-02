@@ -4,6 +4,10 @@ import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './LanguageContext';
 import { CartProvider } from './CartContext';
 import { AppLayout } from './App';
+import { products } from './data';
+import { goshbuzzApps } from './data/appsData';
+import { networkModules } from './data/networkData';
+import { ARTICLE_DATE_MODIFIED } from './data/siteEntity';
 
 /**
  * Hoist head tags out of the rendered body into the document <head>.
@@ -72,3 +76,20 @@ export function render(url: string) {
 
   return { html: bodyHtml, head: headHtml, status: notFound ? 404 : 200 };
 }
+
+/**
+ * Data the build scripts need (llms.txt + sitemap lastmod). Exported from the
+ * SSR bundle so scripts never re-parse TypeScript sources.
+ */
+export const siteIndex = {
+  articleLastmod: ARTICLE_DATE_MODIFIED.split('T')[0],
+  products: products.map((p: any) => ({
+    slug: p.slug || p.id,
+    title: p.title,
+    category: p.category,
+    type: p.type,
+    description: p.description,
+  })),
+  apps: goshbuzzApps.map((a: any) => ({ slug: a.slug, name: a.name, description: a.shortDescription })),
+  modules: networkModules.map((m: any) => ({ name: m.name, url: m.url, tagline: m.tagline })),
+};

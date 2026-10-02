@@ -75,7 +75,7 @@ export default function Apps() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors pb-20">
       <Helmet>
         <title>GoshBuzz Android Apps — Official Mobile Applications & Tools</title>
-        <meta name="description" content="Browse and download official Android apps by GoshBuzz. Discover EMF Sentinel: EMF Scan & Metal Detector for precision radiation measurement and metal detection." />
+        <meta name="description" content="Official Android apps by GoshBuzz, including EMF Sentinel, an offline EMF scanner and metal detector. No tracking, no account needed." />
         <meta name="keywords" content="goshbuzz apps, android apps, emf sentinel, metal detector app, admob publisher pub-4067724379997931, app-ads.txt" />
         <link rel="canonical" href="https://goshbuzz.com/apps" />
         
@@ -90,6 +90,7 @@ export default function Apps() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="GoshBuzz Official Android Apps" />
         <meta name="twitter:description" content="High-precision sensor utilities and tools for Android." />
+        <meta name="twitter:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
 
         {/* AdMob & Publisher Metadata Verification tags */}
         <meta name="google-adsense-platform-account" content="pub-4067724379997931" />

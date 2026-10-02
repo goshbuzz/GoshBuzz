@@ -137,12 +137,10 @@ export default function Network() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors pb-4">
       <Helmet>
-        <title>
-          The GoshBuzz Network — Modules & Products of goshbuzz.com
-        </title>
+        <title>The GoshBuzz Network — Modules & Products</title>
         <meta
           name="description"
-          content="The GoshBuzz Network: Little Learn, Proveli, Pakistan Tests Hub, FreeConvertio, Young Scholars PK and Yellow Pages Pakistan — the modules and products of goshbuzz.com, with logos, descriptions and direct links."
+          content="The GoshBuzz Network: Little Learn, Proveli, Pakistan Tests Hub, FreeConvertio, Young Scholars PK and Yellow Pages Pakistan, all by goshbuzz.com."
         />
         <meta
           name="keywords"
@@ -160,6 +158,7 @@ export default function Network() {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="The GoshBuzz Network" />
+        <meta name="twitter:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
         <meta name="twitter:description" content="The modules and products of goshbuzz.com — Little Learn, Proveli, Pakistan Tests Hub, FreeConvertio, Young Scholars PK, Yellow Pages Pakistan." />
 
         {/* Schema.org JSON-LD (SEO + AEO + GEO) */}

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { organizationNode, founderNode, websiteNode, DEFAULT_OG_IMAGE, SITE_URL } from "../data/siteEntity";
+import { defaultFaqs } from "../components/FAQ";
 import {
   ArrowRight,
   ShieldCheck,
@@ -108,48 +110,57 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 selection:bg-amber-500 selection:text-white">
       <Helmet>
-        <title>GoshBuzz — Digital Knowledge Hub, Technology Insights & Android Utilities</title>
+        <title>GoshBuzz — Earning Guides & Android Apps for Pakistan</title>
         <meta
           name="description"
-          content="Explore 60+ in-depth masterclass guides, e-commerce dropshipping blueprints, digital freelancing strategies, and privacy-first Android mobile utilities by GoshBuzz."
+          content="60+ free step-by-step guides on online earning, freelancing and e-commerce in Pakistan, plus privacy-first Android apps by GoshBuzz."
         />
         <meta
           name="keywords"
-          content="goshbuzz, online earning guides, digital freelancing, e-commerce dropshipping, mobile utilities, emf sentinel, technology insights, high value content"
+          content="goshbuzz, online earning guides pakistan, freelancing pakistan, e-commerce dropshipping, android utilities, emf sentinel"
         />
-        <meta
-          property="og:title"
-          content="GoshBuzz — Digital Knowledge Hub, Technology Insights & Android Utilities"
-        />
+        <link rel="canonical" href={SITE_URL} />
+        <meta property="og:title" content="GoshBuzz — Earning Guides & Android Apps for Pakistan" />
         <meta
           property="og:description"
-          content="Explore 60+ in-depth masterclass guides, e-commerce dropshipping blueprints, digital freelancing strategies, and privacy-first Android mobile utilities by GoshBuzz."
+          content="60+ free step-by-step guides on online earning, freelancing and e-commerce in Pakistan, plus privacy-first Android apps by GoshBuzz."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com" />
-        <link rel="canonical" href="https://goshbuzz.com" />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:site_name" content="GoshBuzz" />
+        <meta property="og:locale" content="en_PK" />
+        <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="GoshBuzz — Earning Guides & Android Apps for Pakistan" />
+        <meta name="twitter:description" content="Free step-by-step online earning guides for Pakistan and privacy-first Android apps." />
+        <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
         <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "WebSite",
-                  "@id": "https://goshbuzz.com/#website",
-                  "url": "https://goshbuzz.com",
-                  "name": "GoshBuzz",
-                  "description": "Digital Knowledge Hub, Technology Insights & Mobile Applications Directory"
-                },
-                {
-                  "@type": "Organization",
-                  "@id": "https://goshbuzz.com/#organization",
-                  "name": "GoshBuzz LLC",
-                  "url": "https://goshbuzz.com",
-                  "logo": "https://goshbuzz.com/goshbuzz_logo.jpg"
-                }
-              ]
-            }
-          `}
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              websiteNode,
+              organizationNode,
+              founderNode,
+              {
+                "@type": "WebPage",
+                "@id": `${SITE_URL}/#webpage`,
+                url: SITE_URL,
+                name: "GoshBuzz — Earning Guides & Android Apps for Pakistan",
+                isPartOf: { "@id": websiteNode["@id"] },
+                about: { "@id": organizationNode["@id"] },
+                inLanguage: "en",
+              },
+              {
+                "@type": "FAQPage",
+                "@id": `${SITE_URL}/#faq`,
+                mainEntity: defaultFaqs.map((f) => ({
+                  "@type": "Question",
+                  name: f.question,
+                  acceptedAnswer: { "@type": "Answer", text: f.answer },
+                })),
+              },
+            ],
+          })}
         </script>
       </Helmet>
 

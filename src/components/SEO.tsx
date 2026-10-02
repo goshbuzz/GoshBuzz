@@ -107,11 +107,13 @@ export default function SEO({
       {description && <meta property="og:description" content={description} />}
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonical} />
-      <meta property="og:site_name" content="GoshBuzz Pakistan" />
+      <meta property="og:site_name" content="GoshBuzz" />
+      <meta property="og:locale" content="en_PK" />
       {image && <meta property="og:image" content={image} />}
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@goshbuzz" />
       {title && <meta name="twitter:title" content={title} />}
       {description && <meta name="twitter:description" content={description} />}
       {image && <meta name="twitter:image" content={image} />}

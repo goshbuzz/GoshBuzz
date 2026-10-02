@@ -20,13 +20,18 @@ export default function Contact() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <Helmet>
-        <title>Contact Us — GoshBuzz Pakistan</title>
-        <meta name="description" content="Get in touch with GoshBuzz Pakistan via WhatsApp for any queries." />
-        <meta property="og:title" content="Contact Us — GoshBuzz Pakistan" />
-        <meta property="og:description" content="Get in touch with GoshBuzz Pakistan via WhatsApp for any queries." />
+        <title>Contact GoshBuzz — WhatsApp & Email Support</title>
+        <meta name="description" content="Contact GoshBuzz support on WhatsApp or email for questions about our online earning guides, payments, delivery and Android apps." />
+        <meta property="og:title" content="Contact GoshBuzz — WhatsApp & Email Support" />
+        <meta property="og:description" content="Contact GoshBuzz support on WhatsApp or email for questions about our online earning guides, payments, delivery and Android apps." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/contact" />
         <link rel="canonical" href="https://goshbuzz.com/contact" />
+        <meta property="og:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
+        <meta property="og:site_name" content="GoshBuzz" />
+        <meta property="og:locale" content="en_PK" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
         <script type="application/ld+json">
           {JSON.stringify(contactSchema)}
         </script>

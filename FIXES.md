@@ -222,3 +222,19 @@ After merging and deploying this change in Vercel:
 5. If assets still fail, inspect their actual response status and Vercel logs;
    also check dashboard domain redirects and any CDN outside Vercel. Do not
    change DNS records solely to address an unstyled but reachable page.
+
+---
+
+# SEO / AEO / GEO audit pass — 2026-10-03
+
+- **Titles/descriptions:** ~60 article pages had 450–650 char meta descriptions and 70–86 char titles (truncated in SERPs). Now generated via `src/utils/seoText.ts` (≤60 / ≤155 chars, cut at sentence/word boundary). Home, About, Contact, Blogs, Apps, Network, legal pages tightened.
+- **Social tags:** `og:image` / `twitter:image` / `og:locale` added to Home, About, Contact, Blogs, Collections, Apps, App detail, Network and legal pages (legal pages now use the shared `<SEO>` component).
+- **Entity consistency (GEO):** new `src/data/siteEntity.ts` defines ONE Organization (`GoshBuzz`), Founder and WebSite node, referenced by `@id` from every page. Removed "GoshBuzz LLC / Pakistan / Apps" variants and the "Solat"/"Saulat" Nadeem split (now `AUTHOR_NAME`; **confirm spelling**).
+- **Schema:** BreadcrumbList on articles; Organization + Founder graph on articles/apps; homepage now has FAQPage (same Q&A as the visible FAQ), WebPage and full entity graph. Article dates come from shared constants.
+- **Removed** hard-coded `aggregateRating` (`ratingCount: 540`) from the app schema — not backed by real review data and a structured-data policy risk. Re-add only with real, verifiable ratings.
+- **`/llms.txt`:** generated at build from the same data as the site (guides by category, apps, network modules).
+- **`robots.txt`:** explicit Allow for Googlebot, Bingbot and AI crawlers (OAI-SearchBot, GPTBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended, Applebot-Extended); `/checkout` and `/cart` stay disallowed.
+- **Sitemap:** article `lastmod` now equals `BlogPosting.dateModified` (shared constant) instead of the build date on every URL. Bump `ARTICLE_DATE_MODIFIED` in `siteEntity.ts` when content changes.
+- `index.html`: `theme-color`, sitemap and llms.txt discovery links.
+
+Verified: `npm run typecheck`, `npm test` (21 pass), `npm run build` (77 pages) all green.

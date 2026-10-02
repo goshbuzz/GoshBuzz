@@ -1,18 +1,13 @@
 import { FileText } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 export default function Terms() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-            <Helmet>
-        <title>Terms & Conditions — GoshBuzz Pakistan</title>
-        <meta name="description" content="Read the Terms and Conditions for using GoshBuzz Pakistan's website and purchasing our digital guides." />
-        <meta property="og:title" content="Terms & Conditions — GoshBuzz Pakistan" />
-        <meta property="og:description" content="Read the Terms and Conditions for using GoshBuzz Pakistan's website and purchasing our digital guides." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com/terms" />
-        <link rel="canonical" href="https://goshbuzz.com/terms" />
-      </Helmet>
+            <SEO
+        title="Terms & Conditions — GoshBuzz"
+        description="Terms and conditions for using goshbuzz.com and buying GoshBuzz digital guides: licence, payments, delivery, liability and acceptable use."
+      />
       <div className="text-center mb-12">
         <FileText className="w-12 h-12 text-blue-500 mx-auto mb-4" />
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Terms and Conditions</h1>

@@ -1,18 +1,13 @@
 import { AlertTriangle } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 export default function Disclaimer() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-            <Helmet>
-        <title>Disclaimer — GoshBuzz Pakistan</title>
-        <meta name="description" content="Read our earnings and liability disclaimer." />
-        <meta property="og:title" content="Disclaimer — GoshBuzz Pakistan" />
-        <meta property="og:description" content="Read our earnings and liability disclaimer." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com/disclaimer" />
-        <link rel="canonical" href="https://goshbuzz.com/disclaimer" />
-      </Helmet>
+            <SEO
+        title="Earnings Disclaimer — GoshBuzz"
+        description="GoshBuzz guides are educational, not financial advice. Read our earnings, results and liability disclaimer before you start any method."
+      />
       <div className="text-center mb-12">
         <AlertTriangle className="w-12 h-12 text-amber-500 mx-auto mb-4" />
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Disclaimer</h1>

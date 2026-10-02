@@ -1,18 +1,13 @@
 import { Shield } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 export default function PrivacyPolicy() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-      <Helmet>
-        <title>Privacy Policy — GoshBuzz Pakistan</title>
-        <meta name="description" content="Read the Privacy Policy of GoshBuzz Pakistan to learn how we protect and handle your personal information." />
-        <meta property="og:title" content="Privacy Policy — GoshBuzz Pakistan" />
-        <meta property="og:description" content="Read the Privacy Policy of GoshBuzz Pakistan to learn how we protect and handle your personal information." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com/privacy-policy" />
-        <link rel="canonical" href="https://goshbuzz.com/privacy-policy" />
-      </Helmet>
+      <SEO
+        title="Privacy Policy — GoshBuzz"
+        description="How GoshBuzz collects, uses and protects your name, email and WhatsApp details when you order a guide or use our apps."
+      />
       <div className="text-center mb-12">
         <Shield className="w-12 h-12 text-amber-500 mx-auto mb-4" />
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Privacy Policy</h1>

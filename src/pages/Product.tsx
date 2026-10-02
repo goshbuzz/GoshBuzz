@@ -1,5 +1,10 @@
 import { useParams, Link, useNavigate, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import {
+  AUTHOR_ID, AUTHOR_NAME, AUTHOR_JOB_TITLE, ORG_ID, WEBSITE_ID, DEFAULT_OG_IMAGE,
+  ARTICLE_DATE_PUBLISHED, ARTICLE_DATE_MODIFIED, breadcrumbNode, organizationNode, founderNode,
+} from "../data/siteEntity";
+import { clampDescription, pickTitle } from "../utils/seoText";
 import { 
   ArrowLeft, 
   ShoppingCart, 
@@ -78,24 +83,13 @@ export default function Product() {
       "@id": articleUrl
     },
     "url": articleUrl,
-    "image": product.image ? [product.image] : ["https://goshbuzz.com/goshbuzz_logo.jpg"],
-    "datePublished": "2026-03-25T08:00:00+05:00",
-    "dateModified": "2026-07-23T08:00:00+05:00",
-    "author": {
-      "@type": "Person",
-      "name": "Solat Nadeem",
-      "jobTitle": "Computer Scientist",
-      "url": "https://goshbuzz.com/about"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "GoshBuzz Pakistan",
-      "url": "https://goshbuzz.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://goshbuzz.com/goshbuzz_logo.jpg"
-      }
-    },
+    "image": product.image ? [product.image] : [DEFAULT_OG_IMAGE],
+    "datePublished": ARTICLE_DATE_PUBLISHED,
+    "dateModified": ARTICLE_DATE_MODIFIED,
+    "inLanguage": "en",
+    "isPartOf": { "@id": WEBSITE_ID },
+    "author": { "@id": AUTHOR_ID, "@type": "Person", "name": AUTHOR_NAME, "jobTitle": AUTHOR_JOB_TITLE, "url": "https://goshbuzz.com/about" },
+    "publisher": { "@id": ORG_ID },
     "articleSection": product.category,
     "keywords": combinedKeywordsList
   };
@@ -129,13 +123,28 @@ export default function Product() {
     }))
   } : null;
 
+  // 4. BreadcrumbList (mirrors the visible breadcrumb)
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    ...breadcrumbNode([
+      { name: "Home", path: "/" },
+      { name: "Guides", path: "/blogs/news" },
+      { name: product.title, path: `/blogs/news/${product.slug || product.id}` },
+    ]),
+  };
+
   // Filter related products for On-site SEO internal linking
   const relatedOnsiteProducts = products
     .filter((p) => p.id !== product.id)
     .slice(0, 4);
 
-  const seoTitle = `${product.title} — Online Earning in Pakistan Free Guide | GoshBuzz`;
-  const seoDescription = `Learn ${product.title} in Pakistan: ${metaDescription} Discover step-by-step free online earning ideas without investment, freelancing skills, and local JazzCash & EasyPaisa withdrawal roadmaps for Pakistani students and beginners.`;
+  const seoTitle = pickTitle([
+    `${product.title} — Online Earning Guide Pakistan | GoshBuzz`,
+    `${product.title} Guide for Pakistan | GoshBuzz`,
+    `${product.title} | GoshBuzz`,
+  ], 60);
+  const seoDescription = clampDescription(`${metaDescription} Free step-by-step guide for Pakistan.`, 155);
+  const ogImage = product.image || DEFAULT_OG_IMAGE;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -143,7 +152,7 @@ export default function Product() {
         <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
         <meta name="keywords" content={combinedKeywordsList} />
-        <meta name="author" content="Solat Nadeem, Computer Scientist • GoshBuzz Pakistan" />
+        <meta name="author" content={`${AUTHOR_NAME}, ${AUTHOR_JOB_TITLE} • GoshBuzz`} />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta name="geo.region" content="PK" />
         <meta name="geo.placename" content="Pakistan" />
@@ -156,14 +165,19 @@ export default function Product() {
         <meta property="og:url" content={articleUrl} />
         <meta property="og:site_name" content="GoshBuzz Pakistan" />
         <meta property="og:locale" content="en_PK" />
-        {product.image && <meta property="og:image" content={product.image} />}
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:alt" content={product.title} />
+        <meta property="article:published_time" content={ARTICLE_DATE_PUBLISHED} />
+        <meta property="article:modified_time" content={ARTICLE_DATE_MODIFIED} />
+        <meta property="article:author" content={AUTHOR_NAME} />
+        <meta property="article:section" content={product.category} />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDescription} />
         <meta name="twitter:site" content="@goshbuzz" />
-        {product.image && <meta name="twitter:image" content={product.image} />}
+        <meta name="twitter:image" content={ogImage} />
         
         {/* Schema Injections for Search Engine & AI Crawler Dominance */}
         <script type="application/ld+json">
@@ -179,6 +193,12 @@ export default function Product() {
             {JSON.stringify(howToSchema)}
           </script>
         )}
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({ "@context": "https://schema.org", "@graph": [organizationNode, founderNode] })}
+        </script>
       </Helmet>
       <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8 overflow-x-auto whitespace-nowrap pb-2">
         <Link
@@ -520,7 +540,7 @@ export default function Product() {
                   </div>
                   <div>
                     <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="font-extrabold text-sm text-gray-900 dark:text-gray-100">Solat Nadeem</span>
+                      <span className="font-extrabold text-sm text-gray-900 dark:text-gray-100">{AUTHOR_NAME}</span>
                       <span className="px-2 py-0.5 bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-300 text-[10px] font-bold rounded-full border border-amber-200 dark:border-amber-900">
                         Computer Scientist
                       </span>
@@ -650,7 +670,7 @@ export default function Product() {
                   Comprehensive Strategic Guide: {product.title} in the Modern Digital Economy
                 </h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  By <strong>Solat Nadeem</strong> (Computer Scientist) • Published for GoshBuzz Readers & Digital Entrepreneurs
+                  By <strong>{AUTHOR_NAME}</strong> ({AUTHOR_JOB_TITLE}) • Published for GoshBuzz Readers & Digital Entrepreneurs
                 </p>
               </div>
 

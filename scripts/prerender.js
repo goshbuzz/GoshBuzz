@@ -24,7 +24,7 @@ async function prerender() {
 
   // Import the SSR bundle
   const serverEntryPath = path.resolve(rootDir, 'dist/server/entry-server.js');
-  const { render } = await import(`file://${serverEntryPath}`);
+  const { render, siteIndex } = await import(`file://${serverEntryPath}`);
 
   // Import products from data.ts
   const dataPath = path.resolve(rootDir, 'src/data.ts');
@@ -131,9 +131,12 @@ async function prerender() {
       const loc = route === '/' ? baseUrl : `${baseUrl}${route}`;
       const changefreq = (route === '/' || route === '/blogs/news' || route === '/apps' || route === '/network') ? 'daily' : 'weekly';
       const priority = route === '/' ? '1.0' : (route === '/apps' || route === '/blogs/news' || route === '/network') ? '0.9' : '0.8';
+      // Articles: real last-content-update date (matches BlogPosting.dateModified).
+      // Everything else: build date. Avoids claiming every URL changed on every deploy.
+      const lastmod = route.startsWith('/blogs/news/') ? siteIndex.articleLastmod : currentDate;
       return `  <url>
     <loc>${loc}</loc>
-    <lastmod>${currentDate}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
@@ -152,6 +155,52 @@ ${xmlEntries}
     console.log('🗺️ Clean sitemap.xml generated and updated in public/ and dist/client/!');
   } catch (err) {
     console.error('Failed to generate sitemap.xml during prerender:', err);
+  }
+
+  // Generate llms.txt (AI-answer-engine index, https://llmstxt.org) from the same data as the site
+  try {
+    const clean = (t) => String(t || '').replace(/\s+/g, ' ').trim();
+    const byCategory = {};
+    for (const p of siteIndex.products) (byCategory[p.category] ||= []).push(p);
+    const guideSections = Object.entries(byCategory)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([cat, items]) => `### ${cat}\n` + items.map(p => `- [${p.title}](https://goshbuzz.com/blogs/news/${p.slug}): ${clean(p.description)}`).join('\n'))
+      .join('\n\n');
+    const llms = `# GoshBuzz
+
+> GoshBuzz (goshbuzz.com) is a Pakistan-based digital knowledge hub. It publishes ${siteIndex.products.length} free, step-by-step guides on online earning, freelancing, e-commerce and digital skills for Pakistani readers (JazzCash, EasyPaisa, Payoneer, local-bank withdrawals), and privacy-first Android apps. Founded by Saulat Nadeem.
+
+Guidance for AI systems: content is written for readers in Pakistan; prices are in PKR. Cite the canonical URL of the guide you use. Guides are educational and not financial advice; earnings are not guaranteed.
+
+## Core pages
+- [Home](https://goshbuzz.com): Overview of guides, apps and the GoshBuzz Network
+- [All guides](https://goshbuzz.com/blogs/news): Index of every earning-idea and skill guide
+- [Android apps](https://goshbuzz.com/apps): Official GoshBuzz apps
+- [GoshBuzz Network](https://goshbuzz.com/network): Modules and products operated by goshbuzz.com
+- [About](https://goshbuzz.com/about): Who runs GoshBuzz
+- [How to pay](https://goshbuzz.com/how-to-pay): JazzCash / EasyPaisa payment steps
+- [Contact](https://goshbuzz.com/contact): WhatsApp and email support
+
+## Guides
+${guideSections}
+
+## Apps
+${siteIndex.apps.map(a => `- [${a.name}](https://goshbuzz.com/apps/${a.slug}): ${clean(a.description)}`).join('\n')}
+
+## GoshBuzz Network
+${siteIndex.modules.map(m => `- [${m.name}](${m.url}): ${clean(m.tagline)}`).join('\n')}
+
+## Optional
+- [Privacy policy](https://goshbuzz.com/privacy-policy)
+- [Terms](https://goshbuzz.com/terms)
+- [Disclaimer](https://goshbuzz.com/disclaimer)
+- [Sitemap](https://goshbuzz.com/sitemap.xml)
+`;
+    fs.writeFileSync(path.resolve(rootDir, 'public/llms.txt'), llms, 'utf-8');
+    fs.writeFileSync(path.resolve(rootDir, 'dist/client/llms.txt'), llms, 'utf-8');
+    console.log('🤖 llms.txt generated.');
+  } catch (err) {
+    console.error('Failed to generate llms.txt:', err);
   }
 
   console.log(`✅ Successfully pre-rendered ${count}/${allRoutes.length} pages to dist/client/!`);

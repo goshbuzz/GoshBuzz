@@ -1,6 +1,6 @@
 import { Smartphone, CheckCircle2, Copy } from 'lucide-react';
 import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 export default function HowToPay() {
   const [copied, setCopied] = useState(false);
@@ -13,15 +13,10 @@ export default function HowToPay() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-      <Helmet>
-        <title>How to Pay via JazzCash / EasyPaisa — GoshBuzz Pakistan</title>
-        <meta name="description" content="Step-by-step guide on how to pay for your digital guides using JazzCash or EasyPaisa." />
-        <meta property="og:title" content="How to Pay via JazzCash / EasyPaisa — GoshBuzz Pakistan" />
-        <meta property="og:description" content="Step-by-step guide on how to pay for your digital guides using JazzCash or EasyPaisa." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com/how-to-pay" />
-        <link rel="canonical" href="https://goshbuzz.com/how-to-pay" />
-      </Helmet>
+      <SEO
+        title="How to Pay via JazzCash or EasyPaisa — GoshBuzz"
+        description="Step-by-step: pay for a GoshBuzz digital guide using JazzCash, EasyPaisa or bank transfer, then send your receipt on WhatsApp for delivery."
+      />
       <div className="text-center mb-16">
         <Smartphone className="w-12 h-12 text-green-500 mx-auto mb-4" />
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">How to Pay</h1>

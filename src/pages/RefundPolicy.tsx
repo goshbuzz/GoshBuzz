@@ -1,18 +1,13 @@
 import { Ban } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 export default function RefundPolicy() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-            <Helmet>
-        <title>No Return Policy — GoshBuzz Pakistan</title>
-        <meta name="description" content="Read our digital goods no-return and refund policy." />
-        <meta property="og:title" content="No Return Policy — GoshBuzz Pakistan" />
-        <meta property="og:description" content="Read our digital goods no-return and refund policy." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com/refund-policy" />
-        <link rel="canonical" href="https://goshbuzz.com/refund-policy" />
-      </Helmet>
+            <SEO
+        title="No Return & Refund Policy — GoshBuzz"
+        description="GoshBuzz digital guides are non-returnable once delivered. Read when exceptions apply and how to contact support on WhatsApp."
+      />
       <div className="text-center mb-12">
         <Ban className="w-12 h-12 text-red-500 mx-auto mb-4" />
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">No Return & Refund Policy</h1>

@@ -68,6 +68,11 @@ export default function Collection() {
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://goshbuzz.com/collection/${type}`} />
+        <meta property="og:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
+        <meta property="og:site_name" content="GoshBuzz" />
+        <meta property="og:locale" content="en_PK" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
         <script type="application/ld+json">
           {JSON.stringify(collectionSchema)}
         </script>

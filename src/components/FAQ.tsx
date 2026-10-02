@@ -7,7 +7,7 @@ export interface FaqItem {
   answer: string;
 }
 
-const defaultFaqs: FaqItem[] = [
+export const defaultFaqs: FaqItem[] = [
   {
     question: "What makes GoshBuzz guides and articles high-value and unique?",
     answer: "Every article and blueprint published on GoshBuzz is written from real-world execution data, localized for the Pakistani economy, and structured into step-by-step actionable roadmaps. We strictly adhere to Google Webmaster Quality Guidelines, providing zero-fluff, original editorial analysis on e-commerce, digital freelancing, content publishing, and software engineering."

@@ -1,46 +1,48 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { networkModules, HUB_MODULE } from '../data/networkData';
+import { organizationNode, founderNode, breadcrumbNode } from '../data/siteEntity';
 
 export default function About() {
   const aboutSchema = {
     "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About GoshBuzz Pakistan",
-    "description": "Pakistan's #1 Online Earning Library — Selling Guides to Work directly from zero, Not Courses.",
-    "url": "https://goshbuzz.com/about",
-    "mainEntity": {
-      "@type": "Organization",
-      "name": "GoshBuzz Pakistan",
-      "founder": {
-        "@type": "Person",
-        "name": "Saulat Nadeem",
-        "jobTitle": "Computer Scientist"
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "https://goshbuzz.com/about#webpage",
+        "name": "About GoshBuzz",
+        "description": "GoshBuzz is a Pakistan-based digital knowledge hub publishing free online earning guides and privacy-first Android apps.",
+        "url": "https://goshbuzz.com/about",
+        "inLanguage": "en",
+        "mainEntity": { "@id": organizationNode["@id"] }
       },
-      "url": "https://goshbuzz.com",
-      "logo": "https://goshbuzz.com/goshbuzz_logo.jpg",
-      "sameAs": [
-        "https://wa.me/923126999078"
-      ]
-    }
+      organizationNode,
+      founderNode,
+      breadcrumbNode([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])
+    ]
   };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <Helmet>
-        <title>About Us — GoshBuzz Pakistan</title>
+        <title>About GoshBuzz — Pakistan Earning Guides & Apps</title>
         <meta
           name="description"
-          content="Learn more about GoshBuzz Pakistan and our mission to provide the best earning guides."
+          content="Who runs GoshBuzz, what we publish and how our free online earning guides and Android apps are researched. Founded by Saulat Nadeem."
         />
-        <meta property="og:title" content="About Us — GoshBuzz Pakistan" />
+        <meta property="og:title" content="About GoshBuzz — Pakistan Earning Guides & Apps" />
         <meta
           property="og:description"
-          content="Learn more about GoshBuzz Pakistan and our mission to provide the best earning guides."
+          content="Who runs GoshBuzz, what we publish and how our free online earning guides and Android apps are researched. Founded by Saulat Nadeem."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/about" />
         <link rel="canonical" href="https://goshbuzz.com/about" />
+        <meta property="og:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
+        <meta property="og:site_name" content="GoshBuzz" />
+        <meta property="og:locale" content="en_PK" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
         <script type="application/ld+json">
           {JSON.stringify(aboutSchema)}
         </script>

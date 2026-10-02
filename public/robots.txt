@@ -1,3 +1,7 @@
+# GoshBuzz robots.txt
+# Search engines and AI answer engines are welcome to crawl public content.
+# Only the cart/checkout flow is excluded (it is noindex and has no public value).
+
 User-agent: *
 Allow: /
 Disallow: /checkout
@@ -8,10 +12,71 @@ Allow: /
 Disallow: /checkout
 Disallow: /cart
 
+User-agent: Bingbot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
 User-agent: Mediapartners-Google
 Allow: /
 
 User-agent: Googlebot-Image
 Allow: /
+
+# AI search / answer-engine crawlers (GEO)
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: GPTBot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: Claude-User
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: Applebot
+Allow: /
+Disallow: /checkout
+Disallow: /cart
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /checkout
+Disallow: /cart
 
 Sitemap: https://goshbuzz.com/sitemap.xml

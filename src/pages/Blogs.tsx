@@ -76,10 +76,10 @@ export default function Blogs() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <Helmet>
-        <title>Blogs & Earning Case Studies — GoshBuzz Pakistan</title>
+        <title>Online Earning Guides & Case Studies | GoshBuzz</title>
         <meta
           name="description"
-          content="Read detailed blueprints, guides, and real-world case studies about online earning in Pakistan. Escape the matrix with GoshBuzz."
+          content="Browse 60+ free step-by-step guides on online earning, freelancing and e-commerce in Pakistan, with FAQs and withdrawal tips."
         />
         <link rel="canonical" href="https://goshbuzz.com/blogs/news" />
         {isPaged ? (
@@ -90,10 +90,15 @@ export default function Blogs() {
             content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
           />
         )}
-        <meta property="og:title" content="Blogs & Earning Case Studies — GoshBuzz Pakistan" />
-        <meta property="og:description" content="Read detailed blueprints, guides, and real-world case studies about online earning in Pakistan. Escape the matrix with GoshBuzz." />
+        <meta property="og:title" content="Online Earning Guides & Case Studies | GoshBuzz" />
+        <meta property="og:description" content="Browse 60+ free step-by-step guides on online earning, freelancing and e-commerce in Pakistan, with FAQs and withdrawal tips." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://goshbuzz.com/blogs/news" />
+        <meta property="og:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
+        <meta property="og:site_name" content="GoshBuzz" />
+        <meta property="og:locale" content="en_PK" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
         <script type="application/ld+json">
           {JSON.stringify(blogsSchema)}
         </script>

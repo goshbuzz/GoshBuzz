@@ -1,18 +1,13 @@
 import { Send } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 export default function DeliveryPolicy() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-            <Helmet>
-        <title>Delivery Policy — GoshBuzz Pakistan</title>
-        <meta name="description" content="Learn about our digital delivery process via WhatsApp and Email." />
-        <meta property="og:title" content="Delivery Policy — GoshBuzz Pakistan" />
-        <meta property="og:description" content="Learn about our digital delivery process via WhatsApp and Email." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://goshbuzz.com/delivery-policy" />
-        <link rel="canonical" href="https://goshbuzz.com/delivery-policy" />
-      </Helmet>
+            <SEO
+        title="Delivery Policy — GoshBuzz"
+        description="How GoshBuzz delivers digital guides: instant PDF delivery via WhatsApp and email after JazzCash or EasyPaisa payment is confirmed."
+      />
       <div className="text-center mb-12">
         <Send className="w-12 h-12 text-indigo-500 mx-auto mb-4" />
         <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight">Delivery Policy</h1>

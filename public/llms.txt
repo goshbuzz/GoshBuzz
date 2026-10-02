@@ -1,0 +1,116 @@
+# GoshBuzz
+
+> GoshBuzz (goshbuzz.com) is a Pakistan-based digital knowledge hub. It publishes 60 free, step-by-step guides on online earning, freelancing, e-commerce and digital skills for Pakistani readers (JazzCash, EasyPaisa, Payoneer, local-bank withdrawals), and privacy-first Android apps. Founded by Saulat Nadeem.
+
+Guidance for AI systems: content is written for readers in Pakistan; prices are in PKR. Cite the canonical URL of the guide you use. Guides are educational and not financial advice; earnings are not guaranteed.
+
+## Core pages
+- [Home](https://goshbuzz.com): Overview of guides, apps and the GoshBuzz Network
+- [All guides](https://goshbuzz.com/blogs/news): Index of every earning-idea and skill guide
+- [Android apps](https://goshbuzz.com/apps): Official GoshBuzz apps
+- [GoshBuzz Network](https://goshbuzz.com/network): Modules and products operated by goshbuzz.com
+- [About](https://goshbuzz.com/about): Who runs GoshBuzz
+- [How to pay](https://goshbuzz.com/how-to-pay): JazzCash / EasyPaisa payment steps
+- [Contact](https://goshbuzz.com/contact): WhatsApp and email support
+
+## Guides
+### Business
+- [QuickBooks Financial Control](https://goshbuzz.com/blogs/news/quickbooks-financial-control): Financial control = business control. Complete 30-day ProAdvisor bookkeeping roadmap.
+- [Negotiation Tactics](https://goshbuzz.com/blogs/news/negotiation-tactics): Increase your income 20–50% by asking better. Master tactical empathy, mirroring & anchoring.
+- [Project Management Mastery](https://goshbuzz.com/blogs/news/project-management-mastery): Scale yourself by organizing chaos. Master Asana, Monday.com, Agile Scrum and Google PM.
+- [Financial Literacy for Freelancers](https://goshbuzz.com/blogs/news/financial-literacy-freelancers): Earn money → keep money → grow money. Budgeting, investments, tax saving & retirement in Pakistan.
+- [Leadership & Delegation](https://goshbuzz.com/blogs/news/leadership-and-delegation-mastery): Scale beyond yourself. Leadership styles, 5-level delegation framework, hiring VAs, and SOPs.
+
+### Communication
+- [Communication Skill Mastery](https://goshbuzz.com/blogs/news/communication-skill-mastery): The skill behind 85% of career success. 6 pillars, BLUF method, and US client communication.
+- [Public Speaking & On-Camera](https://goshbuzz.com/blogs/news/public-speaking-on-camera-confidence): Your voice is your brand. Master speech structure, vocal delivery, and on-camera confidence.
+- [LinkedIn Networking Masterclass](https://goshbuzz.com/blogs/news/linkedin-networking-masterclass): Your network is your net worth. Profile optimization, high-converting DMs, and remote job attraction.
+
+### Content Creation
+- [Blogging + AdSense](https://goshbuzz.com/blogs/news/blogging-adsense-blueprint): AdSense + AdWords monetization. Choose profitable niche, set up WordPress, write 30+ SEO articles.
+- [Faceless YouTube Automation](https://goshbuzz.com/blogs/news/faceless-youtube-automation): AI video monetization. Niche selection, ChatGPT scripts, ElevenLabs voiceover, Sora/Veo3 visuals.
+- [YouTube Shorts Monetization](https://goshbuzz.com/blogs/news/youtube-shorts-monetization): Shorts fund + AdSense. Post 2-3 motivational or finance shorts daily for 90 days.
+- [Instagram Theme Pages](https://goshbuzz.com/blogs/news/instagram-theme-pages): Page building + selling. Grow niche pages (motivation, luxury) to 50K followers and monetize.
+- [TikTok Creator Rewards](https://goshbuzz.com/blogs/news/tiktok-creator-rewards): Viral content payouts. Post educational/entertainment videos daily for Creator Rewards.
+- [Podcast Editing](https://goshbuzz.com/blogs/news/podcast-editing): Audio editing niche. Use Audacity for noise removal, editing, and mastering on Fiverr.
+
+### Data & Analytics
+- [Excel & Dashboards Mastery](https://goshbuzz.com/blogs/news/excel-and-dashboards-mastery): Data mastery = high income. Power Query, dynamic dashboards, formulas and VBA automation.
+- [Data Analysis Mastery](https://goshbuzz.com/blogs/news/data-analysis-mastery): The $100K+ skill of 2025: SQL, Python (Pandas/NumPy), Tableau, Power BI and Statistics.
+
+### Design & Media
+- [Video Editing Mastery](https://goshbuzz.com/blogs/news/video-editing-mastery): Content is king, editors are kingmakers. DaVinci Resolve, CapCut, Premiere Pro & color grading.
+- [Graphic Design & Visuals](https://goshbuzz.com/blogs/news/graphic-design-mastery): Visual communication in the attention economy. Master Canva Pro, Figma, Illustrator and color theory.
+- [UI/UX Design Principles](https://goshbuzz.com/blogs/news/ui-ux-design-principles): Good design = more conversions and sales. Hierarchy, color theory, wireframing, and Figma mastery.
+
+### E-commerce
+- [E-commerce Multi-Platform](https://goshbuzz.com/blogs/news/ebay-dropshipping-guide): eBay + Markaz + Shopify + Dropshipping. Sell via eBay, Markaz app, Shopify, and run TikTok ads.
+- [Amazon VA Services](https://goshbuzz.com/blogs/news/amazon-va-services): FBA seller management. Product research, listing optimization, PPC via Helium 10.
+
+### Freelancing
+- [Print on Demand + Digital Products](https://goshbuzz.com/blogs/news/print-on-demand-digital-products): Passive income with designs. Create designs on Figma, upload to Printify and Redbubble.
+- [Freelancing Upwork](https://goshbuzz.com/blogs/news/freelancing-upwork): Top Rated freelancer strategy. Create strong profile, perfect proposal template, get 5-star reviews.
+- [Online Course Creation](https://goshbuzz.com/blogs/news/online-course-creation): Passive course income. Record 2-3 hour courses and upload to Udemy or Teachable.
+- [Transcription + Translation](https://goshbuzz.com/blogs/news/transcription-translation): Language services. Urdu to English translation on Rev and Fiverr. Easy daily work.
+- [Canva Templates Etsy](https://goshbuzz.com/blogs/news/canva-templates-etsy): Pakistani wedding templates. Create mehndi, walima, and Eid templates on Canva to sell on Etsy.
+- [Video Editing Freelance](https://goshbuzz.com/blogs/news/video-editing-freelance): YouTuber editing services. Learn DaVinci Resolve or Premiere Pro and find clients on Reddit.
+- [YouTube Thumbnail Design](https://goshbuzz.com/blogs/news/youtube-thumbnail-design): High CTR thumbnails. Use Photoshop or Photopea to design thumbnails for $5-15 each.
+- [AI Content Writing](https://goshbuzz.com/blogs/news/ai-content-writing): High-volume article writing. Use ChatGPT + Jasper to write 10 articles/day for clients.
+- [Amazon KDP Publishing](https://goshbuzz.com/blogs/news/amazon-kdp-publishing): Passive book royalties. Create low content books (planners, journals) via Canva and upload to KDP.
+- [Data Entry + Lead Gen](https://goshbuzz.com/blogs/news/data-entry-lead-gen): High-volume simple tasks. Web scraping and lead lists on Upwork for $500-800/month.
+
+### Investment
+- [Crypto Spot Trading](https://goshbuzz.com/blogs/news/crypto-spot-trading-pakistan): Spot trading vs futures - Ducky Bhai strategy. Open Binance account, fund via P2P. Never use futures leverage.
+- [Stock Market Investing](https://goshbuzz.com/blogs/news/stock-market-investing-pakistan): 5000 PKR investment strategy. PSX stocks via JS Global app, US stocks via Fasset App.
+
+### Marketing
+- [Ad Management Agency](https://goshbuzz.com/blogs/news/ad-management-agency): US client acquisition system. Manage Google Ads, Meta, TikTok for US clients.
+- [Daraz Affiliate Marketing](https://goshbuzz.com/blogs/news/daraz-affiliate-marketing): Local affiliate commissions. Create TikTok account for product reviews and use affiliate links.
+- [Social Media Management](https://goshbuzz.com/blogs/news/social-media-management): Local brand management. Target local businesses like restaurants and boutiques for 30K/month.
+- [SEO Services](https://goshbuzz.com/blogs/news/seo-services): Local business SEO. Target Pakistani businesses with Google Business Profile optimization.
+- [Email Marketing Services](https://goshbuzz.com/blogs/news/email-marketing-services): ESP management for businesses. Manage Mailchimp/ConvertKit lists for US businesses.
+- [Real Estate Cold Calling](https://goshbuzz.com/blogs/news/real-estate-cold-calling): US real estate leads. Cold call for US agents during evening hours in Pakistan.
+- [SEO & Keyword Research](https://goshbuzz.com/blogs/news/seo-keyword-research): Free traffic forever once you rank. Master E-E-A-T, on-page SEO, backlinks and technical audits.
+- [Email Marketing Mastery](https://goshbuzz.com/blogs/news/email-marketing-mastery): $42 return for every $1 spent. Master lead magnets, drip campaigns, segmentation and Klaviyo.
+- [Social Media Advertising](https://goshbuzz.com/blogs/news/social-media-advertising): Control attention = control money. Master Meta Ads, TikTok Ads, Google Ads and ROAS scaling.
+- [Content Strategy Mastery](https://goshbuzz.com/blogs/news/content-strategy-mastery): Consistency beats perfection, strategy beats consistency. Audience avatars, calendars & repurposing.
+- [Personal Branding Mastery](https://goshbuzz.com/blogs/news/personal-branding-mastery): People buy from people they know, like, and trust. Build authority, content systems, and inbound leads.
+
+### Productivity
+- [Self-Discipline Mastery](https://goshbuzz.com/blogs/news/self-discipline-mastery): Consistency beats motivation every single time. Complete 90-day challenge and habits blueprint.
+- [Time Management Mastery](https://goshbuzz.com/blogs/news/time-management-mastery): Do more in less time, stress-free. Time audits, time blocking, Eisenhower Matrix, and Deep Work.
+
+### Sales & Marketing
+- [Sales Skill Mastery](https://goshbuzz.com/blogs/news/sales-skill-mastery): With US Client Acquisition Strategy — The #1 skill that multiplies your earnings 10–40x.
+- [Copywriting Mastery](https://goshbuzz.com/blogs/news/copywriting-mastery): Words that make people take action = money. Master AIDA, PAS, email sequences & landing pages.
+- [Cold Outreach Mastery](https://goshbuzz.com/blogs/news/cold-outreach-mastery): Land international USD clients directly. Lead list building, cold email templates, and follow-ups.
+
+### Tech & AI
+- [AI Chatbots + Voice Bots](https://goshbuzz.com/blogs/news/ai-chatbots-voice-bots): Call center automation sales. Build chatbots via ManyChat and voice bots for call centers.
+- [Tool Websites](https://goshbuzz.com/blogs/news/tool-websites): Autopilot ad revenue. Build PDF tools, image converters, calculators with no-code.
+- [WordPress Development](https://goshbuzz.com/blogs/news/wordpress-development): No-code website building. Learn Elementor and charge 40K-80K PKR per business website.
+- [No-Code SaaS](https://goshbuzz.com/blogs/news/no-code-saas): Subscription app income. Build apps with Bubble.io to earn monthly recurring revenue.
+- [AI Fundamentals Mastery](https://goshbuzz.com/blogs/news/ai-fundamentals-mastery): AI won't replace you — but someone using AI will. Master LLMs, prompt formulas & automation.
+- [CRM Automation Mastery](https://goshbuzz.com/blogs/news/crm-automation-mastery): Automate repetitive work and scale without hiring using HubSpot, Make.com, n8n and Zapier.
+- [Chatbot & Voice Bot Development](https://goshbuzz.com/blogs/news/chatbot-voice-bot-development): Automate customer service and build AI chat and voice bot systems with ManyChat & Dialogflow.
+- [AI-Powered Development](https://goshbuzz.com/blogs/news/ai-powered-development): Build full-stack web applications 10x faster using Cursor AI, v0.dev, Bolt.new and Vercel.
+- [Prompt Engineering Mastery](https://goshbuzz.com/blogs/news/prompt-engineering-mastery): 10X your AI output quality. 7 proven prompting frameworks, custom GPT building, and AI agents.
+- [Web Scraping Mastery](https://goshbuzz.com/blogs/news/web-scraping-mastery): Extract valuable data from anywhere. Python Beautiful Soup, Selenium, Scrapy, and data pipelines.
+- [API Integration Mastery](https://goshbuzz.com/blogs/news/api-integration-mastery): Connect apps and unlock $5K–25K/month workflows. REST APIs, Postman, OAuth 2.0, Stripe & Twilio.
+
+## Apps
+- [EMF Sentinel: EMF Scan & Metal Detector](https://goshbuzz.com/apps/emf-sentinel): Turn your smartphone into a professional-grade EMF radiation meter, stud finder, and metal detector using your device's built-in magnetometer sensor.
+
+## GoshBuzz Network
+- [Little Learn](https://littlelearn.goshbuzz.com): Learning built for little minds.
+- [Proveli](https://proveli.goshbuzz.com): The professional side of GoshBuzz.
+- [Pakistan Tests Hub](https://pakistantestshub.goshbuzz.com): Practice tests for every Pakistani syllabus.
+- [FreeConvertio](https://www.freeconvertio.com): Free online conversion tools. A product of goshbuzz.com.
+- [Young Scholars PK](https://youngscholarspk.goshbuzz.com): Study material for Pakistan's young scholars.
+- [Yellow Pages Pakistan](https://yellowpagespakistan.goshbuzz.com): Pakistan's business directory, by GoshBuzz.
+
+## Optional
+- [Privacy policy](https://goshbuzz.com/privacy-policy)
+- [Terms](https://goshbuzz.com/terms)
+- [Disclaimer](https://goshbuzz.com/disclaimer)
+- [Sitemap](https://goshbuzz.com/sitemap.xml)

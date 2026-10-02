@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { ORG_ID, organizationNode } from '../data/siteEntity';
+import { clampDescription, pickTitle } from '../utils/seoText';
 import { 
   Radio, 
   Magnet, 
@@ -49,6 +51,7 @@ export default function AppDetail() {
   const appSchema = {
     "@context": "https://schema.org",
     "@graph": [
+      organizationNode,
       {
         "@type": "SoftwareApplication",
         "@id": `https://goshbuzz.com/apps/${app.slug}#software`,
@@ -70,25 +73,8 @@ export default function AppDetail() {
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock"
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": app.rating.toString(),
-          "ratingCount": "540",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
-        "author": {
-          "@type": "Organization",
-          "name": "GoshBuzz Apps",
-          "url": "https://goshbuzz.com"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "GoshBuzz LLC",
-          "logo": "https://goshbuzz.com/goshbuzz_logo.jpg",
-          "url": "https://goshbuzz.com",
-          "publishingPrinciples": "https://goshbuzz.com/app-ads.txt"
-        },
+        "author": { "@id": ORG_ID },
+         "publisher": { "@id": ORG_ID },
         "description": app.fullDescription,
         "featureList": app.keyFeatures.map(f => `${f.title}: ${f.description}`).join("; ")
       },
@@ -161,8 +147,8 @@ export default function AppDetail() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors pb-20">
       <Helmet>
-        <title>{`${app.name} — Free Android App by GoshBuzz`}</title>
-        <meta name="description" content={`${app.shortDescription} Download official APK on Google Play Store (${app.packageId}).`} />
+        <title>{pickTitle([`${app.name} — Free Android App by GoshBuzz`, `${app.name} — Free Android App`, app.name], 60)}</title>
+        <meta name="description" content={clampDescription(`${app.shortDescription} Free on Google Play.`, 155)} />
         <meta name="keywords" content={app.seoKeywords.join(', ')} />
         <link rel="canonical" href={`https://goshbuzz.com/apps/${app.slug}`} />
         
@@ -177,6 +163,7 @@ export default function AppDetail() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={app.name} />
         <meta name="twitter:description" content={app.shortDescription} />
+        <meta name="twitter:image" content="https://goshbuzz.com/goshbuzz_logo.jpg" />
 
         {/* AdMob & Publisher Metadata Verification tags for Web Crawlers */}
         <meta name="google-adsense-platform-account" content="pub-4067724379997931" />
