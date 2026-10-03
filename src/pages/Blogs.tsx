@@ -169,6 +169,9 @@ export default function Blogs() {
               <div className="relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-950">
                 {post.image ? (
                   <img
+                  width={800}
+                  height={450}
+                  decoding="async"
                     src={post.image}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <SEO
-        title="Privacy Policy — GoshBuzz"
+        title="Privacy Policy — How GoshBuzz Protects Data"
         description="How GoshBuzz collects, uses and protects your name, email and WhatsApp details when you order a guide or use our apps."
       />
       <div className="text-center mb-12">

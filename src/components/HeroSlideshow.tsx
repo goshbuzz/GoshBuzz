@@ -204,6 +204,9 @@ export function HeroSlideshow() {
               <motion.img
                 src={slide.image}
                 alt={slide.title}
+                width={1200}
+                height={675}
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover"
                 referrerPolicy="no-referrer"
                 loading={slideIndex === 0 ? "eager" : "lazy"}

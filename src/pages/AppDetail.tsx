@@ -196,6 +196,9 @@ export default function AppDetail() {
             <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left">
               <div className="relative group">
                 <img
+                  width={112}
+                  height={112}
+                  decoding="async"
                   src={app.icon}
                   alt={app.name}
                   className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl shadow-xl border-2 border-gray-100 dark:border-gray-800 object-cover transform group-hover:scale-105 transition-transform duration-300"

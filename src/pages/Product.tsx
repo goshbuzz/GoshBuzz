@@ -143,7 +143,11 @@ export default function Product() {
     `${product.title} Guide for Pakistan | GoshBuzz`,
     `${product.title} | GoshBuzz`,
   ], 60);
-  const seoDescription = clampDescription(`${metaDescription} Free step-by-step guide for Pakistan.`, 155);
+  const baseDesc = `${metaDescription} Free step-by-step guide for Pakistan.`;
+  const seoDescription = clampDescription(
+    baseDesc.length < 120 ? `${baseDesc} Includes tools, FAQs and payout tips.` : baseDesc,
+    155
+  );
   const ogImage = product.image || DEFAULT_OG_IMAGE;
 
   return (
@@ -224,6 +228,9 @@ export default function Product() {
         <div className="bg-gray-100 dark:bg-gray-800 rounded-3xl aspect-square overflow-hidden flex items-center justify-center text-8xl shadow-inner relative">
           {product.image ? (
             <img
+                  width={800}
+                  height={450}
+                  decoding="async"
               src={product.image}
               alt={product.title}
               className="w-full h-full object-cover"
@@ -448,7 +455,7 @@ export default function Product() {
             </h3>
             <div className="flex gap-3">
               <a
-                href={`https://wa.me/?text=Check out this amazing guide: ${product.title} - ${articleUrl}`}
+                href={`https://wa.me/?text=${encodeURIComponent(`Check out this amazing guide: ${product.title} - ${articleUrl}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-[#25D366] text-white rounded-lg hover:bg-[#128C7E] transition-colors"
@@ -469,7 +476,7 @@ export default function Product() {
                 </svg>
               </a>
               <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${articleUrl}`}
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(articleUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-[#1877F2] text-white rounded-lg hover:bg-[#166FE5] transition-colors"
@@ -490,7 +497,7 @@ export default function Product() {
                 </svg>
               </a>
               <a
-                href={`https://twitter.com/intent/tweet?url=${articleUrl}&text=Check out this amazing guide: ${product.title}`}
+                href={`https://x.com/intent/post?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(`Check out this amazing guide: ${product.title}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 bg-[#1DA1F2] text-white rounded-lg hover:bg-[#1A91DA] transition-colors"
@@ -936,6 +943,9 @@ export default function Product() {
                   <div className="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-2xl mb-4 border border-gray-100 dark:border-gray-800 shadow-sm">
                     {altProduct.image ? (
                       <img
+                  width={800}
+                  height={450}
+                  decoding="async"
                         src={altProduct.image}
                         alt={altProduct.title}
                         className="w-full h-full object-cover rounded-xl"

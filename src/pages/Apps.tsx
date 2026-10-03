@@ -164,6 +164,9 @@ export default function Apps() {
                   <div className="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left">
                     <Link to={`/apps/${app.slug}`} className="group block relative">
                       <img
+                  width={112}
+                  height={112}
+                  decoding="async"
                         src={app.icon}
                         alt={app.name}
                         className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl shadow-md border-2 border-gray-200 dark:border-gray-700 object-cover group-hover:scale-105 transition-transform"

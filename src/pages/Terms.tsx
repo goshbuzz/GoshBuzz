@@ -5,7 +5,7 @@ export default function Terms() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
             <SEO
-        title="Terms & Conditions — GoshBuzz"
+        title="Terms & Conditions — GoshBuzz Guides"
         description="Terms and conditions for using goshbuzz.com and buying GoshBuzz digital guides: licence, payments, delivery, liability and acceptable use."
       />
       <div className="text-center mb-12">

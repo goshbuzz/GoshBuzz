@@ -238,3 +238,17 @@ After merging and deploying this change in Vercel:
 - `index.html`: `theme-color`, sitemap and llms.txt discovery links.
 
 Verified: `npm run typecheck`, `npm test` (21 pass), `npm run build` (77 pages) all green.
+
+---
+
+# Site-audit fix pass — 2026-10-03 (Ahrefs-style checks)
+
+Ahrefs MCP was unavailable during this pass, so the same checks were run locally against `dist/client` (77 pages): titles, meta descriptions, H1, canonicals, broken links, orphans, images, sitemap, assets.
+
+- **Images:** added `width`/`height` + `decoding="async"` to all content images (~550 `<img>` without dimensions → 0) to remove CLS warnings.
+- **Meta descriptions:** 10 article descriptions were under 110 chars; now padded to a useful length and `clampDescription` no longer cuts at a short first sentence.
+- **Titles:** Privacy, Delivery, Terms titles lengthened past 30 chars.
+- **Share links:** X/Twitter link now `x.com/intent/post` (was a redirecting `twitter.com` URL); WhatsApp / Facebook / X share URLs are URL-encoded (were invalid with raw spaces).
+- **Footer socials:** removed tracking params from TikTok and Quora links.
+- **Internal links:** `/collection/ideas` and `/collection/skills` had a single inlink; added to the footer on every page.
+- Result of local audit: 0 broken internal links, 0 orphans, 0 duplicate titles/H1s/descriptions, 0 missing alt/canonical/H1, all sitemap URLs resolve.

@@ -57,6 +57,9 @@ function Header({
           className="text-xl md:text-2xl font-extrabold tracking-tight text-amber-500 flex items-center gap-3"
         >
           <img
+                  width={112}
+                  height={112}
+                  decoding="async"
             src={goshbuzzLogo}
             alt="GoshBuzz"
             className="h-12 w-12 md:h-16 md:w-16 rounded-full shadow-md flex-shrink-0 transition-transform hover:scale-105 duration-300"
@@ -366,6 +369,9 @@ export function AppLayout() {
                 className="text-amber-500 text-lg font-extrabold flex items-center gap-2 mb-3"
               >
                 <img
+                  width={112}
+                  height={112}
+                  decoding="async"
                   src={goshbuzzLogo}
                   alt="GoshBuzz"
                   className="h-10 w-10 rounded-full opacity-90 shadow-sm flex-shrink-0"
@@ -402,7 +408,7 @@ export function AppLayout() {
 
                 {/* TikTok */}
                 <a
-                  href="https://www.tiktok.com/@goshbuzz?_r=1&_t=ZN-97oFA8Mk5bS"
+                  href="https://www.tiktok.com/@goshbuzz"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:scale-110 hover:shadow-lg transition-all duration-200 rounded-full inline-block"
@@ -494,7 +500,7 @@ export function AppLayout() {
 
                 {/* Quora */}
                 <a
-                  href="https://www.quora.com/profile/Gosh-Buzz?ch=3&oid=3192845446&share=44e94410&srid=5DG11Y&target_type=user"
+                  href="https://www.quora.com/profile/Gosh-Buzz"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:scale-110 hover:shadow-lg transition-all duration-200 rounded-full inline-block"
@@ -560,6 +566,22 @@ export function AppLayout() {
                       className="hover:text-white transition-colors"
                     >
                       {t("blogs")}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/collection/ideas"
+                      className="hover:text-white transition-colors"
+                    >
+                      Earning Ideas
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/collection/skills"
+                      className="hover:text-white transition-colors"
+                    >
+                      Skill Guides
                     </Link>
                   </li>
                   <li>

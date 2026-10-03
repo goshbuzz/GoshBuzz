@@ -7,7 +7,7 @@ export function clampDescription(text: string, max = 155): string {
   const slice = clean.slice(0, max);
   // Prefer ending on a full sentence if one finishes late enough in the slice.
   const sentenceEnd = Math.max(slice.lastIndexOf('. '), slice.lastIndexOf('! '), slice.lastIndexOf('? '));
-  if (sentenceEnd >= max * 0.6) return slice.slice(0, sentenceEnd + 1);
+  if (sentenceEnd >= Math.max(115, max * 0.7)) return slice.slice(0, sentenceEnd + 1);
   const wordEnd = slice.lastIndexOf(' ');
   const cut = (wordEnd > 0 ? slice.slice(0, wordEnd) : slice).replace(/[\s,;:\-—–]+$/, '');
   return `${cut}…`;

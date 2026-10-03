@@ -50,6 +50,9 @@ function ModuleLogo({ module }: { module: NetworkModule }) {
 
   return (
     <img
+                  width={112}
+                  height={112}
+                  decoding="async"
       src={module.logoFile || module.faviconUrl}
       alt={`${module.name} logo`}
       title={module.name}
@@ -334,6 +337,9 @@ export default function Network() {
         <div className="bg-gradient-to-r from-violet-500/10 via-transparent to-transparent border border-violet-500/40 dark:border-violet-500/30 rounded-3xl p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row items-center gap-6">
             <img
+                  width={112}
+                  height={112}
+                  decoding="async"
               src="https://www.freeconvertio.com/favicon.ico"
               alt="FreeConvertio logo"
               loading="lazy"

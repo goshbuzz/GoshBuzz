@@ -136,6 +136,9 @@ ${itemLines}
                       <div className="w-14 h-14 rounded-xl bg-amber-50 dark:bg-amber-950/20 text-2xl flex items-center justify-center shrink-0">
                         {item.image ? (
                           <img
+                  width={800}
+                  height={450}
+                  decoding="async"
                             src={item.image}
                             alt={item.title}
                             className="w-full h-full object-cover rounded-xl"

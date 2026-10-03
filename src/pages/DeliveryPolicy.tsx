@@ -5,7 +5,7 @@ export default function DeliveryPolicy() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
             <SEO
-        title="Delivery Policy — GoshBuzz"
+        title="Delivery Policy — Instant Digital Guides"
         description="How GoshBuzz delivers digital guides: instant PDF delivery via WhatsApp and email after JazzCash or EasyPaisa payment is confirmed."
       />
       <div className="text-center mb-12">

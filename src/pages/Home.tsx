@@ -334,6 +334,9 @@ export default function Home() {
               <div>
                 <div className="h-52 overflow-hidden relative">
                   <img
+                  width={800}
+                  height={450}
+                  decoding="async"
                     src={article.image}
                     alt={article.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -438,6 +441,9 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left max-w-2xl">
               <img
+                  width={112}
+                  height={112}
+                  decoding="async"
                 src={goshbuzzApps[0].icon}
                 alt="EMF Sentinel App Icon"
                 className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border-2 border-amber-500/40 shadow-lg object-cover flex-shrink-0"
@@ -515,6 +521,9 @@ export default function Home() {
                 <div className="h-44 bg-gray-100 dark:bg-gray-800 overflow-hidden relative shrink-0">
                   {product.image ? (
                     <img
+                  width={800}
+                  height={450}
+                  decoding="async"
                       src={product.image}
                       alt={product.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -657,6 +666,9 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             <div className="bg-gray-800/80 rounded-2xl p-3 border border-gray-700/60 flex flex-col items-center hover:border-amber-500/50 transition-colors">
               <img
+                  width={400}
+                  height={400}
+                  decoding="async"
                 src="/dropship_humidifier.png"
                 alt="Humidifier Dropshipping Blueprint"
                 className="rounded-xl w-full aspect-square object-cover mb-3"
@@ -669,6 +681,9 @@ export default function Home() {
 
             <div className="bg-gray-800/80 rounded-2xl p-3 border border-gray-700/60 flex flex-col items-center hover:border-amber-500/50 transition-colors">
               <img
+                  width={400}
+                  height={400}
+                  decoding="async"
                 src="/dropship_magsafe.png"
                 alt="MagSafe Accessories Blueprint"
                 className="rounded-xl w-full aspect-square object-cover mb-3"
@@ -681,6 +696,9 @@ export default function Home() {
 
             <div className="bg-gray-800/80 rounded-2xl p-3 border border-gray-700/60 flex flex-col items-center hover:border-amber-500/50 transition-colors">
               <img
+                  width={400}
+                  height={400}
+                  decoding="async"
                 src="/dropship_projector.png"
                 alt="Mini Projector Blueprint"
                 className="rounded-xl w-full aspect-square object-cover mb-3"
@@ -693,6 +711,9 @@ export default function Home() {
 
             <div className="bg-gray-800/80 rounded-2xl p-3 border border-gray-700/60 flex flex-col items-center hover:border-amber-500/50 transition-colors">
               <img
+                  width={400}
+                  height={400}
+                  decoding="async"
                 src="/dropship_vacuum.png"
                 alt="Portable Vacuum Blueprint"
                 className="rounded-xl w-full aspect-square object-cover mb-3"
@@ -731,6 +752,9 @@ export default function Home() {
                 <div className="h-44 bg-gray-100 dark:bg-gray-800 overflow-hidden relative shrink-0">
                   {product.image ? (
                     <img
+                  width={800}
+                  height={450}
+                  decoding="async"
                       src={product.image}
                       alt={product.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
