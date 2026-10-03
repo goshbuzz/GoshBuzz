@@ -252,3 +252,13 @@ Ahrefs MCP was unavailable during this pass, so the same checks were run locally
 - **Footer socials:** removed tracking params from TikTok and Quora links.
 - **Internal links:** `/collection/ideas` and `/collection/skills` had a single inlink; added to the footer on every page.
 - Result of local audit: 0 broken internal links, 0 orphans, 0 duplicate titles/H1s/descriptions, 0 missing alt/canonical/H1, all sitemap URLs resolve.
+
+---
+
+# Ahrefs Site Audit fixes — 2026-10-03 (report of 05:49 PM)
+
+- **Broken images (10) — root cause found:** `goshbuzz_logo.jpg`, `favicon*.png`, `apple-touch-icon.png` and the four `dropship_*.png` in `public/` were corrupted (UTF-8 re-encoding replaced the binary bytes with U+FFFD; not recoverable from git). This also broke every `og:image`/favicon pointing at them. Regenerated the logo, all favicons, `favicon.ico` and the apple-touch icon from the valid logo in `src/assets/images/`. The 4 dropship images were unrecoverable; replaced with simple branded illustrations — **swap in real product photos when available**.
+- **Image file size too large (5):** dropship images (1.4–1.6 MB each) are now ~7 KB; logo 946 KB → 90 KB; bundled EMF banner/icon/logo images shrunk to under 100 KB each.
+- **Only one dofollow incoming internal link (42):** every article linked to the same first 4 guides, so the other ~56 got a single link. "Explore more" now rotates through the catalogue; every article has at least 5 inlinks.
+- **IndexNow (74 changed pages):** added key file `public/b70769f36a3c5a982d8251d4e70d4eec.txt`, `scripts/indexnow.js` (run `node scripts/indexnow.js` after each deploy; optional GitHub Action template kept outside the repo).
+- Schema.org validation of all JSON-LD on goshbuzz.com against the current schema.org vocabulary: 0 errors.

@@ -134,9 +134,12 @@ export default function Product() {
   };
 
   // Filter related products for On-site SEO internal linking
-  const relatedOnsiteProducts = products
-    .filter((p) => p.id !== product.id)
-    .slice(0, 4);
+  // Rotate through the catalogue (next 4 after this guide, wrapping around) so every
+  // guide receives several internal links instead of the same first 4 getting all of them.
+  const currentIndex = products.findIndex((p) => p.id === product.id);
+  const relatedOnsiteProducts = Array.from({ length: 4 }, (_, i) =>
+    products[(Math.max(currentIndex, 0) + i + 1) % products.length]
+  ).filter((p, i, arr) => p.id !== product.id && arr.findIndex((q) => q.id === p.id) === i);
 
   const seoTitle = pickTitle([
     `${product.title} — Online Earning Guide Pakistan | GoshBuzz`,
