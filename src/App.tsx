@@ -127,6 +127,7 @@ function Header({
           </Link>
           <Link
             to="/checkout"
+            rel="nofollow"
             className="text-gray-600 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 font-semibold flex items-center gap-1.5 relative"
           >
             <ShoppingCart size={18} />
@@ -238,6 +239,7 @@ function Header({
           </Link>
           <Link
             to="/checkout"
+            rel="nofollow"
             onClick={() => setIsMenuOpen(false)}
             className="flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
           >
@@ -441,7 +443,7 @@ export function AppLayout() {
                 <a
                   href="https://www.instagram.com/goshbuzz"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener noreferrer"
                   className="hover:scale-110 hover:shadow-lg transition-all duration-200 rounded-xl inline-block"
                   aria-label="Instagram"
                 >
@@ -480,7 +482,7 @@ export function AppLayout() {
                 <a
                   href="https://www.reddit.com/u/SteakEquivalent8571/s/mODX6W7gTo"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener noreferrer"
                   className="hover:scale-110 hover:shadow-lg transition-all duration-200 rounded-full inline-block"
                   aria-label="Reddit"
                 >
@@ -502,7 +504,7 @@ export function AppLayout() {
                 <a
                   href="https://www.quora.com/profile/Gosh-Buzz"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener noreferrer"
                   className="hover:scale-110 hover:shadow-lg transition-all duration-200 rounded-full inline-block"
                   aria-label="Quora"
                 >
@@ -595,6 +597,7 @@ export function AppLayout() {
                   <li>
                     <Link
                       to="/checkout"
+            rel="nofollow"
                       className="hover:text-white transition-colors"
                     >
                       {t("cart")}
