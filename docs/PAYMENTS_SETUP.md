@@ -7,7 +7,7 @@ What happens after this is set up:
 3. Stripe tells GoshBuzz (webhook). GoshBuzz verifies the signature and emails the buyer
    **download links**, one per guide.
 4. The link opens `/api/download`, which checks the signed link and redirects to a PDF in a
-   **private** Google Cloud Storage bucket. The link is valid for a set number of days (default 7).
+   **private** Supabase Storage bucket. The link is valid for a set number of days (default 7).
 
 WhatsApp and JazzCash/EasyPaisa checkout keep working alongside card payments.
 
@@ -57,34 +57,43 @@ Stripe does not support Pakistan-based businesses. Your US LLC can apply, so Str
 4. **Stay in test mode** until everything works. In the dashboard, go to **Developers → API keys** and copy the **Secret key** (`sk_test_...`). You'll put it in Vercel in Part D.
 5. Turn on **Card** payments (on by default). Leave "Adaptive pricing" **off**, since we charge in USD.
 
-## Part B. Google Cloud: private PDF storage and the Drive copy
+## Part B. Supabase Storage (private PDFs) and the Drive copy script
 
-Your PDFs stay in Drive (your master copy). A private bucket holds the copy that customers download.
+Your PDFs stay in Google Drive (your master copy). A **private** Supabase Storage bucket holds the copy customers download. Supabase's free plan needs no card. Google is used only on your computer, to read the Drive folder.
 
-1. Go to **console.cloud.google.com**, sign in with your Google account, and create a project called **goshbuzz-delivery**.
-2. Enable these two APIs (APIs & Services → Library): **Cloud Storage API** and **Google Drive API**.
-3. Create a bucket (Cloud Storage → Buckets → Create):
-   - Name: **goshbuzz-deliverables** (must be globally unique; if taken, pick another and use it in Part D)
-   - Location: **us-central1** (or any region)
-   - **Public access prevention: Enforced** (this keeps the PDFs private)
-4. Create a service account (IAM & Admin → Service accounts → Create):
-   - Name: **goshbuzz-delivery**
-   - Grant it **Storage Object Admin** on the bucket (bucket → Permissions → Grant access).
-5. Create a key: open the service account → **Keys → Add key → Create new key → JSON**. A file downloads. **Keep it private**, and don't commit it.
-6. Copy the service account **email** (ends with `.iam.gserviceaccount.com`).
-7. In Google Drive, open the folder **"30 Ideas of Escaping out of Matrix"**, click Share, add that email as **Viewer**, and untick "Notify people". This gives the sync script read access to the PDFs.
-8. **Copy the PDFs into the bucket** (run once on your computer, and again if a PDF changes):
-   ```bash
-   git clone https://github.com/goshbuzz/GoshBuzz.git && cd GoshBuzz   # or use your existing copy
-   git checkout arena/93f9f889-goshbuzz
-   npm install
-   # create .env.local (git-ignored) with these two lines, filled in:
-   #   DELIVERY_BUCKET=goshbuzz-deliverables
-   #   GCP_SERVICE_ACCOUNT_JSON={"type":"service_account",...paste the whole key file on ONE line...}
-   npm run sync:drive            # copies the 30 idea PDFs; skips ones already there
-   npm run sync:drive -- --force # re-copy everything after a PDF changes
+### B1. Create the Supabase project
+1. Go to **supabase.com**, sign up (GitHub or email), and click **New project**.
+   - Name: `goshbuzz`
+   - Region: the closest to your buyers (Mumbai or Singapore)
+   - Database password: generate one and save it in a password manager. The app doesn't use it.
+   - Plan: **Free**
+2. **Storage → New bucket:** name `deliverables`, **Public bucket: OFF**.
+3. **Project Settings → API.** Copy the **Project URL** and the **service_role** key. The service_role key is a secret. Never paste it into chat, a `VITE_` variable, or a file in Git.
+
+### B2. Google Drive read access (free, no billing)
+1. Go to **console.cloud.google.com**, sign in, and create a project named `goshbuzz-delivery`. No billing account is needed.
+2. Enable the **Google Drive API** (APIs & Services → Library).
+3. **IAM & Admin → Service accounts → Create** a service account named `goshbuzz-drive-reader`. No roles are needed.
+4. Open it → **Keys → Add key → Create new key → JSON**. A file downloads. Keep it private.
+5. Copy the service account **email** (ends in `.iam.gserviceaccount.com`).
+6. In Google Drive, open **"30 Ideas of Escaping out of Matrix"**, click **Share**, add that email as **Viewer**, and untick "Notify people".
+
+### B3. Run the copy script (on your computer, once)
+The script copies each PDF from Drive into the bucket as `ideas/idea-N.pdf`, checks that it is really a PDF, and skips files already uploaded.
+
+1. Get the code: `git clone https://github.com/goshbuzz/GoshBuzz.git`, then `cd GoshBuzz` and `git checkout arena/93f9f889-goshbuzz`. Needs Node 22 or newer.
+2. Run `npm install`.
+3. Create a file named **`.env.local`** in the GoshBuzz folder (git ignores it). Fill it in:
    ```
-   Expected output ends with `Done. copied=30 skipped=0 total=30`. If it says Drive returned 404 or 403, the folder isn't shared with the service account (step 7).
+   SUPABASE_URL=https://your-project.supabase.co
+   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+   DELIVERY_BUCKET=deliverables
+   GCP_SERVICE_ACCOUNT_JSON={"type":"service_account", ...the whole key file, on ONE line...}
+   ```
+4. Run `npm run sync:drive`. It should end with `Done. copied=30 skipped=0 total=30`.
+5. To re-copy everything after a PDF changes: `npm run sync:drive -- --force`.
+
+If you see `Drive returned 404` or `403`, the folder isn't shared with the service account email (step B2.6).
 
 ## Part C. Email (Resend): free, no paid mailbox needed
 
@@ -119,8 +128,9 @@ Vercel → your project → **Settings → Environment Variables**. Add each one
 | `STRIPE_WEBHOOK_SECRET` | from Part E |
 | `DOWNLOAD_TOKEN_SECRET` | 64 random hex characters: run `openssl rand -hex 32` |
 | `DOWNLOAD_LINK_DAYS` | `7` (1 to 30) |
-| `GCP_SERVICE_ACCOUNT_JSON` | the whole service-account JSON key, on one line |
-| `DELIVERY_BUCKET` | `goshbuzz-deliverables` (or your bucket name) |
+| `SUPABASE_URL` | your Project URL (`https://xxxx.supabase.co`) |
+| `SUPABASE_SERVICE_ROLE_KEY` | the service_role key (secret; server only) |
+| `DELIVERY_BUCKET` | `deliverables` (your private bucket name) |
 | `RESEND_API_KEY` | `re_...` |
 | `EMAIL_FROM` | `GoshBuzz <orders@goshbuzz.com>` |
 | `EMAIL_REPLY_TO` | **your Gmail address**, so customer replies reach you (there is no mailbox on goshbuzz.com) |
@@ -161,9 +171,9 @@ Then **redeploy** (Deployments → Redeploy). The new `api/` functions deploy wi
 - Anyone who gets a valid link can download the PDF until it expires. Links are not tied to one person.
 - Cart limit: 20 guides per card order.
 - Card acceptance: some Pakistani debit cards are not enabled for international online purchases. Those buyers can still use WhatsApp/JazzCash.
-- The emailed link goes through your site (`/api/download`) and then to Google Cloud. Vercel's response-size limit (4.5 MB) is why the PDFs aren't streamed through the site.
+- The emailed link goes through your site (`/api/download`) and then to Supabase Storage. Vercel's response-size limit (4.5 MB) is why the PDFs aren't streamed through the site.
 
 ## What is verified in code vs. what needs a live check
 
 - Verified by automated tests in the repository (`npm run test:payments`): link signing and expiry, cart validation, Stripe signature check, catalog integrity, and the rejection paths of all three endpoints.
-- **Not verified here** (needs your live accounts, in test mode first): a real Stripe checkout, the webhook receiving live payloads on Vercel, Google Cloud signed links, and Resend delivery to inboxes. Part F tests all of these.
+- **Not verified here** (needs your live accounts, in test mode first): a real Stripe checkout, the webhook receiving live payloads on Vercel, Supabase signed links, and Resend delivery to inboxes. Part F tests all of these.
