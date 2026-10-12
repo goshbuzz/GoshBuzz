@@ -86,12 +86,27 @@ Your PDFs stay in Drive (your master copy). A private bucket holds the copy that
    ```
    Expected output ends with `Done. copied=30 skipped=0 total=30`. If it says Drive returned 404 or 403, the folder isn't shared with the service account (step 7).
 
-## Part C. Email (Resend)
+## Part C. Email (Resend): free, no paid mailbox needed
 
-1. Sign up at **resend.com**.
-2. **Domains → Add domain →** `goshbuzz.com`. Resend shows DNS records (SPF, DKIM, and so on). Add them where your domain's DNS is managed (for example Vercel DNS or Cloudflare). Wait until Resend shows the domain as **Verified**.
-3. **API Keys → Create API key** (permission: Sending access). Copy it (`re_...`).
-4. Choose the sender address, for example `orders@goshbuzz.com`.
+You do **not** need to buy any email plan (Hostinger or other). Resend sends the delivery emails from its own servers. You only add a few DNS records to prove you own `goshbuzz.com`. Resend's free plan covers 3,000 emails a month (max 100 a day) with one custom domain. ([Resend pricing](https://resend.com/pricing))
+
+1. Sign up at **resend.com** (free, no card). Sign in with Google or email.
+2. **Domains → Add Domain →** type `goshbuzz.com`. Choose the region closest to your buyers (any is fine).
+3. Resend shows about three DNS records. **Copy them exactly from Resend's screen**. They look like this:
+
+   | Type | Name (host) | Value |
+   |---|---|---|
+   | TXT | `resend._domainkey` | long key starting with `p=MIG...` (from Resend) |
+   | MX | `send` | `feedback-smtp.<region>.amazonses.com`, priority `10` (from Resend) |
+   | TXT | `send` | `v=spf1 include:amazonses.com ~all` (from Resend) |
+
+4. Add them in the DNS panel where `goshbuzz.com` DNS is managed. This is wherever you set the domain's DNS records (your registrar or hosting panel, which may be Hostinger).
+   - **Name field:** type only the part before the domain (`resend._domainkey`, `send`). Many panels add `.goshbuzz.com` automatically. Pasting the full name doubles it.
+   - **Do not edit or delete** any existing records. Resend's records only use the `send` and `resend._domainkey` names, so your root domain is untouched.
+   - **Do not** create or change root (`@`) MX records.
+5. Back in Resend, click **Verify DNS records**. It usually passes within minutes; it can take up to a few hours.
+6. **API Keys → Create API Key**: name `goshbuzz-delivery`, permission **Sending access**, domain `goshbuzz.com`. Copy the key (`re_...`) **once**, and store it in a password manager.
+7. Set the sender to any address on your verified domain, for example `orders@goshbuzz.com`. Replies need a real inbox: because `goshbuzz.com` has no mailbox, set `EMAIL_REPLY_TO` to your **Gmail** address, so customers who reply reach you.
 
 ## Part D. Vercel environment variables
 
@@ -108,7 +123,7 @@ Vercel → your project → **Settings → Environment Variables**. Add each one
 | `DELIVERY_BUCKET` | `goshbuzz-deliverables` (or your bucket name) |
 | `RESEND_API_KEY` | `re_...` |
 | `EMAIL_FROM` | `GoshBuzz <orders@goshbuzz.com>` |
-| `EMAIL_REPLY_TO` | optional: an address where customers can reply |
+| `EMAIL_REPLY_TO` | **your Gmail address**, so customer replies reach you (there is no mailbox on goshbuzz.com) |
 
 Then **redeploy** (Deployments → Redeploy). The new `api/` functions deploy with the site.
 
