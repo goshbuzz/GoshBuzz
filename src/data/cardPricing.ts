@@ -4,12 +4,12 @@
  *
  * Why $2.30 for an idea (Rs. 500 target): at 277 PKR/USD, Stripe takes about 5.4% + $0.30 on an
  * international card that needs currency conversion, and an assumed ~2% to move USD into PKR.
- * $2.30 leaves about PKR 509 per sale in the worst case. Skills have no PDF yet, so no card price.
+ * $2.30 leaves about PKR 509 per sale in the worst case. Skills at $1.10 leave about PKR 201 (Rs. 200 target).
  * Full math is in docs/PAYMENTS_SETUP.md.
  */
 export const CARD_PRICE_USD_CENTS = {
   idea: 230,
-  skill: null, // Not sold by card until PDFs exist.
+  skill: 110,
 } as const;
 
 export const FX_PKR_PER_USD_DISPLAY = 277;

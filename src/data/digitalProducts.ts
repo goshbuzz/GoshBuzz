@@ -6,7 +6,7 @@
  *
  * Drive layout (folder 1HHWXgFfios6dz5wRceY8be0IjHofFHUO):
  *   "30 Ideas of Escaping out of Matrix"  -> one sub-folder per idea ("1 Crypto Spot Trading", ...)
- *   "30 Skills of Escaping out of Matrix" -> one sub-folder per skill (no PDFs yet, so not sold by card)
+ *   "30 Skills of Escaping out of Matrix" -> one sub-folder per skill (HTML pages, converted to PDF for card sales)
  * Each idea sub-folder holds exactly one PDF, mapped below by folder number.
  *
  * Prices live in cardPricing.ts (one USD price for everyone). See docs/PAYMENTS_SETUP.md for the math.
@@ -15,14 +15,15 @@
 import { CARD_PRICE_USD_CENTS } from "./cardPricing";
 
 export interface DigitalProduct {
-  /** Same id as in src/data.ts, e.g. "idea-1". */
+  /** Same id as in src/data.ts, e.g. "idea-1" or "skill-1". */
   id: string;
+  type: "idea" | "skill";
   title: string;
   /** Price in US cents, charged in USD. */
   priceUsdCents: number;
   /** Drive sub-folder that holds the PDF (for reference and re-syncing). */
   driveFolderId: string;
-  /** Drive file ID of the source PDF (read by scripts/sync-drive-to-storage.ts). */
+  /** Drive file ID of the source. Ideas: the PDF. Skills: the HTML page (converted to PDF by the Apps Script). */
   driveFileId: string;
   /** Object key inside the private delivery bucket. */
   storageKey: string;
@@ -41,6 +42,7 @@ const idea = (
   needsReview = false,
 ): DigitalProduct => ({
   id: `idea-${n}`,
+  type: "idea",
   title,
   priceUsdCents: CARD_PRICE_USD_CENTS.idea,
   driveFolderId,
@@ -50,7 +52,7 @@ const idea = (
   ...(needsReview ? { needsReview: true } : {}),
 });
 
-export const digitalProducts: DigitalProduct[] = [
+const ideaProducts: DigitalProduct[] = [
   idea(1, "Crypto Spot Trading", "1ka_w5FZH1aO3aaSNZ9gsdrwbTpQ9cydf", "1N-uYpdu_9w6TsAagJChLykCFvj8FeR4-", "Crypto_Spot_Trading_Blueprint.pdf"),
   idea(2, "Blogging + AdSense", "1mF7Lx-__lXJQSi4-3GeGs6ctdWfjKWmY", "1IdLIlbVPfNVNTLmjVwzNBgUGr4u0NHoK", "Blogging_Asset_Blueprint.pdf"),
   idea(3, "E-commerce Multi-Platform", "1Erj8ZF-v40oyqi7iSnEmGijgoLP6esBX", "1y0iNZhNn4OAUvl1leheep77GN81MPNgX", "Pakistan_Global_E-Commerce_Blueprint.pdf"),
@@ -82,6 +84,59 @@ export const digitalProducts: DigitalProduct[] = [
   idea(29, "Real Estate Cold Calling", "1cBVzANsA9fJ0LMWZ_BEylKO0g-iHefGN", "12ESEYEkIJ7I0t5TYxdiqy4ysQcGgt88U", "Remote_Real_Estate_ISA_Roadmap.pdf"),
   idea(30, "No-Code SaaS", "135WyQ6nPr2UVzL-RpF-17biJDSIRFkVf", "1GOy1_1cTRwW8Lieuzk34oG8ex7FTqd9K", "No-Code_SaaS_Blueprint.pdf"),
 ];
+
+/** Skills: one HTML page each in Drive. Converted to PDF by scripts/apps-script (skills).
+ *  Not in the sync script: the source is HTML, not a PDF. */
+const skill = (
+  n: number,
+  title: string,
+  driveFolderId: string,
+  driveFileId: string,
+): DigitalProduct => ({
+  id: `skill-${n}`,
+  type: "skill",
+  title,
+  priceUsdCents: CARD_PRICE_USD_CENTS.skill,
+  driveFolderId,
+  driveFileId,
+  storageKey: `skills/skill-${n}.pdf`,
+  downloadName: `GoshBuzz - ${title} - Skill Guide.pdf`.replace(/[\\/:*?"<>|]/g, "").slice(0, 150),
+});
+
+const skillProducts: DigitalProduct[] = [
+  skill(1, "Sales Skill Mastery", "11lSuh9_55cnRRklMesMomyxD7P5O-ZXB", "1WIfd6hR3Epgcw-5SiOFqrmP0TdymqSdu"),
+  skill(2, "Communication Skill Mastery", "1tUyqu_ZY-Ktvr8u1kaBItwzIIDEgHQ5b", "1qZuU0t1w1Bn8iSI3ypAXZua5BEH67ANU"),
+  skill(3, "Self-Discipline Mastery", "1E1T1BhlF5UzaUFWn4EIjBNfuYzL628PK", "13bll_ja9mE0u-Apv3yoKm1NB92MVbHgc"),
+  skill(4, "AI Fundamentals Mastery", "1iMYlFx9jSjMSewau45nx4zoFdcSsJzdA", "1dFGTnjfY70MofjXD9EIU-vns6R6Hub0c"),
+  skill(5, "CRM Automation Mastery", "1FmMI_Cr8vJkvkTZb949E54eZ7hN5BNjr", "1h3rjb38zS9497P2PPM1P9ZZ74ofzC7r-"),
+  skill(6, "QuickBooks Financial Control", "1HJpuYyfOqMT6KCFmB05p-vhK0L6wKBqK", "1WC50iBSzdR3nS22gKAHFNtOBqET7n6XV"),
+  skill(7, "Excel & Dashboards Mastery", "1w90O4yWj1oBqzR92X235v9pwtzWIXpbV", "1ikvO1uLLxZQf1vvN7bktJ4m7Lx9vx7nS"),
+  skill(8, "Data Analysis Mastery", "1TEBUUUokjZgmf8qSYXIJptMrkPghfRi-", "1k7dDw085J4sLlO06ORHkaNVw8WvnCvve"),
+  skill(9, "Chatbot & Voice Bot Development", "1wGXVUYF5Yn5QGGIjGa9KpRk0NwgzPCEI", "1R-ZGh91wbefd2T1vW_EioeCJFwCHgiua"),
+  skill(10, "AI-Powered Development", "1MV_th6E7hPrnir99p9T-qbSAV-dOwjHK", "1t8xeidh3gPhKE5ivDuMZxbi7-Hmpg0Dq"),
+  skill(11, "Copywriting Mastery", "1dexSp8yFE_IYBD4ljCMjmu5L4GAHLZes", "1hnG5xP6nn5eD2Oii7S8o2M-9t2vmdAnR"),
+  skill(12, "Video Editing Mastery", "1O9RhWw2sgTmXJ5qwDn2SksqRoxHvYtlL", "14h0LT87903PU5StS9MG75vlOut5Busu0"),
+  skill(13, "SEO & Keyword Research", "1XyRIJ7fNdSta_sK-d2UNDhjW6KS6DoEq", "1L7mlwGKtaZXwVAJuGtU-Orb173oOCsXz"),
+  skill(14, "Graphic Design & Visuals", "1gJYtGWIDg9UN_FBrG3XBWcjdP-BMvgi2", "179lYTUu044CUTRvuiQe2Bya7hzcgiXFl"),
+  skill(15, "Public Speaking & On-Camera", "1QvxXSnZL2K_aEA8h7rOw6Nlnme-hYTFI", "1bemq9KMGxL3aSlHBhCwvychNSwnVpv5k"),
+  skill(16, "Negotiation Tactics", "1GRFlDzscqYROEx8hz_-1Ol_qHVD-9O30", "1VoKydskn1mLwOSZYnJfnPZ6N6e0xqogs"),
+  skill(17, "Email Marketing Mastery", "1NvcldNwXTPgU1s5gLVfWhywkmEqdaGN5", "1uiRsxya0kgC2-JJc7P7RGb_QBSXNq-O7"),
+  skill(18, "Social Media Advertising", "1_hNsTihHbAzc6cmsq2B3VQdT1PV_opzx", "1AOgOdXfFk-oSdgjg_95aqXkArnODnUim"),
+  skill(19, "Content Strategy Mastery", "1vbfS3_zm_I16uVpY3-hcf4yRBVIu-AWk", "1tG7_x4G7PqD7UQ-7KJuTj4dKfoKdalO0"),
+  skill(20, "Project Management Mastery", "133JP8IR6P_kmqkQV_bHpM61r0--hvzk0", "14iRFpCX3r9-15MSrxHuWR1LEr1xo7kqi"),
+  skill(21, "Financial Literacy for Freelancers", "1TzjATctIgTtu9wzmlHlsAZBk9ktJvOqV", "1IG0RmIzDw0ggn8x03Cj1i9X2SaIqg6LH"),
+  skill(22, "LinkedIn Networking Masterclass", "1nL7un_gUNELM7XZq3XoapmF8gQRQa0bz", "1I0DMNg6ZJbmKU22RfuG0Uk7kA7z-Omtx"),
+  skill(23, "Cold Outreach Mastery", "1d4CAjc0szAoIAogbBgsp5tESOypNPCFM", "1Vy1eTz1QbJ-1VXonYgDfHmEK9869wR_s"),
+  skill(24, "Prompt Engineering Mastery", "1Kgi9OEcZPdFEGBOY7UCKLQ2k6lUWHtVL", "1Uo-jQG7PDel1GC7YYGksY0C_aFGDXKCX"),
+  skill(25, "Web Scraping Mastery", "1JXUnhv3R2NGmHsK4tGYQEgZjRz_U3TMN", "19wyP01wdyNVXDAUkL9xk6dhh39z89rsh"),
+  skill(26, "API Integration Mastery", "1c1eUibwoiY3vBOeFeXIAA8DnSupy_3Wj", "1oT8qhFG1i3ABTtCPGCtp5ciwzUkKIrjT"),
+  skill(27, "UI/UX Design Principles", "1_KlZ47q3w0WnU95x9Wtu99s4BFozMGmZ", "1m3r0kVLI1Y97IeKkQg2j9aObDmHOoD9I"),
+  skill(28, "Personal Branding Mastery", "1xv7joW1tV6woGPWco4rMDf8EvwyYYjnG", "1nT91BUE6ZHGRKDlzdbilpMlPQBZBzh1J"),
+  skill(29, "Time Management Mastery", "1YpQ5PTjFKGl_HqGztAo5_emVGU2OAay_", "1D5mpRsbXHnt-854C3FdIZdSnAoU63Ur8"),
+  skill(30, "Leadership & Delegation", "1p4w_7s0Rv1OFT8yGOgOGLU1l7s9-h45n", "1o2Jxi5HBA1-Iro2NNEOkvS3W2ioxHXK9"),
+];
+
+export const digitalProducts: DigitalProduct[] = [...ideaProducts, ...skillProducts];
 
 const byId = new Map(digitalProducts.map((p) => [p.id, p]));
 

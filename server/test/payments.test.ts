@@ -42,10 +42,14 @@ test("resolveCart accepts ideas, removes duplicates, and rejects unknown or empt
   assert.deepEqual(items.map((i) => i.id), ["idea-1", "idea-4"]);
   assert.equal(cartTotalCents(items), 460);
 
+  // Mixed cart: ideas $2.30 + skills $1.10 each.
+  const mixed = resolveCart(["idea-1", "skill-1"]);
+  assert.equal(cartTotalCents(mixed), 340);
+
   assert.throws(() => resolveCart([]), CartError);
   assert.throws(() => resolveCart(undefined), CartError);
   assert.throws(() => resolveCart(["idea-999"]), CartError);
-  assert.throws(() => resolveCart(["skill-1"]), CartError, "skills have no PDF yet, so no card sale");
+  assert.throws(() => resolveCart(["skill-99"]), CartError);
   assert.throws(() => resolveCart([42]), CartError);
   assert.throws(() => resolveCart(Array.from({ length: 21 }, (_, i) => `idea-${(i % 30) + 1}`)), CartError);
 });
@@ -106,11 +110,22 @@ test("Stripe webhook signature verification accepts a correct signature and reje
 
 // ---------- catalog integrity ----------
 
-test("catalog covers the 30 ideas exactly once, each with a unique Drive file and storage key", () => {
-  assert.equal(digitalProducts.length, 30);
-  assert.equal(new Set(digitalProducts.map((p) => p.id)).size, 30);
-  assert.equal(new Set(digitalProducts.map((p) => p.driveFileId)).size, 30);
-  assert.equal(new Set(digitalProducts.map((p) => p.storageKey)).size, 30);
+test("catalog covers 30 ideas and 30 skills exactly once, each with a unique Drive file and storage key", () => {
+  assert.equal(digitalProducts.length, 60);
+  assert.equal(new Set(digitalProducts.map((p) => p.id)).size, 60);
+  assert.equal(new Set(digitalProducts.map((p) => p.driveFileId)).size, 60);
+  assert.equal(new Set(digitalProducts.map((p) => p.storageKey)).size, 60);
+  assert.equal(digitalProducts.filter((p) => p.type === "idea").length, 30);
+  assert.equal(digitalProducts.filter((p) => p.type === "skill").length, 30);
+  for (const p of digitalProducts) {
+    if (p.type === "skill") {
+      assert.ok(p.storageKey.startsWith("skills/"), `${p.id} stored under skills/`);
+      assert.equal(p.priceUsdCents, 110, `${p.id} priced at $1.10`);
+    } else {
+      assert.ok(p.storageKey.startsWith("ideas/"), `${p.id} stored under ideas/`);
+      assert.equal(p.priceUsdCents, 230, `${p.id} priced at $2.30`);
+    }
+  }
   const known = new Set(products.map((p) => p.id));
   for (const p of digitalProducts) {
     assert.ok(known.has(p.id), `${p.id} exists in src/data.ts`);

@@ -22,7 +22,7 @@ WhatsApp and JazzCash/EasyPaisa checkout keep working alongside card payments.
 |---|---|---|---|
 | 1 | **Card price** | **$2.30** per idea (`src/data/cardPricing.ts`) | Nets about **PKR 509** per sale in the worst case (international card + currency conversion + USD→PKR payout). |
 | 2 | **Same price everywhere?** | Card: $2.30 (about Rs. 637 at 277). WhatsApp/JazzCash: still **Rs. 500** | You asked for the same amount for everyone. Right now a Pakistani buyer sees Rs. 500 on WhatsApp and about Rs. 637 by card. Options: (a) raise the WhatsApp/JazzCash price to about Rs. 637; (b) keep Rs. 500 and charge **$1.80**, which nets only about **PKR 381** worst case; (c) test charging **PKR 500** directly through Stripe (PKR is on Stripe's currency list, but availability for a US account needs checking in your dashboard). |
-| 3 | **Skills (Rs. 200)** | Not sold by card: no PDFs in Drive yet | My search found no PDFs in any of the 30 skill folders. They contain HTML pages, images and some spreadsheets or Google Docs. Either add PDFs, or I can export them. Suggested card price: **$1.10** (nets about PKR 201). |
+| 3 | **Skills (Rs. 200)** | Card: **$1.10** each (`cardPricing.ts`). Source is the HTML guide in each skill folder, converted to PDF by `scripts/apps-script/Skills.gs` | Nets about PKR 201 worst case. The HTML-to-PDF conversion keeps text and headings but may change layout or images, so spot-check a few PDFs. |
 | 4 | **PDFs to double-check** | Folder and file name disagree for: idea 6 (Chatbot folder has `AI_Automation_Agency_Blueprint.pdf`), idea 11 (Amazon VA folder has `Amazon_FBA_Agency_Blueprint.pdf`), idea 16 (Instagram Theme folder has `Digital_Real_Estate_Playbook.pdf`), idea 26 (WordPress folder has `Six_Figure_No_Code_Mastery.pdf`) | Customers will get whichever PDF is mapped. Confirm these four. |
 | 5 | **Delivery** | Email with a private, expiring link (as you asked) | Attachments are too large for email. Files are about 9–24 MB each. |
 
@@ -36,7 +36,7 @@ Assumed USD→PKR payout cost: 2%.
 |---|---|---|
 | $1.80 | 381 | 393 |
 | **$2.30 (idea)** | **509** | **525** |
-| $1.10 (skill, later) | 201 | 209 |
+| **$1.10 (skill)** | **201** | **209** |
 
 ---
 
@@ -100,7 +100,7 @@ If you see `Drive returned 404` or `403`, the folder isn't shared with the servi
 
 ### B4. Easier alternative: copy with Google Apps Script (no Google Cloud, no command line)
 
-If the Google Cloud and command-line steps (B2 and B3) are too much, use `scripts/apps-script/Code.gs`. It runs inside your own Google account, so it can read the Drive folder you already own. It needs no service-account key and no Node.js.
+If the Google Cloud and command-line steps (B2 and B3) are too much, use `scripts/apps-script/Code.gs` for the ideas and `scripts/apps-script/Skills.gs` for the skills. It runs inside your own Google account, so it can read the Drive folder you already own. It needs no service-account key and no Node.js.
 
 1. Go to **script.google.com**, click **New project**, and name it `GoshBuzz PDF copy`.
 2. Replace the code in `Code.gs` with the contents of `scripts/apps-script/Code.gs` from the repo, then save.
@@ -110,6 +110,10 @@ If the Google Cloud and command-line steps (B2 and B3) are too much, use `script
    - `DELIVERY_BUCKET` = `deliverables` (optional, this is the default)
 4. Choose `checkConnection` from the function list and click **Run**. Approve the permissions. The log should say `Connected`.
 5. Choose `uploadIdeaPdfs` and click **Run**. Watch the log for 30 `copy` lines ending with `Done. copied=30`. If it stops early with `Time limit reached`, run it again. It skips files already uploaded.
+6. **Skills.** Click **+** next to **Files** → **Script**, name it `Skills`, and paste in the contents of `scripts/apps-script/Skills.gs`. It uses the same project and the same Script properties.
+7. **Services (+)** in the left sidebar → **Drive API** → version **v3** → **Add**. This is needed to convert each HTML guide to a Google Doc, then to PDF. The temporary Docs are moved to the trash automatically.
+8. Choose `uploadSkillPdfs` and click **Run**. Watch for 30 `copy` lines ending with `Done. copied=30`. Run it again if it stops with `Time limit reached`.
+9. Check the Supabase bucket: `ideas/` should have 30 files and `skills/` should have 30 files. Download two or three skill PDFs and check the layout before selling.
 
 Apps Script is free for personal Google accounts. Keep the project private, because the secret key is stored there.
 

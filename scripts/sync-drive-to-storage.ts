@@ -60,7 +60,10 @@ async function main() {
   if (listError) throw new Error(`Could not list bucket "${bucketName}": ${listError.message}`);
   const existing = new Set((listed ?? []).map((object) => object.name));
 
-  const targets: DigitalProduct[] = digitalProducts.filter((p: DigitalProduct) => !only || only.has(p.id));
+  // Ideas only: skills are HTML pages, converted to PDF by the Apps Script (scripts/apps-script/Skills.gs).
+  const targets: DigitalProduct[] = digitalProducts.filter(
+    (p: DigitalProduct) => p.type === "idea" && (!only || only.has(p.id)),
+  );
   let copied = 0;
   let skipped = 0;
 

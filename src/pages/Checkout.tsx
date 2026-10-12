@@ -29,8 +29,8 @@ export default function Checkout() {
   const paid = searchParams.get("paid") === "1";
   const [cardBusy, setCardBusy] = useState(false);
   const [cardError, setCardError] = useState<string | null>(null);
-  const cardEligible = cart.length > 0 && cart.every((item) => item.type === "idea");
-  const cardTotalCents = cart.length * CARD_PRICE_USD_CENTS.idea;
+  const cardEligible = cart.length > 0 && cart.every((item) => item.type === "idea" || item.type === "skill");
+  const cardTotalCents = cart.reduce((sum, item) => sum + CARD_PRICE_USD_CENTS[item.type], 0);
 
   // Returning from Stripe: the order is paid, so empty the cart once.
   useEffect(() => {
@@ -385,7 +385,7 @@ ${itemLines}
               {cardEligible ? (
                 <>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
-                    Price: {formatUsd(CARD_PRICE_USD_CENTS.idea)} per guide, same for everyone. Total {formatUsd(cardTotalCents)}. Your PDF download links are emailed to you right after payment.
+                    Ideas {formatUsd(CARD_PRICE_USD_CENTS.idea)} each, skills {formatUsd(CARD_PRICE_USD_CENTS.skill)} each, same price for everyone. Total {formatUsd(cardTotalCents)}. Your PDF download links are emailed to you right after payment.
                   </p>
                   <button
                     onClick={handleCardCheckout}
@@ -398,7 +398,7 @@ ${itemLines}
                 </>
               ) : (
                 <p className="text-xs text-gray-500 dark:text-gray-400">
-                  Card payment is available for Earning Ideas. For Survival Skills, use WhatsApp checkout below.
+                  Card payment is available for ideas and skills. Use WhatsApp checkout below for other items.
                 </p>
               )}
             </div>
