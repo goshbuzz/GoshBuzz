@@ -58,11 +58,18 @@ const TIME_LIMIT_MS = 4.5 * 60 * 1000; // Apps Script stops at 6 minutes; stop e
 
 function getConfig_() {
   const props = PropertiesService.getScriptProperties();
-  const url = (props.getProperty("SUPABASE_URL") || "").replace(/\/$/, "");
-  const key = props.getProperty("SUPABASE_SERVICE_ROLE_KEY") || "";
-  const bucket = props.getProperty("DELIVERY_BUCKET") || "deliverables";
-  if (!url || !key) {
-    throw new Error("Add SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in Project Settings → Script properties.");
+  // Keep only the project address. Strip anything pasted after it, like /rest/v1 or /storage/v1.
+  const url = (props.getProperty("SUPABASE_URL") || "")
+    .trim()
+    .replace(/\/(rest|storage)\/v1\/?$/, "")
+    .replace(/\/+$/, "");
+  const key = (props.getProperty("SUPABASE_SERVICE_ROLE_KEY") || "").trim();
+  const bucket = (props.getProperty("DELIVERY_BUCKET") || "deliverables").trim();
+  if (!/^https:\/\/[a-z0-9]+\.supabase\.co$/.test(url)) {
+    throw new Error("SUPABASE_URL must look like https://xxxx.supabase.co (no path after it). Got: " + url);
+  }
+  if (!key) {
+    throw new Error("Add SUPABASE_SERVICE_ROLE_KEY in Project Settings → Script properties.");
   }
   return { url, key, bucket };
 }
