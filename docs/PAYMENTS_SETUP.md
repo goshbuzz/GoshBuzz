@@ -68,7 +68,10 @@ Your PDFs stay in Google Drive (your master copy). A **private** Supabase Storag
    - Database password: generate one and save it in a password manager. The app doesn't use it.
    - Plan: **Free**
 2. **Storage → New bucket:** name `deliverables`, **Public bucket: OFF**.
-3. **Project Settings → API.** Copy the **Project URL** and the **service_role** key. The service_role key is a secret. Never paste it into chat, a `VITE_` variable, or a file in Git.
+3. **Get the Project URL:** Project Settings → **Data API** (or the Connect button), and copy the **Project URL** (`https://xxxx.supabase.co`).
+4. **Get the secret key:** Project Settings → **API Keys**, section **Secret keys**. Click the copy icon next to the key (it starts with `sb_secret_`). Keep it secret. Never paste it into chat, a `VITE_` variable, or a file in Git.
+   - If the script later fails with a 401 or "Invalid JWT" error, use the legacy **service_role** key from the **Legacy anon, service_role API keys** tab instead, and put it in the same `SUPABASE_SERVICE_ROLE_KEY` variable.
+   - Never use the **Publishable** key for this. It's for browsers and can't upload.
 
 ### B2. Google Drive read access (free, no billing)
 1. Go to **console.cloud.google.com**, sign in, and create a project named `goshbuzz-delivery`. No billing account is needed.
@@ -86,7 +89,7 @@ The script copies each PDF from Drive into the bucket as `ideas/idea-N.pdf`, che
 3. Create a file named **`.env.local`** in the GoshBuzz folder (git ignores it). Fill it in:
    ```
    SUPABASE_URL=https://your-project.supabase.co
-   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+   SUPABASE_SERVICE_ROLE_KEY=sb_secret_...your_secret_key
    DELIVERY_BUCKET=deliverables
    GCP_SERVICE_ACCOUNT_JSON={"type":"service_account", ...the whole key file, on ONE line...}
    ```
@@ -129,7 +132,7 @@ Vercel → your project → **Settings → Environment Variables**. Add each one
 | `DOWNLOAD_TOKEN_SECRET` | 64 random hex characters: run `openssl rand -hex 32` |
 | `DOWNLOAD_LINK_DAYS` | `7` (1 to 30) |
 | `SUPABASE_URL` | your Project URL (`https://xxxx.supabase.co`) |
-| `SUPABASE_SERVICE_ROLE_KEY` | the service_role key (secret; server only) |
+| `SUPABASE_SERVICE_ROLE_KEY` | the secret key (`sb_secret_...`), or the legacy service_role key as a fallback (secret; server only) |
 | `DELIVERY_BUCKET` | `deliverables` (your private bucket name) |
 | `RESEND_API_KEY` | `re_...` |
 | `EMAIL_FROM` | `GoshBuzz <orders@goshbuzz.com>` |
