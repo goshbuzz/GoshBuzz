@@ -98,6 +98,21 @@ The script copies each PDF from Drive into the bucket as `ideas/idea-N.pdf`, che
 
 If you see `Drive returned 404` or `403`, the folder isn't shared with the service account email (step B2.6).
 
+### B4. Easier alternative: copy with Google Apps Script (no Google Cloud, no command line)
+
+If the Google Cloud and command-line steps (B2 and B3) are too much, use `scripts/apps-script/Code.gs`. It runs inside your own Google account, so it can read the Drive folder you already own. It needs no service-account key and no Node.js.
+
+1. Go to **script.google.com**, click **New project**, and name it `GoshBuzz PDF copy`.
+2. Replace the code in `Code.gs` with the contents of `scripts/apps-script/Code.gs` from the repo, then save.
+3. **Project Settings (gear icon) → Script properties**, and add:
+   - `SUPABASE_URL` = your Project URL
+   - `SUPABASE_SERVICE_ROLE_KEY` = your secret key (`sb_secret_...`)
+   - `DELIVERY_BUCKET` = `deliverables` (optional, this is the default)
+4. Choose `checkConnection` from the function list and click **Run**. Approve the permissions. The log should say `Connected`.
+5. Choose `uploadIdeaPdfs` and click **Run**. Watch the log for 30 `copy` lines ending with `Done. copied=30`. If it stops early with `Time limit reached`, run it again. It skips files already uploaded.
+
+Apps Script is free for personal Google accounts. Keep the project private, because the secret key is stored there.
+
 ## Part C. Email (Resend): free, no paid mailbox needed
 
 You do **not** need to buy any email plan (Hostinger or other). Resend sends the delivery emails from its own servers. You only add a few DNS records to prove you own `goshbuzz.com`. Resend's free plan covers 3,000 emails a month (max 100 a day) with one custom domain. ([Resend pricing](https://resend.com/pricing))
