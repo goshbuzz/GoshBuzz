@@ -48,6 +48,27 @@ const SKILL_FILES = [
   { id: "skill-30", title: "Leadership & Delegation", htmlFileId: "1o2Jxi5HBA1-Iro2NNEOkvS3W2ioxHXK9", storageKey: "skills/skill-30.pdf" }
 ];
 
+/**
+ * Reads the Script properties. Self-contained, so this file does not depend on Code.gs.
+ */
+function skillConfig_() {
+  const props = PropertiesService.getScriptProperties();
+  const url = (props.getProperty("SUPABASE_URL") || "").trim().replace(/\/+$/, "").replace(/\/(rest|storage)\/v1$/, "");
+  const key = (props.getProperty("SUPABASE_SERVICE_ROLE_KEY") || "").trim();
+  const bucket = (props.getProperty("DELIVERY_BUCKET") || "deliverables").trim();
+  if (!/^https:\/\/[a-z0-9]+\.supabase\.co$/.test(url)) {
+    throw new Error("SUPABASE_URL must look like https://xxxx.supabase.co (no path after it). Got: " + url);
+  }
+  if (!key) {
+    throw new Error("SUPABASE_SERVICE_ROLE_KEY is missing in Script properties.");
+  }
+  return { url: url, key: key, bucket: bucket };
+}
+
+function skillAuthHeaders_(cfg) {
+  return { Authorization: "Bearer " + cfg.key, apikey: cfg.key };
+}
+
 const SKILL_TIME_LIMIT_MS = 4.5 * 60 * 1000;
 
 function convertHtmlToPdf_(htmlFileId, title) {
@@ -64,7 +85,7 @@ function listSkillsExisting_(cfg) {
   const res = UrlFetchApp.fetch(cfg.url + "/storage/v1/object/list/" + cfg.bucket, {
     method: "post",
     contentType: "application/json",
-    headers: authHeaders_(cfg),
+    headers: skillAuthHeaders_(cfg),
     payload: JSON.stringify({ prefix: "skills", limit: 1000, offset: 0 }),
     muteHttpExceptions: true,
   });
@@ -83,7 +104,7 @@ function forceUploadSkillPdfs() {
 }
 
 function copySkillPdfs_(force) {
-  const cfg = getConfig_();
+  const cfg = skillConfig_();
   const existing = force ? new Set() : listSkillsExisting_(cfg);
   const started = Date.now();
   let copied = 0;
@@ -111,7 +132,7 @@ function copySkillPdfs_(force) {
     const res = UrlFetchApp.fetch(cfg.url + "/storage/v1/object/" + cfg.bucket + "/" + file.storageKey, {
       method: "post",
       contentType: "application/pdf",
-      headers: Object.assign({ "x-upsert": "true" }, authHeaders_(cfg)),
+      headers: Object.assign({ "x-upsert": "true" }, skillAuthHeaders_(cfg)),
       payload: bytes,
       muteHttpExceptions: true,
     });
