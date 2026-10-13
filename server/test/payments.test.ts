@@ -4,7 +4,8 @@ import { Readable } from "node:stream";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import Stripe from "stripe";
 import { digitalProducts, findDigitalProduct, resolveCart, CartError } from "../../src/data/digitalProducts";
-import { products } from "../../src/data";
+import { products, findProductByIdentifier } from "../../src/data";
+import { normalizeCart } from "../../src/CartContext";
 import { signDownloadToken, verifyDownloadToken } from "../lib/tokens";
 import { buildDeliveryEmail, buildDeliveryLinks } from "../lib/delivery";
 import { buildCheckoutParams, cartTotalCents } from "../lib/stripe";
@@ -52,6 +53,50 @@ test("resolveCart accepts ideas, removes duplicates, and rejects unknown or empt
   assert.throws(() => resolveCart(["skill-99"]), CartError);
   assert.throws(() => resolveCart([42]), CartError);
   assert.throws(() => resolveCart(Array.from({ length: 21 }, (_, i) => `idea-${(i % 30) + 1}`)), CartError);
+});
+
+test("normalizeCart upgrades legacy slug ids to catalog ids and dedupes", () => {
+  const legacy = [
+    { id: "blogging-adsense-blueprint", title: "Legacy Title", price: 500 },
+    { id: "faceless-youtube-automation", title: "Legacy Faceless", price: 500 },
+    { id: "idea-2", title: "Blogging + AdSense", price: 500 }, // duplicate of first item
+  ];
+  const normalized = normalizeCart(legacy);
+  assert.deepEqual(
+    normalized.map((item) => item.id),
+    ["idea-2", "idea-8"],
+  );
+  assert.deepEqual(
+    normalized.map((item) => item.type),
+    ["idea", "idea"],
+  );
+  // Ensure the resolved catalog IDs can be fed directly to resolveCart for Stripe checkout
+  const resolved = resolveCart(normalized.map((item) => item.id));
+  assert.equal(resolved.length, 2);
+  assert.equal(cartTotalCents(resolved), 460);
+});
+
+test("featured article slugs resolve to valid digital product catalog ids", () => {
+  const featuredSlugs = [
+    "blogging-adsense-blueprint",
+    "ebay-dropshipping-guide",
+    "faceless-youtube-automation",
+  ];
+  const expectedCatalogIds = ["idea-2", "idea-3", "idea-8"];
+
+  for (let i = 0; i < featuredSlugs.length; i++) {
+    const slug = featuredSlugs[i];
+    const product = findProductByIdentifier(slug);
+    assert.ok(product, `slug ${slug} must be found in catalog`);
+    assert.equal(product.id, expectedCatalogIds[i]);
+    const digital = findDigitalProduct(product.id);
+    assert.ok(digital, `product ${product.id} must exist in digitalProducts catalog`);
+  }
+
+  // A checkout session with these IDs resolves without CartError
+  const resolved = resolveCart(expectedCatalogIds);
+  assert.equal(resolved.length, 3);
+  assert.equal(cartTotalCents(resolved), 690);
 });
 
 // ---------- checkout parameters ----------
