@@ -12,7 +12,7 @@
  * Prices live in cardPricing.ts (one USD price for everyone). See docs/PAYMENTS_SETUP.md for the math.
  */
 
-import { CARD_PRICE_USD_CENTS } from "./cardPricing";
+import { CARD_PRICE_USD_CENTS } from "./cardPricing.js";
 
 export interface DigitalProduct {
   /** Same id as in src/data.ts, e.g. "idea-1" or "skill-1". */

@@ -1,8 +1,8 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { CartError, resolveCart } from "../src/data/digitalProducts";
-import { siteUrl } from "../server/lib/config";
-import { readJsonBody, sendJson } from "../server/lib/http";
-import { buildCheckoutParams, cartTotalCents, getStripe } from "../server/lib/stripe";
+import { CartError, resolveCart } from "../src/data/digitalProducts.js";
+import { siteUrl } from "../server/lib/config.js";
+import { readJsonBody, sendJson } from "../server/lib/http.js";
+import { buildCheckoutParams, cartTotalCents, getStripe } from "../server/lib/stripe.js";
 
 /**
  * POST /api/create-checkout-session  { "productIds": ["idea-1", "idea-4"] }

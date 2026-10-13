@@ -1,9 +1,9 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { findDigitalProduct } from "../src/data/digitalProducts";
-import { requireEnv } from "../server/lib/config";
-import { sendText } from "../server/lib/http";
-import { signedPdfUrl } from "../server/lib/storage";
-import { verifyDownloadToken } from "../server/lib/tokens";
+import { findDigitalProduct } from "../src/data/digitalProducts.js";
+import { requireEnv } from "../server/lib/config.js";
+import { sendText } from "../server/lib/http.js";
+import { signedPdfUrl } from "../server/lib/storage.js";
+import { verifyDownloadToken } from "../server/lib/tokens.js";
 
 /**
  * GET /api/download?token=...
