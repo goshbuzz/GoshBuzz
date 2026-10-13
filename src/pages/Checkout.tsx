@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { 
   Trash2, 
@@ -16,12 +16,48 @@ import {
 import { useCart } from "../CartContext";
 import { useLanguage } from "../LanguageContext";
 import { products } from "../data";
+import { CARD_PRICE_USD_CENTS, formatUsd } from "../data/cardPricing";
 
 export default function Checkout() {
   const { cart, removeFromCart, addToCart, cartTotal, clearCart } = useCart();
   const { t } = useLanguage();
 
   const [copiedType, setCopiedType] = useState<"easypaisa" | "jazzcash" | null>(null);
+
+  // Card payments (Stripe). The server sets the real price; this only drives the display.
+  const [searchParams] = useSearchParams();
+  const paid = searchParams.get("paid") === "1";
+  const [cardBusy, setCardBusy] = useState(false);
+  const [cardError, setCardError] = useState<string | null>(null);
+  const cardEligible = cart.length > 0 && cart.every((item) => item.type === "idea" || item.type === "skill");
+  const cardTotalCents = cart.reduce((sum, item) => sum + CARD_PRICE_USD_CENTS[item.type], 0);
+
+  // Returning from Stripe: the order is paid, so empty the cart once.
+  useEffect(() => {
+    if (paid) clearCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [paid]);
+
+  const handleCardCheckout = async () => {
+    if (!cardEligible || cardBusy) return;
+    setCardError(null);
+    setCardBusy(true);
+    try {
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productIds: cart.map((item) => item.id) }),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.url) {
+        throw new Error(data.error || "Could not start card payment.");
+      }
+      window.location.assign(data.url);
+    } catch (error) {
+      setCardError(error instanceof Error ? error.message : "Card payment failed. Please try again.");
+      setCardBusy(false);
+    }
+  };
 
   const handleCopy = (text: string, type: "easypaisa" | "jazzcash") => {
     navigator.clipboard.writeText(text);
@@ -89,6 +125,13 @@ ${itemLines}
           Pakistan's direct library checkout. No accounts or credit cards required. Pay via EasyPaisa / JazzCash and get PDF delivery on WhatsApp.
         </p>
       </div>
+
+      {paid && (
+        <div className="mb-8 rounded-2xl border border-green-200 bg-green-50 dark:border-green-900/40 dark:bg-green-950/30 p-5 text-sm text-green-800 dark:text-green-300">
+          <strong className="block text-base mb-1">Payment received. Thank you!</strong>
+          Your download links are being emailed to you now. Check your inbox and spam folder. Each link works for a limited time.
+        </div>
+      )}
 
       {cart.length === 0 ? (
         <div className="bg-white dark:bg-gray-900 rounded-3xl p-12 text-center border border-gray-100 dark:border-gray-800 shadow-sm max-w-2xl mx-auto">
@@ -332,6 +375,32 @@ ${itemLines}
                   🔒 STATUS: PENDING PAYMENT CONFIRMATION
                 </div>
               </div>
+            </div>
+
+            {/* Card payment (Stripe). Same USD price for every buyer. */}
+            <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-150 dark:border-gray-800 p-6 shadow-sm space-y-4">
+              <h3 className="text-base font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                <CreditCard size={18} className="text-amber-500" /> Pay by card (instant PDF email)
+              </h3>
+              {cardEligible ? (
+                <>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    Ideas {formatUsd(CARD_PRICE_USD_CENTS.idea)} each, skills {formatUsd(CARD_PRICE_USD_CENTS.skill)} each, same price for everyone. Total {formatUsd(cardTotalCents)}. Your PDF download links are emailed to you right after payment.
+                  </p>
+                  <button
+                    onClick={handleCardCheckout}
+                    disabled={cardBusy}
+                    className="w-full py-4 bg-amber-500 text-white hover:bg-amber-600 disabled:opacity-60 active:scale-95 transition-all rounded-2xl font-black text-lg flex items-center justify-center gap-3"
+                  >
+                    {cardBusy ? "Opening secure payment..." : `Pay ${formatUsd(cardTotalCents)} by card`}
+                  </button>
+                  {cardError && <p role="alert" className="text-sm text-red-600">{cardError}</p>}
+                </>
+              ) : (
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Card payment is available for ideas and skills. Use WhatsApp checkout below for other items.
+                </p>
+              )}
             </div>
 
             {/* Checkout Action Button */}

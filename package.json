@@ -7,19 +7,23 @@
     "dev": "tsx server.ts",
     "build": "node scripts/build.js",
     "start": "node dist/server.js",
-    "typecheck": "tsc --noEmit",
-    "test": "node --test scripts/check-build.test.js",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.server.json",
+    "test": "node --test scripts/check-build.test.js && node --import tsx --test server/test/payments.test.ts",
     "check:build": "node scripts/check-build.js",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit && tsc -p tsconfig.server.json",
+    "test:payments": "node --import tsx --test server/test/payments.test.ts",
+    "sync:drive": "node --env-file-if-exists=.env.local --import tsx scripts/sync-drive-to-storage.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "express": "^5.2.1",
+    "google-auth-library": "^11.2.0",
     "lucide-react": "^1.23.0",
     "motion": "^12.42.2",
     "react": "^19.2.7",
@@ -27,6 +31,7 @@
     "react-helmet-async": "^3.0.0",
     "react-router-dom": "^7.18.1",
     "react-router-hash-link": "^2.4.3",
+    "stripe": "^23.0.0",
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
