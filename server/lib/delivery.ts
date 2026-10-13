@@ -1,6 +1,6 @@
-import type { DigitalProduct } from "../../src/data/digitalProducts";
-import { downloadLinkDays, requireEnv } from "./config";
-import { signDownloadToken } from "./tokens";
+import type { DigitalProduct } from "../../src/data/digitalProducts.js";
+import { downloadLinkDays, requireEnv } from "./config.js";
+import { signDownloadToken } from "./tokens.js";
 
 export interface DeliveryLink {
   title: string;

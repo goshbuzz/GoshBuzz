@@ -1,6 +1,6 @@
 import Stripe from "stripe";
-import { requireEnv, siteUrl } from "./config";
-import type { DigitalProduct } from "../../src/data/digitalProducts";
+import { requireEnv, siteUrl } from "./config.js";
+import type { DigitalProduct } from "../../src/data/digitalProducts.js";
 
 let client: Stripe | undefined;
 

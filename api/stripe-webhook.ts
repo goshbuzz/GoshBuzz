@@ -1,10 +1,10 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import type Stripe from "stripe";
-import { findDigitalProduct } from "../src/data/digitalProducts";
-import { requireEnv, siteUrl } from "../server/lib/config";
-import { buildDeliveryEmail, buildDeliveryLinks, sendDeliveryEmail } from "../server/lib/delivery";
-import { readRawBody, sendText } from "../server/lib/http";
-import { getStripe } from "../server/lib/stripe";
+import { findDigitalProduct } from "../src/data/digitalProducts.js";
+import { requireEnv, siteUrl } from "../server/lib/config.js";
+import { buildDeliveryEmail, buildDeliveryLinks, sendDeliveryEmail } from "../server/lib/delivery.js";
+import { readRawBody, sendText } from "../server/lib/http.js";
+import { getStripe } from "../server/lib/stripe.js";
 
 /**
  * POST /api/stripe-webhook. Stripe calls this after a payment succeeds.
