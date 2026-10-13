@@ -18,7 +18,7 @@ import {
   ShoppingCart,
   CheckCircle2,
 } from "lucide-react";
-import { products } from "../data";
+import { products, findProductByIdentifier } from "../data";
 import { goshbuzzApps } from "../data/appsData";
 import { FAQ } from "../components/FAQ";
 import { HeroSlideshow } from "../components/HeroSlideshow";
@@ -326,112 +326,119 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {featuredArticles.map((article) => (
-            <article
-              key={article.id}
-              className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-xl dark:hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className="h-52 overflow-hidden relative">
-                  <img
-                  width={800}
-                  height={450}
-                  decoding="async"
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-4 left-4 bg-amber-500 text-gray-950 px-3 py-1 rounded-full text-xs font-extrabold shadow-sm">
-                    {article.category}
+          {featuredArticles.map((article) => {
+            const product = findProductByIdentifier(article.slug);
+            const productId = product ? product.id : article.id;
+            const productType: "idea" | "skill" = product?.type === "skill" ? "skill" : "idea";
+            const productPrice = productType === "idea" ? 500 : 200;
+
+            return (
+              <article
+                key={article.id}
+                className="bg-white dark:bg-gray-900 rounded-3xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-xl dark:hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="h-52 overflow-hidden relative">
+                    <img
+                      width={800}
+                      height={450}
+                      decoding="async"
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-4 left-4 bg-amber-500 text-gray-950 px-3 py-1 rounded-full text-xs font-extrabold shadow-sm">
+                      {article.category}
+                    </div>
+                    <div className="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-xs text-gray-200 px-3 py-1 rounded-full text-[11px] font-semibold border border-gray-700">
+                      {article.readTime}
+                    </div>
                   </div>
-                  <div className="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-xs text-gray-200 px-3 py-1 rounded-full text-[11px] font-semibold border border-gray-700">
-                    {article.readTime}
+
+                  <div className="p-6">
+                    <div className="text-xs text-gray-500 dark:text-gray-400 mb-2 font-mono">
+                      Published: {article.date} • Editorial Board
+                    </div>
+                    <h3 className="text-xl font-extrabold text-gray-900 dark:text-white mb-3 hover:text-amber-500 transition-colors">
+                      <Link to={`/blogs/news/${article.slug}`}>
+                        {article.title}
+                      </Link>
+                    </h3>
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                      {article.excerpt}
+                    </p>
+
+                    {/* Key Takeaways Badges */}
+                    <div className="flex flex-wrap gap-1.5 pt-2 border-t border-gray-100 dark:border-gray-800">
+                      {article.takeaways.map((tag, idx) => (
+                        <span
+                          key={idx}
+                          className="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+                        >
+                          ✓ {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <div className="text-xs text-gray-500 dark:text-gray-400 mb-2 font-mono">
-                    Published: {article.date} • Editorial Board
+                <div className="p-6 pt-0 space-y-2">
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => {
+                        addToCart({
+                          id: productId,
+                          title: product?.title || article.title,
+                          type: productType,
+                          price: productPrice,
+                          image: product?.image || article.image,
+                          slug: product?.slug || article.slug,
+                        });
+                        navigate("/checkout");
+                      }}
+                      className="py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+                    >
+                      <ShoppingCart size={14} />
+                      <span>Buy Now (Rs. {productPrice})</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        addToCart({
+                          id: productId,
+                          title: product?.title || article.title,
+                          type: productType,
+                          price: productPrice,
+                          image: product?.image || article.image,
+                          slug: product?.slug || article.slug,
+                        });
+                      }}
+                      className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
+                        isInCart(productId)
+                          ? "bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800"
+                          : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700"
+                      }`}
+                    >
+                      {isInCart(productId) ? (
+                        <>
+                          <CheckCircle2 size={14} /> Added
+                        </>
+                      ) : (
+                        <>+ Cart</>
+                      )}
+                    </button>
                   </div>
-                  <h3 className="text-xl font-extrabold text-gray-900 dark:text-white mb-3 hover:text-amber-500 transition-colors">
-                    <Link to={`/blogs/news/${article.slug}`}>
-                      {article.title}
-                    </Link>
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                    {article.excerpt}
-                  </p>
-
-                  {/* Key Takeaways Badges */}
-                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-gray-100 dark:border-gray-800">
-                    {article.takeaways.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-                      >
-                        ✓ {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-6 pt-0 space-y-2">
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    onClick={() => {
-                      addToCart({
-                        id: article.id,
-                        title: article.title,
-                        type: "idea",
-                        price: 500,
-                        image: article.image,
-                        slug: article.slug,
-                      });
-                      navigate("/checkout");
-                    }}
-                    className="py-2.5 px-3 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+                  <Link
+                    to={`/blogs/news/${article.slug}`}
+                    className="w-full py-2 px-3 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800/60 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 font-semibold rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5 border border-gray-200/80 dark:border-gray-700"
                   >
-                    <ShoppingCart size={14} />
-                    <span>Buy Now (Rs. 500)</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      addToCart({
-                        id: article.id,
-                        title: article.title,
-                        type: "idea",
-                        price: 500,
-                        image: article.image,
-                        slug: article.slug,
-                      });
-                    }}
-                    className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1.5 cursor-pointer ${
-                      isInCart(article.id)
-                        ? "bg-green-50 dark:bg-green-950/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-800"
-                        : "bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700"
-                    }`}
-                  >
-                    {isInCart(article.id) ? (
-                      <>
-                        <CheckCircle2 size={14} /> Added
-                      </>
-                    ) : (
-                      <>+ Cart</>
-                    )}
-                  </button>
+                    <span>Read Guide & Case Study</span>
+                    <ArrowRight size={13} />
+                  </Link>
                 </div>
-                <Link
-                  to={`/blogs/news/${article.slug}`}
-                  className="w-full py-2 px-3 bg-gray-50 hover:bg-gray-100 dark:bg-gray-800/60 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 font-semibold rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5 border border-gray-200/80 dark:border-gray-700"
-                >
-                  <span>Read Guide & Case Study</span>
-                  <ArrowRight size={13} />
-                </Link>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </section>
 
