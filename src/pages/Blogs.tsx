@@ -153,7 +153,7 @@ export default function Blogs() {
       {filteredPosts.length === 0 ? (
         <div className="text-center py-20 bg-white dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800">
           <BookOpen className="mx-auto text-gray-300 dark:text-gray-700 mb-4" size={48} />
-          <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">No Articles Found</h3>
+          <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">No Articles Found</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Try searching for something else or changing categories.
           </p>
@@ -200,9 +200,9 @@ export default function Blogs() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="font-extrabold text-gray-950 dark:text-gray-50 text-lg leading-snug group-hover:text-amber-500 transition-colors">
+                  <h2 className="font-extrabold text-gray-950 dark:text-gray-50 text-lg leading-snug group-hover:text-amber-500 transition-colors">
                     <Link to={`/blogs/news/${post.slug || post.id}`}>{post.title}</Link>
-                  </h3>
+                  </h2>
                   <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
                     {post.intro}
                   </p>
@@ -281,12 +281,15 @@ export default function Blogs() {
 
       {/* External Authority Resources */}
       <div className="mt-20 pt-12 border-t border-gray-200 dark:border-gray-800 space-y-12">
+        <h2 className="text-2xl font-extrabold text-gray-950 dark:text-gray-50 tracking-tight">
+          Trusted External Resources
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-2">
-            <h4 className="font-extrabold text-sm text-gray-900 dark:text-gray-100 flex items-center justify-between">
+            <h3 className="font-extrabold text-sm text-gray-900 dark:text-gray-100 flex items-center justify-between">
               <span>Google AdSense Portal</span>
               <span className="text-xs text-amber-500 font-mono">adsense.google.com</span>
-            </h4>
+            </h3>
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Official publisher policies, site verification guidelines, and traffic metrics dashboard for website owners.
             </p>
@@ -296,10 +299,10 @@ export default function Blogs() {
           </div>
 
           <div className="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-2">
-            <h4 className="font-extrabold text-sm text-gray-900 dark:text-gray-100 flex items-center justify-between">
+            <h3 className="font-extrabold text-sm text-gray-900 dark:text-gray-100 flex items-center justify-between">
               <span>Binance Academy</span>
               <span className="text-xs text-amber-500 font-mono">academy.binance.com</span>
-            </h4>
+            </h3>
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Free crypto spot trading education, risk management, and security protocols verified for beginners.
             </p>
@@ -309,10 +312,10 @@ export default function Blogs() {
           </div>
 
           <div className="p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 space-y-2">
-            <h4 className="font-extrabold text-sm text-gray-900 dark:text-gray-100 flex items-center justify-between">
+            <h3 className="font-extrabold text-sm text-gray-900 dark:text-gray-100 flex items-center justify-between">
               <span>Upwork Talent Hub</span>
               <span className="text-xs text-amber-500 font-mono">upwork.com</span>
-            </h4>
+            </h3>
             <p className="text-xs text-gray-500 dark:text-gray-400">
               Top freelancer tips for bidding, job success score, client communication, and verified badge achievements.
             </p>

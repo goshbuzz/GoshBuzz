@@ -23,14 +23,11 @@ import {
   Link2,
   BookOpen,
   Check,
-  Flame,
-  AlertTriangle,
   Zap,
   Lock,
   Award,
   RefreshCw,
-  Smartphone,
-  Users
+  Smartphone
 } from "lucide-react";
 import { products, findProductByIdentifier } from "../data";
 import NotFound from "./NotFound";
@@ -63,6 +60,22 @@ export default function Product() {
   const alreadyInCart = isInCart(product.id);
   const article = articles[product.id as keyof typeof articles];
   const articleUrl = `https://goshbuzz.com/blogs/news/${product.slug || product.id}`;
+
+  // Reading time computed from the article's own content length (≈200 wpm),
+  // instead of a hardcoded value shared by every guide.
+  const articleWordCount = article
+    ? [
+        article.intro,
+        article.aeoSummary || "",
+        ...article.steps.map((s) => `${s.title} ${s.content}`),
+        ...article.proTips,
+        ...article.faqs.map((f) => `${f.question} ${f.answer}`),
+      ]
+        .join(" ")
+        .split(/\s+/)
+        .filter(Boolean).length
+    : 0;
+  const readingMinutes = article ? Math.max(4, Math.round(articleWordCount / 200)) : 0;
 
   const metaDescription = article ? article.intro : product.description;
   const combinedKeywordsList = [
@@ -207,7 +220,7 @@ export default function Product() {
           {JSON.stringify({ "@context": "https://schema.org", "@graph": [organizationNode, founderNode] })}
         </script>
       </Helmet>
-      <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8 overflow-x-auto whitespace-nowrap pb-2">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-8 overflow-x-auto whitespace-nowrap pb-2">
         <Link
           to="/"
           className="hover:text-gray-900 dark:text-gray-100 transition-colors inline-flex items-center gap-1"
@@ -216,7 +229,7 @@ export default function Product() {
         </Link>
         <span className="text-gray-300">/</span>
         <Link
-          to="/"
+          to={product.type === "idea" ? "/collection/ideas" : "/collection/skills"}
           className="hover:text-gray-900 dark:text-gray-100 transition-colors"
         >
           {product.type === "idea" ? "Earning Ideas" : "Survival Skills"}
@@ -250,14 +263,19 @@ export default function Product() {
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-200 dark:border-amber-800">
                 {product.type === "idea" ? "Earning Idea" : "Survival Skill"}
               </span>
-              {/* Emergency High-Demand Badge */}
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-xs font-extrabold border border-rose-200 dark:border-rose-800 animate-pulse">
-                <Flame size={13} className="text-rose-600 dark:text-rose-400" />
-                <span>HOT: 38 Purchased Today</span>
+              {/* Category chip (unique per guide) */}
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 text-xs font-bold border border-sky-200 dark:border-sky-800">
+                <BookOpen size={13} className="text-sky-600 dark:text-sky-400" />
+                <span>{product.category}</span>
+              </span>
+              {/* Free-to-read badge — replaces fabricated scarcity counters */}
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-xs font-extrabold border border-emerald-200 dark:border-emerald-800">
+                <BookOpen size={13} className="text-emerald-600 dark:text-emerald-400" />
+                <span>Full Guide Free to Read</span>
               </span>
               {/* Instant WhatsApp Delivery Badge */}
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 text-xs font-extrabold border border-emerald-200 dark:border-emerald-800">
-                <Zap size={13} className="text-emerald-600 dark:text-emerald-400" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 text-xs font-extrabold border border-amber-200 dark:border-amber-800">
+                <Zap size={13} className="text-amber-600 dark:text-amber-400" />
                 <span>Instant WhatsApp Delivery</span>
               </span>
             </div>
@@ -270,11 +288,8 @@ export default function Product() {
               <span className="text-3xl font-extrabold text-amber-500">
                 Rs. {price}
               </span>
-              <span className="text-sm line-through text-gray-400 font-semibold">
-                Rs. {product.type === "idea" ? "1,500" : "600"}
-              </span>
               <span className="px-2.5 py-0.5 bg-green-100 dark:bg-green-950/40 text-green-700 dark:text-green-300 text-xs font-extrabold rounded-md border border-green-200 dark:border-green-800">
-                60% OFF Launch Promo
+                One-time payment
               </span>
             </div>
 
@@ -283,25 +298,25 @@ export default function Product() {
             </p>
           </div>
 
-          {/* Emergency Alert Banner */}
-          <div className="w-full p-3.5 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/60 rounded-2xl flex items-center gap-3 text-left">
-            <span className="p-2 bg-amber-500 text-white rounded-xl shrink-0">
-              <AlertTriangle size={16} />
+          {/* Honest value banner — replaces fabricated "limited batch" scarcity copy */}
+          <div className="w-full p-3.5 bg-blue-50/70 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/60 rounded-2xl flex items-center gap-3 text-left">
+            <span className="p-2 bg-blue-500 text-white rounded-xl shrink-0">
+              <BookOpen size={16} />
             </span>
             <div className="text-xs">
               <p className="font-bold text-gray-900 dark:text-gray-100">
-                Limited Batch Capacity: Only 6 Discounted Copies Left
+                Read the complete guide free on this page
               </p>
               <p className="text-gray-600 dark:text-gray-400 text-[11px] mt-0.5">
-                Regular price of Rs. {product.type === "idea" ? "1,500" : "600"} restores automatically once current cohort fills.
+                The paid package is optional: it adds the offline PDF edition, action checklists and worksheets, delivered to WhatsApp &amp; email.
               </p>
             </div>
           </div>
 
           <div className="space-y-3 pt-2 border-t border-gray-100 dark:border-gray-800 w-full">
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm">
+            <h2 className="font-semibold text-gray-900 dark:text-gray-100 text-sm">
               What you get immediately upon purchase:
-            </h3>
+            </h2>
             <ul className="space-y-2.5 inline-block text-left text-xs sm:text-sm">
               <li className="flex items-start gap-2.5 text-gray-600 dark:text-gray-400">
                 <CheckCircle2
@@ -391,7 +406,7 @@ export default function Product() {
                 <div className="p-2.5 bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 flex items-center gap-2 shadow-2xs">
                   <Award size={16} className="text-amber-500 shrink-0" />
                   <div>
-                    <p className="text-[11px] font-bold text-gray-900 dark:text-gray-100 leading-tight">Verified Authority</p>
+                    <p className="text-[11px] font-bold text-gray-900 dark:text-gray-100 leading-tight">Expert Author</p>
                     <p className="text-[9px] text-gray-500 dark:text-gray-400">Computer Scientist</p>
                   </div>
                 </div>
@@ -421,10 +436,10 @@ export default function Product() {
                 </div>
 
                 <div className="p-2.5 bg-white dark:bg-gray-900 rounded-xl border border-gray-100 dark:border-gray-800 flex items-center gap-2 shadow-2xs">
-                  <Users size={16} className="text-indigo-500 shrink-0" />
+                  <BookOpen size={16} className="text-indigo-500 shrink-0" />
                   <div>
-                    <p className="text-[11px] font-bold text-gray-900 dark:text-gray-100 leading-tight">2,400+ Readers</p>
-                    <p className="text-[9px] text-gray-500 dark:text-gray-400">⭐ 4.9/5 Rating</p>
+                    <p className="text-[11px] font-bold text-gray-900 dark:text-gray-100 leading-tight">Free Full Access</p>
+                    <p className="text-[9px] text-gray-500 dark:text-gray-400">Read online — no sign-up</p>
                   </div>
                 </div>
               </div>
@@ -453,9 +468,9 @@ export default function Product() {
           </div>
 
           <div className="pt-6 border-t border-gray-100 dark:border-gray-800">
-            <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
+            <h2 className="font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
               <Share2 size={18} /> Share this guide
-            </h3>
+            </h2>
             <div className="flex gap-3">
               <a
                 href={`https://wa.me/?text=${encodeURIComponent(`Check out this amazing guide: ${product.title} - ${articleUrl}`)}`}
@@ -527,7 +542,7 @@ export default function Product() {
 
       {/* Detailed Case Study / Step-by-Step Blueprint (SEO / AEO / GEO Optimized) */}
       {article && (
-        <div className="mt-24 pt-16 border-t border-gray-100 dark:border-gray-800">
+        <article className="mt-24 pt-16 border-t border-gray-100 dark:border-gray-800">
           <div className="max-w-4xl mx-auto space-y-12">
             
             {/* Header / Intro */}
@@ -565,33 +580,33 @@ export default function Product() {
                 </div>
                 <div className="flex items-center gap-4 text-xs font-medium text-gray-500 dark:text-gray-400 border-t md:border-t-0 border-gray-100 dark:border-gray-800 pt-2 md:pt-0 w-full md:w-auto">
                   <span className="flex items-center gap-1">
-                    <Clock size={13} className="text-amber-500" /> ~12 min read
+                    <Clock size={13} className="text-amber-500" /> ~{readingMinutes} min read
                   </span>
                   <span>•</span>
-                  <span className="flex items-center gap-1 text-green-600 dark:text-green-400 font-semibold">
-                    <ShieldCheck size={14} /> 100% Policy Compliant
+                  <span className="flex items-center gap-1 text-amber-700 dark:text-amber-400 font-semibold">
+                    <BookOpen size={14} /> {product.category} Guide
                   </span>
                 </div>
               </div>
             </div>
 
             {/* Table of Contents */}
-            <div className="p-6 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200/80 dark:border-gray-800 space-y-3">
+            <nav aria-label="On this page" className="p-6 bg-gray-50 dark:bg-gray-900/60 rounded-2xl border border-gray-200/80 dark:border-gray-800 space-y-3">
               <h3 className="font-extrabold text-sm uppercase tracking-wider text-gray-900 dark:text-gray-100 flex items-center gap-2">
                 <BookOpen size={16} className="text-amber-500" /> Guide Contents & Navigation
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold">
                 <a href="#aeo-summary" className="p-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2">
-                  <span className="text-amber-500">1.</span> Executive Summary & Key Highlights
+                  <span className="text-amber-500">1.</span> Quick Answer & Key Highlights
                 </a>
                 <a href="#blueprint-steps" className="p-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2">
                   <span className="text-amber-500">2.</span> Step-by-Step Practical Blueprint
                 </a>
-                <a href="#in-depth-analysis" className="p-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2">
-                  <span className="text-amber-500">3.</span> In-Depth Editorial & Market Analysis
+                <a href="#key-takeaways" className="p-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2">
+                  <span className="text-amber-500">3.</span> Key Takeaways & Roadmap Overview
                 </a>
                 <a href="#pro-tips" className="p-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2">
-                  <span className="text-amber-500">4.</span> Risk Mitigation & Secret Tips
+                  <span className="text-amber-500">4.</span> Pro Tips & Risk Mitigation
                 </a>
                 <a href="#faqs-section" className="p-2 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors flex items-center gap-2">
                   <span className="text-amber-500">5.</span> Frequently Asked Questions (FAQs)
@@ -600,7 +615,7 @@ export default function Product() {
                   <span className="text-amber-500">6.</span> Off-Site Authority References (E-E-A-T)
                 </a>
               </div>
-            </div>
+            </nav>
 
             {/* Quick Metrics Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-amber-50/50 dark:bg-amber-950/10 rounded-2xl border border-amber-100/50 dark:border-amber-900/30">
@@ -651,10 +666,10 @@ export default function Product() {
               <h3 className="text-2xl font-bold text-gray-950 dark:text-gray-50 flex items-center justify-center md:justify-start gap-2">
                 <ClipboardList size={22} className="text-amber-500" /> Step-by-Step Earning Blueprint
               </h3>
-              <div className="space-y-6">
+              <ol className="space-y-6 list-none">
                 {article.steps.map((step, idx) => (
-                  <div key={idx} className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-10 h-10 shrink-0 bg-amber-500 text-white rounded-xl font-bold flex items-center justify-center text-lg shadow-sm shadow-amber-200 dark:shadow-none">
+                  <li key={idx} className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 p-6 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="w-10 h-10 shrink-0 bg-amber-500 text-white rounded-xl font-bold flex items-center justify-center text-lg shadow-sm shadow-amber-200 dark:shadow-none" aria-hidden="true">
                       {idx + 1}
                     </div>
                     <div className="space-y-2">
@@ -665,76 +680,61 @@ export default function Product() {
                         {step.content}
                       </p>
                     </div>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ol>
             </div>
 
-            {/* Comprehensive Editorial & Industry Masterclass (1,200+ Words Rich Deep-Dive Text) */}
-            <div id="in-depth-analysis" className="p-8 bg-white dark:bg-gray-900 rounded-3xl border border-gray-200/80 dark:border-gray-800 space-y-8 shadow-sm text-left">
+            {/* Key Takeaways & Roadmap Overview — built from this guide's own data,
+                not shared boilerplate, so every guide page stays unique. */}
+            <section id="key-takeaways" aria-labelledby="key-takeaways-title" className="p-8 bg-white dark:bg-gray-900 rounded-3xl border border-gray-200/80 dark:border-gray-800 space-y-8 shadow-sm text-left">
               <div className="space-y-3 pb-6 border-b border-gray-100 dark:border-gray-800">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 text-xs font-extrabold uppercase tracking-wider border border-amber-200 dark:border-amber-900/50">
-                  <BookOpen size={14} className="text-amber-500" /> Editorial Masterclass Deep-Dive
+                  <BookOpen size={14} className="text-amber-500" /> Editorial Takeaways
                 </div>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-gray-950 dark:text-gray-50 leading-tight">
-                  Comprehensive Strategic Guide: {product.title} in the Modern Digital Economy
+                <h3 id="key-takeaways-title" className="text-2xl md:text-3xl font-extrabold text-gray-950 dark:text-gray-50 leading-tight">
+                  Key Takeaways: {article.title}
                 </h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  By <strong>{AUTHOR_NAME}</strong> ({AUTHOR_JOB_TITLE}) • Published for GoshBuzz Readers & Digital Entrepreneurs
+                  By <strong>{AUTHOR_NAME}</strong> ({AUTHOR_JOB_TITLE}) • {product.category} guide for readers in Pakistan
                 </p>
               </div>
 
-              <div className="space-y-6 text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
                   <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-                    1. Market Context & Local Opportunities in Pakistan
+                    The roadmap in {article.steps.length} steps
                   </h4>
-                  <p>
-                    The global digital landscape has opened unprecedented access for Pakistani freelancers, content creators, and digital entrepreneurs. Mastering <strong>{product.title}</strong> offers a direct path toward financial self-reliance without requiring upfront capital investments or physical storefronts. In Pakistan, access to high-speed fiber internet and mobile digital banking (JazzCash, EasyPaisa, NayaPay, SadaPay, and direct bank wire transfers) makes executing international and local online business models smoother than ever before.
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    This {product.category.toLowerCase()} guide is graded <strong>{article.difficulty}</strong> and assumes {article.capitalNeeded.toLowerCase()} to get started. The blueprint below walks through each milestone in order:
                   </p>
-                  <p>
-                    Whether your goal is acquiring high-ticket US and European client contracts or building an automated digital asset that generates recurring monthly revenue, the key lies in disciplined, step-by-step execution. Avoid short-term 'get-rich-quick' schemes or unverified pyramid networks. Focus instead on acquiring practical skills, documenting your work, and establishing trusted buyer relationships.
-                  </p>
+                  <ol className="list-decimal pl-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                    {article.steps.map((step, idx) => (
+                      <li key={idx} className="font-medium">{step.title}</li>
+                    ))}
+                  </ol>
                 </div>
 
                 <div className="space-y-3">
                   <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-                    2. Infrastructure, Tools, and Technical Requirements
+                    Before you start
                   </h4>
-                  <p>
-                    To successfully execute <em>{product.title}</em>, you need a minimal, reliable technical setup:
-                  </p>
-                  <ul className="list-disc pl-6 space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                    <li><strong>Hardware Setup:</strong> A standard smartphone or laptop with a clean web browser (Google Chrome or Brave) and a stable 4G/5G or fiber broadband connection.</li>
-                    <li><strong>Financial & Payment Setup:</strong> A verified biometric JazzCash/EasyPaisa mobile wallet account or a local Pakistani bank account (IBAN) paired with Payoneer for international dollar receipts.</li>
-                    <li><strong>Essential Software & AI Utilities:</strong> Free productivity software like ChatGPT for initial drafting, Canva for graphic assets, and Google Workspace (Docs, Sheets, Drive) for tracking client deliverables.</li>
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                    <li><strong>Time commitment:</strong> plan for {article.timeRequired.toLowerCase()}.</li>
+                    <li><strong>Realistic outcome:</strong> {article.earningPotential.toLowerCase()} — results depend on execution, not guarantees.</li>
+                    <li><strong>Starting capital:</strong> {article.capitalNeeded.toLowerCase()}.</li>
+                    <li><strong>Risk management:</strong> the pro tips section below lists the mistakes that cause most beginners to fail.</li>
                   </ul>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-gray-100">
-                    3. Local Payouts, Tax Considerations & Financial Growth
-                  </h4>
-                  <p>
-                    Managing your earnings efficiently is just as vital as earning them. When receiving payments from international clients or platforms, use verified remittance partners like Payoneer linked directly to your local bank account or mobile wallet. Keep detailed monthly logs of gross earnings, operational expenses, and platform transaction fees to evaluate your profit margin accurately.
-                  </p>
-                </div>
-
-                <div className="p-5 bg-amber-50/60 dark:bg-amber-950/20 rounded-2xl border border-amber-200/60 dark:border-amber-900/40 space-y-2">
-                  <h5 className="font-extrabold text-sm text-amber-950 dark:text-amber-200 uppercase tracking-wide flex items-center gap-1.5">
-                    <ShieldCheck size={16} className="text-amber-600" /> GoshBuzz Quality Assurance & Editorial Guarantee
-                  </h5>
-                  <p className="text-xs text-amber-900 dark:text-amber-300 leading-relaxed">
-                    This editorial guide has been independently authored by GoshBuzz content strategists. All recommendations, tool choices, and payment guidelines have been verified for accuracy and compliance with Google Publisher & Webmaster Quality Guidelines.
+                  <p className="text-sm text-gray-600 dark:text-gray-300">
+                    Every step, tip and FAQ on this page is published free. If you spot an outdated step or price, tell us via the contact page and we will update the guide.
                   </p>
                 </div>
               </div>
-            </div>
-
+            </section>
             {/* Pro Tips */}
-            <div id="pro-tips" className="p-6 bg-emerald-50/50 dark:bg-emerald-950/10 rounded-2xl border border-emerald-100/50 dark:border-emerald-900/30 space-y-4 text-center md:text-left">
-              <h3 className="text-lg font-bold text-emerald-950 dark:text-emerald-300 flex items-center justify-center md:justify-start gap-2">
-                <Lightbulb size={20} className="text-emerald-500" /> Pro Secret Tips (Avoid Failure)
+            <section id="pro-tips" aria-labelledby="pro-tips-title" className="p-6 bg-emerald-50/50 dark:bg-emerald-950/10 rounded-2xl border border-emerald-100/50 dark:border-emerald-900/30 space-y-4 text-center md:text-left">
+              <h3 id="pro-tips-title" className="text-lg font-bold text-emerald-950 dark:text-emerald-300 flex items-center justify-center md:justify-start gap-2">
+                <Lightbulb size={20} className="text-emerald-500" /> Pro Tips &amp; Risk Mitigation
               </h3>
               <ul className="space-y-3 inline-block text-left">
                 {article.proTips.map((tip, idx) => (
@@ -744,26 +744,26 @@ export default function Product() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
 
             {/* FAQs Accordion */}
-            <div id="faqs-section" className="space-y-6 text-center md:text-left">
-              <h3 className="text-2xl font-bold text-gray-950 dark:text-gray-50 flex items-center justify-center md:justify-start gap-2">
+            <section id="faqs-section" aria-labelledby="faqs-title" className="space-y-6 text-center md:text-left">
+              <h3 id="faqs-title" className="text-2xl font-bold text-gray-950 dark:text-gray-50 flex items-center justify-center md:justify-start gap-2">
                 <HelpCircle size={22} className="text-amber-500" /> Frequently Asked Questions
               </h3>
               <div className="space-y-4">
                 {article.faqs.map((faq, idx) => (
                   <div key={idx} className="p-5 bg-gray-50 dark:bg-gray-800/40 rounded-xl border border-gray-100 dark:border-gray-800/60 space-y-2">
                     <h4 className="font-bold text-gray-950 dark:text-gray-50 text-base">
-                      Q: {faq.question}
+                      {faq.question}
                     </h4>
                     <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                      A: {faq.answer}
+                      {faq.answer}
                     </p>
                   </div>
                 ))}
               </div>
-            </div>
+            </section>
 
             {/* Product Sales Banner (Full Downloadable Package Offer) */}
             <div className="p-8 bg-gradient-to-r from-amber-500 to-amber-600 rounded-3xl text-white shadow-xl space-y-6">
@@ -925,7 +925,7 @@ export default function Product() {
             </div>
 
           </div>
-        </div>
+        </article>
       )}
 
       {/* Compare Section */}
@@ -968,13 +968,13 @@ export default function Product() {
 
                 <div className="mt-auto pt-4 space-y-4">
                   <div className="bg-amber-50 rounded-lg p-3 text-sm">
-                    <span className="font-semibold text-amber-800 dark:text-amber-300 dark:text-amber-300 block mb-1">
-                      Difference:
+                    <span className="font-semibold text-amber-800 dark:text-amber-300 block mb-1">
+                      How it differs:
                     </span>
                     <span className="text-amber-700">
-                      {product.type === "idea"
-                        ? "Focuses on a different niche and monetization strategy compared to the current guide."
-                        : "Provides alternative technical or business survival knowledge."}
+                      {altProduct.category.toLowerCase() === product.category.toLowerCase()
+                        ? `Same ${product.category.toLowerCase()} focus, but ${altProduct.title} walks a different execution path.`
+                        : `Shifts the focus to ${altProduct.category.toLowerCase()}, while this guide stays on ${product.category.toLowerCase()}.`}
                     </span>
                   </div>
                   <Link

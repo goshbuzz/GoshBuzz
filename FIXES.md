@@ -262,3 +262,53 @@ Ahrefs MCP was unavailable during this pass, so the same checks were run locally
 - **Only one dofollow incoming internal link (42):** every article linked to the same first 4 guides, so the other ~56 got a single link. "Explore more" now rotates through the catalogue; every article has at least 5 inlinks.
 - **IndexNow (74 changed pages):** added key file `public/b70769f36a3c5a982d8251d4e70d4eec.txt`, `scripts/indexnow.js` (run `node scripts/indexnow.js` after each deploy; optional GitHub Action template kept outside the repo).
 - Schema.org validation of all JSON-LD on goshbuzz.com against the current schema.org vocabulary: 0 errors.
+
+---
+
+# AdSense "Low value content" round — 2026-10-14
+
+Fixes addressing the AdSense rejection verdict **"Low value content — your site isn't ready to show ads"**
+(goshbuzz.com, "Needs attention") plus content-structure and header-alignment corrections.
+
+## Root cause
+
+1. **Thin + duplicated content on guide pages.** 58 of 60 guides carried fewer than 500 words of
+   unique content (37 under 350 words), padded by a **~450-word "Comprehensive Strategic Guide…
+   Modern Digital Economy" block that was byte-identical on every URL**, plus identical fabricated
+   commerce claims everywhere ("HOT: 38 Purchased Today", "Only 6 Discounted Copies Left",
+   "60% OFF Launch Promo" fake strikethrough, "2,400+ Readers ⭐ 4.9/5"). That combination is the
+   textbook trigger for the "scaled content / low value" policy verdict.
+2. **Broken heading hierarchy** (h1 → h3 skips on Product/Blogs), non-semantic divs for the article
+   body, steps rendered as divs instead of a list, and a hardcoded "~12 min read" on every article.
+3. **Header control misalignment** in `src/App.tsx`: inconsistent icon sizes (18/20/24), a
+   `border-r + pr-4` divider hack creating uneven spacing (16px vs 32px), unpadded buttons with
+   tiny hit targets, and a cart badge that clipped at the edge.
+
+## Changes
+
+| File | Change |
+|---|---|
+| `src/data/articleExpansions.ts` (new) | Hand-written, topic-specific editorial expansions for **all 60 guides**: 2 extra steps + 2 extra pro tips + 2 extra FAQs each, merged at load time. No fabricated statistics; Pakistan-relevant guidance. Every guide now carries **688–1,000+ unique words** (was 294–743). |
+| `src/data/articles.ts` | Renames the raw map to `rawArticles` and exports `articles = applyArticleExpansions(rawArticles)` so steps/FAQ/proTip-driven schema (HowTo, FAQPage) automatically include the expanded content. |
+| `src/pages/Product.tsx` | Removed identical boilerplate deep-dive block → new **data-driven "Key Takeaways & Roadmap Overview" `<section>`** (per-article roadmap, difficulty/capital/potential, editorial note). Removed all fabricated urgency badges, fake discounts and fake reader counts → honest chips ("Full Guide Free to Read", category, "One-time payment") and an honest free-to-read banner. Fixed heading order (h1→h2→h3→h4), wrapped the article body in `<article>`, steps → `<ol>`, ToC → `<nav aria-label>`, FAQs without "Q:/A:" prefixes, computed reading time (~200 wpm), breadcrumb links to `/collection/ideas|skills`, data-driven "How it differs" compare cards. |
+| `src/pages/Home.tsx` | Hero stat "4.9 ★ User Satisfaction" (unverifiable) → "EN · اردو — Content Languages". Dropshipping showcase tiles were dead ends → added CTA linking to the E-commerce & Dropshipping guide. |
+| `src/pages/Blogs.tsx` | Heading hierarchy fixed (card titles h3→h2, external-resource cards h4→h3 under a new h2 "Trusted External Resources"). |
+| `src/App.tsx` | Header action cluster rebuilt for alignment: uniform `h-10 w-10 rounded-full` icon buttons, all icons 20px, explicit divider span, bordered language pill with `appearance-none` select + chevron (no native-arrow misalignment), `aria-label`/`aria-expanded` on menu button, cart badge aligned with ring so it no longer clips. |
+
+## Verified behaviour (local production build, 2026-10-14)
+
+- `npm run typecheck`, `npm test` (13 tests), `npm run build` pass; 76/76 pages prerendered;
+  build validator passes (77 HTML pages, 14 local assets).
+- Guide pages now render **~1,750–1,900 words each** (e.g. `instagram-theme-pages` 1,767;
+  `data-entry-lead-gen` 1,803; `ebay-dropshipping-guide` 1,825).
+- Cross-page 12-gram scan between two random guide pages shows shared sequences only in
+  navigation/footer/CTA chrome — article bodies are unique.
+- Zero occurrences of the removed fabricated claims in any built page.
+
+## Re-review runbook
+
+1. Deploy, then spot-check: any guide URL shows unique takeaways/roadmap; no "Purchased Today"-style
+   counters anywhere; header buttons aligned on one 40px baseline.
+2. In Search Console, request indexing for 5–10 key URLs to trigger a fresh crawl.
+3. In AdSense, tick "I confirm I have fixed the issues" and **Request review**. Expect the
+   "low value content" report to clear over 1–3 weeks as recrawls complete.
