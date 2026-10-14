@@ -230,8 +230,8 @@ export default function Home() {
                   <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">Open Knowledge</div>
                 </div>
                 <div className="bg-white/80 dark:bg-gray-900/80 p-4 rounded-2xl border border-gray-200/80 dark:border-gray-800 shadow-xs text-center">
-                  <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">4.9 ★</div>
-                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">User Satisfaction</div>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-amber-500">EN · اردو</div>
+                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 mt-1">Content Languages</div>
                 </div>
               </div>
             </div>
@@ -731,6 +731,15 @@ export default function Home() {
               <p className="text-[11px] text-amber-400 mt-0.5">Evergreen Household Niche</p>
             </div>
           </div>
+
+          <Link
+            to="/blogs/news/ebay-dropshipping-guide"
+            className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold rounded-xl transition-colors text-sm"
+          >
+            <BookOpen size={16} />
+            <span>Read the complete E-commerce &amp; Dropshipping Blueprint</span>
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </section>
 

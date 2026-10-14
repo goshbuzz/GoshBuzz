@@ -8,6 +8,8 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 3000,
+    // Accept sandbox/preview proxy hosts during development.
+    allowedHosts: true,
   },
   resolve: {
     alias: {

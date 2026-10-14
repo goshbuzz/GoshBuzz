@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link, useParams, Navigate } from "react-router-dom";
 import { HashLink } from "./components/HashLink";
 import { HelmetProvider } from "react-helmet-async";
-import { Globe, Moon, Sun, Menu, X } from "lucide-react";
+import { Globe, Moon, Sun, Menu, X, ChevronDown } from "lucide-react";
 import Home from "./pages/Home";
 import goshbuzzLogo from "./assets/images/goshbuzz_logo_1783631495534.jpg";
 import Product from "./pages/Product";
@@ -133,38 +133,48 @@ function Header({
             <ShoppingCart size={18} />
             <span>{t("cart")}</span>
             {cart.length > 0 && (
-              <span className="absolute -top-2.5 -right-3 bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center shadow-sm">
+              <span className="absolute -top-2 -right-4 bg-amber-500 text-white text-[10px] font-bold min-w-[18px] h-[18px] px-1 flex items-center justify-center rounded-full leading-none shadow-sm ring-2 ring-white dark:ring-gray-900">
                 {cart.length}
               </span>
             )}
           </Link>
         </nav>
-        <div className="flex items-center gap-4">
+        {/* Header action cluster: uniform 40px targets keep every control on one baseline */}
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors shrink-0"
             aria-label="Toggle Dark Mode"
           >
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          <div className="flex items-center gap-2 border-r border-gray-200 dark:border-gray-700 pr-4">
-            <Globe size={18} className="text-gray-500 dark:text-gray-400" />
+
+          <span
+            className="hidden sm:block h-6 w-px bg-gray-200 dark:bg-gray-700 shrink-0"
+            aria-hidden="true"
+          ></span>
+
+          <div className="flex h-10 items-center gap-1.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 pl-3 pr-2.5 shrink-0">
+            <Globe size={16} className="text-gray-500 dark:text-gray-400 shrink-0" aria-hidden="true" />
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value as "en" | "ur")}
-              className="bg-transparent text-sm font-medium text-gray-700 dark:text-gray-300 focus:outline-none cursor-pointer"
+              className="bg-transparent text-sm font-medium text-gray-700 dark:text-gray-300 focus:outline-none cursor-pointer appearance-none pr-0.5 leading-none"
+              aria-label="Select language"
             >
               <option value="en">EN</option>
               <option value="ur">اردو</option>
             </select>
+            <ChevronDown size={14} className="text-gray-400 dark:text-gray-500 shrink-0" aria-hidden="true" />
           </div>
-          
+
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white p-1 focus:outline-none"
-            aria-label="Toggle Menu"
+            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors shrink-0"
+            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+            aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>

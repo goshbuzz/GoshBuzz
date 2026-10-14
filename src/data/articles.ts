@@ -1,4 +1,5 @@
 import { skillArticles } from './skillArticles';
+import { applyArticleExpansions } from './articleExpansions';
 
 export interface ArticleStep {
   title: string;
@@ -24,7 +25,7 @@ export interface ProductArticle {
   tags: string[];
 }
 
-export const articles: Record<string, ProductArticle> = {
+const rawArticles: Record<string, ProductArticle> = {
   "idea-1": {
     title: "Crypto Spot Trading for Beginners in Pakistan: Strategic Setup & Risk Management",
     aeoSummary: "Crypto spot trading on Binance from Pakistan requires strict risk management, KYC verification via CNIC, and P2P funding through local channels like JazzCash or EasyPaisa. Traders target disciplined 3% to 8% spot returns while avoiding high-risk futures leverage.",
@@ -1335,4 +1336,8 @@ export const articles: Record<string, ProductArticle> = {
   },
   ...skillArticles
 };
+
+// Merge per-article editorial expansions (unique steps, tips, FAQs) at load time
+// so every guide page carries substantial unique content.
+export const articles: Record<string, ProductArticle> = applyArticleExpansions(rawArticles);
 
